@@ -1,6 +1,6 @@
 # Narrative Architecture System (NAS)
 
-**Working draft — v0.4 (July 2026)**
+**Working draft — v0.5 (July 2026)**
 *Methodology for structured fiction development. This document is also the spec for the writing layer of the surrounding software; project-level features (kanban, panels, dashboards, session UX) wrap NAS but are out of scope here — see `SOFTWARE.md` for the architecture seed of the tool itself.*
 
 Restructured from v0.2 (archived at `Archive/v0.2_NAS.md`) in v0.3; v0.4 adds the Evidence Loop, the canon-drift model, rules derived from the Field Atlas, and written proposals for every open question.
@@ -9,6 +9,7 @@ Restructured from v0.2 (archived at `Archive/v0.2_NAS.md`) in v0.3; v0.4 adds th
 
 **Changed in v0.3:** Blank Page Problem (§0); design/render thesis (§1); Observation Principle (§2); KnowledgeScope (§3); contract stack (§4); Pillars (§5); Roadmap (§6); World Graph (§7); scene interface/implementation split (§8.3); pipeline reopened (§9); time model drafted (§10).
 **Changed in v0.4:** canon drift — the two walls (§2.5); independent-change test + Hyrum's Law on the scene seam (§8.3); the Cut as first-class telling order (§10); the Evidence Loop — register, claims, ledger, scope manifest (§14); proposals on all open questions (inline + §15).
+**Changed in v0.5:** composition & emergence — the chemistry→biology ladder (§7.6); valence as open bonds generalizing desire and consequence slots (§7.6); Character generalizes to Agent at every composition level (§8.1); the ambient field enters the behavior checks (§2.3, §8.3).
 
 ---
 
@@ -97,6 +98,8 @@ v0.2 demanded entry state *equal* last exit state. v0.3 relaxes it: between appe
 > Is this entry state **reachable** from the last exit state within those constraints?
 
 This legitimately allows offscreen evolution. When the answer is yes-but-barely, the system prompts the writer to backfill the implied offscreen event.
+
+**PROPOSAL (unratified) — the field term:** behavior is a function of internal state *and* ambient field: `behavior = f(agent, field)`. The reachability envelope takes the scene's declared field (§8.3) as input — the same character in a different field (stripped of their culture, institution, social signals) legitimately behaves off-baseline. The system then distinguishes **inconsistency** (a bug) from **field displacement** (a story — the fish-out-of-water is a computable situation). See §7.6 for the model behind this.
 
 ### 2.4 Retcon = re-opening a collapsed measurement
 
@@ -304,6 +307,32 @@ World nodes declare a layer, and layers form a DAG the writer defines — e.g. `
 
 Character profile, era timeline, organization chronicle, "everything the reader knows at chapter 12," the full Bible export — all **generated projections** over the graph and the delta stream. Never authored, never drifting. Authoring happens at the node and the scene; reading happens anywhere. One source of truth, **derived, not duplicated** — the same fix the drift literature converged on for software contracts, arrived at here for canon.
 
+### 7.6 Composition and Emergence — the chemistry→biology ladder
+
+**PROPOSAL (unratified), whole subsection.**
+
+The graph borrows one more structure from the natural sciences: atoms bond into molecules, molecules into cells, cells into tissues, organs, organisms — and climb far enough and the *discipline changes*: chemistry becomes biology. Enough ants and a colony exists — an entity with properties no single ant has, whose pheromone field then governs each ant's behavior. A lone ant, stripped of that field, cannot orient. Three mechanics fall out:
+
+**1. Composition is a relation class, not a fourth causal edge.** The §7.1 edge freeze holds. `member_of` builds the *vertical* ladder — character → faction → society; fact → institution → civilization — while causal edges keep running within and across levels. Composition levels are orthogonal to §7.3 layers (a faction sits at the `institutions` layer *and* is composed of character members).
+
+```yaml
+id: faction_omc
+family: character           # collective nodes are agents — see §8.1
+level: institution          # compositional altitude
+members: [char_orion, char_brother, ...]      # member_of, inverse-indexed
+valences:                   # open bonds — the node's unmet needs
+  - "legitimacy after the Newton shock"
+  - "a scientific method it can call its own"
+emergent_properties:        # properties stored HERE because no member has them
+  - "institutional memory decay across generations"
+```
+
+**2. Valence: bonding is driven by incompleteness.** Atoms link because their shells are unfilled. NAS already has this object twice without naming it: a character's `desire`/`core_wound` and a world node's `consequence_slots` are the same thing — an **open bond**. Unified as `valences`, they make relationships and plots *predicted chemistry* rather than authored decoration: the generative query is **"which unbound valences could bond?"** — which characters, factions, and pressures are about to collide. A stable configuration (all valences bound) is a world at rest; stories start where valence is unbound. *(The reference corpus runs on this literally: incomplete philosopher's stones are unfilled valence as plot engine, and the viral hive consciousness is colony-emergence at population scale — the methodology's mechanics were extracted from a story that already worked.)*
+
+**3. Downward causation: the field.** Higher-level nodes exert pressure on their constituents — the colony steers the ant, the quarantine policy shapes every mage's day. **The world influences characters as much as, often more than, their interior selves.** Mechanically: a scene declares its **active field** (the location, institutions, and social contexts in force — §8.3), and every behavioral check takes the field as input (§2.3). Character methods may declare field dependencies (`under_authority` behaves differently inside vs. outside the lineage's halls). Emergent-level nodes are exactly the nodes whose *fields* reach down.
+
+**Two emergence lints:** (a) dense bonding at level N with no level-N+1 node → "possible unnamed emergent" — *you've written twelve mages cooperating for two centuries; where is the institution?* (b) a collective node with no members → free-floating emergent, flag. Both `default` tier — the writer judges.
+
 ---
 
 ## 8. Core Objects (carried from v0.2, revised)
@@ -339,6 +368,8 @@ A character node with **properties, methods, invariants, and an arc** (structure
 
 Character psychology **derives from world nodes** via causal edges — the war caused the core wound; the lineage explains the vow. Same graph, character family (§2.1).
 
+**PROPOSAL (unratified) — Character generalizes to Agent.** Methods, invariants, and arcs are available at *every composition level* (§7.6): a faction has decision heuristics ("under threat: institutional capture"), invariants, and an arc (an institution's corruption ladder is an internal-family trajectory on a collective node). The two observable families exist at every level too — an institution has external state (holdings, laws) and internal state (doctrine, morale). Persons are simply Agents at the individual level. *(Worked example from the reference corpus: the OMC chronicle is a character profile of an institution — core wound, heuristics, five-step arc.)*
+
 **PROPOSAL (unratified) — voice as object:** `VoiceProfile` referenced by character — lexicon tendencies, rhythm, prohibitions ("never uses contractions", "metaphors drawn from sailing"). Lintable at the late render phases only (voice is a coloring concern). Enters the register at `hypothesis` strength.
 
 ### 8.2 Relationship
@@ -349,7 +380,7 @@ Directed edge between characters (A's view of B ≠ B's view of A): trust, power
 
 The scene is the atomic build unit — and it splits, borrowing the deepest coding concept in the system:
 
-- **Interface (frontmatter):** narrative function, characters present, POV, entry/exit deltas, information ops performed (per observer), setups planted, payoffs resolved, themes touched, stakes active, pillar binding, render phase, beats (§9.2).
+- **Interface (frontmatter):** narrative function, characters present, POV, **active field** (location + institutions/social contexts in force, §7.6 — proposed), entry/exit deltas, information ops performed (per observer), setups planted, payoffs resolved, themes touched, stakes active, pillar binding, render phase, beats (§9.2).
 - **Implementation (body):** the prose, at whatever render phase it has reached.
 
 **Downstream scenes depend only on the interface.** Consequences: prose can be re-rendered freely without dirtying anything; the edit room (§9.3) can reorder scenes and compute exactly which interface transitions broke; retcon cones stop at interfaces that still hold. Changing an interface is the expensive operation; changing prose is cheap. This inverts how writers usually feel about their work — and it should.
@@ -599,6 +630,9 @@ Milestone reports (chapter merge, draft complete, work finished): aggregate the 
 | 11 | Theme weight | **PROPOSAL** — per-scene presence (0–3), folded to per-chapter curve; flatline lint. Hypothesis tier |
 | 12 | Decree budget | **PROPOSAL** in §2.2 — free at low layers, flagged at high; manifest parameter |
 | 13 | Era vs. scene-time representation; trajectory nodes × chronology | ⚠ fully open (§10) |
+| 14 | Composition levels + emergence lints | **PROPOSAL** in §7.6 — `member_of` relation class, emergent properties, two lints |
+| 15 | Valence as unified open-bond object | **PROPOSAL** in §7.6 — merges desire/wound with consequence slots; "which valences could bond?" query |
+| 16 | Agent generalization + field term in behavior checks | **PROPOSAL** in §8.1 / §2.3 — collective agents; behavior = f(agent, field); field displacement ≠ inconsistency |
 
 Every proposal awaits explicit ratification — none is silently locked.
 
