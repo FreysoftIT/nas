@@ -598,6 +598,7 @@ applies_when: "any project using the Cut"     # feeds the scope manifest
 | PILLAR-1 | A bound pillar's preconditions hold at its position | gate | invariant |
 | GRAPH-1 | Causal edges respect layer direction | lint | invariant |
 | GRAPH-2 | Documents/views are generated, never hand-copied from graph facts | structural | invariant |
+| GRAPH-3 | Load-bearing psychology is causally anchored: every wound, vow, and arc-driver cites the event node(s) it derives from | lint | default |
 | READER-1 | Exposition shaped for the reader's current need, never bible-shaped | judgment | default |
 | READER-2 | Reveals evolve additively; contradiction requires a declared subvert op | lint | default |
 | SETUP-1 | Every setup has a payoff window or explicit `abandoned`; orphans flagged | lint | invariant |
@@ -624,6 +625,8 @@ Falsifiable claims with measurement protocols — a claim without a protocol is 
 Append-only, one file per event: continuity bug found, retcon executed, phase regression, beta-feedback item, milestone. Each entry: date, project, trigger, rules cited with verdict (`would-have-caught | false-positive | exception-applied`), claim evidence (`confirms | refutes`), and **one `canonical_cause`** — a single owning claim per bug, or every post-mortem confirms every model and the ledger proves nothing.
 
 **Ledger 0001 (to backfill):** the book-bible corpus audit — the 1763/1770 birth-year contradiction (`canonical_cause: NAS-C1`, confirms; GRAPH-2 would-have-caught), the forced-vs-voluntary transformation conflict, the misfiled canon docs (§11's evidence). The author's own account belongs in this entry as NAS-C9 evidence: the contradiction-hunting was done by hand, at the cost of burnout — and the v1→v2 revision cycle shows the predicted flattening drift (idealization of the protagonist, the agency-removing retcon, the late-added deuteragonist receiving structural significance but no interiority).
+
+**The kicker (author testimony, same entry):** the transformation conflict was never doc-vs-doc — the author *knew* the canon (she volunteered; the guilt derives from complicity). The written docs drifted from an authoritative version that lived only in the head — an unpublished spec, undiffable by definition. The missing unit test is GRAPH-3 (`canonical_cause` for this half of the entry): had `core_wound derives_from fact_voluntary_transformation` existed as an edge, the "for protection" edit would have walked the cone into the wound and failed loudly — *"this change orphans her core wound."* The author's head is itself an observer scope (§3); what is load-bearing must be anchored into the graph, because only the published record is testable.
 
 ### 14.5 Scope manifest — scale gates
 
