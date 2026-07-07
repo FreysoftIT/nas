@@ -1,6 +1,6 @@
 # Narrative Architecture System (NAS)
 
-**Working draft — v0.6 (July 2026)**
+**Working draft — v0.7 (July 2026)**
 *Methodology for structured fiction development. This document is also the spec for the writing layer of the surrounding software; project-level features (kanban, panels, dashboards, session UX) wrap NAS but are out of scope here — see `SOFTWARE.md` for the architecture seed of the tool itself.*
 
 Restructured from v0.2 (archived at `Archive/v0.2_NAS.md`) in v0.3; v0.4 adds the Evidence Loop, the canon-drift model, rules derived from the Field Atlas, and written proposals for every open question.
@@ -11,6 +11,7 @@ Restructured from v0.2 (archived at `Archive/v0.2_NAS.md`) in v0.3; v0.4 adds th
 **Changed in v0.4:** canon drift — the two walls (§2.5); independent-change test + Hyrum's Law on the scene seam (§8.3); the Cut as first-class telling order (§10); the Evidence Loop — register, claims, ledger, scope manifest (§14); proposals on all open questions (inline + §15).
 **Changed in v0.5:** composition & emergence — the chemistry→biology ladder (§7.6); valence as open bonds generalizing desire and consequence slots (§7.6); Character generalizes to Agent at every composition level (§8.1); the ambient field enters the behavior checks (§2.3, §8.3).
 **Changed in v0.6:** the contrast principle — identity is differential; the writer's ledger is absolute, the reader's channel is differential; the contrast lint family (§3.3); pacing as derivative (§9.2); claim NAS-C8.
+**Changed in v0.7:** the Triad **ratified by the author** as the pillar of the system — §2 reframed as The Three Principles (Observation, Emergence, Contrast); first ratification of the proposal era.
 
 ---
 
@@ -66,9 +67,23 @@ A note on convergence: an independently developed model corpus about *software* 
 
 ---
 
-## 2. The Observation Principle
+## 2. The Three Principles
 
-The semantic core of NAS. Everything else hangs off this.
+**Ratified v0.7 — this triad is the pillar of the system.** Three ontological principles, each supplied by the author, each mechanized in this document, each independently instantiated in the reference corpus before it was named:
+
+| # | Principle | Statement | Engine | Detailed in |
+|---|---|---|---|---|
+| **I** | **Observation** | Nothing is canon until a scene observes it; facts are constraint clouds until collapsed | canon-engine | this section |
+| **II** | **Emergence** | Incompleteness drives bonding (valence); enough composition produces new levels; higher levels reach down (fields) | world-engine | §7.6 |
+| **III** | **Contrast** | Identity is differential; the ledger stores absolutes, but the reader receives only differences | experience-engine | §3.3 |
+
+They chain: **valence drives what bonds (II) → scenes observe and collapse the results (I) → the reader perceives only the contrasts those collapses produce (III).** The world generates pressure; the writing collapses it into canon; the reader experiences its differentials. Everything else in NAS is machinery serving these three.
+
+*Structural note: Principles II and III are documented where they emerged (§7.6, §3.3) to keep cross-references stable; the v1.0 rewrite consolidates all three here. The principles are ratified; their specific mechanics (schemas, lints) remain individually ratifiable in §15.*
+
+### Principle I — Observation
+
+The canon-engine, in full. Everything about *what is true* hangs off this.
 
 > **Nothing is canon until a scene observes it.** Every story fact — a world detail, a character's state, a pillar's position — is a *constraint cloud*: a range of allowed values, narrowed by entanglement with already-collapsed facts, but still free. The scene is the measurement apparatus. Rendering a scene collapses every fact it touches into canon, and the collapse propagates along causal edges — narrowing neighboring clouds without collapsing them.
 
@@ -655,10 +670,10 @@ Milestone reports (chapter merge, draft complete, work finished): aggregate the 
 | 11 | Theme weight | **PROPOSAL** — per-scene presence (0–3), folded to per-chapter curve; flatline lint. Hypothesis tier |
 | 12 | Decree budget | **PROPOSAL** in §2.2 — free at low layers, flagged at high; manifest parameter |
 | 13 | Era vs. scene-time representation; trajectory nodes × chronology | ⚠ fully open (§10) |
-| 14 | Composition levels + emergence lints | **PROPOSAL** in §7.6 — `member_of` relation class, emergent properties, two lints |
-| 15 | Valence as unified open-bond object | **PROPOSAL** in §7.6 — merges desire/wound with consequence slots; "which valences could bond?" query |
-| 16 | Agent generalization + field term in behavior checks | **PROPOSAL** in §8.1 / §2.3 — collective agents; behavior = f(agent, field); field displacement ≠ inconsistency |
-| 17 | Contrast principle (perceivability) | **PROPOSAL** in §3.3 — absolute ledger vs. differential reader channel; contrast lint family; pacing as derivative |
+| 14 | Composition levels + emergence lints | Principle II ratified (§2 triad, v0.7); mechanics **PROPOSAL** in §7.6 — `member_of` relation class, emergent properties, two lints |
+| 15 | Valence as unified open-bond object | Principle II ratified (§2 triad, v0.7); mechanics **PROPOSAL** in §7.6 — merges desire/wound with consequence slots; "which valences could bond?" query |
+| 16 | Agent generalization + field term in behavior checks | Principle II ratified (§2 triad, v0.7); mechanics **PROPOSAL** in §8.1 / §2.3 — collective agents; behavior = f(agent, field); field displacement ≠ inconsistency |
+| 17 | Contrast principle (perceivability) | Principle III ratified (§2 triad, v0.7); mechanics **PROPOSAL** in §3.3 — contrast lint family; pacing as derivative |
 
 Every proposal awaits explicit ratification — none is silently locked.
 
@@ -674,4 +689,4 @@ Every proposal awaits explicit ratification — none is silently locked.
 
 ---
 
-*v0.4 — working draft. Iterate by editing this file. Nothing here is sacred except §0's problem statement and the §2 Observation Principle — challenge everything else. The rest earns its place through the ledger, or leaves.*
+*v0.7 — working draft. Iterate by editing this file. Nothing here is sacred except §0's problem statement and the §2 Triad — challenge everything else. The rest earns its place through the ledger, or leaves.*
