@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \"import sys, re; t = sys.stdin.read\\(\\); print\\('\\\\n'.join\\(re.findall\\(r'<w:t[^>]*>\\([^<]*\\)</w:t>', t\\)\\)\\)\")",
+      "Bash(grep -v '^$')"
+    ]
+  }
+}
