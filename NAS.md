@@ -1,6 +1,6 @@
 # Narrative Architecture System (NAS)
 
-**Working draft — v0.5 (July 2026)**
+**Working draft — v0.6 (July 2026)**
 *Methodology for structured fiction development. This document is also the spec for the writing layer of the surrounding software; project-level features (kanban, panels, dashboards, session UX) wrap NAS but are out of scope here — see `SOFTWARE.md` for the architecture seed of the tool itself.*
 
 Restructured from v0.2 (archived at `Archive/v0.2_NAS.md`) in v0.3; v0.4 adds the Evidence Loop, the canon-drift model, rules derived from the Field Atlas, and written proposals for every open question.
@@ -10,6 +10,7 @@ Restructured from v0.2 (archived at `Archive/v0.2_NAS.md`) in v0.3; v0.4 adds th
 **Changed in v0.3:** Blank Page Problem (§0); design/render thesis (§1); Observation Principle (§2); KnowledgeScope (§3); contract stack (§4); Pillars (§5); Roadmap (§6); World Graph (§7); scene interface/implementation split (§8.3); pipeline reopened (§9); time model drafted (§10).
 **Changed in v0.4:** canon drift — the two walls (§2.5); independent-change test + Hyrum's Law on the scene seam (§8.3); the Cut as first-class telling order (§10); the Evidence Loop — register, claims, ledger, scope manifest (§14); proposals on all open questions (inline + §15).
 **Changed in v0.5:** composition & emergence — the chemistry→biology ladder (§7.6); valence as open bonds generalizing desire and consequence slots (§7.6); Character generalizes to Agent at every composition level (§8.1); the ambient field enters the behavior checks (§2.3, §8.3).
+**Changed in v0.6:** the contrast principle — identity is differential; the writer's ledger is absolute, the reader's channel is differential; the contrast lint family (§3.3); pacing as derivative (§9.2); claim NAS-C8.
 
 ---
 
@@ -164,6 +165,27 @@ Two exposition rules borrowed across the seam (register: READER-1/2, §14.3): **
 ### 3.2 Irony as a computed gap
 
 Dramatic irony is the gap between any two observers' records — reader vs. character (classic), character vs. character (in-world deception), faction vs. faction (political intrigue). At any scene the writer can query: *what does observer A hold that observer B doesn't?* — and use the gap deliberately. Secrets and classified knowledge are just scope restrictions on facts.
+
+### 3.3 Perceivability: the contrast principle
+
+**PROPOSAL (unratified), whole subsection.**
+
+Nothing exists in a vacuum: **identity is differential** — a property is only identifiable against something it differs from. (Relational QM: a system's state exists only relative to another system — the completion of §2's analogy. Saussure: meaning is difference. Bateson: information is a difference that makes a difference.) NAS splits the consequence in two:
+
+- **The writer's ledger is absolute.** The graph stores values (born 1770, trust −0.4) because bookkeeping needs fixed points.
+- **The reader's channel is differential.** Observers perceive only contrasts: change over time (deltas — why deltas-only is the right primitive), difference across entities (foils, gradients), gap between expectation and event (the info ops of §3.1). A fact transmitted with no contrast does not register. **A property never contrasted anywhere is authorial headcanon, not narrative fact.**
+
+**The contrast lint family** (all `default` tier — the writer judges):
+
+| Lint | Fires when | Founded/retrofits |
+|---|---|---|
+| Unobservable trait | Declared property with no contrast event in any scene (no foil, no temptation resisted, no before/after) | new |
+| Invisible world feature | World property with no gradient or exception — if everyone has magic, magic is air, perceivable only by absence | new |
+| Unchallenged theme | Thesis with no antithesis on the page — preaching | founds v0.2's `challenged` status |
+| Flatline pacing | Runs of same-temperature/same-weight beats — perception adapts; the signal is the derivative, not the level (§9.2) | new |
+| Delta-less scene | A scene that differentiates nothing | founds the existing flag: such a scene narratively *does not exist* |
+
+*Worked examples from the reference corpus: mage-bane zones make ambient mana perceivable by its absence; human mages are defined by lack ("blank" genetics); the three-generation Sithernis structure is a controlled contrast experiment — one research program swept across three values (heal / weaponize / redeem). Cassandra means nothing without Orion.*
 
 **PROPOSAL (unratified) — reread model:** v1 models the first read only. The rereader's record is *free*: it is full canon projected at each telling position — a generated scope, not an authored one. Rereader irony ("she says X, and on reread you know why") = the computed gap between full-canon-at-position and first-read-record-at-position. Costs nothing extra given the machinery; resolves v0.2's open question by construction.
 
@@ -442,6 +464,8 @@ beats:
 
 This resolves v0.2's "subscene granularity" question (yes — beats are the panels) and the multi-POV question (POV attaches per beat; observer-record mutations attribute per beat; single-POV scenes are the degenerate one-POV case).
 
+**Pacing is perceived differentially (§3.3):** a slow beat reads slow only next to fast ones, and monotone intensity flattens — sensory adaptation. The animatic and pacing views therefore surface the *derivative* of the beat sequence, not its level: runs of same-weight, same-temperature beats trigger the flatline lint even when the level is "exciting."
+
 ### 9.3 PROPOSAL (unratified) — the Animatic
 
 A **generated view**, not an authored document: the beat cards rendered in telling order (the Cut), each beat expanded to a length proportional to its pacing weight — *read your novel in 40 minutes before writing a sentence of it*. Pacing and structure problems become visible while they cost nothing. The authored artifact above it is the **treatment** (part of the Novel contract); the animatic is always derived, always current, and deliberately lossy — the squint test as a build target. Fidelity loss per abstraction hop is the *point*: the animatic answers "does the shape read?", never "is the prose good?".
@@ -577,6 +601,7 @@ Falsifiable claims with measurement protocols — a claim without a protocol is 
 | NAS-C5 | The two-fold rule handles nonlinear structure without special cases | First flashback-heavy project: count special-case hacks needed (target: 0) |
 | NAS-C6 | Canon drift is silent and non-linear in time-unaddressed | Reconciliation cost vs. time-since-last-sync across ledger entries |
 | NAS-C7 | Position-independent prose survives reordering at near-zero cost | Edit-room sessions: broken-transition count for compliant vs. non-compliant scenes |
+| NAS-C8 | Declared-but-uncontrasted properties are not retained by readers | Beta-read protocol: readers describe characters/world unprompted; compare reported traits against contrast-event coverage — uncontrasted traits should be systematically absent |
 
 ### 14.4 The ledger
 
@@ -633,6 +658,7 @@ Milestone reports (chapter merge, draft complete, work finished): aggregate the 
 | 14 | Composition levels + emergence lints | **PROPOSAL** in §7.6 — `member_of` relation class, emergent properties, two lints |
 | 15 | Valence as unified open-bond object | **PROPOSAL** in §7.6 — merges desire/wound with consequence slots; "which valences could bond?" query |
 | 16 | Agent generalization + field term in behavior checks | **PROPOSAL** in §8.1 / §2.3 — collective agents; behavior = f(agent, field); field displacement ≠ inconsistency |
+| 17 | Contrast principle (perceivability) | **PROPOSAL** in §3.3 — absolute ledger vs. differential reader channel; contrast lint family; pacing as derivative |
 
 Every proposal awaits explicit ratification — none is silently locked.
 
