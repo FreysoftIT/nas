@@ -11,6 +11,8 @@ Architecture rules in this document marked **[Atlas: X]** are imported from the 
 
 **An IDE for stories, not a file cabinet.** Scrivener/World Anvil organize documents; this understands content. The semantic layer (NAS) is the entire moat — every feature is a projection of, or a check over, NAS objects.
 
+**For hard writers (author-declared, NAS §1.1).** This is assistive technology for the design-first cognition — the writer whose method requires externalized state before prose can flow, and who crashes running that machine in their head (NAS-C9). Soft writers already have complete tooling: a blank page plus revision. Every surface is designed for the writer who thinks in systems; soft-mode harvesting is an on-ramp and a series-scale rescue, never the identity. Do not drift toward a neutral "writing app with graphs."
+
 **The writer is the judge; the software is the instrument panel.** It flags, computes, projects, and walks cones; it never auto-fixes story content (NAS §12). Every finding cites a rule ID; every dismissal cites an exception ID.
 
 **Local-first, plain-text-first.** The project is a folder of markdown files in a git repo. The app must be closable forever without the project losing meaning.
