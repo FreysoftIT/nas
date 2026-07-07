@@ -1,6 +1,6 @@
 # Narrative Architecture System (NAS)
 
-**Working draft — v0.9 (July 2026)**
+**Working draft — v0.10 (July 2026)**
 *Methodology for structured fiction development. This document is also the spec for the writing layer of the surrounding software; project-level features (kanban, panels, dashboards, session UX) wrap NAS but are out of scope here — see `SOFTWARE.md` for the architecture seed of the tool itself.*
 
 Restructured from v0.2 (archived at `Archive/v0.2_NAS.md`) in v0.3; v0.4 adds the Evidence Loop, the canon-drift model, rules derived from the Field Atlas, and written proposals for every open question.
@@ -14,6 +14,7 @@ Restructured from v0.2 (archived at `Archive/v0.2_NAS.md`) in v0.3; v0.4 adds th
 **Changed in v0.7:** the Triad **ratified by the author** as the pillar of the system — §2 reframed as The Three Principles (Observation, Emergence, Contrast); first ratification of the proposal era.
 **Changed in v0.8:** the Two Writers — hard/soft as authoring modes mapping onto the two drift walls; soft-mode harvesting (the system run in reverse); the feedback-organism rule (§1.1); doctrine earned by interlock, never applied by conformance (§5.1, PATTERN-1); mode as a manifest parameter that re-tiers the register.
 **Changed in v0.9:** §1.1 corrected and **author-declared — NAS is for hard writers first**: the two methods are asymmetric (soft failure is recoverable in revision, hard failure is terminal — a bible with no book); survivorship bias in the advice culture; NAS as assistive technology (the §0 executive-function line, made the identity); NAS-C10 amended with the asymmetry.
+**Changed in v0.10:** Facets — the unit of presentation (§3.4): observers never touch entities, only facets; facet collision as scene generator; intimacy as facet-granting; the single-facet lint (FACET-1, blandness diagnostic #2); claim NAS-C11.
 
 ---
 
@@ -225,6 +226,33 @@ Nothing exists in a vacuum: **identity is differential** — a property is only 
 
 **PROPOSAL (unratified) — reread model:** v1 models the first read only. The rereader's record is *free*: it is full canon projected at each telling position — a generated scope, not an authored one. Rereader irony ("she says X, and on reread you know why") = the computed gap between full-canon-at-position and first-read-record-at-position. Costs nothing extra given the machinery; resolves v0.2's open question by construction.
 
+### 3.4 Facets — the unit of presentation
+
+**PROPOSAL (unratified), whole subsection.**
+
+Observers never touch entities. They touch **facets** — the aspect an entity presents to a given audience at a given time. KnowledgeScope tracks *facts known*; the facet is the complementary object: *aspects presented*. A character's handler, enemies, subculture, and reader each hold a different projection of her — not merely fewer facts, but a different *presentation*, partially curated by the character (personas and masks are facets that can lie) and partially by the author (what the narrative exposes). The same holds one level up — the world shows the soldier its war facet and the merchant its trade facet — and one level out: **the narrative itself is a facet-selection over the world graph**; the reader contacts only the facets the writing grants.
+
+```yaml
+facet:
+  of: char_lysandra
+  id: facet_professional          # the controlled agent her handler sees
+  presented_to: [char_sterling, faction_intelligence]
+  presents: {properties: [...], methods: {under_pressure: "calm, procedural"}}
+  authenticity: genuine | curated | mask     # a facet may lie
+  granted_in: [scene_ids]                    # when each audience received it
+```
+
+Mechanics that fall out:
+
+- **Facet collision is a scene generator.** When a scene's cast spans audiences holding incompatible facets of the same entity — the double life meeting itself — tension is structurally present. Queryable: *which collisions have never been staged?*
+- **Intimacy is facet-granting; betrayal is involuntary facet-discovery.** Relationship deltas gain semantic events (`facet_granted`, `facet_discovered`, `facet_faked`) — "they grow closer" becomes *she showed him the wounded facet, in this scene*.
+- **Character development is facet rotation** — progressively turning the gem, additive per READER-2; the mask-drop is the priced subvert. Per Principle III, a facet only *reads* as a facet against another facet.
+- **The info-dump, re-diagnosed (READER-1):** dumping is showing the whole gem; craft is showing the facet this scene's viewpoint would naturally catch.
+- **The single-facet lint (FACET-1):** a major agent presented identically to every audience is cardboard — blandness diagnostic #2, complementing GRAPH-3's unanchored-psychology check.
+- **Writer-facing queries:** which facets of X has the reader seen; which declared facets are unshown (the contrast inventory); where are the load-bearing facet gaps between observers (the tension map).
+
+The epistemic guard, which is where this subsection came from: **an observer's record is a record of facets, never of the entity.** Classifying a person — or a character — by one exposed facet is the observer error (fox, hedgehog: both are facet-readings). The system keeps "what X is" (the node) permanently distinct from "what any observer holds of X" (facet records). Interiority is implementation; every audience depends on a surface.
+
 ---
 
 ## 4. The Contract Stack ("meta-code")
@@ -434,9 +462,13 @@ Character psychology **derives from world nodes** via causal edges — the war c
 
 **PROPOSAL (unratified) — voice as object:** `VoiceProfile` referenced by character — lexicon tendencies, rhythm, prohibitions ("never uses contractions", "metaphors drawn from sailing"). Lintable at the late render phases only (voice is a coloring concern). Enters the register at `hypothesis` strength.
 
+**PROPOSAL (unratified) — facets:** an Agent additionally declares its **facets** (§3.4) — the presentations it exposes per audience, with authenticity attributes. FACET-1 flags single-facet majors.
+
 ### 8.2 Relationship
 
 Directed edge between characters (A's view of B ≠ B's view of A): trust, power differential, emotional valence — evolved exclusively through scene-emitted deltas pointing at the causing scene. Vague drift ("they grow distant") is not representable, by design.
+
+**PROPOSAL (unratified):** relationship deltas may carry facet events (§3.4) — `facet_granted`, `facet_discovered`, `facet_faked` — so closeness and betrayal are typed transitions, not adjectives. What each endpoint *has seen* of the other is part of the edge's state.
 
 ### 8.3 Scene: interface vs. implementation
 
@@ -629,6 +661,7 @@ applies_when: "any project using the Cut"     # feeds the scope manifest
 | SETUP-1 | Every setup has a payoff window or explicit `abandoned`; orphans flagged | lint | invariant |
 | DRIFT-1 | Draft/graph divergence is logged or propagated at scene close, never deferred — a gate in every mode | gate | default |
 | PATTERN-1 | Every structural element bears load: dependencies run through it, removal meets resistance; load-free doctrine elements are decoration | lint | default |
+| FACET-1 | A major agent presents more than one facet across audiences or time; single-facet majors are flagged flat | lint | default |
 
 ### 14.3 Claims under test
 
@@ -646,6 +679,7 @@ Falsifiable claims with measurement protocols — a claim without a protocol is 
 | NAS-C8 | Declared-but-uncontrasted properties are not retained by readers | Beta-read protocol: readers describe characters/world unprompted; compare reported traits against contrast-event coverage — uncontrasted traits should be systematically absent |
 | NAS-C9 | **The founding claim.** Hand-maintained coherence consumes the creative budget: burnout pushes canon toward flatness because flat is cheaper to maintain (resolved characters over wounded ones, victims over accomplices, significance over personhood). Externalizing the bookkeeping returns that budget | Longitudinal self-report of session sustainability before/after adoption; corpus forensics (count simplification-retcons per revision cycle); the canary: whether the braver forks — complicity, live wounds, tempted heroes — get chosen once they stop costing maintenance |
 | NAS-C10 | The two pure authoring modes fail into the two drift walls, **asymmetrically**: pure-hard failure is terminal (supremacy — a bible with no book to revise), pure-soft failure is recoverable (anarchy — contradictions in prose that revision can fix) | Ledger-classify project stalls/failures by declared mode; compare outcome classes: stalled-with-bible vs. shipped-with-contradictions rates |
+| NAS-C11 | Entity-level tension correlates with facet gaps: scenes readers report as tense disproportionately contain facet collisions or asymmetries | Tag beta-reported tension scenes; test for facet collision/asymmetry presence vs. baseline scenes |
 
 ### 14.4 The ledger
 
@@ -709,6 +743,7 @@ Milestone reports (chapter merge, draft complete, work finished): aggregate the 
 | 17 | Contrast principle (perceivability) | Principle III ratified (§2 triad, v0.7); mechanics **PROPOSAL** in §3.3 — contrast lint family; pacing as derivative |
 | 18 | The Two Writers — mode parameter + soft-mode harvesting | Identity **author-declared** (v0.9): NAS is for hard writers first; asymmetry locked (soft fails recoverably, hard fails terminally). Mechanics **PROPOSAL** in §1.1 — mode re-tiers the register; harvest = the system in reverse; feedback-organism rule |
 | 19 | Doctrine by interlock | **PROPOSAL** in §5.1 — PATTERN-1; conformance checks banned; doctrines as lenses only |
+| 20 | Facets — the unit of presentation | **PROPOSAL** in §3.4 — observers touch facets, never entities; collision = scene generator; intimacy = facet-granting; FACET-1 single-facet lint; NAS-C11 |
 
 Every proposal awaits explicit ratification — none is silently locked.
 
