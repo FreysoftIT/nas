@@ -1,6 +1,6 @@
 # Narrative Architecture System (NAS)
 
-**Working draft — v0.7 (July 2026)**
+**Working draft — v0.8 (July 2026)**
 *Methodology for structured fiction development. This document is also the spec for the writing layer of the surrounding software; project-level features (kanban, panels, dashboards, session UX) wrap NAS but are out of scope here — see `SOFTWARE.md` for the architecture seed of the tool itself.*
 
 Restructured from v0.2 (archived at `Archive/v0.2_NAS.md`) in v0.3; v0.4 adds the Evidence Loop, the canon-drift model, rules derived from the Field Atlas, and written proposals for every open question.
@@ -12,6 +12,7 @@ Restructured from v0.2 (archived at `Archive/v0.2_NAS.md`) in v0.3; v0.4 adds th
 **Changed in v0.5:** composition & emergence — the chemistry→biology ladder (§7.6); valence as open bonds generalizing desire and consequence slots (§7.6); Character generalizes to Agent at every composition level (§8.1); the ambient field enters the behavior checks (§2.3, §8.3).
 **Changed in v0.6:** the contrast principle — identity is differential; the writer's ledger is absolute, the reader's channel is differential; the contrast lint family (§3.3); pacing as derivative (§9.2); claim NAS-C8.
 **Changed in v0.7:** the Triad **ratified by the author** as the pillar of the system — §2 reframed as The Three Principles (Observation, Emergence, Contrast); first ratification of the proposal era.
+**Changed in v0.8:** the Two Writers — hard/soft as authoring modes mapping onto the two drift walls; soft-mode harvesting (the system run in reverse); the feedback-organism rule (§1.1); doctrine earned by interlock, never applied by conformance (§5.1, PATTERN-1); mode as a manifest parameter that re-tiers the register.
 
 ---
 
@@ -64,6 +65,20 @@ The disciplines NAS borrows from are not metaphors or decoration; they are a **s
 A note on cost: film locks its boards before shooting because shooting is expensive. Prose is cheap to produce but **psychologically expensive to throw away** — rewriting drafted prose is where writers die. That psychological cost is the real cost NAS manages; it justifies the phase discipline without pretending a novelist works like a film crew.
 
 A note on convergence: an independently developed model corpus about *software* boundaries (the Field Atlas) arrives at the same central shape from the other direction — one side exposes a surface, the other depends on it without merging, and the seam degrades by default when untended. Where NAS and that corpus derive the same rule independently (see §2.5, §7.5, §8.3), the convergence is treated as evidence for both.
+
+### 1.1 The Two Writers — hard and soft
+
+**PROPOSAL (unratified), whole subsection.**
+
+Like magic systems, writers come in hard and soft. The **hard writer** builds the graph first — bibles, hard magic, contracts — and renders against it (spec-first). The **soft writer** writes *a la mano* and lets structure emerge from the material (code-first). NAS as first drafted was a hard-writer's tool. It must be both, and the Triad already says why: **Principle II applies to authorship itself** — enough scenes, and a bible *emerges*, colony-style.
+
+- **Hard mode: declare → render.** The graph is authored; scenes are checked against it. Authority sits with the design.
+- **Soft mode: render → extract.** Scenes come first; the system **harvests** candidate deltas, facts, setups, and emergent structures from the prose ("this reads as a setup — track it?"; "these three characters keep co-acting — institution?"). The graph is a *projection of the manuscript*; authority sits with the prose. GRAPH-2 holds in both modes — one source of truth, derived not duplicated — only the **direction of derivation** flips.
+- **Mixed mode is the healthy organism.** Declare a little, render a little, extract what emerged, re-declare. The document set behaves as a feedback loop, not a blueprint: **a design artifact that rendering never feeds back into is not design — it's decoration.**
+
+**The two pure types fail into the two drift walls (§2.5).** Pure hard is *supremacy*: the graph dictates until the prose starves — terminal form, worldbuilder's disease: seventy-nine thousand words of bible and zero scenes (ledger 0001 is autobiographical on this point). Pure soft is *anarchy*: the prose diverges until book three contradicts book one. The walls are not writer-personality flaws; they are the same untended seam approached from opposite ends. (Claim NAS-C10.)
+
+Mechanically, `mode: hard | soft | mixed` is a scope-manifest parameter (§14.5) that **re-tiers the register**: in hard mode the design checks run as gates; in soft mode the same checks run as post-hoc harvesters and lints — nothing blocks, everything surfaces. DRIFT-1 (sync at scene close) remains a gate in *every* mode: the seam must be tended regardless of who owns it.
 
 ---
 
@@ -280,6 +295,10 @@ status: floating | approaching | bound | rendered
 - **Deleting a pillar is the nuclear retcon** — maximal entanglement cone. Moving one within its cloud is cheap until it binds.
 
 **Doctrine-agnostic:** NAS does not prescribe *which* moments. Three-act structure, Save the Cat, Story Circle — any doctrine can be expressed as a pillar set. Mechanism, not dogma.
+
+### 5.1 Doctrine is earned by interlock, never applied by conformance
+
+**PROPOSAL (unratified).** Story doctrines fail exactly the way design patterns fail in software: applied as stencils by *conformance* ("the midpoint goes here") rather than earned by *load* ("these parts brace each other"). NAS never checks conformance to a template. It checks **interlock**: does each declared structural element *pay for* the others — do dependencies actually run through it; does removing it meet resistance? **An element whose removal breaks nothing was applied, not earned** (register: PATTERN-1). Doctrines remain available as *lenses* — pillar-set vocabularies for writers who think in them — but the satisfies-condition is structural, not doctrinal. *(The same test the Field Atlas's Interlock applies to its own model set: correctly derived parts don't just coexist; each pays for the others, and a wrong change meets resistance early.)*
 
 ---
 
@@ -602,7 +621,8 @@ applies_when: "any project using the Cut"     # feeds the scope manifest
 | READER-1 | Exposition shaped for the reader's current need, never bible-shaped | judgment | default |
 | READER-2 | Reveals evolve additively; contradiction requires a declared subvert op | lint | default |
 | SETUP-1 | Every setup has a payoff window or explicit `abandoned`; orphans flagged | lint | invariant |
-| DRIFT-1 | Draft/graph divergence is logged or propagated at scene close, never deferred | gate | default |
+| DRIFT-1 | Draft/graph divergence is logged or propagated at scene close, never deferred — a gate in every mode | gate | default |
+| PATTERN-1 | Every structural element bears load: dependencies run through it, removal meets resistance; load-free doctrine elements are decoration | lint | default |
 
 ### 14.3 Claims under test
 
@@ -619,6 +639,7 @@ Falsifiable claims with measurement protocols — a claim without a protocol is 
 | NAS-C7 | Position-independent prose survives reordering at near-zero cost | Edit-room sessions: broken-transition count for compliant vs. non-compliant scenes |
 | NAS-C8 | Declared-but-uncontrasted properties are not retained by readers | Beta-read protocol: readers describe characters/world unprompted; compare reported traits against contrast-event coverage — uncontrasted traits should be systematically absent |
 | NAS-C9 | **The founding claim.** Hand-maintained coherence consumes the creative budget: burnout pushes canon toward flatness because flat is cheaper to maintain (resolved characters over wounded ones, victims over accomplices, significance over personhood). Externalizing the bookkeeping returns that budget | Longitudinal self-report of session sustainability before/after adoption; corpus forensics (count simplification-retcons per revision cycle); the canary: whether the braver forks — complicity, live wounds, tempted heroes — get chosen once they stop costing maintenance |
+| NAS-C10 | The two pure authoring modes fail into the two drift walls: sustained pure-hard shows supremacy symptoms (starved or absent prose), sustained pure-soft shows anarchy symptoms (late contradiction cascades) | Ledger-classify project stalls/failures by declared mode; test for wall-symptom correlation |
 
 ### 14.4 The ledger
 
@@ -634,8 +655,10 @@ Not every NAS object applies to every project. At project start, a manifest acti
 
 ```yaml
 project: sithernis-novel
-nas_edition: v0.4
+nas_edition: v0.8
 scale: novel            # flash | short | novella | novel | series
+mode: hard              # hard | soft | mixed — re-tiers the register (§1.1):
+                        # hard = design checks gate; soft = same checks harvest post-hoc
 scope:
   contract_stack: {containers: 1}     # short stories: containers 0, chapter contracts off
   knowledge_scopes: {observers: [reader, faction:magical-public, character:*]}
@@ -678,6 +701,8 @@ Milestone reports (chapter merge, draft complete, work finished): aggregate the 
 | 15 | Valence as unified open-bond object | Principle II ratified (§2 triad, v0.7); mechanics **PROPOSAL** in §7.6 — merges desire/wound with consequence slots; "which valences could bond?" query |
 | 16 | Agent generalization + field term in behavior checks | Principle II ratified (§2 triad, v0.7); mechanics **PROPOSAL** in §8.1 / §2.3 — collective agents; behavior = f(agent, field); field displacement ≠ inconsistency |
 | 17 | Contrast principle (perceivability) | Principle III ratified (§2 triad, v0.7); mechanics **PROPOSAL** in §3.3 — contrast lint family; pacing as derivative |
+| 18 | The Two Writers — mode parameter + soft-mode harvesting | **PROPOSAL** in §1.1 — hard/soft/mixed re-tiers the register; harvest = the system in reverse; feedback-organism rule |
+| 19 | Doctrine by interlock | **PROPOSAL** in §5.1 — PATTERN-1; conformance checks banned; doctrines as lenses only |
 
 Every proposal awaits explicit ratification — none is silently locked.
 

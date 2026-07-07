@@ -54,6 +54,8 @@ Rules load from the NAS register (NAS §14.2) filtered by the project's **scope 
 
 Check results are **data, not popups**: a persistent, filterable problems panel, each finding linked to rule ID, source anchor, and the exact nodes/deltas involved.
 
+**Soft-mode harvesting (NAS §1.1):** the check engine also runs in reverse. In `mode: soft` (or on demand in any mode), it extracts *candidates* from drafted prose — deltas, facts, setups, emergent structures — for one-click adoption into the graph. Same rules, opposite direction: nothing blocks, everything surfaces. The mode parameter re-tiers the register; DRIFT-1 stays a gate in every mode.
+
 ---
 
 ## 5. Provenance: trust is a feature
