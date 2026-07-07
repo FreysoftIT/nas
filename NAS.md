@@ -617,12 +617,13 @@ Falsifiable claims with measurement protocols — a claim without a protocol is 
 | NAS-C6 | Canon drift is silent and non-linear in time-unaddressed | Reconciliation cost vs. time-since-last-sync across ledger entries |
 | NAS-C7 | Position-independent prose survives reordering at near-zero cost | Edit-room sessions: broken-transition count for compliant vs. non-compliant scenes |
 | NAS-C8 | Declared-but-uncontrasted properties are not retained by readers | Beta-read protocol: readers describe characters/world unprompted; compare reported traits against contrast-event coverage — uncontrasted traits should be systematically absent |
+| NAS-C9 | **The founding claim.** Hand-maintained coherence consumes the creative budget: burnout pushes canon toward flatness because flat is cheaper to maintain (resolved characters over wounded ones, victims over accomplices, significance over personhood). Externalizing the bookkeeping returns that budget | Longitudinal self-report of session sustainability before/after adoption; corpus forensics (count simplification-retcons per revision cycle); the canary: whether the braver forks — complicity, live wounds, tempted heroes — get chosen once they stop costing maintenance |
 
 ### 14.4 The ledger
 
 Append-only, one file per event: continuity bug found, retcon executed, phase regression, beta-feedback item, milestone. Each entry: date, project, trigger, rules cited with verdict (`would-have-caught | false-positive | exception-applied`), claim evidence (`confirms | refutes`), and **one `canonical_cause`** — a single owning claim per bug, or every post-mortem confirms every model and the ledger proves nothing.
 
-**Ledger 0001 (to backfill):** the book-bible corpus audit — the 1763/1770 birth-year contradiction (`canonical_cause: NAS-C1`, confirms; GRAPH-2 would-have-caught), the forced-vs-voluntary transformation conflict, the misfiled canon docs (§11's evidence).
+**Ledger 0001 (to backfill):** the book-bible corpus audit — the 1763/1770 birth-year contradiction (`canonical_cause: NAS-C1`, confirms; GRAPH-2 would-have-caught), the forced-vs-voluntary transformation conflict, the misfiled canon docs (§11's evidence). The author's own account belongs in this entry as NAS-C9 evidence: the contradiction-hunting was done by hand, at the cost of burnout — and the v1→v2 revision cycle shows the predicted flattening drift (idealization of the protagonist, the agency-removing retcon, the late-added deuteragonist receiving structural significance but no interiority).
 
 ### 14.5 Scope manifest — scale gates
 
