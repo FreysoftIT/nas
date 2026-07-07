@@ -1,6 +1,6 @@
 # Narrative Architecture System (NAS)
 
-**Working draft — v0.10 (July 2026)**
+**Working draft — v0.11 (July 2026)**
 *Methodology for structured fiction development. This document is also the spec for the writing layer of the surrounding software; project-level features (kanban, panels, dashboards, session UX) wrap NAS but are out of scope here — see `SOFTWARE.md` for the architecture seed of the tool itself.*
 
 Restructured from v0.2 (archived at `Archive/v0.2_NAS.md`) in v0.3; v0.4 adds the Evidence Loop, the canon-drift model, rules derived from the Field Atlas, and written proposals for every open question.
@@ -15,6 +15,7 @@ Restructured from v0.2 (archived at `Archive/v0.2_NAS.md`) in v0.3; v0.4 adds th
 **Changed in v0.8:** the Two Writers — hard/soft as authoring modes mapping onto the two drift walls; soft-mode harvesting (the system run in reverse); the feedback-organism rule (§1.1); doctrine earned by interlock, never applied by conformance (§5.1, PATTERN-1); mode as a manifest parameter that re-tiers the register.
 **Changed in v0.9:** §1.1 corrected and **author-declared — NAS is for hard writers first**: the two methods are asymmetric (soft failure is recoverable in revision, hard failure is terminal — a bible with no book); survivorship bias in the advice culture; NAS as assistive technology (the §0 executive-function line, made the identity); NAS-C10 amended with the asymmetry.
 **Changed in v0.10:** Facets — the unit of presentation (§3.4): observers never touch entities, only facets; facet collision as scene generator; intimacy as facet-granting; the single-facet lint (FACET-1, blandness diagnostic #2); claim NAS-C11.
+**Changed in v0.11:** the World-Agent and void dynamics (§7.7) — the world is the apex Agent (its physical laws are its invariants; a miracle is a priced `intentional_break`); *horror vacui* — voids are attractors that recruit candidate fillers (the power vacuum, generalized); Maslow as valence ladders — filled voids spawn successors; the sagging middle as a valence-succession gap (NAS-C12); WORLD-1.
 
 ---
 
@@ -423,6 +424,19 @@ emergent_properties:        # properties stored HERE because no member has them
 
 **Two emergence lints:** (a) dense bonding at level N with no level-N+1 node → "possible unnamed emergent" — *you've written twelve mages cooperating for two centuries; where is the institution?* (b) a collective node with no members → free-floating emergent, flag. Both `default` tier — the writer judges.
 
+### 7.7 The World-Agent and the dynamics of the void
+
+**PROPOSAL (unratified), whole subsection.**
+
+**The world is a character.** The composition ladder (§7.6) terminates in an apex node, and at apex scale the Agent schema (§8.1) applies without modification: the world has a core wound, a dominant fear, a desire, an internal contradiction, methods (`under_existential_threat: "veil, separate, suppress"`), an arc (its era progression), valences, and facets (§3.4 — it shows the soldier its war facet). Two consequences:
+
+- **The world's invariants are its physical laws.** The magic-system manual *is* the apex Agent's invariant block. A miracle — any event breaking physical law — is an `intentional_break` with an exception ID (§14.7): priced, cited, reviewable. Worldbuilding and character design are one schema at different composition levels.
+- **World state evolves through deltas, like any agent's** (register: WORLD-1). "The kingdom grew restless" is the same vague drift banned on relationships since v0.2 — the world's reactions are scene-emitted deltas with causes, or they didn't happen.
+
+**Horror vacui — voids are attractors.** Aristotle's law is the missing *dynamics* of valence: an unbound valence does not wait, it **pulls**. The power vacuum is the canonical narrative instance — a dead king recruits claimants; an extinct niche recruits colonizers; unmet demand recruits supply. Mechanically: every void generates **candidate fillers**, weighted by pressure; the generative query upgrades from "which valences could bond?" to *"what is each void pulling toward itself?"* A high-pressure void that nothing moves toward is mounting story fuel — or a flag. *(Reference corpus, twice: the OMC's collapse-void pulled democratic reform into existence; the mage-extinction void pulled Lucas into existence — the world-agent's wound recruiting its own candidate healing.)*
+
+**The ladder of needs — filled voids spawn successors.** Satisfaction does not end desire; it *promotes* it up a tier (survival met → safety opens → belonging opens → meaning opens). An arc is therefore a **valence ladder**, never a single wound closed: resolving an agent's active valence should open its successor, and the system prompts for it — a generative nudge, not a gate. The pyramid itself is a *lens*, per §5.1 — each agent's ladder is writer-defined; Maslow is one available vocabulary. The mechanic targets the most common structural failure in long-form fiction: **the sagging middle is a valence-succession gap** — the protagonist's tier-one need is met at the midpoint and no successor void opens, so tension dies (claim NAS-C12). At apex scale the same law reads history: eras are the world-agent's tiers.
+
 ---
 
 ## 8. Core Objects (carried from v0.2, revised)
@@ -662,6 +676,7 @@ applies_when: "any project using the Cut"     # feeds the scope manifest
 | DRIFT-1 | Draft/graph divergence is logged or propagated at scene close, never deferred — a gate in every mode | gate | default |
 | PATTERN-1 | Every structural element bears load: dependencies run through it, removal meets resistance; load-free doctrine elements are decoration | lint | default |
 | FACET-1 | A major agent presents more than one facet across audiences or time; single-facet majors are flagged flat | lint | default |
+| WORLD-1 | The world is the apex Agent: its state evolves through scene-emitted deltas with causes — ambient drift ("the kingdom grew restless") is not representable | structural | invariant |
 
 ### 14.3 Claims under test
 
@@ -680,6 +695,7 @@ Falsifiable claims with measurement protocols — a claim without a protocol is 
 | NAS-C9 | **The founding claim.** Hand-maintained coherence consumes the creative budget: burnout pushes canon toward flatness because flat is cheaper to maintain (resolved characters over wounded ones, victims over accomplices, significance over personhood). Externalizing the bookkeeping returns that budget | Longitudinal self-report of session sustainability before/after adoption; corpus forensics (count simplification-retcons per revision cycle); the canary: whether the braver forks — complicity, live wounds, tempted heroes — get chosen once they stop costing maintenance |
 | NAS-C10 | The two pure authoring modes fail into the two drift walls, **asymmetrically**: pure-hard failure is terminal (supremacy — a bible with no book to revise), pure-soft failure is recoverable (anarchy — contradictions in prose that revision can fix) | Ledger-classify project stalls/failures by declared mode; compare outcome classes: stalled-with-bible vs. shipped-with-contradictions rates |
 | NAS-C11 | Entity-level tension correlates with facet gaps: scenes readers report as tense disproportionately contain facet collisions or asymmetries | Tag beta-reported tension scenes; test for facet collision/asymmetry presence vs. baseline scenes |
+| NAS-C12 | The sagging middle is a valence-succession gap: a protagonist valence filled with no successor void opened within K scenes predicts reported mid-story sag | Map beta pacing complaints against valence-succession gaps in the fold; compare sag reports for gap vs. no-gap spans |
 
 ### 14.4 The ledger
 
@@ -744,6 +760,7 @@ Milestone reports (chapter merge, draft complete, work finished): aggregate the 
 | 18 | The Two Writers — mode parameter + soft-mode harvesting | Identity **author-declared** (v0.9): NAS is for hard writers first; asymmetry locked (soft fails recoverably, hard fails terminally). Mechanics **PROPOSAL** in §1.1 — mode re-tiers the register; harvest = the system in reverse; feedback-organism rule |
 | 19 | Doctrine by interlock | **PROPOSAL** in §5.1 — PATTERN-1; conformance checks banned; doctrines as lenses only |
 | 20 | Facets — the unit of presentation | **PROPOSAL** in §3.4 — observers touch facets, never entities; collision = scene generator; intimacy = facet-granting; FACET-1 single-facet lint; NAS-C11 |
+| 21 | The World-Agent + void dynamics | **PROPOSAL** in §7.7 — world as apex Agent (physical laws = its invariants; miracles = priced breaks); horror vacui (voids recruit fillers); valence ladders (sagging middle = succession gap, NAS-C12); WORLD-1 |
 
 Every proposal awaits explicit ratification — none is silently locked.
 
