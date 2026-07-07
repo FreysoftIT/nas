@@ -1,13 +1,14 @@
 # Narrative Architecture System (NAS)
 
-**Working draft — v0.3 (July 2026)**
-*Methodology for structured fiction development. This document is also the spec for the writing layer of the surrounding software; project-level features (kanban, panels, dashboards, session UX) wrap NAS but are out of scope here.*
+**Working draft — v0.4 (July 2026)**
+*Methodology for structured fiction development. This document is also the spec for the writing layer of the surrounding software; project-level features (kanban, panels, dashboards, session UX) wrap NAS but are out of scope here — see `SOFTWARE.md` for the architecture seed of the tool itself.*
 
-Restructured from v0.2 — not a patch. v0.2 is archived at `Archive/v0.2_NAS.md`.
+Restructured from v0.2 (archived at `Archive/v0.2_NAS.md`) in v0.3; v0.4 adds the Evidence Loop, the canon-drift model, rules derived from the Field Atlas, and written proposals for every open question.
 
-**Status: incomplete draft, brainstorm ongoing.** Sections marked ⚠ OPEN are unresolved; everything else is considered locked-for-now (revisable, but load-bearing).
+**Status: incomplete draft, brainstorm ongoing.** Sections marked ⚠ OPEN are unresolved. Blocks marked **PROPOSAL (unratified)** are worked-out defaults awaiting the author's yes/no — they exist so the brainstorm accumulates on paper instead of evaporating between sessions. Everything else is locked-for-now (revisable, but load-bearing).
 
-**Changed since v0.2:** motivation rewritten as the Blank Page Problem (§0); design/render split made the central thesis (§1); the Observation Principle added as the semantic core (§2); ReaderKnowledge generalized to KnowledgeScope (§3); fractal contracts / chapter meta-code added (§4); Pillars (keyframes) added (§5); Roadmap added (§6); Bible upgraded to the World Graph with causal edges and generated views (§7); scene interface/implementation split made explicit (§8); render pipeline reopened (§9 ⚠); time model drafted (§10 ⚠).
+**Changed in v0.3:** Blank Page Problem (§0); design/render thesis (§1); Observation Principle (§2); KnowledgeScope (§3); contract stack (§4); Pillars (§5); Roadmap (§6); World Graph (§7); scene interface/implementation split (§8.3); pipeline reopened (§9); time model drafted (§10).
+**Changed in v0.4:** canon drift — the two walls (§2.5); independent-change test + Hyrum's Law on the scene seam (§8.3); the Cut as first-class telling order (§10); the Evidence Loop — register, claims, ledger, scope manifest (§14); proposals on all open questions (inline + §15).
 
 ---
 
@@ -59,6 +60,8 @@ The disciplines NAS borrows from are not metaphors or decoration; they are a **s
 
 A note on cost: film locks its boards before shooting because shooting is expensive. Prose is cheap to produce but **psychologically expensive to throw away** — rewriting drafted prose is where writers die. That psychological cost is the real cost NAS manages; it justifies the phase discipline without pretending a novelist works like a film crew.
 
+A note on convergence: an independently developed model corpus about *software* boundaries (the Field Atlas) arrives at the same central shape from the other direction — one side exposes a surface, the other depends on it without merging, and the seam degrades by default when untended. Where NAS and that corpus derive the same rule independently (see §2.5, §7.5, §8.3), the convergence is treated as evidence for both.
+
 ---
 
 ## 2. The Observation Principle
@@ -85,6 +88,8 @@ One graph. Causal edges run within and *between* families (the ford → trade we
 
 This is **late binding**: defer every decision to the last responsible moment. The system tracks what is collapsed vs. free and can show the current constraint envelope for anything still open. This is liberating, not bureaucratic — the writer never has to decide more than the story has forced.
 
+**PROPOSAL (unratified) — decree budget:** decrees are free at low graph layers (physics, geography, deep history — worldbuilding-heavy writers need them) and *flagged* at high layers (characters, plot-adjacent facts should collapse through scenes). The threshold layer is a scope-manifest parameter (§14.6).
+
 ### 2.3 Consistency = reachability, not equality
 
 v0.2 demanded entry state *equal* last exit state. v0.3 relaxes it: between appearances, a character's state is a cloud constrained by their last observed state, their methods and invariants, and elapsed events. When they next appear, the check is:
@@ -95,7 +100,7 @@ This legitimately allows offscreen evolution. When the answer is yes-but-barely,
 
 ### 2.4 Retcon = re-opening a collapsed measurement
 
-A retcon re-opens a collapsed fact. Its cost is proportional to the **entanglement cone** — everything downstream whose collapse depended on the old value. The workflow (kept from v0.2, re-founded):
+A retcon re-opens a collapsed fact. Its cost is proportional to the **entanglement cone** — everything downstream whose collapse depended on the old value. Stated as the seam rule it is: **a change that forces downstream scenes to change is a break, even if each scene still reads fine individually.** The workflow (kept from v0.2, re-founded):
 
 1. Writer proposes the retcon, edits the target.
 2. System walks the entanglement cone (causal edges + `referenced_by`), marks every node **stale**.
@@ -105,7 +110,20 @@ A retcon re-opens a collapsed fact. Its cost is proportional to the **entangleme
 
 Causal edges make retcons *semantic*, not just referential: move the city off the river and the system doesn't say "these scenes mention the city" — it says "the Duke's wealth was *justified by* the ford and now needs a new justification."
 
-⚠ OPEN — *trivial retcon path:* does a cosmetic edit (typo-level) need cone-walking, or is there a fast lane? Probably: cone-walk always runs, but a cone of size 0–1 auto-propagates.
+**PROPOSAL (unratified) — trivial retcon fast lane:** the cone is always computed (never skipped), but auto-propagates when it is empty, contains only the target, or touches only nodes that have not yet entered render. Cheap edits stay cheap; the safety net never lowers.
+
+### 2.5 The seam over time: canon drift — the two walls
+
+The design layer and the prose are two sides of a seam, and **the seam degrades by default**. Drift — the graph and the manuscript silently diverging from the shape they agreed on — has exactly two producing failure modes:
+
+- **Wall 1 — Supremacy.** The design layer dictates past its border. Contracts legitimately own *structure, deltas, and function* — the moment they start owning sentences, blocking, and voice, the draft is starved and reads like transcription. The border is the scene interface (§8.3): everything inside it belongs to the prose. Over-plotting is supremacy.
+- **Wall 2 — Anarchy.** The prose diverges from the graph without announcement. The verbal smoke signal, word for word: **"I'll update the bible later."** Each instance is cheap; the accumulation is the wreck. Discovery-drift is anarchy.
+
+The healthy band is a **tempo asymmetry**: the graph moves slowly and must be stable; the prose moves fast and must be flexible; the contract between them absorbs the mismatch. Neither side is the villain — the *unaddressed seam* is.
+
+Drift is **silent** (both sides stay internally consistent — the corpus's 1763/1770 birth-year bug "compiled green" for months) and **non-linear in time unaddressed** (the longer bible and manuscript diverge, the worse the reconciliation; every revision-hell story is this curve). The fix-direction is structural, not disciplinary: **one source of truth, derived not duplicated** (§7.5), plus a sync gate — divergence discovered while drafting is logged or propagated *at scene close*, never deferred (rule DRIFT-1, §14.3).
+
+*(This model is imported from the Field Atlas's "The Drift," which derived the same two walls, the same smoke signal, and the same fix for software teams. Independent derivation across domains is why it is trusted here at `default` strength from day one.)*
 
 ---
 
@@ -138,9 +156,13 @@ A scene performs operations on observers' records. For the reader (kept from v0.
 
 Derived experiential states: **mystery** = the reader knows a fact is collapsed but can't see the value; **suspense** = the reader sees a cloud ahead (they know something is coming); **surprise** = collapse with no prior cloud.
 
+Two exposition rules borrowed across the seam (register: READER-1/2, §14.3): **an info-dump is a producer-shaped payload** — worldbuilding delivered in bible-shape instead of what the reader needs *now*; and **reveals evolve additively** — expand and recontextualize rather than contradict; contradiction is a breaking change, which is why *subvert* is priced as rare and costly. The reader also *reads tolerantly* by design — skipping what they don't yet understand is how mystery works, not a failure.
+
 ### 3.2 Irony as a computed gap
 
 Dramatic irony is the gap between any two observers' records — reader vs. character (classic), character vs. character (in-world deception), faction vs. faction (political intrigue). At any scene the writer can query: *what does observer A hold that observer B doesn't?* — and use the gap deliberately. Secrets and classified knowledge are just scope restrictions on facts.
+
+**PROPOSAL (unratified) — reread model:** v1 models the first read only. The rereader's record is *free*: it is full canon projected at each telling position — a generated scope, not an authored one. Rereader irony ("she says X, and on reread you know why") = the computed gap between full-canon-at-position and first-read-record-at-position. Costs nothing extra given the machinery; resolves v0.2's open question by construction.
 
 ---
 
@@ -150,7 +172,7 @@ One pattern, applied fractally: **declare intent in structured form → implemen
 
 | Level | Declares | Implemented by |
 |---|---|---|
-| **Novel** | The Roadmap (§6): arcs, themes, reader trajectory | Chapters |
+| **Novel** | The Roadmap (§6): arcs, themes, reader trajectory | Containers / chapters |
 | **Chapter** | Meta-code: function, roadmap claims, entry/exit deltas, pillars contained | Scenes |
 | **Scene** | Frontmatter interface (§8.3): deltas, info ops, setups/payoffs | Prose |
 | **Prose** | — (the render) | — |
@@ -176,9 +198,13 @@ constraints: {pov: lysandra, span: "3 days, Rome"}
 
 **No state is ever stored; scenes emit deltas; every "current state" view is a computed fold over the delta stream.** Character sheets at chapter N, relationship values, reader knowledge at any point — all projections, never authored snapshots. One rule; the entire "state at time T" problem is solved by construction. (Initial states — character creation, world axioms — are the origin of the fold.)
 
-⚠ OPEN — *ergonomics:* is meta-code authored as a YAML block at the top of a chapter file (preserves the portable-text stance) or a structured form the software renders? Undecided; affects how the whole system feels to use.
+### 4.2 Ergonomics and containers
 
-⚠ OPEN — *container set:* is the stack Novel → Chapter → Scene, or does it need Act / Sequence / Part between Novel and Chapter? Film's "sequence" concept suggests at least one optional grouping level. Containers must be objects with their own narrative function — not just id prefixes.
+⚠ OPEN with proposals:
+
+**PROPOSAL (unratified) — ergonomics:** the either/or dissolves. YAML frontmatter blocks in files remain the **single source of truth** (portable-text stance; the file format is the wire). The software renders each block as a form — but the form is a *view* of the block, driven by the same schema that validates it (one schema → validation + form + docs, never hand-duplicated). Author in whichever surface you like; the file is what's real.
+
+**PROPOSAL (unratified) — containers:** one generic, optional, recursive `Container` object between Novel and Chapter, with `kind: act | part | sequence | custom` and the same contract mechanics as a chapter (function, claims, declared delta). Zero or more levels per project, activated by the scope manifest (§14.6) — a novella uses none; an epic uses two. No fixed taxonomy imposed.
 
 ---
 
@@ -256,7 +282,7 @@ scopes: [which observers hold this fact, per §3]
 referenced_by: [scene_ids]  # populated by the system, never authored
 ```
 
-**Edge vocabulary is deliberately tiny** — `derives_from`, `constrains`, `tensions_with`. ⚠ OPEN: is this the right minimal set? (`tensions_with` doubles as a conflict detector: unexploited tension edges are unwritten plots.)
+**Edge vocabulary is deliberately tiny** — `derives_from`, `constrains`, `tensions_with`. **PROPOSAL (unratified):** keep exactly these three; add nothing until ledger evidence (§14.5) demands a fourth. IDs and edge kinds are never renumbered or reused — retired names stay retired.
 
 ### 7.2 What the graph buys
 
@@ -276,7 +302,7 @@ World nodes declare a layer, and layers form a DAG the writer defines — e.g. `
 
 ### 7.5 Documents are queries
 
-Character profile, era timeline, organization chronicle, "everything the reader knows at chapter 12," the full Bible export — all **generated projections** over the graph and the delta stream. Never authored, never drifting. Authoring happens at the node and the scene; reading happens anywhere.
+Character profile, era timeline, organization chronicle, "everything the reader knows at chapter 12," the full Bible export — all **generated projections** over the graph and the delta stream. Never authored, never drifting. Authoring happens at the node and the scene; reading happens anywhere. One source of truth, **derived, not duplicated** — the same fix the drift literature converged on for software contracts, arrived at here for canon.
 
 ---
 
@@ -289,14 +315,15 @@ The object roster and status:
 | Character | carried, revised | now nodes in the graph's character family |
 | Relationship | carried | directed edge, delta-only state |
 | Scene | **revised** | interface/implementation split (§8.3) |
-| Beat | ⚠ new, open | storyboard panel unit (§9) |
+| Beat | proposed | storyboard panel unit (§9.2) |
 | Setup / Payoff | carried | unchanged mechanics, now graph-linked |
 | KnowledgeScope | **new** | replaces ReaderKnowledge (§3) |
 | WorldNode | **new** | replaces BibleEntry (§7) |
 | Theme | carried | expression tracked per scene; drift flagged |
 | Stake | carried | now derivable from world nodes (§7.2) |
 | Pillar | **new** | §5 |
-| Chapter / containers | ⚠ new, open | §4 |
+| Container / Chapter | proposed | §4.2 |
+| The Cut | proposed | first-class telling order (§10) |
 | Roadmap | **new** | §6 |
 | Retcon | carried, re-founded | re-opened measurement (§2.4) |
 
@@ -304,13 +331,15 @@ The object roster and status:
 
 A character node with **properties, methods, invariants, and an arc** (structure kept from v0.2):
 
-- *Properties:* identity, psychological (core wound, dominant fear, desire, internal contradiction), relational (attachment style, default power position), functional (skills, narrative role, voice patterns).
+- *Properties:* identity, psychological (core wound, dominant fear, desire, internal contradiction), relational (attachment style, default power position), functional (skills, narrative role, voice).
 - *Methods:* decision heuristics — `under_fear: "withdraws, plans escape, lies to buy time"`. When a scene drafts a choice, check it against the methods. Overridable via inheritance.
-- *Invariants:* assertions that must hold — `"Never lies to her sister, even when costly"`. A scene may break one only with `intentional_break: reason`.
+- *Invariants:* assertions that must hold — `"Never lies to her sister, even when costly"`. A scene may break one only by citing an exception (§14.7).
 - *Arc:* start state → transformation vector → end state, with milestones. Arc milestones feed the Roadmap (§6).
 - *Inheritance* (lineage: origin) and *composition* (traits: lived experience), kept from v0.2.
 
 Character psychology **derives from world nodes** via causal edges — the war caused the core wound; the lineage explains the vow. Same graph, character family (§2.1).
+
+**PROPOSAL (unratified) — voice as object:** `VoiceProfile` referenced by character — lexicon tendencies, rhythm, prohibitions ("never uses contractions", "metaphors drawn from sailing"). Lintable at the late render phases only (voice is a coloring concern). Enters the register at `hypothesis` strength.
 
 ### 8.2 Relationship
 
@@ -320,10 +349,16 @@ Directed edge between characters (A's view of B ≠ B's view of A): trust, power
 
 The scene is the atomic build unit — and it splits, borrowing the deepest coding concept in the system:
 
-- **Interface (frontmatter):** narrative function, characters present, POV, entry/exit deltas, information ops performed (per observer), setups planted, payoffs resolved, themes touched, stakes active, pillar binding, render phase.
+- **Interface (frontmatter):** narrative function, characters present, POV, entry/exit deltas, information ops performed (per observer), setups planted, payoffs resolved, themes touched, stakes active, pillar binding, render phase, beats (§9.2).
 - **Implementation (body):** the prose, at whatever render phase it has reached.
 
-**Downstream scenes depend only on the interface.** Consequences: prose can be re-rendered freely without dirtying anything; the edit room (§9) can reorder scenes and compute exactly which interface transitions broke; retcon cones stop at interfaces that still hold. Changing an interface is the expensive operation; changing prose is cheap. This inverts how writers usually feel about their work — and it should.
+**Downstream scenes depend only on the interface.** Consequences: prose can be re-rendered freely without dirtying anything; the edit room (§9.3) can reorder scenes and compute exactly which interface transitions broke; retcon cones stop at interfaces that still hold. Changing an interface is the expensive operation; changing prose is cheap. This inverts how writers usually feel about their work — and it should.
+
+**The independent-change test (recognition tool):** *if re-rendering scene A's prose breaks scene B, there was an undeclared contract between them.* Name it — promote the dependency to a fact, a setup edge, or a delta. Every revision that breaks a distant scene is the system telling you a piece of interface was missing. (This is the seam test — "can the two sides change independently?" — applied to scenes.)
+
+**Hyrum's Law for stories:** with enough readers, every observable detail of the prose gets depended on — by fan canon, and by *the writer's own memory* ("I'm sure I wrote that her eyes are green somewhere"). The declared interface is the contract you published; the prose is the contract you accidentally have. Details worth depending on get promoted to the interface; the rest is explicitly re-renderable.
+
+**Prose is position-independent (register: SCENE-2):** the prose never hard-references its own telling-order position ("as we saw three chapters ago…"). Position belongs to the Cut (§10); transitions belong to the container. Content that places itself breaks the moment the edit room moves it — the box owns placement; the content fills.
 
 One file per scene: frontmatter + body. (v0.2's four-files-per-scene scheme stays dead.)
 
@@ -333,34 +368,60 @@ First-class objects, kept from v0.2: setups have type, weight, expected payoff w
 
 ---
 
-## 9. The Pipeline ⚠ OPEN — under active redesign
+## 9. The Pipeline ⚠ OPEN — proposals drafted, direction locked
 
-v0.2 had four per-scene phases (Rough → Detailed → Shaded → Inked). Under the design/render thesis they misallocate: prose enters at Detailed, so design got *one* phase and rendering got three — inverted priorities. Film gives pre-production as much machinery as production. This section is the draft replacement; nothing here is locked except the direction.
+v0.2 had four per-scene phases (Rough → Detailed → Shaded → Inked). Under the design/render thesis they misallocate: prose enters at Detailed, so design got *one* phase and rendering got three — inverted priorities. Film gives pre-production as much machinery as production.
 
-### 9.1 Candidate shape
+### 9.1 PROPOSAL (unratified) — the phase ladder
 
-**Design side (work-level and scene-level, pre-prose):**
+**Design side, per scene:**
 
-1. **Premise / treatment** — the novel's declared intent (feeds the Roadmap).
-2. **Pillar pass** — fix the keyframes (§5).
-3. **Beat board** — ⚠ the storyboard. The panel unit is the **beat**, smaller than a scene: what the reader feels/learns/suspects, emotional temperature, pacing weight. (This answers v0.2's open "subscene granularity" question: yes, beats are addressable — they are the panels.)
-4. **Animatic** — the whole-work readable walkthrough at beat resolution: *read your novel in 40 minutes before writing a sentence of it*. Pacing and structure problems become visible while cheap. Leaning **generated** (a view over beat cards in telling order, weighted by pacing), not authored — the film answer. ⚠ sub-questions: what exactly renders per beat; is there an authored treatment layer above it?
+1. **Interface** — frontmatter complete: function, deltas, info ops, setups/payoffs declared. No prose.
+2. **Board** — beats laid (§9.2): the scene's experiential shape, still no prose.
 
-**Render side (per scene):** phase ladder from functional prose to final language — names and count ⚠ OPEN (candidates: Draft → Textured → Final; or keep Detailed/Shaded/Inked re-scoped). Phase gates keep their v0.2 role: no phase entered until the previous one's exit criteria hold; the §4.3-style consistency check (state reachability §2.3, world-graph check, setup/payoff check, invariant check) gates the last design→render boundary.
+**Gate:** the consistency suite (reachability §2.3, world-graph check, setup/payoff check, invariant check, open-question block §7.4) runs at the **Board → Draft boundary** — you cannot start coloring until the sketch validates.
 
-**Post-production (missing entirely from v0.2):**
+**Render side, per scene:**
 
-- **Assembly / edit room** — reorder, cut, and merge scenes *at the interface level*; the system reports broken transitions. The story gets rewritten in the edit, like film.
-- **Test reads** — beta readers as test screenings; feedback mapped back to beats/scenes, not vague vibes.
-- **Grade** — line editing as color grade: prose-level passes with structure locked.
+3. **Draft** — functional continuous prose; dialogue works, causality reads.
+4. **Textured** — subtext, sensory detail, interiority, thematic resonance.
+5. **Final** — language locked; read-aloud pass done; no placeholders.
 
-### 9.2 Regression
+(Mapping from v0.2: Rough ≈ Interface+Board, Detailed ≈ Draft, Shaded ≈ Textured, Inked ≈ Final.)
+
+**Work-level passes (post-production, not per-scene states):**
+
+- **Assembly / edit room** — reorder, cut, merge scenes *at the interface level* by editing the Cut (§10); the system reports broken transitions and re-folds both state streams.
+- **Test reads** — beta readers as test screenings; every feedback item lands on a beat or scene id, not on vibes, and enters the ledger (§14.5).
+- **Grade** — line-editing passes with structure locked.
+
+### 9.2 PROPOSAL (unratified) — the Beat
+
+The storyboard panel, smaller than a scene, addressable as `ch04.s02.b3`. Lives as an ordered list in the scene interface:
+
+```yaml
+beats:
+  - id: b3
+    function: "Sterling reveals the folder's existence"
+    reader_ops: [foreshadow: fact_orion_role]
+    pov: sterling              # beats may switch POV; scene-level POV becomes a derived summary
+    emotional_temp: {valence: dread, intensity: 0.7}
+    pacing_weight: slow        # fast | medium | slow — drives animatic rendering length
+```
+
+This resolves v0.2's "subscene granularity" question (yes — beats are the panels) and the multi-POV question (POV attaches per beat; observer-record mutations attribute per beat; single-POV scenes are the degenerate one-POV case).
+
+### 9.3 PROPOSAL (unratified) — the Animatic
+
+A **generated view**, not an authored document: the beat cards rendered in telling order (the Cut), each beat expanded to a length proportional to its pacing weight — *read your novel in 40 minutes before writing a sentence of it*. Pacing and structure problems become visible while they cost nothing. The authored artifact above it is the **treatment** (part of the Novel contract); the animatic is always derived, always current, and deliberately lossy — the squint test as a build target. Fidelity loss per abstraction hop is the *point*: the animatic answers "does the shape read?", never "is the prose good?".
+
+### 9.4 Regression
 
 Scenes regress (Final → Draft, render → design) when a retcon's cone touches them. Regression is tracked, never silent. (Kept from v0.2.)
 
 ---
 
-## 10. Time ⚠ OPEN — drafted, not locked
+## 10. Time — the two folds and the Cut
 
 Three distinct orderings that Word collapses into one:
 
@@ -368,9 +429,11 @@ Three distinct orderings that Word collapses into one:
 2. **Telling order** — the order scenes hit the reader (discourse order).
 3. **Writing order** — the order the writer works (process only; never affects the artifact).
 
-**Proposed rule (new, for discussion):** the two state families fold over *different* orders — **world/character state folds over story chronology; the reader's record folds over telling order.** Flashbacks are exactly where the two diverge, and exactly where by-hand coherence fails hardest: a flashback scene mutates the reader's record *now* while touching character state *then* — its deltas apply at two different points in two different streams. Under this rule that is just... how the fold works. Nothing special-cased.
+**The two-fold rule (locked v0.4):** the two state families fold over *different* orders — **world/character state folds over story chronology; the reader's record folds over telling order.** A flashback mutates the reader's record *now* while touching character state *then*: its deltas apply at two different points in two different streams. Under this rule that is not a special case — it is just how the fold works.
 
-⚠ Remaining: timeline representation for eras vs. scene-time; how trajectory nodes (§7.1) interact with chronology; whether telling order is itself a first-class editable object (the edit room suggests yes).
+**PROPOSAL (unratified) — the Cut:** telling order is a first-class, editable sequence object (film's edit). Scenes carry a `story_time` anchor (chronology) and receive their telling position *from the Cut* — never self-declared (§8.3: content does not place itself). The edit room is literally the editor of the Cut; reordering re-folds the reader stream and reports every broken transition and every info op now out of order (a reveal preceding its foreshadow, a payoff preceding its setup *in reader time*).
+
+⚠ Remaining: representation of eras vs. scene-time; how trajectory nodes (§7.1) key into chronology.
 
 ---
 
@@ -380,13 +443,13 @@ Git is the substrate; the working tree is live state; **filename versioning is d
 
 Branch types (kept from v0.2): `main` (canon; tagged at chapter completion), `draft/[chapter]`, `whatif/[scenario]`, `character/[name]`, `timeline/[era]`.
 
-**Stable on `main`** = all scenes at final render phase, consistency checks pass, no orphan setups, no stale nodes, chapter contracts reconciled. **Release** = a chapter merged to main with a tag. Merges run the full check suite on the merged state.
+**Stable on `main`** = all scenes at Final, consistency checks pass, no orphan setups, no stale nodes, chapter contracts reconciled. **Release** = a chapter merged to main with a tag. Merges run the full check suite on the merged state.
 
 ---
 
 ## 12. The Authoring Surface
 
-Each object is a markdown file with YAML frontmatter — portable, diffable, editable without the software. The software is a structured layer over portable text, never a lock-in (§0: the language works in Notepad).
+Each object is a markdown file with YAML frontmatter — portable, diffable, editable without the software. The software is a structured layer over portable text, never a lock-in (§0: the language works in Notepad). Forms, panels, and views in the software are *renderings of the files*, driven by the same schemas that validate them — one schema per object type, everything else derived (see `SOFTWARE.md`).
 
 ```
 /[ProjectName]
@@ -397,19 +460,21 @@ Each object is a markdown file with YAML frontmatter — portable, diffable, edi
   /Relationships/
   /Pillars/
   /Roadmap.md
+  /Cut.md                      # telling order (proposed, §10)
   /Chapters/
     ch07/_meta.md              # chapter meta-code (contract)
     ch07/s02.md                # scene: interface frontmatter + prose body
   /Setups/
   /Themes/
+  /ledger/                     # evidence loop (§14.5)
   /Archive/
 ```
 
-⚠ OPEN — layout is provisional pending the container-object decision (§4) and meta-code ergonomics. Generated views (profiles, timelines, animatic, "reader state at ch. N") are *outputs*, not files in the source tree.
+⚠ OPEN — layout is provisional pending ratification of §4.2 and §10. Generated views (profiles, timelines, animatic, "reader state at ch. N") are *outputs*, not files in the source tree.
 
 ### What the software checks vs. what the writer judges
 
-The system flags; the writer decides. Mechanical: delta reconciliation, reachability, invariant breaks, setup orphans, coverage gaps, layer-direction violations, retcon cones, pacing budgets. Judgment: whether a flag is a bug or a choice (`intentional_break`, abandoned setups, breath-beat chapters). NAS never auto-fixes story content.
+The system flags; the writer decides. Mechanical: delta reconciliation, reachability, invariant breaks, setup orphans, coverage gaps, layer-direction violations, retcon cones, pacing budgets, out-of-order info ops. Judgment: whether a flag is a bug or a choice — and every deliberate choice cites an exception ID (§14.7), so the corpus of choices is itself reviewable. NAS never auto-fixes story content.
 
 ---
 
@@ -419,31 +484,134 @@ Unchanged from v0.2 — these belong to the software around NAS, not the methodo
 
 ---
 
-## 14. Open Questions (consolidated)
+## 14. The Evidence Loop — how NAS earns its rules
 
-The ⚠ items above, plus survivors from v0.2:
+NAS.md is a book of **models** — falsifiable theory you reason with. What the software enforces are **rules** — derived from the models, never the same object. A model stays open to refutation even after a rule is derived from it; a rule that can no longer be proven wrong has stopped being useful. This section is the machinery that keeps the two honest and connected. *(Modeled on the Field Atlas operations pipeline, adapted to writing.)*
 
-1. **Meta-code ergonomics** — YAML block vs. software form (§4). *Blocks: authoring surface, doc examples.*
-2. **Container set** — Act/Sequence between Novel and Chapter? (§4)
-3. **Beat model** — beat card fields; animatic rendering; authored treatment vs. generated animatic (§9).
-4. **Render phase ladder** — names, count, exit criteria under the new split (§9).
-5. **Time model** — remaining details (§10); is telling order a first-class editable object?
-6. **Edge vocabulary** — is `derives_from / constrains / tensions_with` the right minimal set? (§7)
-7. **Trivial retcon fast lane** (§2.4).
-8. **Multi-POV scenes** — one POV per scene, or several? If several, how are observer-record mutations attributed? (from v0.2)
-9. **Voice as object vs. property** — string list, or its own object with rules? (from v0.2)
-10. **Reader-state on reread** — model first-read only, or first-read vs. reread trajectories? (from v0.2)
-11. **Theme weight** — quantitative presence-per-chapter to detect drift? (from v0.2)
-12. **Worldbuilding without prose** — decree-canonization exists (§2.2); what governs its budget so the graph doesn't fill with unobserved canon?
+```
+models (this file)  →  rules register  →  writing projects (via the software or by hand)
+      ↑                                            │
+      └────────── revision queue ←──── ledger ←────┘
+```
+
+### 14.1 Rule schema
+
+One entry per canonical rule; stable IDs, never reused or renumbered.
+
+```yaml
+id: SCENE-2
+source: NAS.md#83-scene-interface-vs-implementation
+statement: "Prose never references its own telling-order position."
+status: invariant | default | hypothesis      # epistemic weight
+tier: structural | gate | lint | judgment     # enforcement strength
+signature: "ordinal/positional self-reference in prose ('as we saw', 'three chapters ago')"
+exceptions: [SCENE-2-EX1]                     # deliberate metafiction — cited, not scattered
+claims: [NAS-C7]
+applies_when: "any project using the Cut"     # feeds the scope manifest
+```
+
+**Tiers:** `structural` — impossible by construction (age is computed; snapshots don't exist); `gate` — blocks a phase transition or merge; `lint` — flags, writer dismissable with a citation; `judgment` — review prompt only.
+**Status:** `invariant` — enforced at face value; `default` — enforced, expected to have exceptions; `hypothesis` — surfaced, not enforced. Rules are revised *by ledger evidence*, which is the whole loop.
+
+### 14.2 Seed register
+
+| ID | Statement (abbrev.) | Tier | Status |
+|---|---|---|---|
+| OBS-1 | No fact is canon without an observation record (scene or decree) | structural | invariant |
+| OBS-2 | Entry state must be reachable from last exit within methods/invariants + elapsed events | gate | invariant |
+| OBS-3 | A retcon's cone must be walked to empty before status `propagated` | gate | invariant |
+| SCENE-1 | Downstream depends only on a scene's interface, never its prose | lint | invariant |
+| SCENE-2 | Prose never references its own telling-order position | lint | default |
+| SCENE-3 | Scenes emit deltas; no authored state snapshots exist | structural | invariant |
+| CONTRACT-1 | Fold of a chapter's scene deltas satisfies its declared delta before close | gate | invariant |
+| CONTRACT-2 | Every roadmap item claimed ≥1 chapter; every chapter claims ≥1 item | lint | default |
+| PILLAR-1 | A bound pillar's preconditions hold at its position | gate | invariant |
+| GRAPH-1 | Causal edges respect layer direction | lint | invariant |
+| GRAPH-2 | Documents/views are generated, never hand-copied from graph facts | structural | invariant |
+| READER-1 | Exposition shaped for the reader's current need, never bible-shaped | judgment | default |
+| READER-2 | Reveals evolve additively; contradiction requires a declared subvert op | lint | default |
+| SETUP-1 | Every setup has a payoff window or explicit `abandoned`; orphans flagged | lint | invariant |
+| DRIFT-1 | Draft/graph divergence is logged or propagated at scene close, never deferred | gate | default |
+
+### 14.3 Claims under test
+
+Falsifiable claims with measurement protocols — a claim without a protocol is falsifiable in form only.
+
+| ID | Claim (abbrev.) | Protocol sketch |
+|---|---|---|
+| NAS-C1 | Most coherence failures in long-form fiction come from unexternalized state, not bad ideas | Ledger-classify every real bug: would explicit state have prevented it? |
+| NAS-C2 | Pacing problems are visible at beat resolution before prose exists | Count animatic-flagged pacing issues vs. issues first found in prose |
+| NAS-C3 | Delta budgets predict rushed/dragging pacing | Budget warnings vs. beta-reader pacing complaints on the same spans |
+| NAS-C4 | Discarding design artifacts is psychologically cheaper than discarding prose | Track abandonment counts + friction self-reports per phase |
+| NAS-C5 | The two-fold rule handles nonlinear structure without special cases | First flashback-heavy project: count special-case hacks needed (target: 0) |
+| NAS-C6 | Canon drift is silent and non-linear in time-unaddressed | Reconciliation cost vs. time-since-last-sync across ledger entries |
+| NAS-C7 | Position-independent prose survives reordering at near-zero cost | Edit-room sessions: broken-transition count for compliant vs. non-compliant scenes |
+
+### 14.4 The ledger
+
+Append-only, one file per event: continuity bug found, retcon executed, phase regression, beta-feedback item, milestone. Each entry: date, project, trigger, rules cited with verdict (`would-have-caught | false-positive | exception-applied`), claim evidence (`confirms | refutes`), and **one `canonical_cause`** — a single owning claim per bug, or every post-mortem confirms every model and the ledger proves nothing.
+
+**Ledger 0001 (to backfill):** the book-bible corpus audit — the 1763/1770 birth-year contradiction (`canonical_cause: NAS-C1`, confirms; GRAPH-2 would-have-caught), the forced-vs-voluntary transformation conflict, the misfiled canon docs (§11's evidence).
+
+### 14.5 Scope manifest — scale gates
+
+Not every NAS object applies to every project. At project start, a manifest activates models/rules with parameters:
+
+```yaml
+project: sithernis-novel
+nas_edition: v0.4
+scale: novel            # flash | short | novella | novel | series
+scope:
+  contract_stack: {containers: 1}     # short stories: containers 0, chapter contracts off
+  knowledge_scopes: {observers: [reader, faction:magical-public, character:*]}
+  pillars: {active: true}
+  world_graph: {layers: [physics, biology, history, institutions, characters]}
+  cut: {active: true}
+rules_excluded: []      # rule IDs disabled by parameters, with reason
+```
+
+Flash fiction runs almost bare (graph + reader ops); a series activates everything plus cross-book scopes. **The scale gate is what keeps NAS from being epic-novel machinery imposed on a short story** — v0.3 silently assumed epic scale; the manifest makes scale explicit.
+
+### 14.6 Exceptions
+
+`intentional_break: reason` (v0.2) upgrades: every deliberate violation **cites or mints an exception ID** (`SCENE-2-EX1: metafictional narrator`), defined inside the owning rule. The exception corpus is itself reviewable — patterns in what a writer keeps overriding are evidence about the rules (or about the book).
+
+### 14.7 Cadence and revision
+
+Milestone reports (chapter merge, draft complete, work finished): aggregate the ledger → per-rule hit rate, false-positive rate, claim evidence deltas, and a **revision queue** — the only channel through which rules and models change. NAS's version bumps when the queue is applied. Between milestones, ledger entries are one-liners. **NAS v0.x is "complete but not yet definitive" until it survives a finished written work and its post-mortem — the same honesty standard as its source.**
 
 ---
 
-## 15. Next Steps
+## 15. Open Questions (consolidated)
 
-1. Continue the brainstorm on the ⚠ items — §9 (pipeline/beats/animatic) and §4 (ergonomics, containers) carry the most downstream weight.
-2. **The stress test:** decompose the real corpus — the Sithernis tragedy — into this data model: nodes, edges, scopes, trajectory logs, one pillar, one chapter contract, one scene interface. Find what breaks. (The corpus's own contradictions — the 1763/1770 birth year, the forced-vs-voluntary transformation — are the acceptance tests: the model must make them impossible or loudly visible.)
-3. Only then: freeze v1.0 concepts and begin software design, with NAS as the language spec.
+| # | Question | State |
+|---|---|---|
+| 1 | Meta-code ergonomics | **PROPOSAL** in §4.2 — YAML is truth, forms are views |
+| 2 | Container set | **PROPOSAL** in §4.2 — generic optional recursive Container |
+| 3 | Beat model / animatic | **PROPOSAL** in §9.2–9.3 — beats as panels; animatic generated |
+| 4 | Render phase ladder | **PROPOSAL** in §9.1 — Interface/Board ∥ Draft/Textured/Final |
+| 5 | Time model | Two-fold rule **locked**; the Cut **PROPOSAL** in §10; era representation ⚠ open |
+| 6 | Edge vocabulary | **PROPOSAL** in §7.1 — freeze at three until ledger demands |
+| 7 | Trivial retcon fast lane | **PROPOSAL** in §2.4 — cone always computed, auto-propagate when trivial |
+| 8 | Multi-POV | **PROPOSAL** in §9.2 — POV per beat |
+| 9 | Voice as object | **PROPOSAL** in §8.1 — VoiceProfile, hypothesis tier |
+| 10 | Reader-state on reread | **PROPOSAL** in §3.2 — rereader = generated scope, free |
+| 11 | Theme weight | **PROPOSAL** — per-scene presence (0–3), folded to per-chapter curve; flatline lint. Hypothesis tier |
+| 12 | Decree budget | **PROPOSAL** in §2.2 — free at low layers, flagged at high; manifest parameter |
+| 13 | Era vs. scene-time representation; trajectory nodes × chronology | ⚠ fully open (§10) |
+
+Every proposal awaits explicit ratification — none is silently locked.
 
 ---
 
-*v0.3 — working draft. Iterate by editing this file. Nothing here is sacred except §0's problem statement and the §2 Observation Principle — challenge everything else.*
+## 16. Next Steps
+
+1. **Ratify or amend the proposals** (§15) — each is a yes/no/edit, not a research task.
+2. **The stress test:** decompose the Sithernis corpus into this data model — nodes, edges, scopes, trajectory logs, one pillar, one chapter contract, one scene interface with beats. Backfill **ledger 0001** from the corpus audit. The corpus's own contradictions are the acceptance tests: the model must make them impossible or loudly visible.
+3. **The interlock test:** verify NAS is a system, not a pile — each part must *pay for the others* (pillars feed roadmap feeds contracts feeds reconciliation feeds retcons), and a wrong change must meet resistance early. Remove any one object on paper and check that others fail loudly. If a part can be deleted silently, it hasn't earned its place.
+4. **Freeze the v1.0 language** once the stress test's revision queue is applied.
+5. **Software design** per `SOFTWARE.md`, with NAS as the language spec — and the build itself run as the methodology's first instrumented experiment.
+
+---
+
+*v0.4 — working draft. Iterate by editing this file. Nothing here is sacred except §0's problem statement and the §2 Observation Principle — challenge everything else. The rest earns its place through the ledger, or leaves.*
