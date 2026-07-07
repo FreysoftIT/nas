@@ -776,4 +776,24 @@ Every proposal awaits explicit ratification — none is silently locked.
 
 ---
 
-*v0.7 — working draft. Iterate by editing this file. Nothing here is sacred except §0's problem statement and the §2 Triad — challenge everything else. The rest earns its place through the ledger, or leaves.*
+---
+
+## 17. Standing On — the lineage
+
+None of the load-bearing ideas here is without ancestors, and per the house epistemology (Field Atlas README): *convergence is not a weakness of the model; it is the evidence it is true.* Most of these were arrived at independently, from foreign starting points, and matched afterward — triangulation, not citation:
+
+- **Observation / incompleteness:** Copenhagen QM; Rovelli (relational QM); Doležel & Ryan (possible-worlds narratology — fictional worlds are constitutionally incomplete).
+- **The reader's record:** Iser (the implied reader; *Leerstellen* — gaps); Sternberg (suspense/curiosity/surprise, the three narrative universals).
+- **Valence:** Lewis & Pauling (chemical bonding); Propp 1928 (plot as the liquidation of a *lack*); Greimas (actants).
+- **Emergence & fields:** P.W. Anderson (*More Is Different*); Grassé (stigmergy); Hölldobler & Wilson (the superorganism); Maslow and Deci & Ryan (the ladder of needs); Aristotle (*horror vacui*).
+- **Contrast:** Saussure; Bateson (a difference that makes a difference); Shannon; Weber–Fechner.
+- **Facets:** Goffman (*The Presentation of Self in Everyday Life*); Jung (persona).
+- **Contracts & machinery:** Parnas (information hiding); Meyer (Design by Contract — pillar pre/postconditions); Liskov; Doyle (truth-maintenance systems — the retcon cone); Young & Fowler (event sourcing); Karlton (cache invalidation); Popper (falsifiability); Clark & Chalmers (the extended mind — this whole system is Otto's notebook).
+- **Craft & pipeline:** Disney's key-pose animation practice (Thomas & Johnston); Sanderson (hard/soft vocabulary — and the hired continuity machine); GRRM (architects and gardeners); Christopher Alexander (patterns interlock into a language, or they are decoration).
+- **The house corpus:** the Field Atlas (the Seam, the Drift, the Interlock, the operations pipeline) — same author, other facet.
+
+What is believed original, until the ledger says otherwise: the inversion of narratology from descriptive to **operational** (schemas for making, not instruments for dissecting); the entanglement cone as a retcon cost model; delta budgets as computable pacing; the two-fold rule for nonlinear time; the sagging middle as valence-succession gap; facet collision as scene generator; and the decision to make craft claims **falsifiable** — measurement protocols attached to writing advice, which appears to have no precedent.
+
+---
+
+*v0.11 — working draft. Iterate by editing this file. Nothing here is sacred except §0's problem statement and the §2 Triad — challenge everything else. The rest earns its place through the ledger, or leaves.*
