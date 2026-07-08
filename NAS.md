@@ -129,7 +129,7 @@ One graph. Causal edges run within and *between* families (the ford → trade we
 
 This is **late binding**: defer every decision to the last responsible moment. The system tracks what is collapsed vs. free and can show the current constraint envelope for anything still open. This is liberating, not bureaucratic — the writer never has to decide more than the story has forced.
 
-**PROPOSAL (unratified) — decree budget:** decrees are free at low graph layers (physics, geography, deep history — worldbuilding-heavy writers need them) and *flagged* at high layers (characters, plot-adjacent facts should collapse through scenes). The threshold layer is a scope-manifest parameter (§14.6).
+**PROPOSAL (unratified) — decree budget:** decrees are free at low graph layers (physics, geography, deep history — worldbuilding-heavy writers need them) and *flagged* at high layers (characters, plot-adjacent facts should collapse through scenes). The threshold layer is a scope-manifest parameter (§14.5).
 
 ### 2.3 Consistency = reachability, not equality
 
@@ -164,7 +164,7 @@ The design layer and the prose are two sides of a seam, and **the seam degrades 
 
 The healthy band is a **tempo asymmetry**: the graph moves slowly and must be stable; the prose moves fast and must be flexible; the contract between them absorbs the mismatch. Neither side is the villain — the *unaddressed seam* is.
 
-Drift is **silent** (both sides stay internally consistent — the corpus's 1763/1770 birth-year bug "compiled green" for months) and **non-linear in time unaddressed** (the longer bible and manuscript diverge, the worse the reconciliation; every revision-hell story is this curve). The fix-direction is structural, not disciplinary: **one source of truth, derived not duplicated** (§7.5), plus a sync gate — divergence discovered while drafting is logged or propagated *at scene close*, never deferred (rule DRIFT-1, §14.3).
+Drift is **silent** (both sides stay internally consistent — the corpus's 1763/1770 birth-year bug "compiled green" for months) and **non-linear in time unaddressed** (the longer bible and manuscript diverge, the worse the reconciliation; every revision-hell story is this curve). The fix-direction is structural, not disciplinary: **one source of truth, derived not duplicated** (§7.5), plus a sync gate — divergence discovered while drafting is logged or propagated *at scene close*, never deferred (rule DRIFT-1, §14.2).
 
 *(This model is imported from the Field Atlas's "The Drift," which derived the same two walls, the same smoke signal, and the same fix for software teams. Independent derivation across domains is why it is trusted here at `default` strength from day one.)*
 
@@ -199,7 +199,7 @@ A scene performs operations on observers' records. For the reader (kept from v0.
 
 Derived experiential states: **mystery** = the reader knows a fact is collapsed but can't see the value; **suspense** = the reader sees a cloud ahead (they know something is coming); **surprise** = collapse with no prior cloud.
 
-Two exposition rules borrowed across the seam (register: READER-1/2, §14.3): **an info-dump is a producer-shaped payload** — worldbuilding delivered in bible-shape instead of what the reader needs *now*; and **reveals evolve additively** — expand and recontextualize rather than contradict; contradiction is a breaking change, which is why *subvert* is priced as rare and costly. The reader also *reads tolerantly* by design — skipping what they don't yet understand is how mystery works, not a failure.
+Two exposition rules borrowed across the seam (register: READER-1/2, §14.2): **an info-dump is a producer-shaped payload** — worldbuilding delivered in bible-shape instead of what the reader needs *now*; and **reveals evolve additively** — expand and recontextualize rather than contradict; contradiction is a breaking change, which is why *subvert* is priced as rare and costly. The reader also *reads tolerantly* by design — skipping what they don't yet understand is how mystery works, not a failure.
 
 ### 3.2 Irony as a computed gap
 
@@ -295,7 +295,7 @@ constraints: {pov: lysandra, span: "3 days, Rome"}
 
 **PROPOSAL (unratified) — ergonomics:** the either/or dissolves. YAML frontmatter blocks in files remain the **single source of truth** (portable-text stance; the file format is the wire). The software renders each block as a form — but the form is a *view* of the block, driven by the same schema that validates it (one schema → validation + form + docs, never hand-duplicated). Author in whichever surface you like; the file is what's real.
 
-**PROPOSAL (unratified) — containers:** one generic, optional, recursive `Container` object between Novel and Chapter, with `kind: act | part | sequence | custom` and the same contract mechanics as a chapter (function, claims, declared delta). Zero or more levels per project, activated by the scope manifest (§14.6) — a novella uses none; an epic uses two. No fixed taxonomy imposed.
+**PROPOSAL (unratified) — containers:** one generic, optional, recursive `Container` object between Novel and Chapter, with `kind: act | part | sequence | custom` and the same contract mechanics as a chapter (function, claims, declared delta). Zero or more levels per project, activated by the scope manifest (§14.5) — a novella uses none; an epic uses two. No fixed taxonomy imposed.
 
 ---
 
@@ -377,7 +377,7 @@ scopes: [which observers hold this fact, per §3]
 referenced_by: [scene_ids]  # populated by the system, never authored
 ```
 
-**Edge vocabulary is deliberately tiny** — `derives_from`, `constrains`, `tensions_with`. **PROPOSAL (unratified):** keep exactly these three; add nothing until ledger evidence (§14.5) demands a fourth. IDs and edge kinds are never renumbered or reused — retired names stay retired.
+**Edge vocabulary is deliberately tiny** — `derives_from`, `constrains`, `tensions_with`. **PROPOSAL (unratified):** keep exactly these three; add nothing until ledger evidence (§14.4) demands a fourth. IDs and edge kinds are never renumbered or reused — retired names stay retired.
 
 ### 7.2 What the graph buys
 
@@ -436,7 +436,7 @@ emergent_properties:        # properties stored HERE because no member has them
 
 **The world is a character.** The composition ladder (§7.6) terminates in an apex node, and at apex scale the Agent schema (§8.1) applies without modification: the world has a core wound, a dominant fear, a desire, an internal contradiction, methods (`under_existential_threat: "veil, separate, suppress"`), an arc (its era progression), valences, and facets (§3.4 — it shows the soldier its war facet). Two consequences:
 
-- **The world's invariants are its physical laws.** The magic-system manual *is* the apex Agent's invariant block. A miracle — any event breaking physical law — is an `intentional_break` with an exception ID (§14.7): priced, cited, reviewable. Worldbuilding and character design are one schema at different composition levels.
+- **The world's invariants are its physical laws.** The magic-system manual *is* the apex Agent's invariant block. A miracle — any event breaking physical law — is an `intentional_break` with an exception ID (§14.6): priced, cited, reviewable. Worldbuilding and character design are one schema at different composition levels.
 - **World state evolves through deltas, like any agent's** (register: WORLD-1). "The kingdom grew restless" is the same vague drift banned on relationships since v0.2 — the world's reactions are scene-emitted deltas with causes, or they didn't happen.
 
 **Horror vacui — voids are attractors.** Aristotle's law is the missing *dynamics* of valence: an unbound valence does not wait, it **pulls**. The power vacuum is the canonical narrative instance — a dead king recruits claimants; an extinct niche recruits colonizers; unmet demand recruits supply. Mechanically: every void generates **candidate fillers**, weighted by pressure; the generative query upgrades from "which valences could bond?" to *"what is each void pulling toward itself?"* A high-pressure void that nothing moves toward is mounting story fuel — or a flag. *(Reference corpus, twice: the OMC's collapse-void pulled democratic reform into existence; the mage-extinction void pulled Lucas into existence — the world-agent's wound recruiting its own candidate healing.)*
@@ -493,7 +493,7 @@ A character node with **properties, methods, invariants, and an arc** (structure
 
 - *Properties:* identity, psychological (core wound, dominant fear, desire, internal contradiction), relational (attachment style, default power position), functional (skills, narrative role, voice).
 - *Methods:* decision heuristics — `under_fear: "withdraws, plans escape, lies to buy time"`. When a scene drafts a choice, check it against the methods. Overridable via inheritance.
-- *Invariants:* assertions that must hold — `"Never lies to her sister, even when costly"`. A scene may break one only by citing an exception (§14.7).
+- *Invariants:* assertions that must hold — `"Never lies to her sister, even when costly"`. A scene may break one only by citing an exception (§14.6).
 - *Arc:* start state → transformation vector → end state, with milestones. Arc milestones feed the Roadmap (§6).
 - *Inheritance* (lineage: origin) and *composition* (traits: lived experience), kept from v0.2.
 
@@ -558,7 +558,7 @@ v0.2 had four per-scene phases (Rough → Detailed → Shaded → Inked). Under 
 **Work-level passes (post-production, not per-scene states):**
 
 - **Assembly / edit room** — reorder, cut, merge scenes *at the interface level* by editing the Cut (§10); the system reports broken transitions and re-folds both state streams.
-- **Test reads** — beta readers as test screenings; every feedback item lands on a beat or scene id, not on vibes, and enters the ledger (§14.5).
+- **Test reads** — beta readers as test screenings; every feedback item lands on a beat or scene id, not on vibes, and enters the ledger (§14.4).
 - **Grade** — line-editing passes with structure locked.
 
 ### 9.2 PROPOSAL (unratified) — the Beat
@@ -645,7 +645,7 @@ Each object is a markdown file with YAML frontmatter — portable, diffable, edi
     ch07/s02.md                # scene: interface frontmatter + prose body
   /Setups/
   /Themes/
-  /ledger/                     # evidence loop (§14.5)
+  /ledger/                     # evidence loop (§14.4)
   /Archive/
 ```
 
@@ -653,7 +653,7 @@ Each object is a markdown file with YAML frontmatter — portable, diffable, edi
 
 ### What the software checks vs. what the writer judges
 
-The system flags; the writer decides. Mechanical: delta reconciliation, reachability, invariant breaks, setup orphans, coverage gaps, layer-direction violations, retcon cones, pacing budgets, out-of-order info ops. Judgment: whether a flag is a bug or a choice — and every deliberate choice cites an exception ID (§14.7), so the corpus of choices is itself reviewable. NAS never auto-fixes story content.
+The system flags; the writer decides. Mechanical: delta reconciliation, reachability, invariant breaks, setup orphans, coverage gaps, layer-direction violations, retcon cones, pacing budgets, out-of-order info ops. Judgment: whether a flag is a bug or a choice — and every deliberate choice cites an exception ID (§14.6), so the corpus of choices is itself reviewable. NAS never auto-fixes story content.
 
 ---
 
@@ -791,7 +791,7 @@ Milestone reports (chapter merge, draft complete, work finished): aggregate the 
 | 7 | Trivial retcon fast lane | **PROPOSAL** in §2.4 — cone always computed, auto-propagate when trivial |
 | 8 | Multi-POV | **PROPOSAL** in §9.2 — POV per beat |
 | 9 | Voice as object | **PROPOSAL** in §8.1 — VoiceProfile, hypothesis tier |
-| 10 | Reader-state on reread | **PROPOSAL** in §3.2 — rereader = generated scope, free |
+| 10 | Reader-state on reread | **PROPOSAL** in §3.3 — rereader = generated scope, free |
 | 11 | Theme weight | **PROPOSAL** — per-scene presence (0–3), folded to per-chapter curve; flatline lint. Hypothesis tier |
 | 12 | Decree budget | **PROPOSAL** in §2.2 — free at low layers, flagged at high; manifest parameter |
 | 13 | Era vs. scene-time representation; trajectory nodes × chronology | ⚠ fully open (§10) |
