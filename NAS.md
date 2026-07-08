@@ -1,6 +1,6 @@
 # Narrative Architecture System (NAS)
 
-**Working draft — v0.11 (July 2026)**
+**Working draft — v0.12 (July 2026)**
 *Methodology for structured fiction development. This document is also the spec for the writing layer of the surrounding software; project-level features (kanban, panels, dashboards, session UX) wrap NAS but are out of scope here — see `SOFTWARE.md` for the architecture seed of the tool itself.*
 
 Restructured from v0.2 (archived at `Archive/v0.2_NAS.md`) in v0.3; v0.4 adds the Evidence Loop, the canon-drift model, rules derived from the Field Atlas, and written proposals for every open question.
@@ -16,6 +16,7 @@ Restructured from v0.2 (archived at `Archive/v0.2_NAS.md`) in v0.3; v0.4 adds th
 **Changed in v0.9:** §1.1 corrected and **author-declared — NAS is for hard writers first**: the two methods are asymmetric (soft failure is recoverable in revision, hard failure is terminal — a bible with no book); survivorship bias in the advice culture; NAS as assistive technology (the §0 executive-function line, made the identity); NAS-C10 amended with the asymmetry.
 **Changed in v0.10:** Facets — the unit of presentation (§3.4): observers never touch entities, only facets; facet collision as scene generator; intimacy as facet-granting; the single-facet lint (FACET-1, blandness diagnostic #2); claim NAS-C11.
 **Changed in v0.11:** the World-Agent and void dynamics (§7.7) — the world is the apex Agent (its physical laws are its invariants; a miracle is a priced `intentional_break`); *horror vacui* — voids are attractors that recruit candidate fillers (the power vacuum, generalized); Maslow as valence ladders — filled voids spawn successors; the sagging middle as a valence-succession gap (NAS-C12); WORLD-1.
+**Changed in v0.12:** canon dynamics — triangulated from the oldest running canon systems (scripture, law; §17 gains the canon-&-interpretation lineage): statement modality *is / must / saw* (§7.8 — untyped statements get retyped by their readers; promotion/demotion as priced operations; MODAL-1); the authored query (§7.5 — views record their provenance, GRAPH-4; contradiction triage: fact-conflict / query-divergence / modality-retype, NAS-C13); publication as canon closure (§11.1 — frozen partitions, obligations flow frozen→open, forward-only fixes, PUB-1).
 
 ---
 
@@ -398,6 +399,11 @@ World nodes declare a layer, and layers form a DAG the writer defines — e.g. `
 
 Character profile, era timeline, organization chronicle, "everything the reader knows at chapter 12," the full Bible export — all **generated projections** over the graph and the delta stream. Never authored, never drifting. Authoring happens at the node and the scene; reading happens anywhere. One source of truth, **derived, not duplicated** — the same fix the drift literature converged on for software contracts, arrived at here for canon.
 
+**PROPOSAL (unratified) — the query is authored.** A projection is graph + query, and the query carries intent: which facts, whose scope, what time anchor, for which audience. Every generated view therefore records its query as provenance (register: GRAPH-4); a view that cannot show its query is hand-authored by definition and falls back under GRAPH-2. What this buys:
+
+- **Contradiction triage.** Two documents that disagree are in one of three states: **fact-conflict** — the graph itself is inconsistent; a real bug. **Query-divergence** — consistent facts, different selections; the documents answer different questions and only *look* like they disagree. **Modality-retype** — one document hardened the other's attestation into fact or law (§7.8). Only the first is a contradiction; the machinery must distinguish the three or every audit drowns in false positives. Import runs the triage in reverse: reconstruct each hand-written document's implicit query (*profile of X*, *chronicle of Y*), then classify every cross-document disagreement before calling it drift (claim NAS-C13 — the Sithernis decomposition classifies its whole catalogued contradiction set this way).
+- **Authorship laundering, named.** A projection presented without its query reads as neutral — *"the bible says"* — while the selection does the arguing. Selection is authorship; provenance is what makes it visible. This holds for the writer's own generated views exactly as it holds for the civilizational canons (§17): whoever controls the query controls the document, and the innocently-phrased view is the one to audit.
+
 ### 7.6 Composition and Emergence — the chemistry→biology ladder
 
 **PROPOSAL (unratified), whole subsection.**
@@ -436,6 +442,27 @@ emergent_properties:        # properties stored HERE because no member has them
 **Horror vacui — voids are attractors.** Aristotle's law is the missing *dynamics* of valence: an unbound valence does not wait, it **pulls**. The power vacuum is the canonical narrative instance — a dead king recruits claimants; an extinct niche recruits colonizers; unmet demand recruits supply. Mechanically: every void generates **candidate fillers**, weighted by pressure; the generative query upgrades from "which valences could bond?" to *"what is each void pulling toward itself?"* A high-pressure void that nothing moves toward is mounting story fuel — or a flag. *(Reference corpus, twice: the OMC's collapse-void pulled democratic reform into existence; the mage-extinction void pulled Lucas into existence — the world-agent's wound recruiting its own candidate healing.)*
 
 **The ladder of needs — filled voids spawn successors.** Satisfaction does not end desire; it *promotes* it up a tier (survival met → safety opens → belonging opens → meaning opens). An arc is therefore a **valence ladder**, never a single wound closed: resolving an agent's active valence should open its successor, and the system prompts for it — a generative nudge, not a gate. The pyramid itself is a *lens*, per §5.1 — each agent's ladder is writer-defined; Maslow is one available vocabulary. The mechanic targets the most common structural failure in long-form fiction: **the sagging middle is a valence-succession gap** — the protagonist's tier-one need is met at the midpoint and no successor void opens, so tension dies (claim NAS-C12). At apex scale the same law reads history: eras are the world-agent's tiers.
+
+### 7.8 Statement modality — *is*, *must*, *saw*
+
+**PROPOSAL (unratified), whole subsection.**
+
+Every statement in the corpus is one of three kinds. The graph already holds all three — it has never named them:
+
+- ***is* — fact.** A value, collapsed or cloud (§2): *the city sits at the river ford.* Lives as a node; observation is what collapses it.
+- ***must* — law.** A constraint that bounds future collapse and never itself collapses: agent invariants (§8.1), layer direction (§7.3), the apex Agent's physical laws (§7.7): *vampires cannot enter uninvited.* Broken only by a priced `intentional_break` (§14.6).
+- ***saw* — attestation.** An observer's record, carrying provenance and capable of being wrong (§3): *the chronicle claims the founder died at the ford.* Misinformation, testimony, and every in-world document are attestations.
+
+One schema field — `modality: is | must | saw` — on every statement-bearing object. Native graph objects carry it by construction; the field earns its keep **at the boundaries**: harvest (§1.1 soft mode) and import (the corpus decomposition, §16) must assign it explicitly, because hand-written documents arrive untyped.
+
+**An untyped statement will be retyped by its reader.** Narrative read as law; law allegorized back to narrative; one observer's testimony hardened into fact. The retyping is silent, and the retyper's selection is invisible — this is where an agenda hides, in-world and out. *(The oldest running instance is civilizational: a closed canon is a mixed-genre corpus with no modality tags, and every schism is a retyping dispute — §17.)*
+
+**Modality changes are explicit, priced operations (register: MODAL-1):**
+
+- **Promotion** (*saw* → *is*; *is* → *must*): a pattern hardens into canon or law — *she has never entered uninvited* becomes *vampires cannot*. The new law cites the attesting scenes that earned it — PATTERN-1's logic applied to world law: earned by load, never declared by fiat.
+- **Demotion** (*must* → *is*; *is* → *saw*): a law relaxes to mere fact; a fact turns out to be somebody's claim. Demotion is a retcon — it walks the cone of everything that relied on the stronger reading (§2.4). Ledger 0001's kicker is a demotion bug found in the wild: the written docs held as *is* what was actually *saw* — an attestation of a canon that lived only in the author's head.
+
+**One level down, the same machinery is a plot engine.** A diegetic artifact (§7.4) carries a *claimed* modality and receives *read* modalities per observer: the poem read as prophecy, the prophecy read as law, the law read as metaphor. In-world genre reassignment is computable irony (§3.2) — the gap between claimed and read modality, per faction. *(Generative question for the reference corpus: the initiation poem — attestation or law? Which factions read it as which, and what does each reading license them to do?)*
 
 ---
 
@@ -586,6 +613,17 @@ Branch types (kept from v0.2): `main` (canon; tagged at chapter completion), `dr
 
 **Stable on `main`** = all scenes at Final, consistency checks pass, no orphan setups, no stale nodes, chapter contracts reconciled. **Release** = a chapter merged to main with a tag. Merges run the full check suite on the merged state.
 
+### 11.1 Publication is canon closure
+
+**PROPOSAL (unratified).** A release that reaches readers is a phase change, not a milestone. The shipped partition of the graph and the Cut **freezes**: those collapses are no longer the author's to reopen, because an external observer now holds them.
+
+- **Obligations flow frozen → open.** Internally, `main` is the source of truth; externally, the shipped text is. The unpublished remainder must stay reachable from every published partition (§2.3 at book scale), and a retcon cone that crosses a publication boundary never auto-propagates — it surfaces as a breaking change (register: PUB-1).
+- **The reader's interpretation layer is a scope you don't control.** At publication, Hyrum's Law for stories (§8.3) goes external and permanent: fan canon, theories, and the author's own interviews accrete on the frozen partition and only grow. Forward books inherit constraints not just from the shipped text but from what the readership built on it.
+- **Fixes are forward-only.** Within shipped canon, READER-2 hardens: new material may expand and recontextualize published facts, never contradict them. Contradicting shipped text is not a subvert op — it is errata (declared and priced) or a reboot (a new graph, honestly labeled). The retcon workflow (§2.4) stays available only behind the newest boundary.
+- **The serial author lives in both regimes at once:** open canon in the unpublished graph, closed canon in every shipped partition. Series craft is largely *keeping enough clouds uncollapsed* at each closure that the open side retains room to move — late binding (§2.2) at series scale. The manifest (§14.5) activates boundaries at `scale: series`; a single volume meets exactly one, at the end.
+
+*(This is the dynamic the canon-&-interpretation lineage (§17) runs on: once a canon closes, change pressure has nowhere to go but the interpretation layer. A living author has one exit scripture lacks — the next book.)*
+
 ---
 
 ## 12. The Authoring Surface
@@ -670,6 +708,7 @@ applies_when: "any project using the Cut"     # feeds the scope manifest
 | GRAPH-1 | Causal edges respect layer direction | lint | invariant |
 | GRAPH-2 | Documents/views are generated, never hand-copied from graph facts | structural | invariant |
 | GRAPH-3 | Load-bearing psychology is causally anchored: every wound, vow, and arc-driver cites the event node(s) it derives from | lint | default |
+| GRAPH-4 | Every generated view records its query (selection, observer, time anchor); a view that cannot show its query is hand-authored by definition and falls under GRAPH-2 | structural | invariant |
 | READER-1 | Exposition shaped for the reader's current need, never bible-shaped | judgment | default |
 | READER-2 | Reveals evolve additively; contradiction requires a declared subvert op | lint | default |
 | SETUP-1 | Every setup has a payoff window or explicit `abandoned`; orphans flagged | lint | invariant |
@@ -677,6 +716,8 @@ applies_when: "any project using the Cut"     # feeds the scope manifest
 | PATTERN-1 | Every structural element bears load: dependencies run through it, removal meets resistance; load-free doctrine elements are decoration | lint | default |
 | FACET-1 | A major agent presents more than one facet across audiences or time; single-facet majors are flagged flat | lint | default |
 | WORLD-1 | The world is the apex Agent: its state evolves through scene-emitted deltas with causes — ambient drift ("the kingdom grew restless") is not representable | structural | invariant |
+| MODAL-1 | Every statement carries a modality — *is* (fact), *must* (law), *saw* (attestation); modality changes are explicit operations: promotion cites its attesting scenes, demotion walks its cone | structural | invariant |
+| PUB-1 | A retcon cone crossing a publication boundary never auto-propagates; published canon is contradicted only by declared errata — fixes are forward, additive, recontextualizing | gate | invariant |
 
 ### 14.3 Claims under test
 
@@ -696,6 +737,7 @@ Falsifiable claims with measurement protocols — a claim without a protocol is 
 | NAS-C10 | The two pure authoring modes fail into the two drift walls, **asymmetrically**: pure-hard failure is terminal (supremacy — a bible with no book to revise), pure-soft failure is recoverable (anarchy — contradictions in prose that revision can fix) | Ledger-classify project stalls/failures by declared mode; compare outcome classes: stalled-with-bible vs. shipped-with-contradictions rates |
 | NAS-C11 | Entity-level tension correlates with facet gaps: scenes readers report as tense disproportionately contain facet collisions or asymmetries | Tag beta-reported tension scenes; test for facet collision/asymmetry presence vs. baseline scenes |
 | NAS-C12 | The sagging middle is a valence-succession gap: a protagonist valence filled with no successor void opened within K scenes predicts reported mid-story sag | Map beta pacing complaints against valence-succession gaps in the fold; compare sag reports for gap vs. no-gap spans |
+| NAS-C13 | "Contradictions" in hand-maintained corpora decompose into fact-conflict, query-divergence, and modality-retype — and a material fraction are not fact-conflicts, hence invisible to document-diffing and unfixable by proofreading | Ledger 0001 backfill: classify every catalogued Sithernis contradiction into the three classes; falsified if (nearly) all land in fact-conflict |
 
 ### 14.4 The ledger
 
@@ -761,6 +803,9 @@ Milestone reports (chapter merge, draft complete, work finished): aggregate the 
 | 19 | Doctrine by interlock | **PROPOSAL** in §5.1 — PATTERN-1; conformance checks banned; doctrines as lenses only |
 | 20 | Facets — the unit of presentation | **PROPOSAL** in §3.4 — observers touch facets, never entities; collision = scene generator; intimacy = facet-granting; FACET-1 single-facet lint; NAS-C11 |
 | 21 | The World-Agent + void dynamics | **PROPOSAL** in §7.7 — world as apex Agent (physical laws = its invariants; miracles = priced breaks); horror vacui (voids recruit fillers); valence ladders (sagging middle = succession gap, NAS-C12); WORLD-1 |
+| 22 | Statement modality | **PROPOSAL** in §7.8 — *is / must / saw* on every statement; untyped statements get retyped by readers; promotion/demotion priced (MODAL-1); claimed-vs-read modality on diegetic artifacts = computable in-world irony |
+| 23 | The authored query — view provenance | **PROPOSAL** in §7.5 — views record their query (GRAPH-4); contradiction triage: fact-conflict / query-divergence / modality-retype (NAS-C13); selection is authorship |
+| 24 | Publication as canon closure | **PROPOSAL** in §11.1 — shipped partitions freeze; obligations flow frozen→open; reader interpretation layer = uncontrolled scope; forward-only fixes (PUB-1) |
 
 Every proposal awaits explicit ratification — none is silently locked.
 
@@ -789,6 +834,7 @@ None of the load-bearing ideas here is without ancestors, and per the house epis
 - **Contrast:** Saussure; Bateson (a difference that makes a difference); Shannon; Weber–Fechner.
 - **Facets:** Goffman (*The Presentation of Self in Everyday Life*); Jung (persona).
 - **Contracts & machinery:** Parnas (information hiding); Meyer (Design by Contract — pillar pre/postconditions); Liskov; Doyle (truth-maintenance systems — the retcon cone); Young & Fowler (event sourcing); Karlton (cache invalidation); Popper (falsifiability); Clark & Chalmers (the extended mind — this whole system is Otto's notebook).
+- **Canon & interpretation:** hermeneutics (Gadamer — the text does not apply itself); the Talmudic page (adversarial review with dissents preserved as precedent — the ledger's oldest ancestor); common law & Dworkin (text underdetermines practice, so the interpretation layer is load-bearing — and interpretive authority is the real power); source criticism (attestation triage, centuries before §7.5 named it); canon studies (closure, apocrypha — publication as canon closure; fan canon as midrash; the *sola scriptura* fork as the standing empirical result of deleting the interpretation ledger).
 - **Craft & pipeline:** Disney's key-pose animation practice (Thomas & Johnston); Sanderson (hard/soft vocabulary — and the hired continuity machine); GRRM (architects and gardeners); Christopher Alexander (patterns interlock into a language, or they are decoration).
 - **The house corpus:** the Field Atlas (the Seam, the Drift, the Interlock, the operations pipeline) — same author, other facet.
 
@@ -796,4 +842,4 @@ What is believed original, until the ledger says otherwise: the inversion of nar
 
 ---
 
-*v0.11 — working draft. Iterate by editing this file. Nothing here is sacred except §0's problem statement and the §2 Triad — challenge everything else. The rest earns its place through the ledger, or leaves.*
+*v0.12 — working draft. Iterate by editing this file. Nothing here is sacred except §0's problem statement and the §2 Triad — challenge everything else. The rest earns its place through the ledger, or leaves.*
