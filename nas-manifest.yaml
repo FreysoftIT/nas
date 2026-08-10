@@ -1,6 +1,10 @@
 # Scope manifest — NAS §14.5
 project: pro-league
-nas_edition: v0.15
+nas_edition: v0.17                # verified against NAS.md header at write time.
+                                  # Stood at v0.15 through v0.16 and v0.17 — a two-version
+                                  # lag in the file whose only job is pinning the version.
+                                  # Caught by an external reader, not by us. See the
+                                  # edition-check discipline at the foot of this file.
 scale: novel
 mode: hard                        # hard | soft | mixed (per scope)
 
@@ -24,4 +28,78 @@ scope:
 #   See queries.md — conflict is a graph property here, not an authored beat.
 emphasis: horizontal
 
-rules_excluded: []
+
+# ─────────────────────────────────────────────────────────────────────────────
+# EXCLUSIONS
+#
+# §14.5 defines `rules_excluded` as "rule IDs disabled by parameters, with
+# reason". Until v0.17 every manifest in this repo carried an empty list, so the
+# mechanism was specified and never exercised — a schema comment rather than a
+# demonstrated feature. This is the worked example.
+#
+# An exclusion carries four fields. `reason` is one of three classes:
+#
+#   not_yet_applicable — the object the rule checks does not exist yet. The rule
+#                        is correct and would fire correctly; there is nothing
+#                        for it to fire on. Re-enables itself when `review`
+#                        happens. NOT a disagreement.
+#   parameter          — a manifest setting turns it off. Mechanical.
+#   judgment           — the author has read the rule, understood it, and
+#                        declined it. The reason must be arguable, and the
+#                        exclusion must carry a review trigger, because this is
+#                        the class that can be wrong.
+#
+# A `judgment` exclusion with no stated review trigger is not an exclusion; it
+# is an opinion hiding in a config file.
+# ─────────────────────────────────────────────────────────────────────────────
+
+rules_excluded:
+
+  - id: PUB-1
+    reason: not_yet_applicable
+    note: >
+      PUB-1 gates retcon cones crossing a publication boundary. Nothing in this
+      project has reached a reader, so no partition is frozen and the rule has
+      no boundary to guard. Excluding it is not a disagreement with the rule —
+      it is the observation that a `gate | invariant` cannot fire when the
+      condition it gates on cannot exist. At `scale: novel` this project meets
+      exactly one boundary, at the end.
+    review: first release of any partition to any external reader — including a
+      beta read, which freezes a partition just as firmly as publication does.
+
+  - id: CONTRACT-2
+    reason: not_yet_applicable
+    note: >
+      CONTRACT-2 requires every roadmap item to be claimed by at least one
+      chapter and every chapter to claim at least one item. This project has no
+      Roadmap object — §6's authored half was never written, and the derived
+      half has one chapter to derive from. The rule would fire on every chapter
+      for want of a target that does not exist, which is noise rather than a
+      finding.
+    review: when `Roadmap.md` is authored, or at the second chapter — whichever
+      comes first.
+
+# No `judgment` exclusion exists in this project, and that is worth stating
+# rather than leaving to inference: every rule the register carries that CAN
+# apply here IS applied, including the ones currently failing. PILLAR-1 reports
+# six unpaid preconditions; VAL-2 flags an inert valence; MODAL-4 surfaces a
+# high-layer `must` with no world derivation; CONTRAST-1 calls a facet thin.
+# None of those is excluded. A failing check is evidence; a silenced one is not.
+#
+# The `judgment` class is documented above and unused on purpose — the mechanism
+# has to be able to express a real disagreement, and this project does not have
+# one yet.
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# EDITION-CHECK DISCIPLINE
+#
+# `nas_edition` is re-verified against NAS.md's header at every exchange with a
+# consumer of this manifest, and never trusted from a summary document. This
+# rule exists because the field silently lagged the spec by two versions and was
+# caught externally — the same defect class as ledger 0013's SOFTWARE.md drift,
+# in the artifact specifically designed to prevent it.
+#
+# A pinned edition that nobody re-verifies is a hand-maintained projection, and
+# GRAPH-2 says what happens to those.
+# ─────────────────────────────────────────────────────────────────────────────

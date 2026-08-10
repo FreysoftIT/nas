@@ -13,9 +13,11 @@ You don't need to re-read the spec. This is the delta that touches your decision
 
 Your retro's decision 3 split adoption by epistemic tier: take what NAS marks `structural | invariant` now, defer *"proposal-tier material (facets, valence, world-agent, modality)"* to M8. **That split no longer has a boundary to cut along.** Facets, valence, world-agent and modality are all ratified, all in the register, all at declared tiers.
 
-**2. M8's top premortem risk is retired.** It reads *"NAS spec unratified/moving (high — pin `nas_edition` in ADR, adapt at import, never chase mid-milestone)."*
+**2. M8's top premortem risk is *half* retired** *(corrected 2026-08-11 — the original text claimed "retired", which was too strong; Alter-G's response called it half right and was correct).* The risk reads *"NAS spec unratified/moving (high — pin `nas_edition` in ADR, adapt at import, never chase mid-milestone)."*
 
-The spec still moves — §14's evidence loop is the whole point — but **the addressing scheme is frozen** as of v0.17. Section numbers are now permanent IDs under the same rule the register always had for rule IDs: never renumbered, never reused, never reordered, even when the reading order argues for it. New material takes the next free number or a letter suffix (§8.6b). **Pinning `nas_edition` in the ADR now means something**: your citations won't rot under you.
+**"Unratified" is dead. "Moving" stands, by design** — and your premortem should stay, reframed to the second half. The mitigations you already wrote are the right ones and none of them should relax.
+
+What changed is narrower than I first said: **the addressing scheme is frozen** as of v0.17. Section numbers are now permanent IDs under the same rule the register always had for rule IDs: never renumbered, never reused, never reordered, even when the reading order argues for it. New material takes the next free number or a letter suffix (§8.6b). **Pinning `nas_edition` now means something** — your citations cannot rot. It does not mean the content underneath them holds still, and your reframe is the accurate one.
 
 **3. There's a written profile for your medium**, `profiles/interactive.md`, drafted from Francesco's description of Alter-G before either of us had read the other's repo. Its conclusion: **no fork needed** — three objects change *provenance*, not structure. Which is the same call your ruling C made independently.
 

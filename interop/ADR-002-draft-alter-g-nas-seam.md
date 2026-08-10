@@ -1,6 +1,18 @@
 # ADR-002 (DRAFT) — the Alter-G / NAS seam
 
-**Status:** ⬜ **Draft for joint sign-off.** Not accepted. Lands in `G-Heroes/g-docs/decisions/002-alter-g-nas-seam.md` once both owners sign.
+> ## ⚠ SUPERSEDED IN PART — read this first
+>
+> **This draft was written before the beside-not-underneath decision and was never revised before being sent.** Alter-G's team caught the consequence on first read:
+>
+> > *"His adoption table quietly exceeds his own proposal. Proposal: three small things become shared shape, everything else advisory. ADR-002 §2: ten rule clusters at structural/gate tier… the line moved between his two documents, and that's exactly the drift class his own ledger warns about."*
+>
+> **Correct, and the count was ten clusters against a proposal of three.** The mechanism was not a line creeping — it was a superseded document shipped live alongside its replacement, unmarked. Which is worse: two live documents disagreeing, from one author, hours apart. Same class as ledger 0013's SOFTWARE.md drift, and the first instance to cross a project boundary.
+>
+> **The live document is `NAS-AlterG-seam-proposal.md`. Where they disagree, it wins.**
+>
+> §2 is corrected below to the three structural items. Nothing else is edited — the rest stands as drafted, including the parts that were already right, because a document rewritten to look like it was never wrong teaches nobody anything. Amendment marks show what moved.
+
+**Status:** ⬜ **Draft for joint sign-off — §2 amended 2026-08-11.** Not accepted; per Alter-G's response, signature comes *after* their requirements dossier lands (their M2), so this is an input to that negotiation and not a thing to be signed around. Lands in `G-Heroes/g-docs/decisions/` once both owners sign.
 **Deciders:** Jimmy G Palma (Alter-G) · Francesco (NAS) — *both signatures required; neither side ratifies alone*
 **Drafted:** 2026-08-10, Francesco, from ADR-001's `nas-core / alter-g-bespoke` table and NAS v0.17
 **Supersedes nothing.** Extends ADR-001, which stands.
@@ -41,22 +53,21 @@ Which is NAS's own Seam rule applied to the collaboration: **depend on the surfa
 
 **NAS never decides a beat.** It has no director policy, no fairness model, and no opinion about pacing — and per NAS §12 it flags and computes but never auto-fixes story content. **Alter-G never redefines a NAS object.** If a NAS object doesn't fit, it is reported as a NAS ledger entry, not forked in place.
 
-### 2. What Alter-G adopts from NAS (`nas-core`)
+### 2. What Alter-G adopts from NAS — **three items** *(amended 2026-08-11)*
 
-Extends ADR-001's table. **Everything here is at NAS `structural` or `gate` tier and pinned to an edition:**
+**Three, and only three.** The filter: *nothing enters this table because NAS wants it — only shape Alter-G would plausibly want with NAS deleted.*
 
-| NAS element | Rules | Replaces / lands on |
+| NAS element | Rules | Cost to Alter-G |
 |---|---|---|
-| Deltas-only, no authored state snapshots | SCENE-3, §4.1 | ADR-001's spine — already adopted |
-| Views are derived; a view never collapses a fact | GRAPH-2, **GRAPH-9** | `world/*`, `cover.md` derived fields |
-| Every generated view records its query (selection/scope/anchor/audience) | **GRAPH-4** | the verifier's cross-file check — see §4 below |
-| Contradiction triage: fact-conflict / query-divergence / modality-retype | §7.5 | verifier check 5 gains a verdict vocabulary |
-| **Two-place modality** — canonical `is/must/saw` + *read* modality per observer | **MODAL-1** | `truth.md` ↔ dossier relationship (see §3) |
-| Break price by node altitude | MODAL-3 | world law vs institutional rule vs personal vow |
-| Every move names an agent; no ambient transitions | **VAL-1** | board/dormant thread advancement |
-| Per-entity chronological fold; intervals, cloud anchors | TIME-1, **TIME-2** | verifier re-derivation scope |
-| Modifiers: derived at resolution, recorded, **never magnitudes** | MOD-1, **MOD-2** | resolution — compatible with invariant 4 by construction |
-| Composition level derived from `member_of` | GRAPH-8 | cast tiers, org structure |
+| Deltas-only, no authored state snapshots | SCENE-3 | **zero** — ADR-001 already rules it |
+| Views are derived **and record their query** (selection / scope / time anchor / audience) | GRAPH-2 + **GRAPH-4** | derived views already ruled; the query header is new — one header line per generated view |
+| **Two-place modality** — canonical `is/must/saw` on statements, *read* modality per holder | **MODAL-1** | one enum on `truth.md` statements, one field per cast-truth line. **Zero fields on dossiers** — see §3 and the invariant-6 constraint |
+
+**Removed from this table in the amendment**, and now **advisory** — available through the scope manifest, adopted only if Alter-G finds them useful, ignorable without consequence:
+
+GRAPH-9 · §7.5 triage vocabulary · MODAL-3 · VAL-1 · TIME-1 · TIME-2 · MOD-1 · MOD-2 · GRAPH-8
+
+Several of those are things Alter-G's response indicates it wants anyway — VAL-1 is already how their board is designed, and the §7.5 triage is the thing that diagnoses their S2. **That does not make them structural.** A rule Alter-G adopts because it is useful is an advisory rule that got taken up; a rule in this table is one Alter-G cannot decline without breaking the seam. Only three qualify, and conflating "we want this" with "the contract requires this" is how the count reached ten in the first place.
 
 ### 3. The load-bearing adoption: modality on the dossier firewall
 
