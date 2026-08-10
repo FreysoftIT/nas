@@ -1,22 +1,27 @@
 # Scope manifest — NAS §14.5
-project: the-door
-nas_edition: v0.14
-scale: novel            # flash | short | novella | novel | series
-mode: hard              # hard | soft | mixed (per-scope) — §1.1
+project: pro-league
+nas_edition: v0.15
+scale: novel
+mode: hard                        # hard | soft | mixed (per scope)
 
 scope:
-  contract_stack: {containers: 0}       # no act layer yet; chapters direct
+  contract_stack: {containers: 1}       # acts are active — three fixers, one league
   knowledge_scopes:
-    observers: [reader, faction:the-practice, character:*]
+    observers: [reader, faction:the-league, character:*]
   pillars: {active: true}
   world_graph:
-    layers: [physics, biology, history, institutions, characters]
-    decree_threshold: institutions      # §2.2 — decrees free below, flagged at/above
+    layers: [physics, biology, economics, institutions, characters]
+    decree_threshold: institutions
   composition:
-    root: world_root                    # WORLD-2 — created here, not authored;
+    root: world_root                    # WORLD-2 — created here, never authored;
                                         # holds field + invariants only (WORLD-3)
-    bands: [individual, institution, world]   # names for derived member_of depth (GRAPH-8)
+    bands: [individual, crew, institution, world]
   cut: {active: true}
-  time: {anchors_may_be_clouds: true}   # TIME-1
+  time: {anchors_may_be_clouds: true}
+
+# The one thing this project exists to stress that the door could not:
+#   three load-bearing agents whose valences foreclose ACROSS agents.
+#   See queries.md — conflict is a graph property here, not an authored beat.
+emphasis: horizontal
 
 rules_excluded: []

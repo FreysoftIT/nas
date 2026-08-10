@@ -1,27 +1,42 @@
 ---
 id: cut_main
-# Telling order — §10. Scenes NEVER declare their own position (SCENE-2);
-# they receive it from here. Editing this file re-runs TIME-3's suite.
+# Telling order — §10. Scenes never declare their own position (SCENE-2);
+# they receive it here. Editing this file re-runs TIME-3's suite.
 order:
-  - {position: 1, scene: null, note: "unwritten — pays pillar_01.preconditions[2] (obedience established)"}
-  - {position: 2, scene: null, note: "unwritten"}
-  - {position: 3, scene: null, note: "unwritten — pays pillar_01.preconditions[1] (wren->tal trust ≥ 0.5)"}
-  - {position: 4, scene: null, note: "unwritten"}
-  - {position: 5, scene: null, note: "unwritten — pays pillar_01.preconditions[0] (reader confidence in the rule)"}
-  - {position: 6, scene: null, note: "unwritten"}
-  - {position: 7, scene: ch03.s02, story_time: {start: "night 1, ~02:00", end: "night 1, ~04:40"}}
+  - {position: 1,  scene: null, note: "unwritten — pays reader.confidence(fact_league_terms)"}
+  - {position: 2,  scene: null, note: "unwritten — pays relationship(marek->kes).trust >= 0.7"}
+  - {position: 3,  scene: null, note: "unwritten — the ascent; binds val_marek_standing"}
+  - {position: 4,  scene: null, note: "unwritten"}
+  - {position: 5,  scene: null, note: "unwritten — pays pursuit(val_kes_out).state == pursued"}
+  - {position: 6,  scene: null, note: "unwritten — pays relationship(kes->marek).trust <= -0.4"}
+  - {position: 7,  scene: null, note: "unwritten — the job. Offstage in the telling."}
+  - {position: 8,  scene: ch07.s01, story_time: {start: "night, 03:12", end: "night, 03:31"}}
 ---
 
 ## Note
 
-Seven positions, one scene. The six nulls are not placeholders — they are
-**derived obligations**: three of them carry a named `pillar_01` precondition
-that PILLAR-1 currently reports unpaid, and the system produced that list rather
-than a writer outlining it.
+Eight positions, one scene. **Six of the seven nulls carry a named `pillar_01`
+precondition**, and the system produced that list rather than a writer outlining
+it — same mechanism as the door's Cut, at twice the width because the pillar's
+preconditions are about *edges between agents* rather than one protagonist's
+interior.
 
-The Cut is where the seed's alternative shape lives, too. Nothing prevents
-`ch03.s02` from being moved to position 1 and the training folded back as
-flashback — same graph, same chronology, same deltas, and the reader's record
-would then hold *she held the door* before it holds *she was taught to*. That is
-an edit, not a rewrite, and it is only available because no scene knows where it
-is (§10).
+## The shooting is not in the Cut
+
+`fact_who_shot_him` collapses at position 8, in the reader's record only. The
+**event** sits at position 7 in story chronology and has no scene — it happens
+offstage, and the reader arrives after it.
+
+That is the two-fold rule (§10) doing the thing it was locked for in v0.4:
+world-state deltas fold over **story chronology** (the shooting, then), the
+reader's record folds over **telling order** (the aftermath, now). Marek's
+record never updates at all — he is on the ground and does not see her leave.
+
+Three streams, three different positions for one event, no special case.
+
+## What the Cut makes available
+
+Moving `ch07.s01` to position 1 and folding the ascent back as flashback would
+open the book on a man bleeding out under the hands of his rival — same graph,
+same chronology, same deltas, entirely different reader experience. An **edit**,
+not a rewrite, and available only because no scene knows where it is.

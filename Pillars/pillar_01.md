@@ -1,41 +1,79 @@
 ---
 id: pillar_01
-moment: "Wren holds a door shut while her brother screams on the other side"
-given_material: "the fourteen words — the seed (NAS §0.1). No prose preceded them."
+moment: >
+  The fixer made the pro league. Now he is in the street, riddled with gunshot
+  wounds, put there by his top edgerunner — the one he mentored. And his
+  staunchest rival is the one trying to save his sorry skin.
+given_material: "the sentence. No prose."
 
 position:
-  cloud: "late act 1"
-  bound_to: ch03.s02          # binding = the collapse. Bound v0.14.
-order: {after: [], before: [pillar_02]}
+  cloud: "act 2 midpoint — the bound valence and its consequence in one image"
+  bound_to: null
+order: {after: [pillar_00_the_ascent], before: []}
 
-preconditions:                # radiate BACKWARD — these ARE the first act
-  - reader.confidence(fact_threshold_rule) >= strongly_implied
-  - relationship(wren->tal).trust >= 0.5
-  - character(wren).obedience_established == true
+preconditions:                  # radiate BACKWARD — derived, not outlined
+  - valence(val_marek_standing).bound_by != []        # he must actually have made it
+  - relationship(marek->kes).trust >= 0.7             # the mentorship must be real
+  - relationship(kes->marek).trust <= -0.4            # and already broken on her side
+  - relationship(marek->oyo).kind == adversarial
+  - reader.confidence(fact_league_terms) >= strongly_implied
+  - pursuit(val_kes_out).state == pursued             # she must have been trying to get out
 
-postconditions:               # constrain FORWARD
-  - world: fact_tal_condition = collapsed
-  - world: fact_tal_lucidity = collapsed
-  - character: wren.carries("held the door")
-  - pursuit(val_wren_justification).state = pursued   # the book starts here
+postconditions:                 # constrain FORWARD
+  - agent: char_marek, carries: "was shot by the one he made"
+  - agent: char_oyo, carries: "chose to keep him alive, and knows what it cost"
+  - valence: val_oyo_win, status: preserved-but-contaminated   # see below
+  - valence: val_oyo_ledger, status: foreclosed       # Marek now owes him
+  - valence: val_oyo_standing, status: foreclosed     # he kept alive the one man
+                                                       # who makes him not the last
+  - world: fact_who_shot_him = collapsed              # for the reader only — see scopes
 
-status: bound
+status: floating
 ---
 
-**PILLAR-1 check at bound position (ch03.s02):**
+## Note on the precondition set
 
-| Precondition | Status | Paid by |
-|---|---|---|
-| reader.confidence(fact_threshold_rule) ≥ strongly_implied | ⚠ **UNPAID** | ch01–ch02 do not exist |
-| relationship(wren→tal).trust ≥ 0.5 | ⚠ **UNPAID** | no prior scene establishes it |
-| character(wren).obedience_established | ⚠ **UNPAID** | no prior scene establishes it |
+Six preconditions, and **four of them are relationship states across three
+agents.** The door's pillar had three, all internal to one character.
 
-**The gate fails, and it is supposed to.** This is the system working: the pillar
-is bound to a rendered scene whose backward obligations have not been written.
-Three unpaid preconditions are three scenes owed, derived rather than outlined —
-exactly what §5 claims pillars do.
+That is the horizontal axis made visible at the cheapest possible resolution:
+the same object (`preconditions`), asked of a structure with more than one
+person in it, produces an obligation list about *edges* rather than about a
+protagonist's interior. Under §5, each of those six becomes work assigned to
+earlier chapters — so this pillar has already outlined half an act without
+anyone writing an outline.
 
-The scene was rendered anyway, deliberately, to close META-1 (§16.3): fourteen
-versions of methodology and no prose. Recorded here rather than suppressed, per
-§14.6 — `intentional_break: PILLAR-1-EX1, "render one scene out of order to
-prove the system produces prose"`.
+## The asymmetry that does the work
+
+```
+relationship(marek->kes).trust  >=  0.7      # he still believes in her
+relationship(kes->marek).trust  <= -0.4      # she stopped believing in him
+```
+
+§8.2 has declared since v0.2 that a relationship is a **directed** edge — A's
+view of B is not B's view of A. The door never exercised it; there was nobody
+to disagree with. Here the gap *is* the pillar: he is shot by someone he still
+trusts, which is why the image lands, and it is representable as two numbers
+with opposite signs.
+
+## What the pillar costs the rescuer
+
+Three of the six postconditions belong to Oyo, and two of them are foreclosures.
+**Kneeling in that street closes two of the three things he wants**, and the
+cheapest available option is to walk. He does not.
+
+The third is worse than a foreclosure: `val_oyo_win` survives *contaminated*.
+It requires a clean win — not outliving him, not collecting on him — and a man
+who is only alive to lose because you kept him breathing cannot be beaten
+cleanly again. **The act that preserves the valence is the act that spoils it.**
+
+None of that was authored as a character beat. It fell out of fixing a VAL-4
+lint on `char_oyo`, which is the kind of thing the lint exists to cause.
+
+## The reader/character split
+
+`fact_who_shot_him` collapses **for the reader** at this pillar and stays open
+for Marek, who is unconscious. That is §3 doing its job: one fact, two observer
+records, a gap that is the next act's engine. The two-fold rule (§10) applies
+without a special case — the world-state delta lands at the shooting, the
+reader-record delta lands here, and Marek's record does not update at all.

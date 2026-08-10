@@ -1,0 +1,22 @@
+# Scope manifest — NAS §14.5
+project: the-door
+nas_edition: v0.14
+scale: novel            # flash | short | novella | novel | series
+mode: hard              # hard | soft | mixed (per-scope) — §1.1
+
+scope:
+  contract_stack: {containers: 0}       # no act layer yet; chapters direct
+  knowledge_scopes:
+    observers: [reader, faction:the-practice, character:*]
+  pillars: {active: true}
+  world_graph:
+    layers: [physics, biology, history, institutions, characters]
+    decree_threshold: institutions      # §2.2 — decrees free below, flagged at/above
+  composition:
+    root: world_root                    # WORLD-2 — created here, not authored;
+                                        # holds field + invariants only (WORLD-3)
+    bands: [individual, institution, world]   # names for derived member_of depth (GRAPH-8)
+  cut: {active: true}
+  time: {anchors_may_be_clouds: true}   # TIME-1
+
+rules_excluded: []
