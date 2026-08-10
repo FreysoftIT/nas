@@ -1,11 +1,13 @@
 # Narrative Architecture System (NAS)
 
-**Working draft — v0.12 (July 2026)**
+**Working draft — v0.14 (August 2026) — ratification pass in progress**
 *Methodology for structured fiction development. This document is also the spec for the writing layer of the surrounding software; project-level features (kanban, panels, dashboards, session UX) wrap NAS but are out of scope here — see `SOFTWARE.md` for the architecture seed of the tool itself.*
 
 Restructured from v0.2 (archived at `Archive/v0.2_NAS.md`) in v0.3; v0.4 adds the Evidence Loop, the canon-drift model, rules derived from the Field Atlas, and written proposals for every open question.
 
 **Status: incomplete draft, brainstorm ongoing.** Sections marked ⚠ OPEN are unresolved. Blocks marked **PROPOSAL (unratified)** are worked-out defaults awaiting the author's yes/no — they exist so the brainstorm accumulates on paper instead of evaporating between sessions. Everything else is locked-for-now (revisable, but load-bearing).
+
+**How to read it:** the document builds one story, from one sentence, in front of you — see §0.1. No mechanic appears before the story has produced the pain it solves.
 
 **Changed in v0.3:** Blank Page Problem (§0); design/render thesis (§1); Observation Principle (§2); KnowledgeScope (§3); contract stack (§4); Pillars (§5); Roadmap (§6); World Graph (§7); scene interface/implementation split (§8.3); pipeline reopened (§9); time model drafted (§10).
 **Changed in v0.4:** canon drift — the two walls (§2.5); independent-change test + Hyrum's Law on the scene seam (§8.3); the Cut as first-class telling order (§10); the Evidence Loop — register, claims, ledger, scope manifest (§14); proposals on all open questions (inline + §15).
@@ -17,6 +19,14 @@ Restructured from v0.2 (archived at `Archive/v0.2_NAS.md`) in v0.3; v0.4 adds th
 **Changed in v0.10:** Facets — the unit of presentation (§3.4): observers never touch entities, only facets; facet collision as scene generator; intimacy as facet-granting; the single-facet lint (FACET-1, blandness diagnostic #2); claim NAS-C11.
 **Changed in v0.11:** the World-Agent and void dynamics (§7.7) — the world is the apex Agent (its physical laws are its invariants; a miracle is a priced `intentional_break`); *horror vacui* — voids are attractors that recruit candidate fillers (the power vacuum, generalized); Maslow as valence ladders — filled voids spawn successors; the sagging middle as a valence-succession gap (NAS-C12); WORLD-1.
 **Changed in v0.12:** canon dynamics — triangulated from the oldest running canon systems (scripture, law; §17 gains the canon-&-interpretation lineage): statement modality *is / must / saw* (§7.8 — untyped statements get retyped by their readers; promotion/demotion as priced operations; MODAL-1); the authored query (§7.5 — views record their provenance, GRAPH-4; contradiction triage: fact-conflict / query-divergence / modality-retype, NAS-C13); publication as canon closure (§11.1 — frozen partitions, obligations flow frozen→open, forward-only fixes, PUB-1).
+**Changed in v0.14 (ratification pass, in progress — this line accumulates):**
+— §15 **#6 ratified, amended:** the edge vocabulary freezes in two namespaces, causal and structural, with distinct traversal semantics (§7.1, §7.6; GRAPH-5). Resolves the ambiguity that let `member_of` enter in v0.5 while the freeze was believed to hold.
+— §15 **#15 ratified, amended twice:** valence becomes a *neutral primitive* — an unsatisfied condition plus a disposition, with `kind` as attribution carrying no mechanics (§7.6). The prior desire/core-wound framing smuggled a humanist psychology into a structural primitive and broke on the first machine agent. And the **action layer** was found missing: a valence is a state, and wanting is not doing — §8.5 adds pursuit / attempt / move (VAL-1/2/3). Valence carries **no polarity** — every "away from" restates as a pull toward something else — so coexisting incompatible pulls *are* tension, computed through `forecloses` (VAL-4, blandness diagnostic #3). Three defects fell out: §8.1's `arc` and `internal_contradiction` had both been authored state snapshots in violation of §4.1 and SCENE-3 since v0.2, and NAS-C12 was unmeasurable as written. Modifiers reserved, deliberately deferred.
+— §15 **#23 ratified, amended in four places:** the query carries four named dimensions, and **query-divergence must report which one diverged** — §0's own opening bug turns out to be a time-anchor divergence sitting on top of a fact-conflict. **Modality-retype** becomes sharply definable against v0.14's two-place modality: the view's stated query does not match the modality it presents. **Query reconstruction on import is authored or assisted, never automatic** (NAS-C13's protocol amended to admit it). New boundary rule GRAPH-9 — **queries read, scenes write**; a projection never collapses a fact.
+— §15 **#22 ratified, amended in four places:** the modality set is frozen at three (a prophecy is `saw` unless it binds, and which it is, is the story). **Break price now scales with the altitude of the node holding the law** (MODAL-3) — `must` had been conflating physical law with agent invariants, which made Wren's arc read as a miracle. **Modality is two-place** — canonical on the statement, read per observer — and general rather than artifact-only, since world-as-agent is the cleanest instance. **In-world retyping split from authorial retyping.** MODAL-1 split into structural + MODAL-2 gate; MODAL-4 added at judgment tier — high-layer `must` deriving from no world node, a made law presenting as a natural one.
+— §15 **#21 ratified, amended twice:** the apex exists **by construction** — a manifest-created root of the `member_of` DAG (WORLD-2), because GRAPH-8's derived levels do not guarantee a single top. Then, on review: **the world is a *phantom agent*** — treated as an agent by the agents inside it, taking no actions of its own (WORLD-3). "The world is a character" was metaphor, which §0's design stance forbids; recast as an observer attestation it compiles, and it removes the last place uncaused change could hide. *Horror vacui* restated — the void does not pull, agents are drawn. Upward causation named alongside downward in §7.6, closing the loop that explains an institution outliving its reasons. **WORLD-1 retired as subsumed** — its three clauses are each enforced by VAL-1, SCENE-3 and #16, leaving nothing for it to check, and PATTERN-1 does not exempt the register from its own test.
+— §15 **#14 and #16 ratified together, amended:** composition levels with `level` **derived** from `member_of` depth (GRAPH-8 — the third GRAPH-2 violation of the pass) and the manifest naming the bands; `emergent_properties` **dropped** as an uncheckable container, its value relocated to the two lints (GRAPH-6/7). Agent generalization ratified at every level. The **field** ratified as a property of the scene rather than a relation to an act, so it does not pre-empt modifiers; **a collective node holds two roles — agent and field** — which states downward causation without opening a gap for uncaused change. OBS-2 amended to take the field as input.
+**Changed in v0.13:** the document became **diegetic** — §0.1 introduces the seed pillar, and every mechanic now arrives when the story demands it. All worked examples were rebuilt on that seed, so the document is legible with nothing else on the desk; the reference corpus is demoted from example material to marked evidence asides. §14.2 gains a `rests on` column exposing which rules were promoted to `invariant` while their founding proposal is still unratified. Defect sweep: the §7.1 trajectory mash-up, the stale `nas_edition`, §15 row 11.
 
 ---
 
@@ -45,6 +55,33 @@ NAS is the fix: make story state **explicit and externalized**, so the writer's 
 **Design stance (unchanged from v0.2):** every concept in NAS must compile to a data model — properties, operations, invariants. If a concept can only be expressed in metaphor, it doesn't belong here.
 
 **Order of construction:** system first, software second. NAS is a *language* for stories; the software is its compiler and IDE. Tooling built without the semantic layer can only ever be a prettier file cabinet. Conversely, the system must remain usable *without* the software — markdown, Word, paper — the way valid code can be written in Notepad: painful, but well-defined.
+
+### 0.1 The Seed — and how to read this document
+
+Everything below is built from one sentence.
+
+> **A woman holds a door shut while her brother screams on the other side.**
+
+That is a **pillar** (§5): a vivid fixed moment that exists before any outline, the kind of thing a writer is haunted by years before there is a book. It is all this document starts with. No world, no genre, no names, no plot — nothing to look up, nothing you were supposed to have read first.
+
+**The reading contract.** No mechanic in this document appears before the story has produced the pain it solves. Each section opens on something the story has just made unholdable, introduces the object that holds it, and then shows what that object *generates* — because the payoff of externalizing state is not tidiness, it is that the map starts asking questions you did not think to ask. Choices get made on the page and recorded, including the ones refused. One of them is taken early and goes badly on purpose (§2.4): a system demonstrated only on its successes is a sales pitch.
+
+So the story is not an illustration of NAS. It is the thing NAS is being used on, in front of you, from fourteen words to a graph.
+
+**What is already canon.** Before any machinery — read the sentence again and count what it has committed you to.
+
+- **holds** — not locks, not bars. It is her body, it is ongoing, and she could stop at any second. Every moment is a re-decision. That is an enormous character fact, delivered by one verb.
+- **her brother** — the price was set before you knew what you were buying.
+- **screams** — he is alive, conscious, and he knows she is there.
+- **the reason is missing** — not undecided. *Absent.*
+
+Four commitments, three of them smuggled in by grammar, none of them written down anywhere. That is §0's problem at sentence one: the writer is already the runtime.
+
+The fourth is the book. A void that size does not sit still (§7.7) — or rather, nothing about it moves at all, and everything near it does: every later choice this document makes will be drawn toward filling it.
+
+**Two ways to read.** The body of this document is the build, in the order the story forces. The rules register (§14.2) is the same content as a flat, scannable contract. Read the body to learn the system; read the register to implement it.
+
+*A note on the reference corpus.* Passages marked *(Reference corpus: …)* cite a real ~79,000-word book bible — the one whose drift opens §0 — as **evidence**, never as example material. Each is written to be legible without it. Where the corpus is named, it is called the Sithernis corpus; it is the author's own, and no part of this document depends on having seen it.
 
 ---
 
@@ -111,7 +148,9 @@ The canon-engine, in full. Everything about *what is true* hangs off this.
 
 > **Nothing is canon until a scene observes it.** Every story fact — a world detail, a character's state, a pillar's position — is a *constraint cloud*: a range of allowed values, narrowed by entanglement with already-collapsed facts, but still free. The scene is the measurement apparatus. Rendering a scene collapses every fact it touches into canon, and the collapse propagates along causal edges — narrowing neighboring clouds without collapsing them.
 
-Concretely: canonizing "the city sits at the river ford" does not collapse the Duke's wealth source, but it *narrows* it — the cloud shrinks around toll rights and trade. The Duke's arrogance (character side) is entangled with his wealth (world side).
+Concretely, in the seed: *screams* collapsed one fact — he is conscious — and that collapse decides nothing about what happened to him, but it narrows it hard. Whatever is behind that door left him able to scream and left her unwilling to open it. The cloud shrinks around conditions that change a person without silencing them. Her refusal (character side) is entangled with his condition (world side), and neither was authored: the verb chose them.
+
+The system needs handles before it can hold anything, and **naming is itself a collapse** — the cheapest one available and the first this document makes. Call her **Wren**, and her brother **Tal**. Nothing else about them is decided; two `id` fields now exist where before there was only grammar.
 
 ### 2.1 Two observable families, one graph
 
@@ -120,7 +159,7 @@ The story system has two entangled families of observables:
 - **World state** — external: facts, places, factions, institutions, physical law
 - **Character state** — internal: psychology, knowledge, relationships, arc position
 
-One graph. Causal edges run within and *between* families (the ford → trade wealth → the Duke's power → the Duke's arrogance). A scene typically collapses values in both families at once.
+One graph. Causal edges run within and *between* families — in the seed, whatever happened to Tal → the rule that says a door like that stays shut → what Wren was taught about that rule → what Wren is willing to do with her own body. Two of those nodes are world, two are character, and the chain runs straight through the family boundary as if it weren't there. A scene typically collapses values in both families at once.
 
 ### 2.2 Collapse mechanisms
 
@@ -139,7 +178,9 @@ v0.2 demanded entry state *equal* last exit state. v0.3 relaxes it: between appe
 
 This legitimately allows offscreen evolution. When the answer is yes-but-barely, the system prompts the writer to backfill the implied offscreen event.
 
-**PROPOSAL (unratified) — the field term:** behavior is a function of internal state *and* ambient field: `behavior = f(agent, field)`. The reachability envelope takes the scene's declared field (§8.3) as input — the same character in a different field (stripped of their culture, institution, social signals) legitimately behaves off-baseline. The system then distinguishes **inconsistency** (a bug) from **field displacement** (a story — the fish-out-of-water is a computable situation). See §7.6 for the model behind this.
+**The field term — ratified v0.14.** Behaviour is a function of internal state *and* ambient field: `behaviour = f(agent, field)`. The reachability envelope takes the scene's declared field (§8.3) as input — the same agent in a different field, stripped of their institution and social signals, legitimately behaves off-baseline. The check therefore distinguishes **inconsistency** (a bug) from **field displacement** (a story — the fish-out-of-water becomes a computable situation rather than a continuity error to argue about). OBS-2 is amended accordingly; see §7.6 for the model behind it.
+
+*The field is a property of the scene, not a relation to an act.* It exists whether or not anyone attempts anything. That is why ratifying it does not pre-decide the deferred modifier layer (§8.5): a modifier is the *application* of a condition to a specific attempt, and the field is one thing a modifier may later cite.
 
 ### 2.4 Retcon = re-opening a collapsed measurement
 
@@ -151,7 +192,13 @@ A retcon re-opens a collapsed fact. Its cost is proportional to the **entangleme
 4. Writer visits each stale node: confirm still-valid, or rewrite.
 5. Cone empty → retcon `propagated`.
 
-Causal edges make retcons *semantic*, not just referential: move the city off the river and the system doesn't say "these scenes mention the city" — it says "the Duke's wealth was *justified by* the ford and now needs a new justification."
+Causal edges make retcons *semantic*, not just referential — and the seed is about to demonstrate this at the author's expense.
+
+**The first real collapse, and the deliberate mistake.** Why can't the door open? Take the obvious answer: **the rule is physical.** A person in Tal's condition genuinely cannot cross a threshold they were not admitted through. It is clean, it is cheap, and it makes Wren blameless. This document is going to regret it.
+
+Because the story worth writing is the other one — Wren was *taught* the rule, by someone, and it isn't true. Reopening that collapse is not an edit to one node. The system walks the cone: Wren's blamelessness derived from it; the authority of whoever taught her derived from it; every scene in which she holds without hesitating derived from it. It does not report *"these scenes mention the rule."* It reports *"Wren's refusal was **justified by** the rule and now needs a new justification"* — and her refusal is the spine of the book. The cheap collapse cost more than the entire cast.
+
+That is the demotion operation of §7.8 (`must` → `saw`), priced. The mistake is left standing in this document on purpose: made here, walked here, paid for in §7.8. A methodology demonstrated only on the choices that worked is a sales brochure.
 
 **PROPOSAL (unratified) — trivial retcon fast lane:** the cone is always computed (never skipped), but auto-propagates when it is empty, contains only the target, or touches only nodes that have not yet entered render. Cheap edits stay cheap; the safety net never lowers.
 
@@ -172,9 +219,11 @@ Drift is **silent** (both sides stay internally consistent — the corpus's 1763
 
 ## 3. Observers and Knowledge Scopes
 
-The reader is not the only observer. **Every knowledge-bearing entity is an observer with its own measurement record**: the reader, each character, each faction, "the magical public," "the human world." The writer's record is canon; every other record is a lagging, filtered, possibly *wrong* subset.
+**The pain.** One fact — *why the door must stay shut* — and already three incompatible holdings of it. Wren holds it as a certainty. Tal either does not know it, or knows it and is asking her to break it anyway; those are different books, and nothing in the graph yet distinguishes them. The reader, at this moment, holds nothing at all. One value, three records that disagree — and none of the disagreement is representable as a property of the fact itself.
 
-Real corpora already do this informally — "[this information is unknown to the magical world]", "only 3 individuals possess complete knowledge", explicit Creator-Knowledge vs. Surface-Knowledge sections. NAS makes it a first-class object:
+The reader is not the only observer. **Every knowledge-bearing entity is an observer with its own measurement record**: the reader, each character, each faction, each named public — anything that can be wrong on its own. The writer's record is canon; every other record is a lagging, filtered, possibly *wrong* subset.
+
+*(Reference corpus: hand-written bibles already do this, informally and unenforceably — prose annotations like "unknown to the magical world," "only 3 individuals possess complete knowledge," and separate Creator-Knowledge vs. Surface-Knowledge sections. The concept is universal; the representation is a comment, and a comment cannot be queried.)* NAS makes it a first-class object:
 
 ```yaml
 observer: reader | character_id | faction_id | scope_label
@@ -224,7 +273,11 @@ Nothing exists in a vacuum: **identity is differential** — a property is only 
 | Flatline pacing | Runs of same-temperature/same-weight beats — perception adapts; the signal is the derivative, not the level (§9.2) | new |
 | Delta-less scene | A scene that differentiates nothing | founds the existing flag: such a scene narratively *does not exist* |
 
-*Worked examples from the reference corpus: mage-bane zones make ambient mana perceivable by its absence; human mages are defined by lack ("blank" genetics); the three-generation Sithernis structure is a controlled contrast experiment — one research program swept across three values (heal / weaponize / redeem). Cassandra means nothing without Orion.*
+**In the seed.** The contrast that makes the image work is the one that isn't on the page: **the door is not locked.** Wren's resolve is perceivable only against the unbarred alternative she is refusing every second. Bar the door and she becomes a bystander — the trait vanishes, though nothing about her changed. *Her brother* is there for the same reason: the relation exists to be the thing the refusal costs. Both are contrast events doing structural work, and neither is a property of anyone.
+
+The lints bite immediately. Declare Wren *compassionate* and never spend anything for it, and the trait is authorial headcanon (Unobservable trait). And the threshold rule — the law the whole book turns on — is **invisible until something crosses one.** A world feature with no exception is air; it becomes perceivable only by its violation, which means the story owes the reader a crossing.
+
+*(Reference corpus, same shape independently: mage-bane zones make ambient mana perceivable by its absence; human mages are defined by a lack — "blank" genetics; a three-generation structure functions as a controlled contrast experiment, one research program swept across three values, heal / weaponize / redeem. In each case the property was legible only against its own negation.)*
 
 **PROPOSAL (unratified) — reread model:** v1 models the first read only. The rereader's record is *free*: it is full canon projected at each telling position — a generated scope, not an authored one. Rereader irony ("she says X, and on reread you know why") = the computed gap between full-canon-at-position and first-read-record-at-position. Costs nothing extra given the machinery; resolves v0.2's open question by construction.
 
@@ -234,15 +287,21 @@ Nothing exists in a vacuum: **identity is differential** — a property is only 
 
 Observers never touch entities. They touch **facets** — the aspect an entity presents to a given audience at a given time. KnowledgeScope tracks *facts known*; the facet is the complementary object: *aspects presented*. A character's handler, enemies, subculture, and reader each hold a different projection of her — not merely fewer facts, but a different *presentation*, partially curated by the character (personas and masks are facets that can lie) and partially by the author (what the narrative exposes). The same holds one level up — the world shows the soldier its war facet and the merchant its trade facet — and one level out: **the narrative itself is a facet-selection over the world graph**; the reader contacts only the facets the writing grants.
 
+The seed needs an ID for the body that taught Wren the rule, so it gets one here: **the Practice** — two centuries of people trained to hold doors. §7.6 comes back to what that is; for now it is an audience.
+
 ```yaml
 facet:
-  of: char_lysandra
-  id: facet_professional          # the controlled agent her handler sees
-  presented_to: [char_sterling, faction_intelligence]
-  presents: {properties: [...], methods: {under_pressure: "calm, procedural"}}
-  authenticity: genuine | curated | mask     # a facet may lie
+  of: char_wren
+  id: facet_steady_hand           # the practitioner who does not hesitate
+  presented_to: [faction_the_practice]
+  presents:
+    properties: [competent, obedient]
+    methods: {at_a_threshold: "holds; does not ask why"}
+  authenticity: genuine | curated | mask     # a facet may lie — this one is curated
   granted_in: [scene_ids]                    # when each audience received it
 ```
+
+The generator fires on the first query. Wren presents `facet_steady_hand` to the Practice and something else entirely to Tal — who has known her since before she was trained, and is the one audience her curated face was never built for. **That collision is the seed image.** The door is the two facets meeting.
 
 Mechanics that fall out:
 
@@ -250,7 +309,7 @@ Mechanics that fall out:
 - **Intimacy is facet-granting; betrayal is involuntary facet-discovery.** Relationship deltas gain semantic events (`facet_granted`, `facet_discovered`, `facet_faked`) — "they grow closer" becomes *she showed him the wounded facet, in this scene*.
 - **Character development is facet rotation** — progressively turning the gem, additive per READER-2; the mask-drop is the priced subvert. Per Principle III, a facet only *reads* as a facet against another facet.
 - **The info-dump, re-diagnosed (READER-1):** dumping is showing the whole gem; craft is showing the facet this scene's viewpoint would naturally catch.
-- **The single-facet lint (FACET-1):** a major agent presented identically to every audience is cardboard — blandness diagnostic #2, complementing GRAPH-3's unanchored-psychology check.
+- **The single-facet lint (FACET-1):** a major agent presented identically to every audience is cardboard — blandness diagnostic #2, between GRAPH-3's unanchored-psychology check (#1) and VAL-4's no-foreclosing-pair check (#3, §7.6).
 - **Writer-facing queries:** which facets of X has the reader seen; which declared facets are unshown (the contrast inventory); where are the load-bearing facet gaps between observers (the tension map).
 
 The epistemic guard, which is where this subsection came from: **an observer's record is a record of facets, never of the entity.** Classifying a person — or a character — by one exposed facet is the observer error (fox, hedgehog: both are facet-readings). The system keeps "what X is" (the node) permanently distinct from "what any observer holds of X" (facet records). Interiority is implementation; every audience depends on a surface.
@@ -268,19 +327,19 @@ One pattern, applied fractally: **declare intent in structured form → implemen
 | **Scene** | Frontmatter interface (§8.3): deltas, info ops, setups/payoffs | Prose |
 | **Prose** | — (the render) | — |
 
-Chapter meta-code sketch:
+**The pain.** The seed is a scene. It sits inside a chapter, and that chapter has to *do* something — but "does it work?" is a question no writer can answer before the prose exists, which is exactly when the answer would be cheap. So declare the job first, in a form that can be checked:
 
 ```yaml
-id: ch07
-narrative_function: "Force the alliance; reader learns the wealth's true source"
-claims: [roadmap.arc_lysandra.m3, roadmap.theme_inheritance.challenge]
-contains_pillars: [pillar_03]
+id: ch03
+narrative_function: "Wren holds the door; the reader learns the rule was only ever attested"
+claims: [roadmap.arc_wren.m2, roadmap.theme_obedience.challenge]
+contains_pillars: [pillar_01]
 declared_delta:
-  reader_ops: [reveal: fact_orion_role]
-  relationships: [{edge: lysandra->sterling, trust: +0.3}]
-  stakes: [{id: stake_07, escalate: 1}]
-  world: [collapse: fact_cure_feasible]
-constraints: {pov: lysandra, span: "3 days, Rome"}
+  reader_ops: [reveal: fact_rule_source, foreshadow: fact_tal_condition]
+  relationships: [{edge: wren->tal, trust: -0.6}]
+  stakes: [{id: stake_tal_survival, escalate: 2}]
+  world: [collapse: fact_tal_condition]
+constraints: {pov: wren, span: "one night, the house"}
 ```
 
 **Reconciliation is mechanical:** the fold of the chapter's scene deltas must satisfy the chapter's declared delta. If they don't add up, the chapter hasn't done its job — *known before polishing a word*. This is test-driven chaptering: the declaration is the failing test; scenes are written until it passes. The same reconciliation runs one level up: chapters' claimed contributions must cover the Roadmap.
@@ -305,28 +364,30 @@ Writers do not derive their stories top-down. They start with **vivid fixed mome
 
 A pillar is a **floating contract that eventually binds to a scene**:
 
+The seed is one. It has been a pillar since §0.1 without the word being used:
+
 ```yaml
-id: pillar_03
-moment: "Lysandra discovers her father's role and kills him"
-given_material: "optional pre-written shards — pillars often arrive with prose attached"
+id: pillar_01
+moment: "Wren holds a door shut while her brother screams on the other side"
+given_material: "the fourteen words — nothing else; pillars often arrive with prose attached"
 position:
-  cloud: "late in act 2"          # soft until measured
+  cloud: "late act 1"             # soft until measured
   bound_to: scene_id | null       # binding = the collapse
-order: {after: [pillar_02], before: [pillar_04]}   # order is nearly fixed; position is soft
+order: {after: [], before: [pillar_02]}   # order is nearly fixed; position is soft
 preconditions:                    # radiate BACKWARD as obligations
-  - reader.confidence(fact_orion_role) >= strongly_implied
-  - relationship(lysandra->orion).trust <= -0.5
-  - character(lysandra).restraint_established == true
+  - reader.confidence(fact_threshold_rule) >= strongly_implied
+  - relationship(wren->tal).trust >= 0.5        # the cost has to be real
+  - character(wren).obedience_established == true
 postconditions:                   # constrain FORWARD
-  - world: OMC.status = collapsed
-  - character: lysandra.carries("patricide guilt")
+  - world: fact_tal_condition = collapsed
+  - character: wren.carries("held the door")
 status: floating | approaching | bound | rendered
 ```
 
 **Mechanics that fall out:**
 
-- **Preconditions auto-generate roadmap obligations.** For the snap to land, the reader must care, the restraint must be established, the shadow must be foreshadowed. Every precondition becomes work assigned to earlier chapters — derived, not hand-tracked.
-- **Delta budgets → computable pacing.** Between consecutive pillars, story state must travel from N's postconditions to N+1's preconditions. The chapters in the gap divide that distance. The system can report: *"two chapters remain before pillar_04 and trust still needs to fall 0.8 — this will feel rushed."*
+- **Preconditions auto-generate roadmap obligations.** This is where the seed pays for itself. Those three lines are not description — they are **the entire first act, derived**. The reader must have been taught the rule before Wren invokes it; Wren and Tal must be close enough that the refusal costs something; Wren's obedience must be established early enough that holding is in character and late enough that it still hurts. Nobody outlined that. It fell out of one sentence, and the system assigned it as work to chapters that do not exist yet.
+- **Delta budgets → computable pacing.** Between consecutive pillars, story state must travel from N's postconditions to N+1's preconditions. The chapters in the gap divide that distance. The system can report: *"two chapters remain before pillar_02 and trust still needs to fall 1.1 — this will feel rushed."*
 - **Middle-out authoring.** Top-down (roadmap → chapters) and middle-out (pillars → surrounding tissue) coexist as first-class modes. NAS is not waterfall; it is interpolation between keyframes.
 - **Deleting a pillar is the nuclear retcon** — maximal entanglement cone. Moving one within its cloud is cheap until it binds.
 
@@ -353,42 +414,75 @@ Chapters claim contributions (§4). The system then does **coverage checking**: 
 
 The Story Bible, rebuilt as what it actually is: **a causal graph, not a document collection.**
 
-Evidence from a real corpus: five hand-written documents (character profile, disease system, organization chronicle, timelines) each retell the *same* 5,000-year causal chain from a different node's perspective. The writer hand-computed five projections of one graph — and they drifted. NAS inverts this: **facts live once as nodes; documents are generated views.**
+**The pain — and the payoff.** Everything so far has been bookkeeping: holding what the seed already committed to. The graph is where the system stops recording and starts *generating*, and the seed is about to be interrogated by its own map.
+
+*Why can't the door open?* Four candidate fillers, and the system will not choose:
+
+- something is **with** him
+- something is **in** him
+- something is on **her** side, and the door is protecting him
+- **nothing** — she is wrong
+
+Take the second. Now the harder question, the one that builds a world: *how does she know?* She is holding a door against her brother's screaming; she is running on a rule. Either she has seen this before, or she was **taught** it, or it is simply true. Take *taught* — and a teacher exists who did not exist a paragraph ago. A teacher implies a body of practice; a body of practice implies duration; duration implies everyone who held a door before her and everyone who wrote down why.
+
+Three questions, and the seed has a world. None of it was invented — all of it was *implied*, and the graph is what made the implications ask out loud.
+
+*(Reference corpus: five hand-written documents — character profile, disease system, organization chronicle, two timelines — each retell the same 5,000-year causal chain from a different node's perspective. The writer hand-computed five projections of one graph, and they drifted. The drift was not carelessness; it is what hand-computed projections do.)* NAS inverts this: **facts live once as nodes; documents are generated views.**
 
 ### 7.1 Node
 
 ```yaml
-id: fact_ford_city
+id: fact_threshold_rule
 family: world | character
-layer: geography            # declared layer (§7.3)
-content: "The city sits at the river ford"
+layer: institutions         # declared layer (§7.3) — and this line is the whole book
+content: "One who has changed cannot cross a threshold they were not admitted through"
 status: canon | provisional | open_question
 canonised_in: scene_id | decree(date, rationale)
+modality: must              # claimed as law — see §7.8, where that turns out to be a claim
 edges:
-  derives_from: [fact_river_route]      # B exists because of A
-  constrains: [fact_city_wealth]        # A limits what B can be
-  tensions_with: [fact_rival_port]      # A and B generate friction — plot fuel
+  derives_from: [fact_tal_condition]     # B exists because of A
+  constrains: [fact_wren_training]       # A limits what B can be
+  tensions_with: [fact_tal_lucidity]     # A and B generate friction — plot fuel
 trajectory:                 # optional: facts whose value drifts over time
-  - {t: "~3000 BCE", value: "protective oath: prevent catastrophe through restraint"}
-  - {t: "1500-1800", value: "eliminate practitioners who threaten stability"}
+  - {t: "founding", value: "a precaution taken by people who had seen it go wrong"}
+  - {t: "two centuries on", value: "a law nobody alive has tested"}
 consequence_slots:          # generative TODOs the graph implies but no one authored
-  - "who taxes the ford trade?"
+  - "who was the first to hold, and what did they see?"
+  - "what happens to a practitioner who opens?"
 scopes: [which observers hold this fact, per §3]
 referenced_by: [scene_ids]  # populated by the system, never authored
 ```
 
-**Edge vocabulary is deliberately tiny** — `derives_from`, `constrains`, `tensions_with`. **PROPOSAL (unratified):** keep exactly these three; add nothing until ledger evidence (§14.4) demands a fourth. IDs and edge kinds are never renumbered or reused — retired names stay retired.
+Note what the `trajectory` block just did unprompted: a rule that *drifts from precaution to unexamined law over two centuries* is not a detail, it is the mechanism of the entire betrayal — and it was produced by filling in a schema field, not by having an idea.
+
+**Edge vocabulary is frozen, in two namespaces — ratified v0.14.**
+
+- **Causal edges** — `derives_from`, `constrains`, `tensions_with`. These carry *why a thing is true*. Retcon cones walk these (§2.4).
+- **Structural relations** — `member_of`, and nothing else. This carries *what a thing is part of* (§7.6). Structural relations are followed for scope and for the fold; **they are never walked for staleness.** Moving a member between collectives does not stale everything the collective caused.
+
+Neither namespace grows without ledger evidence (§14.4). IDs and kinds are never renumbered or reused — retired names stay retired.
+
+*Why two namespaces rather than one list of four:* the freeze exists to keep the cone tractable, and the two kinds have genuinely different traversal semantics. Folding `member_of` into the causal set would make every membership change a retcon; leaving it undeclared — which is how it entered in v0.5, defended in one line as "a relation class, not a fourth edge" — let the vocabulary grow while everyone believed it was frozen. The distinction is real; it just had to be written down before it could be enforced (register: GRAPH-5).
 
 ### 7.2 What the graph buys
 
-1. **Generative worldbuilding.** Unfilled consequence slots interrogate the world: *this city is rich — who taxes it? who resents that?* The map doesn't just store the world; it asks the next question.
+1. **Generative worldbuilding.** Unfilled consequence slots interrogate the world: *a rule this old was written by someone — who, and what had they just watched happen?* The map doesn't just store the world; it asks the next question. The seed's whole world came out of two such questions and no invention at all.
 2. **Semantic retcons** (§2.4) — justified-by chains, not just mentions.
 3. **Derivable stakes.** A character's power hangs off world nodes; threaten the node, threaten the character. Plot pressure can be read off the graph — worldbuilding and plotting stop being separate activities.
 4. **Contradiction impossibility.** A birth year is one node; age is a computed projection; two documents can no longer disagree *by construction*.
 
 ### 7.3 Layers and dependency direction
 
-World nodes declare a layer, and layers form a DAG the writer defines — e.g. `physics → biology → history → institutions → characters`. Lower layers must not depend on higher ones (a magic-system rule may not derive from a character's convenience). The system checks edge direction like an architecture linter. This formalizes physics-first worldbuilding, which strong corpora already do instinctively: the disease derives from the alchemy rules; population dynamics derive from the mana economics.
+World nodes declare a layer, and layers form a DAG the writer defines — e.g. `physics → biology → history → institutions → characters`. Lower layers must not depend on higher ones (a magic-system rule may not derive from a character's convenience). The system checks edge direction like an architecture linter. This formalizes physics-first worldbuilding, which strong corpora already do instinctively: a disease derives from the alchemy rules; population dynamics derive from the mana economics.
+
+**The fork, and it is the largest one in the seed.** `fact_threshold_rule` has to declare a layer, and there are only two candidates:
+
+- **`physics`** — the rule is a law of the world. It sits at the bottom of the DAG, nothing above it can contradict it, and everything else in the book derives from it. Wren is obeying reality. The story is about what reality costs.
+- **`institutions`** — the rule is something people made. It sits high, near the top, contingent on a history that could have gone otherwise, and it is *allowed to be wrong*. Wren is obeying a claim. The story is about who benefits from her obeying it.
+
+Same sentence, same content, one field different — and two entirely different novels, with different antagonists and different endings. §2.4 already took `physics`, called it the deliberate mistake, and this is the field it was hiding in. The layer declaration is not metadata. **It is the most load-bearing decision in the book, and in Word it does not exist as a decision at all** — it lives in the writer's intention, unwritten, unqueryable, and free to drift.
+
+The §7.1 block above now reads `institutions`. Getting there cost a retcon.
 
 ### 7.4 Special node types
 
@@ -399,70 +493,205 @@ World nodes declare a layer, and layers form a DAG the writer defines — e.g. `
 
 Character profile, era timeline, organization chronicle, "everything the reader knows at chapter 12," the full Bible export — all **generated projections** over the graph and the delta stream. Never authored, never drifting. Authoring happens at the node and the scene; reading happens anywhere. One source of truth, **derived, not duplicated** — the same fix the drift literature converged on for software contracts, arrived at here for canon.
 
-**PROPOSAL (unratified) — the query is authored.** A projection is graph + query, and the query carries intent: which facts, whose scope, what time anchor, for which audience. Every generated view therefore records its query as provenance (register: GRAPH-4); a view that cannot show its query is hand-authored by definition and falls back under GRAPH-2. What this buys:
+**The query is authored — ratified v0.14**, amended in four places. A projection is graph + query, and the query carries intent along four dimensions: **selection** (which facts), **scope** (whose record), **time anchor** (as of when), **audience** (for whom). Every generated view records its query as provenance (register: GRAPH-4); a view that cannot show its query is hand-authored by definition and falls back under GRAPH-2.
 
-- **Contradiction triage.** Two documents that disagree are in one of three states: **fact-conflict** — the graph itself is inconsistent; a real bug. **Query-divergence** — consistent facts, different selections; the documents answer different questions and only *look* like they disagree. **Modality-retype** — one document hardened the other's attestation into fact or law (§7.8). Only the first is a contradiction; the machinery must distinguish the three or every audit drowns in false positives. Import runs the triage in reverse: reconstruct each hand-written document's implicit query (*profile of X*, *chronicle of Y*), then classify every cross-document disagreement before calling it drift (claim NAS-C13 — the Sithernis decomposition classifies its whole catalogued contradiction set this way).
+**Queries read; scenes write (added v0.14, register: GRAPH-9).** A scene is also a selection over the graph — §3.4 says the narrative itself is a facet-selection — and that similarity is a trap for whoever builds this. **A view can never collapse a fact.** Only a scene observes (OBS-1). Projections are read-only by construction, and a projection that mutates canon has stopped being one. One line here prevents a whole class of implementation in which "generated views" quietly become authoring surfaces.
+
+What the authored query buys:
+
+- **Contradiction triage.** Two documents that disagree are in one of three states. **Fact-conflict** — the graph itself is inconsistent; a real bug. **Query-divergence** — consistent facts, different questions; they only *look* like they disagree, and the verdict must name **which dimension diverged**, because "query-divergence" alone is a shrug where *"one is anchored at chapter 3 and the other at chapter 20"* is a diagnosis. (§0's opening bug is exactly this shape: a time-anchor divergence sitting on top of a genuine fact-conflict, and only the second one is fixable by proofreading.) **Modality-retype** — sharply definable now that modality is two-place (§7.8): *the view's stated query does not match the modality it presents.* A projection that declares it is showing Wren's record and shows `must` is honest; one that declares it is showing canon and shows `must` where canon says `saw` is a retype, and a bug. The provenance requirement is what makes that checkable at all — GRAPH-4 paying for a rule it was not written for.
+
+  Only fact-conflict is a contradiction; the machinery must separate the three or every audit drowns in false positives. Import runs the triage in reverse — reconstruct each hand-written document's implicit query (*profile of X*, *chronicle of Y*), then classify every cross-document disagreement before calling it drift (claim NAS-C13).
+
+  *Reconstruction is authored or assisted, never automatic (clarified v0.14).* Nothing mechanical can read a bible chapter and infer *"this is a profile of X as of era Y, for a reader who already knows Z."* That is a human or model judgment. **The classification is the mechanical part** — once queries exist, comparing them is trivial; obtaining them is the work. Stating this matters because NAS-C13's protocol depends on it: the ledger 0001 backfill is a hand pass, and pretending otherwise would make the claim look cheaper to test than it is.
 - **Authorship laundering, named.** A projection presented without its query reads as neutral — *"the bible says"* — while the selection does the arguing. Selection is authorship; provenance is what makes it visible. This holds for the writer's own generated views exactly as it holds for the civilizational canons (§17): whoever controls the query controls the document, and the innocently-phrased view is the one to audit.
 
 ### 7.6 Composition and Emergence — the chemistry→biology ladder
 
-**PROPOSAL (unratified), whole subsection.**
+**✅ RATIFIED v0.14, whole subsection** (§15 #14, #15, #16), with amendments recorded inline.
 
 The graph borrows one more structure from the natural sciences: atoms bond into molecules, molecules into cells, cells into tissues, organs, organisms — and climb far enough and the *discipline changes*: chemistry becomes biology. Enough ants and a colony exists — an entity with properties no single ant has, whose pheromone field then governs each ant's behavior. A lone ant, stripped of that field, cannot orient. Three mechanics fall out:
 
-**1. Composition is a relation class, not a fourth causal edge.** The §7.1 edge freeze holds. `member_of` builds the *vertical* ladder — character → faction → society; fact → institution → civilization — while causal edges keep running within and across levels. Composition levels are orthogonal to §7.3 layers (a faction sits at the `institutions` layer *and* is composed of character members).
+**1. Composition is a structural relation, not a causal edge.** `member_of` is the sole member of §7.1's structural namespace (ratified v0.14) — followed for scope and fold, never walked for staleness. It builds the *vertical* ladder — character → faction → society; fact → institution → civilization — while causal edges keep running within and across levels. Composition levels are orthogonal to §7.3 layers (a faction sits at the `institutions` layer *and* is composed of character members).
+
+**Level is derived, not declared (ratified v0.14, amended).** A node's compositional altitude is its **depth in the `member_of` DAG** — it is computed, never typed. Declaring it would be a hand-kept copy of structure the graph already holds, which is GRAPH-2, and it is the third instance of that defect found in this ratification pass after `arc` and `internal_contradiction`. Writers keep their vocabulary: the manifest (§14.5) names the depth bands for a project (`individual / institution / civilization`, or whatever the world calls them), and the names attach to computed depths rather than being maintained per node.
+
+The Practice was named in §3.4 as an audience and has been accumulating obligations ever since. It needs a node — and one more person, the one who taught Wren: call her **Oris**.
 
 ```yaml
-id: faction_omc
-family: character           # collective nodes are agents — see §8.1
-level: institution          # compositional altitude
-members: [char_orion, char_brother, ...]      # member_of, inverse-indexed
-valences:                   # open bonds — the node's unmet needs
-  - "legitimacy after the Newton shock"
-  - "a scientific method it can call its own"
-emergent_properties:        # properties stored HERE because no member has them
-  - "institutional memory decay across generations"
+id: faction_the_practice
+family: character           # collective nodes are agents — §8.1, ratified v0.14
+level: institution          # DERIVED from member_of depth; the manifest names the band
+members: [char_wren, char_oris, ...]          # member_of, inverse-indexed
+valences:                   # the same primitive any agent carries (§7.6)
+  - {id: val_practice_reason, lack: "a reason that survives being asked for",
+     kind: need, pressure: 0.9}
+  - {id: val_practice_successors, lack: "successors who have seen why it matters",
+     kind: need, pressure: 0.6}
+properties:
+  - "the rule outlived everyone who watched it be necessary"
+methods: {under_challenge: "recite the founding"}
+invariants: ["The door stays shut"]
 ```
 
-**2. Valence: bonding is driven by incompleteness.** Atoms link because their shells are unfilled. NAS already has this object twice without naming it: a character's `desire`/`core_wound` and a world node's `consequence_slots` are the same thing — an **open bond**. Unified as `valences`, they make relationships and plots *predicted chemistry* rather than authored decoration: the generative query is **"which unbound valences could bond?"** — which characters, factions, and pressures are about to collide. A stable configuration (all valences bound) is a world at rest; stories start where valence is unbound. *(The reference corpus runs on this literally: incomplete philosopher's stones are unfilled valence as plot engine, and the viral hive consciousness is colony-emergence at population scale — the methodology's mechanics were extracted from a story that already worked.)*
+That last property is the book's engine, and note where it had to live: **no member has it.** Not Wren, not Oris, not any individual holder of any individual door. It is a property of two centuries of them, and there is no other node it could be stored on.
 
-**3. Downward causation: the field.** Higher-level nodes exert pressure on their constituents — the colony steers the ant, the quarantine policy shapes every mage's day. **The world influences characters as much as, often more than, their interior selves.** Mechanically: a scene declares its **active field** (the location, institutions, and social contexts in force — §8.3), and every behavioral check takes the field as input (§2.3). Character methods may declare field dependencies (`under_authority` behaves differently inside vs. outside the lineage's halls). Emergent-level nodes are exactly the nodes whose *fields* reach down.
+**But it sits in `properties` like any other (ratified v0.14, amended).** Earlier drafts gave emergence its own container, `emergent_properties`. That was dropped: a collective node *is* an Agent, so its properties are properties, and "emergent" is a **claim about where a property must live** — not a different kind of property, and not something a machine can verify semantically. The value was never in the container; it was in the two lints below, which are what actually find the missing level.
 
-**Two emergence lints:** (a) dense bonding at level N with no level-N+1 node → "possible unnamed emergent" — *you've written twelve mages cooperating for two centuries; where is the institution?* (b) a collective node with no members → free-floating emergent, flag. Both `default` tier — the writer judges.
+**2. Valence: bonding is driven by incompleteness. Ratified v0.14.** Atoms link because their shells are unfilled — and note that an atom does not *want* anything. That is the whole reason this is the right primitive.
 
-### 7.7 The World-Agent and the dynamics of the void
+> **A valence is an unsatisfied condition together with a disposition toward its satisfaction.** Nothing about interiority, nothing about feeling, nothing about persons.
 
-**PROPOSAL (unratified), whole subsection.**
+**Valence has no polarity.** There is no "away from." A disposition away from a state is always a disposition *toward* another one — pain-avoidance pulls toward comfort, a phobia toward safety, disgust toward distance — and the restatement loses nothing. This is *horror vacui* (§7.7) taken literally: a void is a gradient, and everything near it moves. What a character calls fear is a valence whose lack they describe in terms of what would be lost, and how they describe it is a matter for their own observer record (§3), not for the schema.
 
-**The world is a character.** The composition ladder (§7.6) terminates in an apex node, and at apex scale the Agent schema (§8.1) applies without modification: the world has a core wound, a dominant fear, a desire, an internal contradiction, methods (`under_existential_threat: "veil, separate, suppress"`), an arc (its era progression), valences, and facets (§3.4 — it shows the soldier its war facet). Two consequences:
+**Multiple pulls coexist, and their coexistence is tension.** An agent holds several valences at once, and two of them conflict when binding either one **forecloses** the other — which needs no new machinery, because `close/foreclosed` is already in the move vocabulary (§8.5). Tension is therefore structural and computable rather than authored: a pair of mutually-foreclosing valences, its degree a function of both pressures. Two high-pressure valences that cannot both bind is the maximum a single agent can carry.
 
-- **The world's invariants are its physical laws.** The magic-system manual *is* the apex Agent's invariant block. A miracle — any event breaking physical law — is an `intentional_break` with an exception ID (§14.6): priced, cited, reviewable. Worldbuilding and character design are one schema at different composition levels.
-- **World state evolves through deltas, like any agent's** (register: WORLD-1). "The kingdom grew restless" is the same vague drift banned on relationships since v0.2 — the world's reactions are scene-emitted deltas with causes, or they didn't happen.
+*Consequence — `internal_contradiction` is derived.* §8.1 previously declared it as an authored string. It is not a property; it *is* a mutually-foreclosing valence pair, computed. This is the second field the action layer has caught standing in violation of §4.1 and SCENE-3, after `arc`.
 
-**Horror vacui — voids are attractors.** Aristotle's law is the missing *dynamics* of valence: an unbound valence does not wait, it **pulls**. The power vacuum is the canonical narrative instance — a dead king recruits claimants; an extinct niche recruits colonizers; unmet demand recruits supply. Mechanically: every void generates **candidate fillers**, weighted by pressure; the generative query upgrades from "which valences could bond?" to *"what is each void pulling toward itself?"* A high-pressure void that nothing moves toward is mounting story fuel — or a flag. *(Reference corpus, twice: the OMC's collapse-void pulled democratic reform into existence; the mage-extinction void pulled Lucas into existence — the world-agent's wound recruiting its own candidate healing.)*
+*The tension lint (VAL-4).* An agent with no mutually-foreclosing pair has no internal life: everything it wants is compatible, so no choice it makes ever costs it anything. This is **blandness diagnostic #3**, completing the set — GRAPH-3 catches psychology anchored to nothing, FACET-1 catches an agent that presents the same face to everyone, VAL-4 catches an agent that never has to choose.
 
-**The ladder of needs — filled voids spawn successors.** Satisfaction does not end desire; it *promotes* it up a tier (survival met → safety opens → belonging opens → meaning opens). An arc is therefore a **valence ladder**, never a single wound closed: resolving an agent's active valence should open its successor, and the system prompts for it — a generative nudge, not a gate. The pyramid itself is a *lens*, per §5.1 — each agent's ladder is writer-defined; Maslow is one available vocabulary. The mechanic targets the most common structural failure in long-form fiction: **the sagging middle is a valence-succession gap** — the protagonist's tier-one need is met at the midpoint and no successor void opens, so tension dies (claim NAS-C12). At apex scale the same law reads history: eras are the world-agent's tiers.
+**`kind` is attribution, never definition.** `wound | desire | objective | directive | need | vacancy | niche` — a label applied after the fact for the writer's convenience, carrying no mechanics. Earlier drafts of this section made *desire* and *core wound* definitional, which smuggled a humanist psychology into a structural primitive and broke on the first non-human agent. **The test case is a machine intelligence:** an objective function is unmistakably an open bond, it drives behaviour, it can be redirected — and there is no wound and no desire anywhere in it. A primitive that cannot hold that case is describing one genre, not a system. (A directive the machine *cannot* violate is not a valence at all; it is an invariant, §8.1.)
+
+The unification this replaces: a character's psychological lack and a world node's `consequence_slots` are the same object seen at two composition levels. The generative query is uniform across both — **"which unbound valences could bond?"**
+
+**Boundary with open questions (§7.4).** Valence covers *pressure-bearing* incompleteness only. "Who taxes the ford trade?" is a valence — untaxed wealth genuinely recruits a taxer. "What is the second river called?" is not; it is an unwritten detail, and §7.4's open-question object already owns it. Without this line the void query returns noise, because one field was doing two jobs.
+
+```yaml
+valence:
+  id: val_wren_justification
+  of: char_wren                  # any node, any composition level
+  lack: "a reason that survives being asked for"
+  kind: wound                    # attribution only — no mechanics hang off this
+  pressure: 0.8                  # §7.7 — voids are weighted
+  candidates: [...]              # §7.7 — who could move on this; authored, not computed
+  successor: valence_id | null   # §7.7 — what opens if this one binds
+  forecloses: [valence_ids]      # binding this one closes those — tension, computed
+  bound_by: [move_id]            # populated only by a close/bound move (§8.5)
+```
+
+A stable configuration (all valences bound) is a world at rest; stories start where valence is unbound. But an unbound valence is still only a *state* — §8.5 is where anything happens to it.
+
+*(Reference corpus: incomplete philosopher's stones are unfilled valence used directly as plot engine; a viral hive consciousness is colony-emergence at population scale. The mechanics here were extracted from a story that already worked, not imposed on one.)*
+
+**3. Downward causation: the field. Ratified v0.14.** Higher-level nodes exert pressure on their constituents — the colony steers the ant, the institution shapes what its members find thinkable. **The world influences agents as much as, often more than, their interior selves.** Mechanically: a scene declares its **active field** (the location, institutions, and social contexts in force — §8.3), and every behavioural check takes the field as input (§2.3, OBS-2). Methods may declare field dependencies: Wren's `at_a_threshold: "holds; does not ask why"` is not an unconditional fact about her — it is what she does *inside the Practice's authority*, and whether it survives being alone in a corridor with nobody watching is the seed's actual question. Nothing else in the model can even pose it.
+
+**A collective node holds two roles: agent and field.** This is the cleanest statement of downward causation, and it is what keeps VAL-1's no-nulls rule intact. The Practice **acts** as an agent — through moves made by real, named members, every one attributable. The Practice **conditions** as a field — altering what its members' attempts cost and produce. *The field never acts.* Nothing ambient ever happens; the field only changes the price of what agents do. Two roles, one node, and no gap for uncaused change to hide in. *(The apex is the exception, and a principled one: the world node holds the field role only — see §7.7, WORLD-3.)*
+
+**And upward, which closes the loop (named v0.14).** The reciprocal needs no new machinery — it is VAL-3's fold generalized to collectives — but it needed naming, because only half the circuit was written down. **Member moves change what the collective conditions.** The Practice's two-century drift from *precaution* to *unexamined law* is exactly this: no policy was ever passed, and the field shifted anyway, because generations of members each made a small attributable move and the fold ran upward. Downward causation is the counterintuitive half; upward is the half everyone assumes and nobody models. Together they are a loop — aggregate agent states shape the field, the field shapes what agents do next — and a loop is the only shape that explains an institution outliving every reason it had.
+
+**Two emergence lints — ratified v0.14** (register: GRAPH-6, GRAPH-7). (a) Dense bonding at level N with no level-N+1 node → "possible unnamed emergent" — *you've written people holding doors by the same rule for two centuries; where is the institution?* This is the lint that produced the Practice: it fired on the seed before a word of the Practice existed, because the duration implied by "taught" was already in the graph. (b) A collective node with no members → free-floating emergent, flag. Both `default` tier — the writer judges. These two carry what the dropped `emergent_properties` container was pretending to: a missing level is *findable*, whereas a property's emergence is only ever assertable.
+
+### 7.7 The World as phantom agent, and the dynamics of the void
+
+**✅ RATIFIED v0.14, whole subsection** (§15 #21), amended.
+
+**The world is a phantom agent.** Earlier drafts said *"the world is a character,"* which read well and was metaphor — and §0's design stance is explicit that a concept expressible only in metaphor does not belong here. The amended claim compiles:
+
+> **The world is treated as an agent by the agents inside it. It takes no actions.**
+
+Other agents blame it, bargain with it, credit it with intent — and every one of those is an **observer record** (§3), held by a character, capable of being wrong. Fatalism, providence, luck, *the universe is testing me*: all are readings of a facet (§3.4), and all are attestations their holders have hardened into fact. That is a story engine, not an ontology.
+
+| The world has | The world does not have |
+|---|---|
+| **properties** — geography, constants | **methods** — it does not decide |
+| **invariants** — physical law (WORLD-2) | **moves** — everything that happens is *some agent's* move |
+| **valences** — `kind: niche`, `kind: vacancy` | **pursuits** — nothing to pursue with |
+| **facets** — it shows the soldier its war facet | **an arc of its own** — its history is the fold over *everything's* moves |
+| **field** — it conditions everything | |
+
+Valences on the left-hand column are not a slip. Valence never implied wanting — atoms do not want to bond, which was the whole point of the polarity amendment (§7.6). A niche is an unsatisfied condition with a disposition toward satisfaction, and it needs no one to hold it.
+
+**Why the terminus differs from every other collective.** #16 ratified that a collective node holds two roles, agent and field. The apex holds **only the field role**, and for a structural reason rather than as an exception: the Practice can act *through* its members because agency is delegated to it by people who identify with it. The world has no outside to act from, and its members include everything — its opponents, its heretics, everyone working to destroy it. **There is no coherent will to delegate.** Intermediate collectives act; the terminus conditions. (Register: WORLD-3 — a world node carrying methods or moves is an error, and the error is always that somebody let the world act instead of naming who did.)
+
+*Gods, fate, planetary intelligences* need no special case: each is either an **emergent agent composed of its believers** — which GRAPH-6 finds — or an ordinary powerful agent. Never the world. The world stays substrate.
+
+*(Lens, not rule, per §5.1: Warhammer 40,000's Warp is the sharpest illustration — a substrate with no intent, shaped by aggregate emotion, out of which daemons emerge as actual agents. Structurally that is the field plus GRAPH-6, which is a good sign the lens describes this model rather than importing itself into it. Take the shape; leave the setting.)*
+
+**The apex exists by construction (amended v0.14).** Earlier drafts said the composition ladder "terminates in an apex node," but under GRAPH-8 level is *derived* from `member_of` depth, and nothing in that guarantees a single top — two civilizations that are not members of each other give two apexes, or none. So the world node is now a **root created by the manifest** (§14.5), with everything transitively `member_of` it. Every story has exactly one world; even a multiverse story has one metaphysics. The practical payoff is that the invariant block holding physical law exists by default rather than by remembering to author it (register: WORLD-2).
+
+Two consequences:
+
+- **The world's invariants are its physical laws.** The magic-system manual *is* the world node's invariant block. A miracle — any event breaking physical law — is an `intentional_break` with an exception ID (§14.6): priced, cited, reviewable. Worldbuilding and character design therefore share a schema, though not all of it: the world takes the declarative half — properties, invariants, valences, facets — and none of the acting half. *Caveat carried from §7.3:* whether a given rule **is** physical law is a layer-and-modality decision, not a given — the threshold-rule fork is the whole lesson, and a rule filed at `institutions` is not the world's invariant no matter how absolute it feels to the people obeying it.
+- **World state evolves like any agent's.** "The kingdom grew restless" is the vague drift banned on relationships since v0.2 — the world's reactions are scene-emitted deltas with attributable causes, or they didn't happen. *(This was carried by WORLD-1 until v0.14, when it was retired as subsumed: SCENE-3 covers deltas-only, VAL-1 covers no-ambient-transitions and every-move-names-an-agent, and #16 covers world-as-Agent. Nothing was left for it to enforce. See §14.2.)*
+
+**Horror vacui — voids are attractors.** Aristotle's law is the missing *dynamics* of valence — restated in v0.14 to remove the last attributed intention from the mechanic: **the void does not pull. Agents are drawn.** The gradient is real; the pulling is something observers say about it. A dead king does not recruit claimants; claimants move, because a throne with no occupant changes what every nearby agent's attempts are worth. Same observable, no magic, and it stays consistent with the world having no will of its own. Mechanically: every void carries **candidate fillers**, weighted by pressure; the generative query upgrades from "which valences could bond?" to *"what is each void pulling toward itself?"* A high-pressure void that nothing moves toward is mounting story fuel — or a flag (VAL-2).
+
+*Who computes the candidates (clarified v0.14):* nobody. Candidates are **authored, or suggested from graph proximity** — a machine cannot know what a world would recruit. The mechanical part is the **query**, not the generation: list every open void by pressure, show what each is pointed at, and show which have nothing pointed at them at all. That last list is the one worth reading.
+
+**The seed is a void with a door in front of it.** §0.1 counted four commitments and the fourth was that *the reason is missing* — absent, not undecided. Every filler this document has produced since was recruited by it: the condition, the rule, the teacher, the Practice, the two-century drift. None of them was invented. They were *pulled into existence* by a hole that could not be left empty, and the order they arrived in is the order of decreasing pressure. That is the whole method in one paragraph, and it is why the seed had to be fourteen words rather than a premise: **a premise has no void in it.**
+
+*(Reference corpus, twice: reformers moved into an institution's collapse-void, and a character was written into an extinction-void. In both cases the author experienced it as invention; the graph shows a gradient and agents moving down it. Nothing recruited anyone — but it is very hard, from inside the writing, to tell those two apart, which is most of why this section exists.)*
+
+**The ladder of needs — filled voids spawn successors.** Satisfaction does not end wanting; it *promotes* it up a tier (survival met → safety opens → belonging opens → meaning opens). An arc is therefore a **valence ladder**, never a single lack closed: binding an agent's active valence should open its `successor` (§7.6), and the system prompts for it — **a generative nudge, not a gate**, and deliberately so. Succession is not a law: an objective function that binds may simply halt, and a story where the protagonist gets what they wanted and it is over is a legitimate story, not a defect. The pyramid itself is a *lens*, per §5.1 — each agent's ladder is writer-defined; Maslow is one available vocabulary and carries no mechanics.
+
+The mechanic targets the most common structural failure in long-form fiction, restated in v0.14 to be measurable: **the sagging middle is a bid-less span** — the protagonist still holds open valences and has stopped spending on them (claim NAS-C12). A missing successor is one way to get there; it is not the phenomenon. At apex scale the same reading applies to history — but note what it is a reading *of*: an era is not a tier the world climbed, it is a band in the fold over everything that acted inside it, named afterwards by observers who were not there.
 
 ### 7.8 Statement modality — *is*, *must*, *saw*
 
-**PROPOSAL (unratified), whole subsection.**
+**✅ RATIFIED v0.14, whole subsection** (§15 #22), amended in four places.
 
-Every statement in the corpus is one of three kinds. The graph already holds all three — it has never named them:
+Every statement in the corpus is one of three kinds, and the set is **frozen at three** (GRAPH-5's precedent). The graph already holds all three — it has never named them:
 
-- ***is* — fact.** A value, collapsed or cloud (§2): *the city sits at the river ford.* Lives as a node; observation is what collapses it.
-- ***must* — law.** A constraint that bounds future collapse and never itself collapses: agent invariants (§8.1), layer direction (§7.3), the apex Agent's physical laws (§7.7): *vampires cannot enter uninvited.* Broken only by a priced `intentional_break` (§14.6).
-- ***saw* — attestation.** An observer's record, carrying provenance and capable of being wrong (§3): *the chronicle claims the founder died at the ford.* Misinformation, testimony, and every in-world document are attestations.
+The seed states the same content three times, and the difference between the three is the novel:
+
+- ***is* — fact.** A value, collapsed or cloud (§2): *Tal is on the other side of the door.* Lives as a node; observation is what collapses it.
+- ***must* — law.** A constraint that bounds future collapse and never itself collapses: agent invariants (§8.1), layer direction (§7.3), the world node's physical laws (§7.7): *one who has changed cannot cross a threshold they were not admitted through.* Broken only by a priced `intentional_break` (§14.6).
+- ***saw* — attestation.** An observer's record, carrying provenance and capable of being wrong (§3): *Oris told Wren that one who has changed cannot cross.* Misinformation, testimony, and every in-world document are attestations.
+
+Line two and line three are word-for-word the same claim. Only the modality differs — and Wren's entire life is built on nobody having asked which one she was handed.
+
+*Why three and not four.* A prophecy looks like it needs its own modality until you try to write it down: an in-world prediction is somebody's claim about the future — `saw` with a forward time anchor — unless it genuinely binds, in which case it is `must`. **Which of those it is, is the story**, exactly as with the threshold rule. Adding a `will` would let the writer dodge the only question worth asking.
+
+### Break price scales with altitude — amended v0.14
+
+The first draft of this section defined `must` as breakable "only by a priced `intentional_break`," and then listed agent invariants among its examples. Wren's invariant is *"Never opens a door she was told to hold,"* and **the entire book is her breaking it.** That is not a miracle requiring an exception ID; it is an arc. `must` was doing two incompatible jobs.
+
+The fix needs no fourth modality — it needs the ladder already ratified. **The cost of breaking a law is set by the altitude of the node holding it** (GRAPH-8's derived depth):
+
+| Held at | Breaking it is | Costs |
+|---|---|---|
+| **world node** | a miracle | `intentional_break` + exception ID (§14.6) — priced, cited, reviewable |
+| **institution** | a schism, a scandal, an excommunication | a move (§8.5), and usually a faction that splits |
+| **agent** | character change | a `close` move — this is what arcs are made of |
+
+Same modality, price by holder. A vow and a law of physics are both `must`; only one of them costs the universe.
+
+### Modality is two-place — amended v0.14
+
+One field is not enough, and the seed proves it: the threshold rule **is** `saw` in canon, and is **held as** `must` by Wren. Those are two values, and the gap between them is the book.
+
+- **Canonical modality** — on the statement, in the graph. What the thing actually is.
+- **Read modality** — per observer record (§3). What each observer takes it for.
+
+The gap is computable irony (§3.2), queryable per observer or per faction. Earlier drafts allowed this only for diegetic artifacts; it is general, and it has to be, because the clearest instance in this document is not an artifact at all: **world-as-agent** (§7.7) is a `saw` that its holders read as `is`. Every fatalism, providence and superstition in any story is that one gap.
 
 One schema field — `modality: is | must | saw` — on every statement-bearing object. Native graph objects carry it by construction; the field earns its keep **at the boundaries**: harvest (§1.1 soft mode) and import (the corpus decomposition, §16) must assign it explicitly, because hand-written documents arrive untyped.
 
 **An untyped statement will be retyped by its reader.** Narrative read as law; law allegorized back to narrative; one observer's testimony hardened into fact. The retyping is silent, and the retyper's selection is invisible — this is where an agenda hides, in-world and out. *(The oldest running instance is civilizational: a closed canon is a mixed-genre corpus with no modality tags, and every schism is a retyping dispute — §17.)*
 
-**Modality changes are explicit, priced operations (register: MODAL-1):**
+**Two kinds of retyping, and they are not the same operation — amended v0.14.** Under VAL-1 nothing changes without an agent, which forces the split the first draft blurred:
 
-- **Promotion** (*saw* → *is*; *is* → *must*): a pattern hardens into canon or law — *she has never entered uninvited* becomes *vampires cannot*. The new law cites the attesting scenes that earned it — PATTERN-1's logic applied to world law: earned by load, never declared by fiat.
-- **Demotion** (*must* → *is*; *is* → *saw*): a law relaxes to mere fact; a fact turns out to be somebody's claim. Demotion is a retcon — it walks the cone of everything that relied on the stronger reading (§2.4). Ledger 0001's kicker is a demotion bug found in the wild: the written docs held as *is* what was actually *saw* — an attestation of a canon that lived only in the author's head.
+- **In-world retyping** is a **story event**. A character or an institution promotes an attestation to law; it names an agent, it happens in a scene, it is somebody *doing* something. The Practice's two centuries are this, distributed across generations — no policy was ever passed.
+- **Authorial retyping** is a **decree or a retcon** (§2.2, §2.4). The writer decides a fact was really a claim. It names no in-world agent because none acted; it walks a cone instead.
 
-**One level down, the same machinery is a plot engine.** A diegetic artifact (§7.4) carries a *claimed* modality and receives *read* modalities per observer: the poem read as prophecy, the prophecy read as law, the law read as metaphor. In-world genre reassignment is computable irony (§3.2) — the gap between claimed and read modality, per faction. *(Generative question for the reference corpus: the initiation poem — attestation or law? Which factions read it as which, and what does each reading license them to do?)*
+Ledger 0001's kicker is the second kind. The Practice is the first. Conflating them puts an author's revision and a character's self-deception under one rule, and they need different machinery — one walks a cone, the other emits a move.
+
+**Modality changes are explicit, priced operations (register: MODAL-2):**
+
+- **Promotion** (*saw* → *is*; *is* → *must*): a pattern hardens into canon or law — *no one has ever crossed* becomes *no one can cross*. The new law cites the attesting scenes that earned it — PATTERN-1's logic applied to world law: earned by load, never declared by fiat. **This is the Practice's founding crime, and it took two centuries.** The §7.1 `trajectory` block records it as drift; §7.8 names it as an unpriced promotion nobody was present for.
+- **Demotion** (*must* → *is*; *is* → *saw*): a law relaxes to mere fact; a fact turns out to be somebody's claim. Demotion is a retcon — it walks the cone of everything that relied on the stronger reading (§2.4).
+
+**The bill comes due here.** §2.4 collapsed the threshold rule as physical law because it was the obvious, cheap choice, and §7.3 showed the field it was hiding in. Reversing it is a `must → saw` demotion, and the cone is now visible in full: Wren's blamelessness, Oris's authority, the Practice's right to exist, `fact_wren_training`, every scene in which anyone holds without asking, and — the expensive one — `pillar_01` itself, whose precondition `reader.confidence(fact_threshold_rule)` was written against a law and now points at a rumour. The seed image survives; everything justifying it regresses.
+
+That is the correct outcome and the reason the mistake was left standing. **In Word this retcon is invisible** — every one of those scenes still reads fine on its own, which is precisely the silence §2.5 describes. Nothing would have objected. The writer would have shipped two incompatible books and found out from a reader.
+
+*(Reference corpus: ledger 0001's kicker is this exact bug found in the wild — the written documents held as *is* what was actually *saw*, an attestation of a canon that lived only in the author's head. Same operation, no system present to price it.)*
+
+**One level down, the same machinery is a plot engine.** A diegetic artifact (§7.4) carries a *claimed* modality and receives *read* modalities per observer: the poem read as prophecy, the prophecy read as law, the law read as metaphor. In-world genre reassignment is computable irony (§3.2) — the gap between claimed and read modality, per faction.
+
+In the seed this generates the next object without being asked: **whatever Oris taught Wren from.** Whether that is a text, a formula, or a story told at a certain age, it is a diegetic artifact whose claimed modality is *must* and whose canonical modality is *saw* — and the query *"which observers read it as which?"* partitions the Practice into two factions that do not yet know they disagree. Nobody outlined a schism. The modality field found one.
+
+**The diagnostic cell (MODAL-4, judgment tier).** Layer (§7.3) and modality are orthogonal axes, and they correlate — a physics-layer statement is almost always `must`. Which makes one cell of the grid worth reading every milestone: a statement filed at `institutions` **or above**, carrying `must`, deriving from **no world node**. That is a rule people made, presenting as a law of nature. `fact_threshold_rule` sits in that cell, which is the seed's entire plot; so does most ideology, most doctrine, and a fair amount of etiquette. It is a judgment prompt rather than a lint precisely because firing on every one would be firing on half of civilization — the value is in reviewing the list, not in being interrupted by it.
 
 ---
 
@@ -486,20 +715,45 @@ The object roster and status:
 | The Cut | proposed | first-class telling order (§10) |
 | Roadmap | **new** | §6 |
 | Retcon | carried, re-founded | re-opened measurement (§2.4) |
+| Valence | **new** | §7.6 — unsatisfied condition + disposition toward satisfaction; `kind` is attribution only |
+| Pursuit | **new** | §8.5 — an agent's standing relation to one valence; states `held / pursued / closed` |
+| Attempt | **new** | §8.5 — a scene-interface entry, not a top-level object |
+| Move | **new** | §8.5 — `open / alter / close`, frozen; an agent's arc is the fold over these |
 
 ### 8.1 Character
 
 A character node with **properties, methods, invariants, and an arc** (structure kept from v0.2):
 
-- *Properties:* identity, psychological (core wound, dominant fear, desire, internal contradiction), relational (attachment style, default power position), functional (skills, narrative role, voice).
+- *Properties:* identity, relational (attachment style, default power position), functional (skills, narrative role, voice). **Amended v0.14:** what earlier drafts listed here as psychological properties are not properties at all. Core wound, desire and dominant fear are **valences** (§7.6) — they live in the `valences` block, they carry no polarity, and they are acted on through pursuits (§8.5). *Internal contradiction* is not a property either: it is **derived**, the mutually-foreclosing valence pair. Listing any of these as properties is what let a character declare a lack that nothing ever spent anything on, and a contradiction that contradicted nothing.
 - *Methods:* decision heuristics — `under_fear: "withdraws, plans escape, lies to buy time"`. When a scene drafts a choice, check it against the methods. Overridable via inheritance.
-- *Invariants:* assertions that must hold — `"Never lies to her sister, even when costly"`. A scene may break one only by citing an exception (§14.6).
-- *Arc:* start state → transformation vector → end state, with milestones. Arc milestones feed the Roadmap (§6).
+- *Invariants:* assertions that must hold — `"Never opens a door she was told to hold"`. A scene may break one only by citing an exception (§14.6).
+- *Arc:* **derived, never authored** (amended v0.14) — the fold over the agent's moves (§8.5). Previously declared here as an authored "start state → transformation vector → end state," which violated §4.1 and SCENE-3 in plain sight for eleven versions because it read like description rather than state. Arc milestones still feed the Roadmap (§6); they are now computed rather than hand-maintained.
 - *Inheritance* (lineage: origin) and *composition* (traits: lived experience), kept from v0.2.
 
-Character psychology **derives from world nodes** via causal edges — the war caused the core wound; the lineage explains the vow. Same graph, character family (§2.1).
+```yaml
+id: char_wren
+valences:                       # §7.6 — kind is attribution, no mechanics hang off it
+  - {id: val_wren_justification, lack: "a reason that survives being asked for",
+     kind: wound, pressure: 0.8}
+  - {id: val_wren_standing, lack: "to have been right", kind: fear, pressure: 0.7,
+     forecloses: [val_wren_justification]}    # asking the question risks the answer
+methods:
+  at_a_threshold: "holds; does not ask why"
+  when_asked_why: "recites Oris"
+invariants: ["Never opens a door she was told to hold"]
+derives_from: [fact_wren_training, faction_the_practice]   # GRAPH-3: anchored, not asserted
+# internal_contradiction: derived — the foreclosing pair above (§7.6). Not a field.
+```
 
-**PROPOSAL (unratified) — Character generalizes to Agent.** Methods, invariants, and arcs are available at *every composition level* (§7.6): a faction has decision heuristics ("under threat: institutional capture"), invariants, and an arc (an institution's corruption ladder is an internal-family trajectory on a collective node). The two observable families exist at every level too — an institution has external state (holdings, laws) and internal state (doctrine, morale). Persons are simply Agents at the individual level. *(Worked example from the reference corpus: the OMC chronicle is a character profile of an institution — core wound, heuristics, five-step arc.)*
+There is no `dominant_fear` and no polarity: `val_wren_standing` is a pull *toward* having been right, and `kind: fear` is the label for a valence whose lack is felt as something to lose. Its `forecloses` edge is where the character actually lives — **she cannot ask for a reason without risking being told there was never a good one.** That single line is what earlier drafts hand-wrote as an `internal_contradiction` string, and here it is computed from two objects that exist for other reasons.
+
+Note the `derives_from` line, because it is the difference between a character and a description. Wren's valences are not traits she was assigned; they are *caused* by two nodes that exist independently, and if either is retconned they are walked into the cone and flagged. Psychology that cites nothing is decoration that survives every edit — which is why it also never means anything (GRAPH-3).
+
+The invariant is stated so that the book can break it. That is the point of declaring one.
+
+Character psychology **derives from world nodes** via causal edges — the training caused the wound; the institution explains the vow. Same graph, character family (§2.1).
+
+**Character generalizes to Agent — ratified v0.14.** Methods, invariants, valences and derived arcs are available at *every composition level* (§7.6): a faction has decision heuristics ("under threat: institutional capture"), invariants, and an arc (an institution's corruption ladder is the fold over its moves, §8.5). The two observable families exist at every level too — an institution has external state (holdings, laws) and internal state (doctrine, morale). Persons are simply Agents at the individual level. The Practice (§7.6) takes the block above without modification: it carries a valence — *the thing it was founded to prevent, which nobody alive has seen* — its method under challenge is *recite the founding*, and its arc is the fold over two centuries of `alter/redirect` moves (§8.5), each made by a real practitioner, none of them deliberate. *(Reference corpus: an organization chronicle in the bible turns out, on inspection, to be a character profile of an institution — core wound, decision heuristics, a five-step arc. It was written that way instinctively, years before this section existed.)*
 
 **PROPOSAL (unratified) — voice as object:** `VoiceProfile` referenced by character — lexicon tendencies, rhythm, prohibitions ("never uses contractions", "metaphors drawn from sailing"). Lintable at the late render phases only (voice is a coloring concern). Enters the register at `hypothesis` strength.
 
@@ -515,7 +769,7 @@ Directed edge between characters (A's view of B ≠ B's view of A): trust, power
 
 The scene is the atomic build unit — and it splits, borrowing the deepest coding concept in the system:
 
-- **Interface (frontmatter):** narrative function, characters present, POV, **active field** (location + institutions/social contexts in force, §7.6 — proposed), entry/exit deltas, information ops performed (per observer), setups planted, payoffs resolved, themes touched, stakes active, pillar binding, render phase, beats (§9.2).
+- **Interface (frontmatter):** narrative function, characters present, POV, **active field** (location + institutions/social contexts in force, §7.6 — ratified v0.14), entry/exit deltas, information ops performed (per observer), setups planted, payoffs resolved, **attempts made and moves emitted** (§8.5), themes touched, stakes active, pillar binding, render phase, beats (§9.2).
 - **Implementation (body):** the prose, at whatever render phase it has reached.
 
 **Downstream scenes depend only on the interface.** Consequences: prose can be re-rendered freely without dirtying anything; the edit room (§9.3) can reorder scenes and compute exactly which interface transitions broke; retcon cones stop at interfaces that still hold. Changing an interface is the expensive operation; changing prose is cheap. This inverts how writers usually feel about their work — and it should.
@@ -531,6 +785,62 @@ One file per scene: frontmatter + body. (v0.2's four-files-per-scene scheme stay
 ### 8.4 Setup / Payoff
 
 First-class objects, kept from v0.2: setups have type, weight, expected payoff window, and status (`open | resolved | abandoned-deliberate | orphaned-accidental` — intent distinguishes the last two). Payoffs resolve setups in a mode (`direct | subverted | recontextualized`). The graph is queryable: open setups at chapter N, long-haul setups needing a reminder beat, orphans, payoffs without setups. Pillar preconditions (§5) are the main *generator* of setup obligations.
+
+### 8.5 Pursuit, attempt, move — valence in motion
+
+**Ratified v0.14.**
+
+**The pain.** A valence (§7.6) is a *state*, and states do not do anything. Wren has held `val_wren_justification` since she was old enough to be taught, and in all that time she has never once asked Oris the question. Nothing in the graph distinguishes that from an agent actively tearing the world apart to get an answer. §7.7 describes a gradient — but a gradient is inert until something is spent moving down it. **Wanting is not doing**, and this is the layer where the difference lives.
+
+Three objects on two different axes. Attempt and pursuit act on **the world**; move acts on **the agent's relation to the lack**.
+
+| | What it is | Shape in time |
+|---|---|---|
+| **Pursuit** | an agent's standing relation to one valence | an interval |
+| **Attempt** | a discrete act toward it — spends, can fail | a point, inside a pursuit |
+| **Move** | a change in the relation itself | a transition of the pursuit |
+
+**Pursuit** is the only new top-level object. Its state is `held | pursued | closed`. The first state pays for the object on its own: **`held` with no attempts is the inert valence** — a character who wants something and has never acted, an institution that declares a purpose it does not fund. That is one of the most common failure modes in long-form fiction and it was previously undetectable (register: VAL-2). §7.7 already gestured at it — *"a high-pressure void that nothing moves toward is mounting story fuel — or a flag"* — without any object able to check it.
+
+**Attempt** is a **scene-interface entry** (§8.3), not a top-level object. *The agent is the motive; the scene is the repository.* Scenes never act — they record, exactly as they do for deltas and collapses. An attempt must therefore always name its agent, and per OBS-1 an attempt no scene has witnessed is a cloud rather than a fact — which is correct, and lets §2.3's reachability backfill *"she must have tried something in those three years"* as an unobserved attempt instead of a hole.
+
+```yaml
+attempt:
+  by: char_wren                  # the agent — never absent
+  on: pursuit_id
+  via: method_id | ad_hoc        # the edge that was missing: methods (§8.1) were
+                                 # keyed on situations and unreachable from valences
+  intent: "..."                  # what the agent meant to cause
+  cost: {...}                    # an attempt that spends nothing is not one
+  modifiers: [...]               # ⚠ reserved — see the deferral note below
+  outcome: "..."                 # what actually happened
+```
+
+**Move** takes the same shape as valence: a small frozen structural set, with attribution inside it.
+
+```yaml
+move:
+  type: open | alter | close     # frozen — three, per the GRAPH-5 precedent
+  kind: ...                      # attribution within the type
+  by: agent_id                   # always present — see below
+  in: scene_id
+```
+
+- **open** — `adopted | inherited | imposed | discovered`
+- **alter** — `escalate | redirect | reframe | stall`
+- **close** — `bound | abandoned | integrated | foreclosed | transferred`
+
+`transferred` decomposes into close-here plus open-there, which is what a succession is; it is listed for readability, not as a primitive. *(Naming hazard, deliberately avoided: the closing of a pursuit is **not** called a fold. `fold` is load-bearing in §1.1 and §4.1 for the event-sourcing projection, and a second sense would collide in exactly the places both appear.)*
+
+**Nothing happens without an agent.** Every move names one. There are no nulls and no ambient transitions: if a thing changed, somebody moved, possibly unknowingly, possibly badly. What looks agentless is always a long sequence of small modified moves — the Practice's two-century drift from *precaution* to *unexamined law* is not an event that happened to nobody, it is generations of practitioners each failing to transmit the reason, each move real and attributable. This holds at every composition level, from a person to the apex world node — which is why the old world-scale rule (WORLD-1) had nothing left to enforce and was retired in v0.14. It also kills a special case: `fact_threshold_rule.trajectory` stops being an authored field and becomes a **projection over the move sequence**, which is what GRAPH-2 demanded of every view in the first place (register: VAL-1).
+
+**Resolved without binding.** This is what the layer buys that no other narrative vocabulary offers. Most models know only *goal achieved* and *goal failed*. A pursuit can close by `abandoned` or `integrated` — the valence never binds, and the story resolves anyway. An agent pursuing something that is destroying them is not saved by getting it; they are saved by a `close` move. `abandoned` ("I no longer hold this") and `integrated` ("I still lack this and have stopped organizing myself around it") are different endings, and the second is the rarer and better one.
+
+*In the seed:* Wren's pursuit is `held`, and has been for years — the inert state is her characterization. The book begins when she `commits`. At the door, Tal saying her name (§9.2, beat b3) is an `alter/reframe` — the lack is re-described mid-scene, and what would satisfy it changes. The ending is a choice between three closes, and they are now enumerable rather than intuited: `bound` (she gets a reason), `abandoned` (she stops needing one), `integrated` (she never gets one and lives anyway).
+
+**Arc is derived — a defect this layer repairs.** §8.1 declares arc as *"start state → transformation vector → end state, with milestones."* That is an authored state snapshot, and §4.1 and SCENE-3 forbid exactly that: no state is ever stored; every current-state view is a fold over the delta stream. Nobody caught it because `arc` reads like description rather than state. **An agent's arc is the fold over its moves** (register: VAL-3). The violation disappears, arc becomes queryable at any telling position for free, the milestones feeding the Roadmap (§6) stop being hand-maintained, and *"her arc doesn't land"* becomes a computable statement about a move sequence.
+
+**⚠ Deferred, deliberately — modifiers.** `attempt.modifiers` is reserved and unspecified. A condition can intervene between intent and outcome: the ambient field (§2.3, §7.6 — proposal #16, undecided), internal capacity, an agent acting correctly on a wrong belief (already modeled — it points at an observer record, §3), or external prevention. Two of those four are existing objects, which suggests modifiers are a *generalization of the field term* rather than a new invention — and that is precisely why they are not being settled here. The field term sits inside an unratified proposal further down §15, and deciding modifiers first would fix its shape by conformance rather than by load (§5.1). The gap between `intent` and `outcome` is reserved now so the schema does not need reopening later.
 
 ---
 
@@ -568,12 +878,14 @@ The storyboard panel, smaller than a scene, addressable as `ch04.s02.b3`. Lives 
 ```yaml
 beats:
   - id: b3
-    function: "Sterling reveals the folder's existence"
-    reader_ops: [foreshadow: fact_orion_role]
-    pov: sterling              # beats may switch POV; scene-level POV becomes a derived summary
-    emotional_temp: {valence: dread, intensity: 0.7}
+    function: "Tal stops screaming and says her name"
+    reader_ops: [reveal: fact_tal_lucidity]
+    pov: wren                  # beats may switch POV; scene-level POV becomes a derived summary
+    emotional_temp: {valence: dread, intensity: 0.9}
     pacing_weight: slow        # fast | medium | slow — drives animatic rendering length
 ```
+
+One beat, and it carries the scene's whole reversal: the rule assumes the changed are gone, and `fact_tal_lucidity` was declared in §7.1 as `tensions_with` the rule for exactly this. The friction was in the graph before the beat existed.
 
 This resolves v0.2's "subscene granularity" question (yes — beats are the panels) and the multi-POV question (POV attaches per beat; observer-record mutations attribute per beat; single-POV scenes are the degenerate one-POV case).
 
@@ -600,6 +912,8 @@ Three distinct orderings that Word collapses into one:
 **The two-fold rule (locked v0.4):** the two state families fold over *different* orders — **world/character state folds over story chronology; the reader's record folds over telling order.** A flashback mutates the reader's record *now* while touching character state *then*: its deltas apply at two different points in two different streams. Under this rule that is not a special case — it is just how the fold works.
 
 **PROPOSAL (unratified) — the Cut:** telling order is a first-class, editable sequence object (film's edit). Scenes carry a `story_time` anchor (chronology) and receive their telling position *from the Cut* — never self-declared (§8.3: content does not place itself). The edit room is literally the editor of the Cut; reordering re-folds the reader stream and reports every broken transition and every info op now out of order (a reveal preceding its foreshadow, a payoff preceding its setup *in reader time*).
+
+**In the seed.** The image is not chapter one, and it never was — `pillar_01.position.cloud` reads *late act 1*, because the preconditions derived in §5 have to be paid first. But nothing stops the Cut from opening on it and folding the training back as flashback: the reader's record would then hold *she held the door* before it holds *she was taught to*, which inverts the entire experience of the same graph. Same chronology, same nodes, same deltas — a different book, edited rather than rewritten. That is what making telling order a first-class object buys, and it is unavailable to anyone whose scenes know where they are.
 
 ⚠ Remaining: representation of eras vs. scene-time; how trajectory nodes (§7.1) key into chronology.
 
@@ -634,7 +948,7 @@ Each object is a markdown file with YAML frontmatter — portable, diffable, edi
 /[ProjectName]
   /Graph/                      # world + character nodes, one file per node
     world/…
-    characters/lysandra.md
+    characters/wren.md
     artifacts/…                # diegetic artifacts
   /Relationships/
   /Pillars/
@@ -692,32 +1006,50 @@ applies_when: "any project using the Cut"     # feeds the scope manifest
 **Tiers:** `structural` — impossible by construction (age is computed; snapshots don't exist); `gate` — blocks a phase transition or merge; `lint` — flags, writer dismissable with a citation; `judgment` — review prompt only.
 **Status:** `invariant` — enforced at face value; `default` — enforced, expected to have exceptions; `hypothesis` — surfaced, not enforced. Rules are revised *by ledger evidence*, which is the whole loop.
 
-### 14.2 Seed register
+### 14.2 Starter register
 
-| ID | Statement (abbrev.) | Tier | Status |
-|---|---|---|---|
-| OBS-1 | No fact is canon without an observation record (scene or decree) | structural | invariant |
-| OBS-2 | Entry state must be reachable from last exit within methods/invariants + elapsed events | gate | invariant |
-| OBS-3 | A retcon's cone must be walked to empty before status `propagated` | gate | invariant |
-| SCENE-1 | Downstream depends only on a scene's interface, never its prose | lint | invariant |
-| SCENE-2 | Prose never references its own telling-order position | lint | default |
-| SCENE-3 | Scenes emit deltas; no authored state snapshots exist | structural | invariant |
-| CONTRACT-1 | Fold of a chapter's scene deltas satisfies its declared delta before close | gate | invariant |
-| CONTRACT-2 | Every roadmap item claimed ≥1 chapter; every chapter claims ≥1 item | lint | default |
-| PILLAR-1 | A bound pillar's preconditions hold at its position | gate | invariant |
-| GRAPH-1 | Causal edges respect layer direction | lint | invariant |
-| GRAPH-2 | Documents/views are generated, never hand-copied from graph facts | structural | invariant |
-| GRAPH-3 | Load-bearing psychology is causally anchored: every wound, vow, and arc-driver cites the event node(s) it derives from | lint | default |
-| GRAPH-4 | Every generated view records its query (selection, observer, time anchor); a view that cannot show its query is hand-authored by definition and falls under GRAPH-2 | structural | invariant |
-| READER-1 | Exposition shaped for the reader's current need, never bible-shaped | judgment | default |
-| READER-2 | Reveals evolve additively; contradiction requires a declared subvert op | lint | default |
-| SETUP-1 | Every setup has a payoff window or explicit `abandoned`; orphans flagged | lint | invariant |
-| DRIFT-1 | Draft/graph divergence is logged or propagated at scene close, never deferred — a gate in every mode | gate | default |
-| PATTERN-1 | Every structural element bears load: dependencies run through it, removal meets resistance; load-free doctrine elements are decoration | lint | default |
-| FACET-1 | A major agent presents more than one facet across audiences or time; single-facet majors are flagged flat | lint | default |
-| WORLD-1 | The world is the apex Agent: its state evolves through scene-emitted deltas with causes — ambient drift ("the kingdom grew restless") is not representable | structural | invariant |
-| MODAL-1 | Every statement carries a modality — *is* (fact), *must* (law), *saw* (attestation); modality changes are explicit operations: promotion cites its attesting scenes, demotion walks its cone | structural | invariant |
-| PUB-1 | A retcon cone crossing a publication boundary never auto-propagates; published canon is contradicted only by declared errata — fixes are forward, additive, recontextualizing | gate | invariant |
+The **Rests on** column is new in v0.13 and exists to stop this table lying. A rule may be listed at `invariant` while the model it was derived from is still an unratified proposal in §15 — which is legitimate as a working default, but §15's claim that "none is silently locked" was false without it. Where a § is named, ratifying or rejecting that proposal changes or removes the rule.
+
+| ID | Statement (abbrev.) | Tier | Status | Rests on |
+|---|---|---|---|---|
+| OBS-1 | No fact is canon without an observation record (scene or decree) | structural | invariant | — |
+| OBS-2 | Entry state must be reachable from last exit within methods/invariants + elapsed events **and the scene's declared field** (amended v0.14); off-baseline behaviour inside a changed field is displacement, not inconsistency | gate | invariant | — |
+| OBS-3 | A retcon's cone must be walked to empty before status `propagated` | gate | invariant | — |
+| SCENE-1 | Downstream depends only on a scene's interface, never its prose | lint | invariant | — |
+| SCENE-2 | Prose never references its own telling-order position | lint | default | §10 (the Cut) |
+| SCENE-3 | Scenes emit deltas; no authored state snapshots exist | structural | invariant | — |
+| CONTRACT-1 | Fold of a chapter's scene deltas satisfies its declared delta before close | gate | invariant | — |
+| CONTRACT-2 | Every roadmap item claimed ≥1 chapter; every chapter claims ≥1 item | lint | default | — |
+| PILLAR-1 | A bound pillar's preconditions hold at its position | gate | invariant | — |
+| GRAPH-1 | Causal edges respect layer direction | lint | invariant | — |
+| GRAPH-2 | Documents/views are generated, never hand-copied from graph facts | structural | invariant | — |
+| GRAPH-3 | Load-bearing psychology is causally anchored: every wound, vow, and arc-driver cites the event node(s) it derives from | lint | default | — |
+| GRAPH-4 | Every generated view records its query along four dimensions — selection, scope, time anchor, audience; a view that cannot show its query is hand-authored by definition and falls under GRAPH-2 | structural | invariant | — |
+| GRAPH-9 | Queries read; scenes write. A projection never collapses a fact — only a scene observes (OBS-1). A view that mutates canon is not a view | structural | invariant | — |
+| GRAPH-5 | Edge kinds are closed in two namespaces: *causal* (`derives_from`, `constrains`, `tensions_with`) and *structural* (`member_of`). Cones walk causal edges only; structural relations are followed for scope and fold, never for staleness. Neither namespace grows without a ledger entry | structural | invariant | — |
+| VAL-1 | A valence closes only through a `close` move, and every move names an agent. No valence resolves by authorial assertion, and no transition is ambient — apparent drift decomposes into a sequence of attributable moves | structural | invariant | — |
+| VAL-2 | A valence `held` with no attempts across the manifest's span is flagged inert — a declared lack nobody has ever spent anything on | lint | default | — |
+| VAL-3 | An agent's arc is the fold over its moves; arcs are never authored as start/end snapshots | structural | invariant | — |
+| VAL-4 | A major agent holds at least one mutually-foreclosing valence pair. An agent whose valences are all compatible is flagged flat — no choice it makes costs it anything | lint | default | — |
+| GRAPH-6 | Dense bonding among level-N nodes with no level-N+1 node above them is flagged as a possible unnamed emergent | lint | default | — |
+| GRAPH-7 | A collective node with no members is flagged as a free-floating emergent | lint | default | — |
+| GRAPH-8 | Compositional level is derived from `member_of` depth, never declared per node; the manifest names the bands | structural | invariant | — |
+| READER-1 | Exposition shaped for the reader's current need, never bible-shaped | judgment | default | — |
+| READER-2 | Reveals evolve additively; contradiction requires a declared subvert op | lint | default | — |
+| SETUP-1 | Every setup has a payoff window or explicit `abandoned`; orphans flagged | lint | invariant | — |
+| DRIFT-1 | Draft/graph divergence is logged or propagated at scene close, never deferred — a gate in every mode | gate | default | §1.1 (`mode`) |
+| PATTERN-1 | Every structural element bears load: dependencies run through it, removal meets resistance; load-free doctrine elements are decoration | lint | default | §5.1 |
+| FACET-1 | A major agent presents more than one facet across audiences or time; single-facet majors are flagged flat | lint | default | §3.4 |
+| ~~WORLD-1~~ | **RETIRED v0.14 — subsumed, not repealed.** Its three clauses are each enforced elsewhere: world-as-Agent by #16's Agent generalization, deltas-only by SCENE-3, no-ambient-change by VAL-1. Nothing was left for it to check independently, and PATTERN-1 does not exempt the register from its own test. ID never reused (§14.1) | — | retired | → VAL-1, SCENE-3 |
+| WORLD-2 | Every project has exactly one world node, created by the manifest as the root of the `member_of` DAG; all nodes are transitively members of it. Physical law lives in its invariant block by construction | structural | invariant | — |
+| WORLD-3 | The world node holds the field role only: properties, invariants, valences, facets. It carries no methods, no moves, no pursuits and no arc of its own. A world that acts is always a failure to name the agent who did | structural | invariant | — |
+| MODAL-1 | Every statement carries a **canonical** modality — *is* (fact), *must* (law), *saw* (attestation) — and every observer record carries its own **read** modality for statements it holds. The set is frozen at three | structural | invariant | — |
+| MODAL-2 | Modality changes are explicit priced operations. Promotion cites the attesting scenes that earned it; demotion walks its cone. In-world retyping names the agent who performed it and emits a move; authorial retyping is a decree or retcon | gate | invariant | — |
+| MODAL-3 | Breaking a `must` is priced by the altitude of the node holding it: world node = miracle (`intentional_break` + exception ID), institution = schism, agent = arc event | gate | invariant | — |
+| MODAL-4 | A statement at `institutions` layer or above, carrying modality `must` and deriving from no world node, is surfaced at milestone review: a law people made, presenting as a law of nature | judgment | default | — |
+| PUB-1 | A retcon cone crossing a publication boundary never auto-propagates; published canon is contradicted only by declared errata — fixes are forward, additive, recontextualizing | gate | invariant | §11.1 |
+
+**Five of thirty-five active rules rest on unratified proposals, one of them at `invariant`** (SCENE-2 §10, DRIFT-1 §1.1, PATTERN-1 §5.1, FACET-1 §3.4, PUB-1 §11.1). That is the register's honest state, and it is now visible rather than implied. The numerator drops as §15 is worked through; the denominator grows, because ratifying keeps surfacing checks that were implied and never written — and occasionally shrinks, when a rule turns out to have been enforcing nothing.
 
 ### 14.3 Claims under test
 
@@ -736,8 +1068,8 @@ Falsifiable claims with measurement protocols — a claim without a protocol is 
 | NAS-C9 | **The founding claim.** Hand-maintained coherence consumes the creative budget: burnout pushes canon toward flatness because flat is cheaper to maintain (resolved characters over wounded ones, victims over accomplices, significance over personhood). Externalizing the bookkeeping returns that budget | Longitudinal self-report of session sustainability before/after adoption; corpus forensics (count simplification-retcons per revision cycle); the canary: whether the braver forks — complicity, live wounds, tempted heroes — get chosen once they stop costing maintenance |
 | NAS-C10 | The two pure authoring modes fail into the two drift walls, **asymmetrically**: pure-hard failure is terminal (supremacy — a bible with no book to revise), pure-soft failure is recoverable (anarchy — contradictions in prose that revision can fix) | Ledger-classify project stalls/failures by declared mode; compare outcome classes: stalled-with-bible vs. shipped-with-contradictions rates |
 | NAS-C11 | Entity-level tension correlates with facet gaps: scenes readers report as tense disproportionately contain facet collisions or asymmetries | Tag beta-reported tension scenes; test for facet collision/asymmetry presence vs. baseline scenes |
-| NAS-C12 | The sagging middle is a valence-succession gap: a protagonist valence filled with no successor void opened within K scenes predicts reported mid-story sag | Map beta pacing complaints against valence-succession gaps in the fold; compare sag reports for gap vs. no-gap spans |
-| NAS-C13 | "Contradictions" in hand-maintained corpora decompose into fact-conflict, query-divergence, and modality-retype — and a material fraction are not fact-conflicts, hence invisible to document-diffing and unfixable by proofreading | Ledger 0001 backfill: classify every catalogued Sithernis contradiction into the three classes; falsified if (nearly) all land in fact-conflict |
+| NAS-C12 | The sagging middle is a **bid-less span** (restated v0.14, sharper and now measurable): sag is predicted not by an unfilled valence but by a protagonist who still holds open valences and has stopped spending on them — pursuits in state `held`, or `pursued` with no attempts, across K scenes. Valence-succession gaps are one cause of this; they are not the phenomenon | Map beta pacing complaints against attempt density per open pursuit in the fold; compare sag reports for attempt-starved vs. attempt-dense spans. Falsified if sag reports track successor gaps but not attempt density |
+| NAS-C13 | "Contradictions" in hand-maintained corpora decompose into fact-conflict, query-divergence (by dimension: selection / scope / time anchor / audience), and modality-retype — and a material fraction are not fact-conflicts, hence invisible to document-diffing and unfixable by proofreading | Ledger 0001 backfill: reconstruct each document's implicit query **by hand** (this step is not automatable — §7.5), then classify every catalogued contradiction into the three classes. Falsified if (nearly) all land in fact-conflict |
 
 ### 14.4 The ledger
 
@@ -745,23 +1077,28 @@ Append-only, one file per event: continuity bug found, retcon executed, phase re
 
 **Ledger 0001 (to backfill):** the book-bible corpus audit — the 1763/1770 birth-year contradiction (`canonical_cause: NAS-C1`, confirms; GRAPH-2 would-have-caught), the forced-vs-voluntary transformation conflict, the misfiled canon docs (§11's evidence). The author's own account belongs in this entry as NAS-C9 evidence: the contradiction-hunting was done by hand, at the cost of burnout — and the v1→v2 revision cycle shows the predicted flattening drift (idealization of the protagonist, the agency-removing retcon, the late-added deuteragonist receiving structural significance but no interiority).
 
-**The kicker (author testimony, same entry):** the transformation conflict was never doc-vs-doc — the author *knew* the canon (she volunteered; the guilt derives from complicity). The written docs drifted from an authoritative version that lived only in the head — an unpublished spec, undiffable by definition. The missing unit test is GRAPH-3 (`canonical_cause` for this half of the entry): had `core_wound derives_from fact_voluntary_transformation` existed as an edge, the "for protection" edit would have walked the cone into the wound and failed loudly — *"this change orphans her core wound."* The author's head is itself an observer scope (§3); what is load-bearing must be anchored into the graph, because only the published record is testable.
+**The kicker (author testimony, same entry):** the transformation conflict was never doc-vs-doc — the author *knew* the canon (she volunteered; the guilt derives from complicity). The written docs drifted from an authoritative version that lived only in the head — an unpublished spec, undiffable by definition. The missing unit test is GRAPH-3 (`canonical_cause` for this half of the entry): had `valence derives_from fact_voluntary_transformation` existed as an edge, the "for protection" edit would have walked the cone into it and failed loudly — *"this change orphans the valence her whole arc folds over."* The author's head is itself an observer scope (§3); what is load-bearing must be anchored into the graph, because only the published record is testable.
 
 ### 14.5 Scope manifest — scale gates
 
 Not every NAS object applies to every project. At project start, a manifest activates models/rules with parameters:
 
 ```yaml
-project: sithernis-novel
-nas_edition: v0.8
+project: the-door
+nas_edition: v0.13
 scale: novel            # flash | short | novella | novel | series
 mode: hard              # hard | soft | mixed — re-tiers the register (§1.1):
                         # hard = design checks gate; soft = same checks harvest post-hoc
 scope:
   contract_stack: {containers: 1}     # short stories: containers 0, chapter contracts off
-  knowledge_scopes: {observers: [reader, faction:magical-public, character:*]}
+  knowledge_scopes: {observers: [reader, faction:the-practice, character:*]}
   pillars: {active: true}
   world_graph: {layers: [physics, biology, history, institutions, characters]}
+  composition:
+    root: world_the_valley        # the apex node — created here, not authored (WORLD-2);
+                                  # holds field + invariants only, never acts (WORLD-3)
+    bands: [individual, institution, civilization]   # names for derived member_of
+                                                     # depths (GRAPH-8)
   cut: {active: true}
 rules_excluded: []      # rule IDs disabled by parameters, with reason
 ```
@@ -787,37 +1124,40 @@ Milestone reports (chapter merge, draft complete, work finished): aggregate the 
 | 3 | Beat model / animatic | **PROPOSAL** in §9.2–9.3 — beats as panels; animatic generated |
 | 4 | Render phase ladder | **PROPOSAL** in §9.1 — Interface/Board ∥ Draft/Textured/Final |
 | 5 | Time model | Two-fold rule **locked**; the Cut **PROPOSAL** in §10; era representation ⚠ open |
-| 6 | Edge vocabulary | **PROPOSAL** in §7.1 — freeze at three until ledger demands |
+| 6 | Edge vocabulary | ✅ **RATIFIED v0.14**, amended. Two frozen namespaces (§7.1): *causal* — `derives_from`, `constrains`, `tensions_with`, walked by retcon cones; *structural* — `member_of` alone, followed for scope and fold, never for staleness. Neither grows without ledger evidence. Amendment resolves the ambiguity that admitted `member_of` in v0.5 on a one-line defence (register: GRAPH-5) |
 | 7 | Trivial retcon fast lane | **PROPOSAL** in §2.4 — cone always computed, auto-propagate when trivial |
 | 8 | Multi-POV | **PROPOSAL** in §9.2 — POV per beat |
 | 9 | Voice as object | **PROPOSAL** in §8.1 — VoiceProfile, hypothesis tier |
 | 10 | Reader-state on reread | **PROPOSAL** in §3.3 — rereader = generated scope, free |
-| 11 | Theme weight | **PROPOSAL** — per-scene presence (0–3), folded to per-chapter curve; flatline lint. Hypothesis tier |
+| 11 | Theme weight | ⚠ **UNHOMED** — sketch only: per-scene presence (0–3), folded to a per-chapter curve; flatline lint; hypothesis tier. The only row in this table with no body section anywhere in the document, so there is nothing to ratify. Draft it into §3.3 (it belongs with the contrast lint family) or drop it — but it cannot be voted on as it stands |
 | 12 | Decree budget | **PROPOSAL** in §2.2 — free at low layers, flagged at high; manifest parameter |
 | 13 | Era vs. scene-time representation; trajectory nodes × chronology | ⚠ fully open (§10) |
-| 14 | Composition levels + emergence lints | Principle II ratified (§2 triad, v0.7); mechanics **PROPOSAL** in §7.6 — `member_of` relation class, emergent properties, two lints |
-| 15 | Valence as unified open-bond object | Principle II ratified (§2 triad, v0.7); mechanics **PROPOSAL** in §7.6 — merges desire/wound with consequence slots; "which valences could bond?" query |
-| 16 | Agent generalization + field term in behavior checks | Principle II ratified (§2 triad, v0.7); mechanics **PROPOSAL** in §8.1 / §2.3 — collective agents; behavior = f(agent, field); field displacement ≠ inconsistency |
+| 14 | Composition levels + emergence lints | ✅ **RATIFIED v0.14**, amended. `member_of` settled earlier under #6. **Level is derived** from `member_of` depth, never declared — the third GRAPH-2 violation found in this pass; the manifest names the bands (GRAPH-8). **`emergent_properties` dropped** — a collective node is an Agent, so its properties are properties; emergence is a claim about where a property must live, not a container, and nothing can verify it semantically. Both lints kept and registered (GRAPH-6, GRAPH-7) — a missing level is findable, which is where the value always was |
+| 15 | Valence as unified open-bond object | ✅ **RATIFIED v0.14**, amended twice. (a) *Neutral primitive:* a valence is an unsatisfied condition plus a disposition toward satisfaction; `kind` (wound/desire/objective/directive/need/vacancy/niche) is attribution carrying no mechanics. The prior desire/core-wound framing smuggled humanist psychology into a structural primitive and broke on the first machine agent. (b) *Action layer added* — §8.5 pursuit / attempt / move, because a valence is a state and wanting is not doing. Boundary set with §7.4: valence is pressure-bearing incompleteness only; unwritten detail stays an open question. (c) *No polarity:* there is no "away from" — every aversion restates as a pull toward something else, so `fear` is a `kind`, not a sign. Multiple coexisting pulls **are** tension, computed via `forecloses` and the existing `close/foreclosed` move. Register VAL-1/2/3; NAS-C12 restated as bid-less spans; **two hand-authored fields corrected to derived** — §8.1 `arc` (fold over moves) and `internal_contradiction` (the foreclosing valence pair). Modifiers (`attempt.modifiers`) reserved and deferred pending #16 |
+| 16 | Agent generalization + field term in behaviour checks | ✅ **RATIFIED v0.14**, amended. Methods, invariants, valences and derived arcs exist at every composition level; persons are Agents at the individual level. Field ratified as a **property of the scene**, not a relation to an act — which is why it does not pre-decide the deferred modifier layer (§8.5). **A collective node holds two roles: agent** (acts, through attributable member moves) **and field** (conditions, never acts) — downward causation stated without opening a gap for uncaused change, preserving VAL-1. OBS-2 amended to take the field as input, separating inconsistency from field displacement |
 | 17 | Contrast principle (perceivability) | Principle III ratified (§2 triad, v0.7); mechanics **PROPOSAL** in §3.3 — contrast lint family; pacing as derivative |
 | 18 | The Two Writers — mode parameter + soft-mode harvesting | Identity **author-declared** (v0.9): NAS is for hard writers first; asymmetry locked (soft fails recoverably, hard fails terminally). Mechanics **PROPOSAL** in §1.1 — mode re-tiers the register; harvest = the system in reverse; feedback-organism rule |
 | 19 | Doctrine by interlock | **PROPOSAL** in §5.1 — PATTERN-1; conformance checks banned; doctrines as lenses only |
 | 20 | Facets — the unit of presentation | **PROPOSAL** in §3.4 — observers touch facets, never entities; collision = scene generator; intimacy = facet-granting; FACET-1 single-facet lint; NAS-C11 |
-| 21 | The World-Agent + void dynamics | **PROPOSAL** in §7.7 — world as apex Agent (physical laws = its invariants; miracles = priced breaks); horror vacui (voids recruit fillers); valence ladders (sagging middle = succession gap, NAS-C12); WORLD-1 |
-| 22 | Statement modality | **PROPOSAL** in §7.8 — *is / must / saw* on every statement; untyped statements get retyped by readers; promotion/demotion priced (MODAL-1); claimed-vs-read modality on diegetic artifacts = computable in-world irony |
-| 23 | The authored query — view provenance | **PROPOSAL** in §7.5 — views record their query (GRAPH-4); contradiction triage: fact-conflict / query-divergence / modality-retype (NAS-C13); selection is authorship |
+| 21 | The World as phantom agent + void dynamics | ✅ **RATIFIED v0.14**, amended. **The apex exists by construction** — the world node is a manifest-created root of the `member_of` DAG, since GRAPH-8's derived levels do not guarantee a single top; physical law therefore has a guaranteed home (WORLD-2). Vocabulary updated to valences throughout. **Amended again, same session: the world is a *phantom agent*** — treated as an agent by the agents inside it, but taking no actions. It holds properties, invariants, valences, facets and field; no methods, no moves, no pursuits, no arc of its own (WORLD-3). "The world is a character" was metaphor and §0 forbids metaphor-only concepts; the attestation reframing compiles it, and world-as-agent becomes an observer record that can be wrong. The apex holds only the field role because there is no coherent will to delegate. Horror vacui restated — **the void does not pull; agents are drawn**. Gods and fate are emergent or ordinary agents, never the world. `candidates` are **authored or suggested, never computed** — the query is the mechanical part; successor-opening stays a prompt, not a gate (a bound objective may simply halt). Physical-law status carries §7.3's layer-and-modality caveat. **WORLD-1 retired as subsumed** — PATTERN-1 applied to the register itself. Forward constraint recorded for the deferred modifier layer: the world is where modifiers bottom out |
+| 22 | Statement modality | ✅ **RATIFIED v0.14**, amended in four places. Set **frozen at three** — a prophecy is `saw` with a forward anchor unless it binds, and *which* is the story; a fourth modality would let the writer dodge the question. (a) **Break price scales with altitude** (MODAL-3): world = miracle, institution = schism, agent = arc. `must` had been conflating physical law with agent invariants, so Wren's arc read as a miracle needing an exception ID. (b) **Modality is two-place** — canonical on the statement, **read** per observer record; the gap is computable irony, and it is general rather than artifact-only, since world-as-agent (§7.7) is the clearest case. (c) **In-world retyping split from authorial** — the first names an agent and emits a move, the second is a decree or retcon walking a cone. (d) **MODAL-1 split** into structural (field required) and MODAL-2 (gate: changes are priced). Plus MODAL-4 at judgment tier: high-layer `must` with no world derivation — made law presenting as natural law |
+| 23 | The authored query — view provenance | ✅ **RATIFIED v0.14**, amended in four places. Query carries four dimensions — selection, scope, time anchor, audience (GRAPH-4). **Query-divergence must name which dimension diverged** — §0's opening bug is a time-anchor divergence sitting on a fact-conflict, and only one of those is fixable by proofreading. **Modality-retype defined sharply** against two-place modality: the view's stated query does not match the modality it presents. **Reconstruction on import is authored or assisted, never automatic** — classification is the mechanical part; NAS-C13's protocol amended to say so. New boundary: **queries read, scenes write** (GRAPH-9) — a projection never collapses a fact. Authorship laundering ratified unchanged |
 | 24 | Publication as canon closure | **PROPOSAL** in §11.1 — shipped partitions freeze; obligations flow frozen→open; reader interpretation layer = uncontrolled scope; forward-only fixes (PUB-1) |
 
-Every proposal awaits explicit ratification — none is silently locked.
+Every proposal awaits explicit ratification. **Amended v0.13:** eight of them were nonetheless already being enforced through the §14.2 register, four at `invariant` — so "none is silently locked" was not true. The register's new *Rests on* column makes the dependency visible; the proposals themselves remain unratified, and ratifying or rejecting one now has a traceable effect on the rules derived from it.
+
+*Ratification bookkeeping, noted for the v1.0 rewrite:* each ratification currently requires hand-editing three hand-synced places — the `Changed in` header line, the inline `PROPOSAL (unratified)` marker, and this table's row. That is duplicated state of exactly the kind GRAPH-2 forbids, and it is the mechanism that produced ledger 0003. Working through the pending set by hand will generate the same class of drift unless one of the three becomes derived.
 
 ---
 
 ## 16. Next Steps
 
-1. **Ratify or amend the proposals** (§15) — each is a yes/no/edit, not a research task.
-2. **The stress test:** decompose the Sithernis corpus into this data model — nodes, edges, scopes, trajectory logs, one pillar, one chapter contract, one scene interface with beats. Backfill **ledger 0001** from the corpus audit. The corpus's own contradictions are the acceptance tests: the model must make them impossible or loudly visible.
-3. **The interlock test:** verify NAS is a system, not a pile — each part must *pay for the others* (pillars feed roadmap feeds contracts feeds reconciliation feeds retcons), and a wrong change must meet resistance early. Remove any one object on paper and check that others fail loudly. If a part can be deleted silently, it hasn't earned its place.
-4. **Freeze the v1.0 language** once the stress test's revision queue is applied.
-5. **Software design** per `SOFTWARE.md`, with NAS as the language spec — and the build itself run as the methodology's first instrumented experiment.
+1. **Ratify or amend the proposals** (§15) — each is a yes/no/edit, not a research task. Start with the eight the register is already enforcing (§14.2, *Rests on*), since those are live either way.
+2. **The stress test, in two sizes.** The small one is done: v0.13's seed thread decomposes a story into the model on the page — nodes, edges, layers, modality, a faction, an agent, a pillar, a chapter contract, a scene beat, and one retcon cone walked to the bottom. It cost fourteen words of fiction and it found a real defect (the layer fork of §7.3, invisible until the schema demanded the field). The large one is still pending: decompose the Sithernis corpus the same way and backfill **ledger 0001** from the corpus audit. The corpus's own contradictions are the acceptance tests — the model must make them impossible or loudly visible.
+3. **Write a scene.** Twelve versions of this document exist and no prose does. The seed now has a bound pillar, a cast, an institution, a declared chapter contract, and preconditions naming exactly what must be true first. The next honest move is `ch03/s02.md` — interface, then board, then draft — not another section here. Every proposal below this line is cheaper to test against one rendered scene than against another revision.
+4. **The interlock test:** verify NAS is a system, not a pile — each part must *pay for the others* (pillars feed roadmap feeds contracts feeds reconciliation feeds retcons), and a wrong change must meet resistance early. Remove any one object on paper and check that others fail loudly. If a part can be deleted silently, it hasn't earned its place.
+5. **Freeze the v1.0 language** once the stress test's revision queue is applied — and reorder the sections to the order the seed thread actually forces, which is not the current one. Switch every cross-reference to a slug anchor in the same pass so the renumbering can never drift again (ledger 0003's lesson, applied instead of repeated).
+6. **Software design** per `SOFTWARE.md`, with NAS as the language spec — and the build itself run as the methodology's first instrumented experiment.
 
 ---
 
@@ -842,4 +1182,4 @@ What is believed original, until the ledger says otherwise: the inversion of nar
 
 ---
 
-*v0.12 — working draft. Iterate by editing this file. Nothing here is sacred except §0's problem statement and the §2 Triad — challenge everything else. The rest earns its place through the ledger, or leaves.*
+*v0.13 — working draft. Iterate by editing this file. Nothing here is sacred except §0's problem statement, the §0.1 seed, and the §2 Triad — challenge everything else. The rest earns its place through the ledger, or leaves.*
