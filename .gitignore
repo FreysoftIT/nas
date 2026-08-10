@@ -1,0 +1,12 @@
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Generated views are outputs, never source (NAS GRAPH-9, §12)
+/out/
+/dist/
