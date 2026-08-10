@@ -1,6 +1,6 @@
 # Narrative Architecture System (NAS)
 
-**Working draft — v0.14 (August 2026) — ratification pass in progress**
+**Working draft — v0.15 (August 2026)**
 *Methodology for structured fiction development. This document is also the spec for the writing layer of the surrounding software; project-level features (kanban, panels, dashboards, session UX) wrap NAS but are out of scope here — see `SOFTWARE.md` for the architecture seed of the tool itself.*
 
 Restructured from v0.2 (archived at `Archive/v0.2_NAS.md`) in v0.3; v0.4 adds the Evidence Loop, the canon-drift model, rules derived from the Field Atlas, and written proposals for every open question.
@@ -21,7 +21,9 @@ And as of v0.14 the system has been run: one scene rendered from the seed (`Chap
 **Changed in v0.10:** Facets — the unit of presentation (§3.4): observers never touch entities, only facets; facet collision as scene generator; intimacy as facet-granting; the single-facet lint (FACET-1, blandness diagnostic #2); claim NAS-C11.
 **Changed in v0.11:** the World-Agent and void dynamics (§7.7) — the world is the apex Agent (its physical laws are its invariants; a miracle is a priced `intentional_break`); *horror vacui* — voids are attractors that recruit candidate fillers (the power vacuum, generalized); Maslow as valence ladders — filled voids spawn successors; the sagging middle as a valence-succession gap (NAS-C12); WORLD-1.
 **Changed in v0.12:** canon dynamics — triangulated from the oldest running canon systems (scripture, law; §17 gains the canon-&-interpretation lineage): statement modality *is / must / saw* (§7.8 — untyped statements get retyped by their readers; promotion/demotion as priced operations; MODAL-1); the authored query (§7.5 — views record their provenance, GRAPH-4; contradiction triage: fact-conflict / query-divergence / modality-retype, NAS-C13); publication as canon closure (§11.1 — frozen partitions, obligations flow frozen→open, forward-only fixes, PUB-1).
-**Changed in v0.14 (ratification pass, in progress — this line accumulates):**
+**Changed in v0.15:** **modifiers** (§8.6) — the layer deferred twice in v0.14, ratified once a real use case forced it. A modifier is a *relation*, not a node: derived at resolution, recorded on the attempt, never authored. Two stages (selection, resolution), four classes living on existing objects (ambient / internal / epistemic / external), and the stack is the agent's `member_of` chain to the root, so failure is attributable to a *level*. Invariants gate, modifiers shift (MOD-3). NAS records that a modifier applied and what it bore on, **never how much** — magnitude belongs to the medium, and specifying arithmetic here would make one game system pretend to be general (MOD-2). This also **repairs a break v0.14 created**: OBS-2 was amended to take the field as input while the mechanism was deferred — an undeclared contract between a `gate | invariant` rule and a layer that did not exist.
+
+**Changed in v0.14 (ratification pass — the proposal era closed):**
 — §15 **#7, #12, #9 ratified, amended:** the retcon fast lane is defined against the ratified ladder and **stops at a publication boundary** (it contradicted PUB-1); decrees per layer become a **ledger metric**, since "flagged" without a tally is a feeling; and **`VoiceProfile` attaches to facets, not characters** — as a character constant, the fact that people talk differently to different people reads as a lint violation.
 — §15 **#18, #24 ratified, amended — the last two register dependencies:** `mode` re-tiering is now stated as a tier map (`gate`→`lint` in soft, `structural` immovable, **DRIFT-1 gating in every mode**), and `mixed` is defined as mode-per-scope rather than a vague third setting. Publication's frozen set is **bounded by `canonised_in`**, not reachability — read greedily it would have frozen half the graph on publishing chapter one. Fan canon becomes expressible as §7.8 retyping by observers with no write access.
 — §15 **#11 dropped as superseded:** the authored 0–3 theme score was the last hand-maintained number of its kind, and it was already redundant — a theme is present in a scene iff a contrast event touches it, so the curve folds out of CONTRAST-1.
@@ -898,7 +900,8 @@ attempt:
                                  # keyed on situations and unreachable from valences
   intent: "..."                  # what the agent meant to cause
   cost: {...}                    # an attempt that spends nothing is not one
-  modifiers: [...]               # ⚠ reserved — see the deferral note below
+  modifiers: [...]               # §8.6 — computed at resolution, recorded here,
+                                 # never authored (system-populated)
   outcome: "..."                 # what actually happened
 ```
 
@@ -926,7 +929,44 @@ move:
 
 **Arc is derived — a defect this layer repairs.** §8.1 declares arc as *"start state → transformation vector → end state, with milestones."* That is an authored state snapshot, and §4.1 and SCENE-3 forbid exactly that: no state is ever stored; every current-state view is a fold over the delta stream. Nobody caught it because `arc` reads like description rather than state. **An agent's arc is the fold over its moves** (register: VAL-3). The violation disappears, arc becomes queryable at any telling position for free, the milestones feeding the Roadmap (§6) stop being hand-maintained, and *"her arc doesn't land"* becomes a computable statement about a move sequence.
 
-**⚠ Deferred, deliberately — modifiers.** `attempt.modifiers` is reserved and unspecified. A condition can intervene between intent and outcome: the ambient field (§2.3, §7.6 — proposal #16, undecided), internal capacity, an agent acting correctly on a wrong belief (already modeled — it points at an observer record, §3), or external prevention. Two of those four are existing objects, which suggests modifiers are a *generalization of the field term* rather than a new invention — and that is precisely why they are not being settled here. The field term sits inside an unratified proposal further down §15, and deciding modifiers first would fix its shape by conformance rather than by load (§5.1). The gap between `intent` and `outcome` is reserved now so the schema does not need reopening later.
+**Modifiers fill the gap between `intent` and `outcome` — see §8.6**, ratified v0.15 after being deferred twice on purpose.
+
+### 8.6 Modifiers — what stands between intent and outcome
+
+**✅ RATIFIED v0.15.** Deferred twice until a use case forced it, which is the order §14 asks for. It is also a **repair**: v0.14 amended OBS-2 to take the scene's declared field as input while deferring the only mechanism by which a field could alter an envelope. Under PATTERN-1's three-verdict test that is not a weakening — it is **`breaks`: an undeclared contract between a `gate | invariant` rule and a layer that did not exist.** This section is that contract, named.
+
+**A modifier is a relation, not a node.** It is the application of an already-existing condition to one specific attempt. Nothing new is stored and nothing is authored: **modifiers are computed at resolution and *recorded* on the attempt**, system-populated like `referenced_by`. An authored modifier would be state that cannot be explained from the graph — the exact defect class this pass spent its length removing.
+
+**Two stages.** The pipeline is `valence → method selection → attempt → resolution → outcome → delta`, and conditions intervene at two points. **Selection** — which method even fires; Wren's `at_a_threshold` is what she does *inside* the Practice's field, and alone in a corridor a different heuristic may be selected. **Resolution** — whether the attempt reaches its intent, and how far. Magnitude is not a third stage: a graded `outcome` makes magnitude part of resolution.
+
+**Four classes, each living on an object that already exists:**
+
+| Class | Lives on | Instance |
+|---|---|---|
+| **ambient** | a collective node's field (§7.6) | the Practice's authority; a corporate jurisdiction |
+| **internal** | the agent | injury, exhaustion, skill, forgetting |
+| **epistemic** | an **observer record** (§3) | acted correctly on intel that was bought |
+| **external** | another agent's attempt | someone else jammed the door |
+
+**Physical law is deliberately not among them.** An invariant does not shift an outcome — it refuses the attempt, or is broken at the price MODAL-3 sets by altitude. **Invariants gate; modifiers shift.** Collapsing the two turns the world's laws into a large negative number, which is how a methodology becomes a game system by accident.
+
+**The stack is the `member_of` chain, and it costs nothing.** An attempt gathers its modifiers walking from the agent to the root: own state → each collective it belongs to → the world's field. GRAPH-8 already derives that depth, so the ordering is free, and §7.6's downward causation is this same relation seen from the attempt's side. The payoff is that failure is attributable to a **level** — which of the things containing you is the thing that beat you.
+
+```yaml
+# Computed at resolution. Recorded on the attempt. Never authored.
+modifier:
+  source: node_id | record_id | attempt_id     # where it came from
+  class: ambient | internal | epistemic | external
+  stage: selection | resolution
+  applies_to: <predicate over method / valence kind / field / agent>
+  bearing: enables | impedes | redirects
+```
+
+`applies_to` is what stops a modifier applying to everything and therefore to nothing — a weapon bears on force, not on persuasion. It mirrors `applies_when` in §14.1's rule schema rather than inventing a second scoping idiom.
+
+**The boundary, and it is load-bearing: NAS records that a modifier applied and what it bore on. It never says how much.** Magnitude belongs to the medium — a game supplies dice, a novel supplies the writer's judgment, and one layer serves both. The moment this document specifies arithmetic it stops being a methodology and becomes a single game system pretending to be general, which is §5.1's doctrine-as-lens argument restated at the level of mechanics (register: MOD-1, MOD-2).
+
+*In the seed:* Wren's attempt at b4 — *make the holding survive being asked about* — resolves `failed`, and the stack says why without anyone narrating it. **ambient**: the Practice's field is not present in that corridor at four in the morning; there is nobody to recite to. **internal**: three hours of holding. **epistemic**: she is acting on a `must` that canon holds as `saw`. Three levels, three sources, one failure — and the epistemic one is the book.
 
 ---
 
@@ -1152,6 +1192,9 @@ The **Rests on** column is new in v0.13 and exists to stop this table lying. A r
 | VAL-2 | A valence `held` with no attempts across the manifest's span is flagged inert — a declared lack nobody has ever spent anything on | lint | default | — |
 | VAL-3 | An agent's arc is the fold over its moves; arcs are never authored as start/end snapshots | structural | invariant | — |
 | VAL-4 | A major agent holds at least one mutually-foreclosing valence pair. An agent whose valences are all compatible is flagged flat — no choice it makes costs it anything | lint | default | — |
+| MOD-1 | Modifiers are derived at resolution and recorded on the attempt, never authored. The stack is the agent's `member_of` chain to the root; every applied modifier names its source object | structural | invariant | — |
+| MOD-2 | NAS records that a modifier applied and what it bore on, never how much. Magnitude belongs to the medium — a system that specifies arithmetic here has stopped being medium-neutral | structural | invariant | — |
+| MOD-3 | Invariants gate; modifiers shift. An attempt violating an invariant is refused or priced by MODAL-3, never resolved as a heavily-modified success | gate | invariant | — |
 | GRAPH-6 | Dense bonding among level-N nodes with no level-N+1 node above them is flagged as a possible unnamed emergent | lint | default | — |
 | GRAPH-7 | A collective node with no members is flagged as a free-floating emergent | lint | default | — |
 | GRAPH-8 | Compositional level is derived from `member_of` depth, never declared per node; the manifest names the bands | structural | invariant | — |
@@ -1256,7 +1299,7 @@ Milestone reports (chapter merge, draft complete, work finished): aggregate the 
 | 12 | Decree budget | ✅ **RATIFIED v0.14**, amended. Free at low §7.3 layers, flagged at high; threshold is a manifest parameter. Amendment: **decrees per layer become a ledger metric** (§14.4) — "flagged" has no teeth unless something tallies. Forty decreed character facts is not a rule violation; it is the ledger reporting that scenes are not doing the collapsing |
 | 13 | Era vs. scene-time representation; trajectory nodes × chronology | ✅ **RATIFIED v0.14** in §10.1 — **one time axis, intervals at every scale**. An era is a long interval, a scene a short one, a trajectory entry a value valid over an interval; fuzzy era anchors are clouds with wide bounds. Open since v0.3 and the only row that never had a proposal — closed as a *consequence* of the interval amendment made for OBS-2, not by a mechanism of its own. Era representation was an artifact of treating time as points |
 | 14 | Composition levels + emergence lints | ✅ **RATIFIED v0.14**, amended. `member_of` settled earlier under #6. **Level is derived** from `member_of` depth, never declared — the third GRAPH-2 violation found in this pass; the manifest names the bands (GRAPH-8). **`emergent_properties` dropped** — a collective node is an Agent, so its properties are properties; emergence is a claim about where a property must live, not a container, and nothing can verify it semantically. Both lints kept and registered (GRAPH-6, GRAPH-7) — a missing level is findable, which is where the value always was |
-| 15 | Valence as unified open-bond object | ✅ **RATIFIED v0.14**, amended twice. (a) *Neutral primitive:* a valence is an unsatisfied condition plus a disposition toward satisfaction; `kind` (wound/desire/objective/directive/need/vacancy/niche) is attribution carrying no mechanics. The prior desire/core-wound framing smuggled humanist psychology into a structural primitive and broke on the first machine agent. (b) *Action layer added* — §8.5 pursuit / attempt / move, because a valence is a state and wanting is not doing. Boundary set with §7.4: valence is pressure-bearing incompleteness only; unwritten detail stays an open question. (c) *No polarity:* there is no "away from" — every aversion restates as a pull toward something else, so `fear` is a `kind`, not a sign. Multiple coexisting pulls **are** tension, computed via `forecloses` and the existing `close/foreclosed` move. Register VAL-1/2/3; NAS-C12 restated as bid-less spans; **two hand-authored fields corrected to derived** — §8.1 `arc` (fold over moves) and `internal_contradiction` (the foreclosing valence pair). Modifiers (`attempt.modifiers`) reserved and deferred pending #16 |
+| 15 | Valence as unified open-bond object | ✅ **RATIFIED v0.14**, amended twice. (a) *Neutral primitive:* a valence is an unsatisfied condition plus a disposition toward satisfaction; `kind` (wound/desire/objective/directive/need/vacancy/niche) is attribution carrying no mechanics. The prior desire/core-wound framing smuggled humanist psychology into a structural primitive and broke on the first machine agent. (b) *Action layer added* — §8.5 pursuit / attempt / move, because a valence is a state and wanting is not doing. Boundary set with §7.4: valence is pressure-bearing incompleteness only; unwritten detail stays an open question. (c) *No polarity:* there is no "away from" — every aversion restates as a pull toward something else, so `fear` is a `kind`, not a sign. Multiple coexisting pulls **are** tension, computed via `forecloses` and the existing `close/foreclosed` move. Register VAL-1/2/3; NAS-C12 restated as bid-less spans; **two hand-authored fields corrected to derived** — §8.1 `arc` (fold over moves) and `internal_contradiction` (the foreclosing valence pair). Modifiers were reserved here and deferred; ratified in v0.15 as §8.6 |
 | 16 | Agent generalization + field term in behaviour checks | ✅ **RATIFIED v0.14**, amended. Methods, invariants, valences and derived arcs exist at every composition level; persons are Agents at the individual level. Field ratified as a **property of the scene**, not a relation to an act — which is why it does not pre-decide the deferred modifier layer (§8.5). **A collective node holds two roles: agent** (acts, through attributable member moves) **and field** (conditions, never acts) — downward causation stated without opening a gap for uncaused change, preserving VAL-1. OBS-2 amended to take the field as input, separating inconsistency from field displacement |
 | 17 | Contrast principle (perceivability) | ✅ **RATIFIED v0.14**, amended. Principle III ratified in v0.7; its mechanics had run unratified since v0.6. The lint family registers as **one rule with five signatures** (CONTRAST-1) using §14.1's `signature` field, not five near-identical rows. **Contrast events defined concretely** against Round 1's machinery — attempt, move, facet event, delta, foil — so the check leaves pure judgment and NAS-C8 gains something to measure. The four emptiness diagnostics (GRAPH-3 origin / CONTRAST-1 perceivability / FACET-1 presentation / VAL-4 cost) named as a set so a later pass does not merge them. Flatline signature rests on §9.2 until #3 clears |
 | 18 | The Two Writers — mode parameter + soft-mode harvesting | ✅ **RATIFIED v0.14**, amended. Identity author-declared in v0.9; mechanics now settled. **"Re-tiers the register" states how**: `structural` unchanged (cannot demote), `gate` → `lint` in soft mode, `lint`/`judgment` unchanged, **DRIFT-1 gates in every mode** as the sole exception. **`mixed` is not a third mode** — it is mode declared per scope in the manifest, which is what people mean by it. Two things were already wired without anyone noticing: §7.8 requires harvested statements to be typed at the boundary, and §9.1's per-scene gate *is* the feedback organism |
@@ -1307,4 +1350,4 @@ What is believed original, until the ledger says otherwise: the inversion of nar
 
 ---
 
-*v0.13 — working draft. Iterate by editing this file. Nothing here is sacred except §0's problem statement, the §0.1 seed, and the §2 Triad — challenge everything else. The rest earns its place through the ledger, or leaves.*
+*v0.15 — working draft. Iterate by editing this file. Nothing here is sacred except §0's problem statement, the §0.1 seed, and the §2 Triad — challenge everything else. The rest earns its place through the ledger, or leaves.*
