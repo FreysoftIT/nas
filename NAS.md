@@ -97,7 +97,22 @@ Four commitments, three of them smuggled in by grammar, none of them written dow
 
 The fourth is the book. A void that size does not sit still (§7.7) — or rather, nothing about it moves at all, and everything near it does: every later choice this document makes will be drawn toward filling it.
 
-**Two ways to read.** The body of this document is the build, in the order the story forces. The rules register (§14.2) is the same content as a flat, scannable contract. Read the body to learn the system; read the register to implement it.
+**Two ways to read.** The body of this document is the build. The rules register (§14.2) is the same content as a flat, scannable contract. Read the body to learn the system; read the register to implement it.
+
+**The reading path (declared v0.17).** Section numbers are frozen permanent IDs (§14.1) — they are never reordered, so the file order and the *learning* order are allowed to differ, and they do. Where the seed thread runs ahead of the numbering, the section says so. Read in this order:
+
+| | Sections | Why here |
+|---|---|---|
+| **1. The problem** | §0, §0.1, §1 | why the blank page is a tooling failure, and the seed |
+| **2. What is true** | §2, §2.1–2.5 | collapse, reachability, retcons, the two drift walls |
+| **3. The world** | §7, §7.1–7.8 | the graph, layers, composition, valence, the world node, modality |
+| **4. Who acts** | §8.1, §8.5, §8.6, §8.6b | agents, the action layer, modifiers, theme |
+| **5. Who knows** | §3, §3.1–3.5 | observers, facets, contrast, the reader |
+| **6. Structure** | §4, §5, §6, §8.2–8.4 | contracts, pillars, roadmap, relationships, setups |
+| **7. Making it** | §9, §10, §11, §12 | the pipeline, time and the Cut, versioning, the file layout |
+| **8. Keeping it honest** | §14, §13, §15, §16, §17 | the evidence loop, scope, the decision record, next steps, lineage |
+
+The largest divergence is that **§7 (the world) and §8's agent machinery come before §3 (observers)** — the story builds a world and its actors before there is anyone to hide things from. The document is numbered the other way round for historical reasons that are now permanent, which is the trade the freeze makes: a reader follows a table, and fourteen ledgers keep working.
 
 *A note on the reference corpus.* Passages marked *(Reference corpus: …)* cite a real ~79,000-word book bible — the one whose drift opens §0 — as **evidence**, never as example material. Each is written to be legible without it. Where the corpus is named, it is called the Sithernis corpus; it is the author's own, and no part of this document depends on having seen it.
 
@@ -1295,6 +1310,12 @@ claims: [NAS-C7]
 applies_when: "any project using the Cut"     # feeds the scope manifest
 ```
 
+**Section numbers are IDs, and they are frozen (v0.17).** The rule above — *stable IDs, never reused or renumbered* — applies to this document's own headings, and did not until now. A `§` number is a permanent address: once assigned it is never renumbered, never reused, and never reordered, even when the reading order argues for it. New material takes the next free number, or a **letter suffix** where it belongs beside an existing section (§8.6b sits next to §8.6 because that is where it belongs, not at the end).
+
+*Why this reverses §16.5's original plan.* That item called for reordering the sections into the order the seed thread forces, and switching every cross-reference to a slug anchor in the same pass. Both halves fail on inspection: a GitHub-style slug still contains the number (`#76-composition-and-emergence` breaks the moment §7.6 becomes §9.2), so anchors buy nothing against renumbering — and **the renumbering itself is what produced ledger 0003's citation drift**, which went undetected through four version bumps and a five-judge adversarial read. These numbers are now cited by fourteen ledger entries, SOFTWARE.md, two project corpora and roughly two hundred places in this file. Moving them once more to make the document read better would be trading a permanent hazard for a one-time convenience.
+
+**So the reading order is declared instead of imposed** — see §0.1. The numbers stay put; the path through them is stated. That costs one table and breaks nothing.
+
 **Tiers:** `structural` — impossible by construction (age is computed; snapshots don't exist); `gate` — blocks a phase transition or merge; `lint` — flags, writer dismissable with a citation; `judgment` — review prompt only.
 **Status:** `invariant` — enforced at face value; `default` — enforced, expected to have exceptions; `hypothesis` — surfaced, not enforced. Rules are revised *by ledger evidence*, which is the whole loop.
 
@@ -1304,53 +1325,53 @@ The **Rests on** column is new in v0.13 and exists to stop this table lying. A r
 
 | ID | Statement (abbrev.) | Tier | Status | Rests on |
 |---|---|---|---|---|
-| OBS-1 | No fact is canon without an observation record (scene or decree) | structural | invariant | — |
-| OBS-2 | Entry state must be reachable from last exit within methods/invariants + elapsed events **and the scene's declared field** (amended v0.14); off-baseline behaviour inside a changed field is displacement, not inconsistency | gate | invariant | — |
-| OBS-3 | A retcon's cone must be walked to empty before status `propagated` | gate | invariant | — |
-| SCENE-1 | Downstream depends only on a scene's interface, never its prose | lint | invariant | — |
-| SCENE-2 | Prose never references its own telling-order position | lint | default | — |
-| TIME-1 | Story time is an interval at every scale — scene, era, trajectory entry. Anchors may be clouds until a scene collapses them; nothing must be dated before the story dates it | structural | invariant | — |
-| TIME-2 | The chronological fold is per-entity: global chronology is a partial order, each entity's slice is total. An entity occupying two overlapping intervals is bilocation | structural | invariant | — |
-| TIME-3 | Editing the Cut re-folds the reader stream and re-runs SETUP-1, PILLAR-1, READER-2 and info-op ordering against the new telling order | gate | invariant | — |
-| SCENE-3 | Scenes emit deltas; no authored state snapshots exist | structural | invariant | — |
 | CONTRACT-1 | Fold of a chapter's scene deltas satisfies its declared delta before close | gate | invariant | — |
 | CONTRACT-2 | Every roadmap item claimed ≥1 chapter; every chapter claims ≥1 item | lint | default | — |
-| PILLAR-1 | A bound pillar's preconditions hold at its position. **Gates binding, not rendering** — prose may be drafted against an `approaching` pillar, marked provisional and regressible; binding is the operation that requires the debt paid | gate | invariant | — |
+| CONTRAST-1 | A declared thing with no contrast event does not register. Five signatures (§3.3): unobservable trait, invisible world feature, unchallenged theme, flatline pacing, delta-less scene. A contrast event is an attempt, move, facet event, delta or declared foil touching the property in the fold | lint | default | — |
+| DRIFT-1 | Draft/graph divergence is logged or propagated at scene close, never deferred — a gate in every mode, the sole exception to soft mode's `gate`→`lint` demotion (§1.1) | gate | default | — |
+| FACET-1 | A major agent presents more than one facet across audiences or time; single-facet majors are flagged flat | lint | default | — |
+| FACET-2 | Facets are authored; observer records are derived — a fold over facet events (`granted`/`discovered`/`faked`) plus direct observation. `authenticity` is canonical and never appears in a record | structural | invariant | — |
 | GRAPH-1 | Causal edges respect layer direction | lint | invariant | — |
 | GRAPH-2 | Documents/views are generated, never hand-copied from graph facts | structural | invariant | — |
 | GRAPH-3 | Load-bearing psychology is causally anchored: every wound, vow, and arc-driver cites the event node(s) it derives from | lint | default | — |
 | GRAPH-4 | Every generated view records its query along four dimensions — selection, scope, time anchor, audience; a view that cannot show its query is hand-authored by definition and falls under GRAPH-2 | structural | invariant | — |
-| GRAPH-9 | Queries read; scenes write. A projection never collapses a fact — only a scene observes (OBS-1). A view that mutates canon is not a view | structural | invariant | — |
 | GRAPH-5 | Edge kinds are closed in two namespaces: *causal* (`derives_from`, `constrains`, `tensions_with`) and *structural* (`member_of`). Cones walk causal edges only; structural relations are followed for scope and fold, never for staleness. Neither namespace grows without a ledger entry | structural | invariant | — |
-| VAL-1 | A valence closes only through a `close` move, and every move names an agent. No valence resolves by authorial assertion, and no transition is ambient — apparent drift decomposes into a sequence of attributable moves | structural | invariant | — |
-| VAL-2 | A valence `held` with no attempts across the manifest's span is flagged inert — a declared lack nobody has ever spent anything on | lint | default | — |
-| VAL-3 | An agent's arc is the fold over its moves; arcs are never authored as start/end snapshots | structural | invariant | — |
-| VAL-4 | A **load-bearing** agent (PATTERN-1: dependencies run through it, removal meets resistance) holds at least one mutually-foreclosing valence pair **in canon**. Agents whose removal nothing notices are exempt. Reads canon, never an observer's record — canonical tension the reader has not yet received is a pending reveal, not a defect | lint | default | — |
-| MOD-1 | Modifiers are derived at resolution and recorded on the attempt, never authored. The stack is the agent's `member_of` chain to the root; every applied modifier names its source object | structural | invariant | — |
-| MOD-2 | NAS records that a modifier applied and what it bore on, never how much. Magnitude belongs to the medium — a system that specifies arithmetic here has stopped being medium-neutral | structural | invariant | — |
-| MOD-3 | Invariants gate; modifiers shift. An attempt violating an invariant is refused or priced by MODAL-3, never resolved as a heavily-modified success | gate | invariant | — |
-| READER-3 | A scene's `intended_reader_trajectory` is checked against its beats before the render phase advances. The check compares two authored artifacts and never claims what a reader feels | gate | default | — |
-| VAL-5 | `want` and `expect` are selections from a valence's `candidates`. Agent-side they are authored canon; reader-side they exist only inside a declared trajectory (§3.5) and are never asserted as fact | structural | invariant | — |
-| STAKE-1 | Stakes are derived, never authored: a stake is a valence whose binding is threatened in the active span. "Raise the stakes" is `alter/escalate` and has no second vocabulary | structural | invariant | — |
 | GRAPH-6 | Dense bonding among level-N nodes with no level-N+1 node above them is flagged as a possible unnamed emergent | lint | default | — |
 | GRAPH-7 | A collective node with no members is flagged as a free-floating emergent | lint | default | — |
 | GRAPH-8 | Compositional level is derived from `member_of` depth, never declared per node; the manifest names the bands | structural | invariant | — |
-| CONTRAST-1 | A declared thing with no contrast event does not register. Five signatures (§3.3): unobservable trait, invisible world feature, unchallenged theme, flatline pacing, delta-less scene. A contrast event is an attempt, move, facet event, delta or declared foil touching the property in the fold | lint | default | — |
-| READER-1 | Exposition shaped for the reader's current need, never bible-shaped | judgment | default | — |
-| READER-2 | Reveals evolve additively; contradiction requires a declared subvert op | lint | default | — |
-| SETUP-1 | Every setup has a payoff window or explicit `abandoned`; orphans flagged | lint | invariant | — |
-| DRIFT-1 | Draft/graph divergence is logged or propagated at scene close, never deferred — a gate in every mode, the sole exception to soft mode's `gate`→`lint` demotion (§1.1) | gate | default | — |
-| PATTERN-1 | Every declared structural element bears load. Removal yields one of three verdicts — **breaks** (coupling: an undeclared contract, route to §8.3), **weakens** (interlock: the healthy case), **nothing notices** (stack: decoration, cut). Signature: zero inbound structural references. Reads the purpose graph, never prose — prose silence is SCENE-1 working | lint | default | — |
-| FACET-1 | A major agent presents more than one facet across audiences or time; single-facet majors are flagged flat | lint | default | — |
-| FACET-2 | Facets are authored; observer records are derived — a fold over facet events (`granted`/`discovered`/`faked`) plus direct observation. `authenticity` is canonical and never appears in a record | structural | invariant | — |
-| ~~WORLD-1~~ | **RETIRED v0.14 — subsumed, not repealed.** Its three clauses are each enforced elsewhere: world-as-Agent by #16's Agent generalization, deltas-only by SCENE-3, no-ambient-change by VAL-1. Nothing was left for it to check independently, and PATTERN-1 does not exempt the register from its own test. ID never reused (§14.1) | — | retired | → VAL-1, SCENE-3 |
-| WORLD-2 | Every project has exactly one world node, created by the manifest as the root of the `member_of` DAG; all nodes are transitively members of it. Physical law lives in its invariant block by construction | structural | invariant | — |
-| WORLD-3 | The world node holds the field role only: properties, invariants, valences, facets. It carries no methods, no moves, no pursuits and no arc of its own. A world that acts is always a failure to name the agent who did | structural | invariant | — |
+| GRAPH-9 | Queries read; scenes write. A projection never collapses a fact — only a scene observes (OBS-1). A view that mutates canon is not a view | structural | invariant | — |
 | MODAL-1 | Every statement carries a **canonical** modality — *is* (fact), *must* (law), *saw* (attestation) — and every observer record carries its own **read** modality for statements it holds. The set is frozen at three | structural | invariant | — |
 | MODAL-2 | Modality changes are explicit priced operations. Promotion cites the attesting scenes that earned it; demotion walks its cone. In-world retyping names the agent who performed it and emits a move; authorial retyping is a decree or retcon | gate | invariant | — |
 | MODAL-3 | Breaking a `must` is priced by the altitude of the node holding it: world node = miracle (`intentional_break` + exception ID), institution = schism, agent = arc event | gate | invariant | — |
 | MODAL-4 | A statement at `institutions` layer or above, carrying modality `must` and deriving from no world node, is surfaced at milestone review: a law people made, presenting as a law of nature | judgment | default | — |
+| MOD-1 | Modifiers are derived at resolution and recorded on the attempt, never authored. The stack is the agent's `member_of` chain to the root; every applied modifier names its source object | structural | invariant | — |
+| MOD-2 | NAS records that a modifier applied and what it bore on, never how much. Magnitude belongs to the medium — a system that specifies arithmetic here has stopped being medium-neutral | structural | invariant | — |
+| MOD-3 | Invariants gate; modifiers shift. An attempt violating an invariant is refused or priced by MODAL-3, never resolved as a heavily-modified success | gate | invariant | — |
+| OBS-1 | No fact is canon without an observation record (scene or decree) | structural | invariant | — |
+| OBS-2 | Entry state must be reachable from last exit within methods/invariants + elapsed events **and the scene's declared field** (amended v0.14); off-baseline behaviour inside a changed field is displacement, not inconsistency | gate | invariant | — |
+| OBS-3 | A retcon's cone must be walked to empty before status `propagated` | gate | invariant | — |
+| PATTERN-1 | Every declared structural element bears load. Removal yields one of three verdicts — **breaks** (coupling: an undeclared contract, route to §8.3), **weakens** (interlock: the healthy case), **nothing notices** (stack: decoration, cut). Signature: zero inbound structural references. Reads the purpose graph, never prose — prose silence is SCENE-1 working | lint | default | — |
+| PILLAR-1 | A bound pillar's preconditions hold at its position. **Gates binding, not rendering** — prose may be drafted against an `approaching` pillar, marked provisional and regressible; binding is the operation that requires the debt paid | gate | invariant | — |
 | PUB-1 | A retcon cone crossing a publication boundary never auto-propagates; published canon is contradicted only by declared errata — fixes are forward, additive, recontextualizing. The frozen set is what published scenes *observed* (`canonised_in`), not everything they touched | gate | invariant | — |
+| READER-1 | Exposition shaped for the reader's current need, never bible-shaped | judgment | default | — |
+| READER-2 | Reveals evolve additively; contradiction requires a declared subvert op | lint | default | — |
+| READER-3 | A scene's `intended_reader_trajectory` is checked against its beats before the render phase advances. The check compares two authored artifacts and never claims what a reader feels | gate | default | — |
+| SCENE-1 | Downstream depends only on a scene's interface, never its prose | lint | invariant | — |
+| SCENE-2 | Prose never references its own telling-order position | lint | default | — |
+| SCENE-3 | Scenes emit deltas; no authored state snapshots exist | structural | invariant | — |
+| SETUP-1 | Every setup has a payoff window or explicit `abandoned`; orphans flagged | lint | invariant | — |
+| STAKE-1 | Stakes are derived, never authored: a stake is a valence whose binding is threatened in the active span. "Raise the stakes" is `alter/escalate` and has no second vocabulary | structural | invariant | — |
+| TIME-1 | Story time is an interval at every scale — scene, era, trajectory entry. Anchors may be clouds until a scene collapses them; nothing must be dated before the story dates it | structural | invariant | — |
+| TIME-2 | The chronological fold is per-entity: global chronology is a partial order, each entity's slice is total. An entity occupying two overlapping intervals is bilocation | structural | invariant | — |
+| TIME-3 | Editing the Cut re-folds the reader stream and re-runs SETUP-1, PILLAR-1, READER-2 and info-op ordering against the new telling order | gate | invariant | — |
+| VAL-1 | A valence closes only through a `close` move, and every move names an agent. No valence resolves by authorial assertion, and no transition is ambient — apparent drift decomposes into a sequence of attributable moves | structural | invariant | — |
+| VAL-2 | A valence `held` with no attempts across the manifest's span is flagged inert — a declared lack nobody has ever spent anything on | lint | default | — |
+| VAL-3 | An agent's arc is the fold over its moves; arcs are never authored as start/end snapshots | structural | invariant | — |
+| VAL-4 | A **load-bearing** agent (PATTERN-1: dependencies run through it, removal meets resistance) holds at least one mutually-foreclosing valence pair **in canon**. Agents whose removal nothing notices are exempt. Reads canon, never an observer's record — canonical tension the reader has not yet received is a pending reveal, not a defect | lint | default | — |
+| VAL-5 | `want` and `expect` are selections from a valence's `candidates`. Agent-side they are authored canon; reader-side they exist only inside a declared trajectory (§3.5) and are never asserted as fact | structural | invariant | — |
+| WORLD-2 | Every project has exactly one world node, created by the manifest as the root of the `member_of` DAG; all nodes are transitively members of it. Physical law lives in its invariant block by construction | structural | invariant | — |
+| WORLD-3 | The world node holds the field role only: properties, invariants, valences, facets. It carries no methods, no moves, no pursuits and no arc of its own. A world that acts is always a failure to name the agent who did | structural | invariant | — |
+| ~~WORLD-1~~ | **RETIRED v0.14 — subsumed, not repealed.** Its three clauses are each enforced elsewhere: world-as-Agent by #16's Agent generalization, deltas-only by SCENE-3, no-ambient-change by VAL-1. Nothing was left for it to check independently, and PATTERN-1 does not exempt the register from its own test. ID never reused (§14.1) | — | retired | → VAL-1, SCENE-3 |
 
 **No active rule rests on an unratified proposal (v0.14).** At the start of this pass eight did, four of them at `invariant` — enforcement running ahead of decision. The column stays in the table because the condition will recur the moment a new proposal derives a rule, and the point of the column is that it was invisible until someone looked. That is the register's honest state, and it is now visible rather than implied. The numerator drops as §15 is worked through; the denominator grows, because ratifying keeps surfacing checks that were implied and never written — and occasionally shrinks, when a rule turns out to have been enforcing nothing.
 
@@ -1457,12 +1478,35 @@ The *Rests on* column added in v0.13 exposed eight rules being enforced while th
 
 ## 16. Next Steps
 
-1. ~~**Ratify or amend the proposals** (§15).~~ ✅ **Done, v0.14** — 23 ratified (all amended), 1 dropped. The pass found **fifteen latent defects**, every one surfaced by *applying* a ratification rather than by reading the document: three fields that were authored state in violation of §4.1 since v0.2 (`arc`, `internal_contradiction`, observer records), two more that were hand-kept copies of structure (`level`, the §9.1 gate list), a register rule enforcing nothing (WORLD-1, retired), a rule conflating physical law with a character's vow (`must`), a world that was metaphor in a document that forbids metaphor, a two-verdict interlock test that scored undeclared dependencies as healthy, a phase gate one ambiguous sentence away from recommending the supremacy wall it exists to prevent, and a vocabulary collision the pass created itself and caught only by reading. Two claims became measurable; one open question (#13) closed as a side effect of an amendment made for something else.
-2. **The stress test, in two sizes.** The small one is done: v0.13's seed thread decomposes a story into the model on the page — nodes, edges, layers, modality, a faction, an agent, a pillar, a chapter contract, a scene beat, and one retcon cone walked to the bottom. It cost fourteen words of fiction and it found a real defect (the layer fork of §7.3, invisible until the schema demanded the field). The large one is still pending: decompose the Sithernis corpus the same way and backfill **ledger 0001** from the corpus audit. The corpus's own contradictions are the acceptance tests — the model must make them impossible or loudly visible.
-3. ~~**Write a scene.**~~ ✅ **Done, v0.14** — `Chapters/ch03/s02.md`, 986 words at `Draft`, walked through the ladder (interface → board → gate → prose) with nothing back-filled. **META-1 discharged.** Ledger 0006 records it, and the result is the three checks that *failed*: PILLAR-1 (three unpaid preconditions, cited as `PILLAR-1-EX1`), CONTRACT-1 (declared two steps of stake escalation, delivered one), MODAL-4 (surfaced as designed). The unpaid preconditions became `/Cut.md` — seven positions, six of them empty, three carrying a named obligation. **Nobody wrote an outline; the pillar produced one.** Equally worth recording: the interface did not write the prose and did not try — the pine door, the warp, the quarter-inch heel slip all came from drafting, with the contract staying on its own side of the seam (§2.5's healthy band, first observation in this project that bears on it).
-4. ~~**The interlock test.**~~ ✅ **Run, v0.15** — ledger 0011. 26 authored objects (derived views exempt — they cost nothing and cannot drift): 10 keystones, 13 interlocked, 1 thin (Theme — **rebuilt in v0.17**, §8.6b, using the foreclosure graph Truby's opposition describes), 1 stack (VoiceProfile — **retired in v0.17**, a second home for what is now a facet field), and **2 couplings caught**: Stake has duplicated the valence machinery undeclared since v0.14 (the §8 roster said "derivable" for twelve versions while contracts authored escalations — dedup queued), and the unratified reader-trajectory layer's `feel` duplicates `emotional_temp` (same-day, same author, caught by the same test). Verdict: **a system, not a pile** — every other removal fails loudly, by name, through declared edges.
-5. **Freeze the v1.0 language** once the stress test's revision queue is applied — and reorder the sections to the order the seed thread actually forces, which is not the current one. Switch every cross-reference to a slug anchor in the same pass so the renumbering can never drift again (ledger 0003's lesson, applied instead of repeated).
-6. **Software design** per `SOFTWARE.md`, with NAS as the language spec — and the build itself run as the methodology's first instrumented experiment.
+### 16.1 Ratify the proposals
+
+~~**Ratify or amend the proposals** (§15).~~ ✅ **Done, v0.14** — 23 ratified (all amended), 1 dropped. The pass found **fifteen latent defects**, every one surfaced by *applying* a ratification rather than by reading the document: three fields that were authored state in violation of §4.1 since v0.2 (`arc`, `internal_contradiction`, observer records), two more that were hand-kept copies of structure (`level`, the §9.1 gate list), a register rule enforcing nothing (WORLD-1, retired), a rule conflating physical law with a character's vow (`must`), a world that was metaphor in a document that forbids metaphor, a two-verdict interlock test that scored undeclared dependencies as healthy, a phase gate one ambiguous sentence away from recommending the supremacy wall it exists to prevent, and a vocabulary collision the pass created itself and caught only by reading. Two claims became measurable; one open question (#13) closed as a side effect of an amendment made for something else.
+### 16.2 The stress test
+
+**In two sizes.** The small one is done: v0.13's seed thread decomposes a story into the model on the page — nodes, edges, layers, modality, a faction, an agent, a pillar, a chapter contract, a scene beat, and one retcon cone walked to the bottom. It cost fourteen words of fiction and it found a real defect (the layer fork of §7.3, invisible until the schema demanded the field). The large one is still pending: decompose the Sithernis corpus the same way and backfill **ledger 0001** from the corpus audit. The corpus's own contradictions are the acceptance tests — the model must make them impossible or loudly visible.
+### 16.3 Write a scene
+
+~~**Done.**~~ ✅ **Done, v0.14** — `Chapters/ch03/s02.md`, 986 words at `Draft`, walked through the ladder (interface → board → gate → prose) with nothing back-filled. **META-1 discharged.** Ledger 0006 records it, and the result is the three checks that *failed*: PILLAR-1 (three unpaid preconditions, cited as `PILLAR-1-EX1`), CONTRACT-1 (declared two steps of stake escalation, delivered one), MODAL-4 (surfaced as designed). The unpaid preconditions became `/Cut.md` — seven positions, six of them empty, three carrying a named obligation. **Nobody wrote an outline; the pillar produced one.** Equally worth recording: the interface did not write the prose and did not try — the pine door, the warp, the quarter-inch heel slip all came from drafting, with the contract staying on its own side of the seam (§2.5's healthy band, first observation in this project that bears on it).
+### 16.4 The interlock test
+
+~~**Run.**~~ ✅ **Run, v0.15** — ledger 0011. 26 authored objects (derived views exempt — they cost nothing and cannot drift): 10 keystones, 13 interlocked, 1 thin (Theme — **rebuilt in v0.17**, §8.6b, using the foreclosure graph Truby's opposition describes), 1 stack (VoiceProfile — **retired in v0.17**, a second home for what is now a facet field), and **2 couplings caught**: Stake has duplicated the valence machinery undeclared since v0.14 (the §8 roster said "derivable" for twelve versions while contracts authored escalations — dedup queued), and the unratified reader-trajectory layer's `feel` duplicates `emotional_temp` (same-day, same author, caught by the same test). Verdict: **a system, not a pile** — every other removal fails loudly, by name, through declared edges.
+### 16.5 Freeze the v1.0 language
+
+✅ **Done, v0.17 — and it reversed its own plan.** Ledger 0015.
+
+This item used to read: *reorder the sections into the order the seed thread forces, and switch every cross-reference to a slug anchor in the same pass.* Executing it exposed both halves as wrong. A GitHub slug **contains the number** — `#76-composition-and-emergence` breaks the instant §7.6 becomes §9.2 — so anchors buy nothing against renumbering. And the renumbering is itself the hazard: **it is what produced ledger 0003's citation drift**, which survived four version bumps and a five-judge adversarial read undetected. The numbers are now cited by fifteen ledger entries, SOFTWARE.md, two project corpora and ~200 places in this file.
+
+So the freeze is the opposite operation:
+
+1. **Section numbers became frozen permanent IDs** (§14.1) — never renumbered, never reused, never reordered. §14.1's rule for register IDs, finally applied to the document that wrote it. New material takes the next free number or a letter suffix beside where it belongs (§8.6b).
+2. **The reading order is declared, not imposed** (§0.1) — an eight-row path through the frozen numbering. The largest divergence is that the world and its agents (§7, §8) precede the observers (§3), because a story builds a world before it has anyone to hide things from.
+3. **The register is sorted** — 46 active rules alphabetical then numeric, the retired ID at the foot. It is the one table meant to be scanned and had drifted into insertion order.
+4. **Every cross-reference verified to resolve.** One true dangle found and fixed: SOFTWARE.md cited §16.5 when §16's items were a bare list, so the items became addressable subsections rather than the citation becoming vaguer.
+
+**What is deliberately *not* frozen:** the models. §14 keeps running, rules keep being revised by ledger evidence, and this document keeps changing. What froze is the *addressing scheme* — the thing whose instability was silently corrupting citations across the corpus. A language freeze that stopped the models from moving would have killed the evidence loop, which is the only part of this system with no precedent.
+### 16.6 Software design
+
+**Software design** per `SOFTWARE.md`, with NAS as the language spec — and the build itself run as the methodology's first instrumented experiment.
 
 ---
 

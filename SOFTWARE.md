@@ -1,7 +1,7 @@
 # NAS Software — Architecture Seed
 
 **v0.2 (August 2026) — pre-design.**
-*NAS.md is the language spec; this document collects the architectural constraints and decisions for its compiler/IDE. It is deliberately not a full design: per the system-first rule, software design proper starts only after NAS's language freeze (NAS §16.5). What belongs here now is everything already decided or constrained — so requirements stop living in chat.*
+*NAS.md is the language spec — its §14.2 register is the **authority** for rule IDs, tiers and statements; the tier table and object roster below are hand-kept projections of it, and where they disagree §14.2 wins (ledger 0013). This document collects the architectural constraints and decisions for its compiler/IDE. It is deliberately not a full design: per the system-first rule, software design proper starts only after NAS's language freeze (NAS §16.5). What belongs here now is everything already decided or constrained — so requirements stop living in chat.*
 
 > **v0.2 is a drift repair, and the drift is the point.** v0.1's footer read *"grows only with ratified NAS decisions."* NAS then went v0.12 → v0.16: twenty-four proposals ratified, an action layer and a modifier layer added, the fold redefined, ~50 register rules. **This document grew by nothing.** That is §2.5's Wall 2 — anarchy, one side diverging without announcement — running in the project's own two artifacts, and DRIFT-1 says divergence is logged or propagated at close, never deferred. It was deferred for four versions. Sections changed by the repair are marked **[v0.2]**; the reasoning is in ledger 0013.
 
