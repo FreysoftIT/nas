@@ -114,10 +114,37 @@ detector that got satisfied. Following it generated the strongest beat in the
 example, out of a field (`invariants`) that had been declared and never
 connected. That is what a lint earning its place looks like.
 
+## None of this is on the page yet — and that is deliberate
+
+The story runs on Marek's POV. What the reader holds of Oyo is
+`facet_the_antagonist`: cold, patient, unbothered. **The reader has received no
+part of the structure above**, and should not — Marek has never seen it either.
+
+This is worth stating because it is the distinction VAL-4 was originally
+mis-stated as missing. The lint reads **canon**, not the reader's record:
+
+| | canon | reader's record at `pillar_01` |
+|---|---|---|
+| `val_oyo_win` | pursued, 0.8 | unknown |
+| `val_oyo_ledger` | held, forecloses the win | unknown |
+| `val_oyo_standing` | binds by inaction | unknown |
+
+An agent who is deep in the graph and opaque on the page is **not flat — it is a
+pending reveal**, and the gap is an asset the writer can spend. What the reader
+gets at the pillar is a man they have been told is the antagonist, kneeling in
+the street with his hands inside someone. They will not know what it cost him
+for another act.
+
+Under §3 that is the ordinary operation of observer records applied to character
+depth. Nothing special is required, and the "reveal inventory" — *which
+load-bearing agents hold tension the reader has never received?* — is the
+valence analogue of §3.4's contrast inventory.
+
 FACET-1: passes — three facets, one granted at the pillar.
-VAL-4: ✅ **passes** — `val_oyo_win` and `val_oyo_ledger` foreclose each other,
-and `val_oyo_standing` forecloses the win from the other side. Three valences,
-no free choices.
+VAL-4: ✅ **passes** in canon, and Oyo is in scope for it: he appears in
+`pillar_01`'s postconditions, so dependencies run through him (PATTERN-1). A
+bartender with no foreclosing pair would be exempt rather than deficient —
+demanding depth from every named agent is a stencil, and §5.1 bans stencils.
 VAL-2: ⚠ `val_oyo_ledger` and `val_oyo_standing` are both `held` with no
 attempts. Correct for now — he has spent nothing on either, which is precisely
 why doing nothing was so cheap until the street.

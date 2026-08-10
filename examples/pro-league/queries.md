@@ -126,7 +126,7 @@ supplies the writer's judgment. The structure is identical.
 
 | Rule | Verdict |
 |---|---|
-| **VAL-4** on `char_oyo` | ✅ **fixed** — `val_oyo_win` and `val_oyo_ledger` foreclose each other; `val_oyo_standing` forecloses the win from the other side. The fix came from a field already in the file: his invariant *"Never lets a debt close on someone else's terms"* implied a debt valence that had never been named |
+| **VAL-4** on `char_oyo` | ✅ **fixed in canon** — `val_oyo_win` and `val_oyo_ledger` foreclose each other; `val_oyo_standing` forecloses the win from the other side. The fix came from a field already in the file: his invariant *"Never lets a debt close on someone else's terms"* implied a debt valence that had never been named. **None of it is on the page** — see query 7; that is deliberate, not a second lint |
 | **VAL-2** on `val_marek_legacy` | ⚠ `held`, pressure 0.7, zero attempts. He has never once spent anything on the thing he says he is building |
 | **VAL-2** on `val_oyo_ledger`, `val_oyo_standing` | ⚠ both `held`, zero attempts — and correct. He has spent nothing on either, which is exactly why doing nothing was so cheap until the street |
 | **NAS-C12** on `val_marek_standing` | ⚠ bound, `successor: null` — the sag signature. Answered here from *outside* the agent, by Kes's move. Candidate amendment to the claim, recorded in `README.md`, not applied |
@@ -134,6 +134,30 @@ supplies the writer's judgment. The structure is identical.
 
 Four flags standing, one fixed. A worked example with no failing checks is a
 brochure — but the one that got fixed is worth the note.
+
+---
+
+## 7. Reveal inventory — canonical tension the reader has never received
+
+*query: {selection: foreclosing pairs, scope: canon MINUS reader record, anchor: pillar_01, audience: writer}*
+
+The valence analogue of §3.4's contrast inventory, and the reason VAL-4 reads
+canon rather than the page.
+
+| Agent | Canonical tension | Reader holds | Status |
+|---|---|---|---|
+| Oyo | three valences, every pair in tension; kneeling costs him two | `facet_the_antagonist` — cold, patient, unbothered | **pending reveal** — an asset, not a fault |
+| Kes | `facet_the_protege.authenticity` flipped to `mask` | `facet_the_asset` — reliable, quiet | **pending reveal** — and it is the betrayal |
+| Marek | standing forecloses legacy | POV — the reader has it | delivered |
+
+**A character who is deep in the graph and opaque on the page is not flat.** The
+story runs on Marek's POV; he has never seen Oyo's ledger, so neither has the
+reader. That gap is spendable — it is what a reveal *is* — and reading it as a
+defect would have the system asking a writer to flatten their own withholding.
+
+This is why VAL-4 fires on the **node** and never on the reader's record. Under
+§3 it needs no special machinery: character depth is a fact like any other, and
+observers hold what they were given.
 
 ## What fixing VAL-4 actually did
 
