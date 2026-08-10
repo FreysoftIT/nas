@@ -55,6 +55,22 @@ Three resolutions, one chosen:
 3. **Leave both, and log the dependency: this `expect` is unpayable until a
    scene at position ≤7 establishes Oyo's need.** ← taken.
 
+> ## ✅ PAID — `ch04.s01`, Cut position 4
+>
+> The dependency logged here was discharged by **writing the missing scene**, not
+> by editing this one. `ch04.s01` shows Oyo buying a nineteen-year-old paper on
+> Marek at the exact hour it becomes valuable, declining to say why, and
+> conceding he overpaid — so a reader arriving at b3 now has a reason to brace.
+>
+> The scene sets the trap deliberately: its own b4 runs `want == expect` on
+> **leverage**, closing the reader's valence on a false value that this beat
+> collects on eleven days later. See `Chapters/ch04/reader-audit.md`.
+>
+> **This is the first reader-side finding in either project to produce a piece of
+> work.** Pillar preconditions have generated obligations since v0.14; this is the
+> same mechanism arriving from the reader's side, and it named its own Cut
+> position rather than a line to rewrite.
+
 That third option is the one the door's audit could not produce, because the
 door's misses were local. **This one names a missing scene.** The audit stops
 being a proofreading pass and becomes an obligation generator — the same thing

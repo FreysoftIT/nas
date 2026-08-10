@@ -6,7 +6,7 @@ order:
   - {position: 1,  scene: null, note: "unwritten — pays reader.confidence(fact_league_terms)"}
   - {position: 2,  scene: null, note: "unwritten — pays relationship(marek->kes).trust >= 0.7"}
   - {position: 3,  scene: null, note: "unwritten — the ascent; binds val_marek_standing"}
-  - {position: 4,  scene: null, note: "unwritten"}
+  - {position: 4,  scene: ch04.s01, story_time: {start: "11 days before ch07, ~14:00", end: "~14:20"}, note: "pays pillar_01 precondition 4 (marek->oyo adversarial) AND ch07.s01 b3's unpayable expect"}
   - {position: 5,  scene: null, note: "unwritten — pays pursuit(val_kes_out).state == pursued"}
   - {position: 6,  scene: null, note: "unwritten — pays relationship(kes->marek).trust <= -0.4"}
   - {position: 7,  scene: null, note: "unwritten — the job. Offstage in the telling."}

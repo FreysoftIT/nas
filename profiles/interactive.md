@@ -33,6 +33,14 @@ modifiers: {required: true}         # §8.6 — not optional in this medium
 
 ---
 
+## Two corrections from the first real consumer
+
+*Added v0.18, both from Alter-G's response (ledger 0016).*
+
+**Findings must arrive before the close ritual finishes, not after.** This profile originally conceded that an advisory NAS degrades its guarantees to *found afterwards* — "the same grade the engine's own checker already gives." That was wrong about the good case. A well-built interactive engine verifies **at turn or sitting close, before state commits**, which means a projection landing before that gate reaches a unit **still open to correction**. *Found-at-the-gate is a strictly better grade than found-afterwards*, and it is a hard requirement on adapter cadence rather than a nice-to-have: **an adapter that runs after the close has thrown away most of the value.**
+
+**And a projection can leak, which is worse here than anywhere else** — see GRAPH-10 (§7.5). Where an engine physically firewalls a character-voicing component from the truth store, materialising a derived observer record into that component's readable file hands it every observer's reading of the fact, canon's included. In a novel that is a tidiness problem. In a live work with an adversarial-by-design information gap, **it is the whole game, silently over.** GRAPH-10 exists because a consumer with a real firewall checked this profile against their architecture and found the rule missing.
+
 ## Publication closure every turn — the defining constraint
 
 In a novel the author holds one publication boundary and meets it once. Here

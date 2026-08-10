@@ -15,7 +15,7 @@ preconditions:                  # radiate BACKWARD — derived, not outlined
   - valence(val_marek_standing).bound_by != []        # he must actually have made it
   - relationship(marek->kes).trust >= 0.7             # the mentorship must be real
   - relationship(kes->marek).trust <= -0.4            # and already broken on her side
-  - relationship(marek->oyo).kind == adversarial
+  - relationship(marek->oyo).kind == adversarial      # ✅ PAID — ch04.s01 (cut pos 4)
   - reader.confidence(fact_league_terms) >= strongly_implied
   - pursuit(val_kes_out).state == pursued             # she must have been trying to get out
 
