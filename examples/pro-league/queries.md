@@ -14,14 +14,20 @@ them is unanswerable about the door, because the door has one real agent.
 |---|---|---|---|---|
 | Marek | `val_marek_standing` | **closed/bound** | 0.9 | — |
 | Marek | `val_marek_legacy` | held | 0.7 | foreclosed by his own standing |
-| Kes | `val_kes_out` | pursued | **0.95** | foreclosed by Marek's standing **and** her own proof |
+| Kes | `val_kes_out` | pursued | **0.95** | foreclosed by Marek's standing, her own proof, **and the League's supply need** |
 | Kes | `val_kes_proof` | held | 0.6 | — |
-| Oyo | `val_oyo_win` | pursued | 0.8 | endangered by Kes's move |
-| Oyo | `val_oyo_standing` | held | 0.5 | — |
+| Oyo | `val_oyo_win` | pursued | 0.8 | endangered by Kes's move; foreclosed by his own ledger **and** his own standing |
+| Oyo | `val_oyo_ledger` | held | 0.7 | foreclosed by the win |
+| Oyo | `val_oyo_standing` | held | 0.5 | foreclosed by the win — and it **binds by doing nothing** |
 
 **Read it once and the plot is visible.** The highest-pressure valence in the
-graph belongs to someone with both exits foreclosed, one of them by the
+graph belongs to someone with three walls around it, one of them built by the
 protagonist's success. Nobody outlined a betrayal; the board is the betrayal.
+
+And read the last three rows: **the only agent with a free choice in the street
+is the one whose cheapest option is to walk away.** `val_oyo_standing` binds by
+inaction — he becomes the one who was always here simply by not kneeling. Every
+row of his that could bind for free binds by letting Marek die.
 
 ---
 
@@ -32,9 +38,21 @@ protagonist's success. Nobody outlined a betrayal; the board is the betrayal.
 ```
 val_marek_standing ──forecloses──> val_marek_legacy        (internal — contradiction)
 val_marek_standing ──forecloses──> val_kes_out             (cross-agent — CONFLICT)
+val_league_supply  ──forecloses──> val_kes_out             (institution — the third wall)
 val_kes_proof      ──forecloses──> val_kes_out             (internal — contradiction)
 [kes acts on val_kes_out] ────────> val_oyo_win endangered (cross-agent — CONFLICT)
+val_oyo_win        <─forecloses─>  val_oyo_ledger          (internal — mutual)
+val_oyo_standing   ──forecloses──> val_oyo_win             (internal — and it binds
+                                                            by inaction)
 ```
+
+Note the shape of Kes's trap: **three foreclosing edges from three different
+altitudes** — a person (Marek), an institution (the League), and herself. Only
+one of the three can be argued with.
+
+And Oyo's cluster is the mirror: three valences, every pair in tension, so the
+street offers him no free move. Before the VAL-4 fix his rows had no edges at
+all and the diagram had a dead corner.
 
 **Same edge, two readings by altitude.** Within an agent, `forecloses` is
 internal contradiction (§8.1, derived). Across agents it is plot. One relation,
@@ -108,10 +126,32 @@ supplies the writer's judgment. The structure is identical.
 
 | Rule | Verdict |
 |---|---|
-| **VAL-4** on `char_oyo` | ❌ **fails** — no foreclosing pair. Nothing he wants costs him anything; he is the flattest agent here, and the fix is a second want the rescue endangers. Left unfixed as a live lint |
+| **VAL-4** on `char_oyo` | ✅ **fixed** — `val_oyo_win` and `val_oyo_ledger` foreclose each other; `val_oyo_standing` forecloses the win from the other side. The fix came from a field already in the file: his invariant *"Never lets a debt close on someone else's terms"* implied a debt valence that had never been named |
 | **VAL-2** on `val_marek_legacy` | ⚠ `held`, pressure 0.7, zero attempts. He has never once spent anything on the thing he says he is building |
+| **VAL-2** on `val_oyo_ledger`, `val_oyo_standing` | ⚠ both `held`, zero attempts — and correct. He has spent nothing on either, which is exactly why doing nothing was so cheap until the street |
 | **NAS-C12** on `val_marek_standing` | ⚠ bound, `successor: null` — the sag signature. Answered here from *outside* the agent, by Kes's move. Candidate amendment to the claim, recorded in `README.md`, not applied |
 | **CONTRAST-1** on `facet_sorry_skin` | ⚠ one contrast event (the pillar). Thin |
 
-Four flags, none of them tidied. A worked example with no failing checks is a
-brochure.
+Four flags standing, one fixed. A worked example with no failing checks is a
+brochure — but the one that got fixed is worth the note.
+
+## What fixing VAL-4 actually did
+
+The lint said Oyo was flat. The repair was not to invent a flaw; it was to ask
+what **the rescue itself** endangers — and the answer was already sitting in the
+file as `invariants: ["Never lets a debt close on someone else's terms"]`. A man
+with that invariant has a valence about debt. It had been declared and never
+connected.
+
+Naming it turned the street into a real decision:
+
+- **Do nothing** — `val_oyo_standing` binds for free, `val_oyo_ledger` stays
+  intact, and the only casualty is a win he can tell himself he would have taken.
+- **Kneel** — he keeps the game and closes two of his three wants, and the win he
+  saved is now one he can never take cleanly, because a man only alive to lose
+  because you kept him breathing is not a man you beat.
+
+**The cheapest option is to walk. He does not wait.** No prose was needed to
+establish that, and none of it was authored — it fell out of connecting a field
+to a lint. That is the difference between a lint that flags flatness and a lint
+that removes it.

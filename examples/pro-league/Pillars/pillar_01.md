@@ -21,8 +21,11 @@ preconditions:                  # radiate BACKWARD — derived, not outlined
 
 postconditions:                 # constrain FORWARD
   - agent: char_marek, carries: "was shot by the one he made"
-  - agent: char_oyo, carries: "chose to keep him alive, and knows why"
-  - valence: val_oyo_win, status: preserved           # the rescue is self-interested
+  - agent: char_oyo, carries: "chose to keep him alive, and knows what it cost"
+  - valence: val_oyo_win, status: preserved-but-contaminated   # see below
+  - valence: val_oyo_ledger, status: foreclosed       # Marek now owes him
+  - valence: val_oyo_standing, status: foreclosed     # he kept alive the one man
+                                                       # who makes him not the last
   - world: fact_who_shot_him = collapsed              # for the reader only — see scopes
 
 status: floating
@@ -52,6 +55,20 @@ view of B is not B's view of A. The door never exercised it; there was nobody
 to disagree with. Here the gap *is* the pillar: he is shot by someone he still
 trusts, which is why the image lands, and it is representable as two numbers
 with opposite signs.
+
+## What the pillar costs the rescuer
+
+Three of the six postconditions belong to Oyo, and two of them are foreclosures.
+**Kneeling in that street closes two of the three things he wants**, and the
+cheapest available option is to walk. He does not.
+
+The third is worse than a foreclosure: `val_oyo_win` survives *contaminated*.
+It requires a clean win — not outliving him, not collecting on him — and a man
+who is only alive to lose because you kept him breathing cannot be beaten
+cleanly again. **The act that preserves the valence is the act that spoils it.**
+
+None of that was authored as a character beat. It fell out of fixing a VAL-4
+lint on `char_oyo`, which is the kind of thing the lint exists to cause.
 
 ## The reader/character split
 
