@@ -8,7 +8,7 @@ given_material: "the sentence. No prose."
 
 position:
   cloud: "act 2 midpoint — the bound valence and its consequence in one image"
-  bound_to: null
+  bound_to: null              # rendered at ch07.s01, not yet bound (§5, v0.17)
 order: {after: [pillar_00_the_ascent], before: []}
 
 preconditions:                  # radiate BACKWARD — derived, not outlined
@@ -28,7 +28,8 @@ postconditions:                 # constrain FORWARD
                                                        # who makes him not the last
   - world: fact_who_shot_him = collapsed              # for the reader only — see scopes
 
-status: floating
+status: approaching        # v0.17 — rendered at ch07.s01; binding still gated
+                           # on the six preconditions above (§5, PILLAR-1)
 ---
 
 ## Note on the precondition set

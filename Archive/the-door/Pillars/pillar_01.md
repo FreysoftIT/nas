@@ -5,7 +5,7 @@ given_material: "the fourteen words — the seed (NAS §0.1). No prose preceded 
 
 position:
   cloud: "late act 1"
-  bound_to: ch03.s02          # binding = the collapse. Bound v0.14.
+  bound_to: null              # v0.17 — rendered, not bound; six preconditions unpaid
 order: {after: [], before: [pillar_02]}
 
 preconditions:                # radiate BACKWARD — these ARE the first act
@@ -19,10 +19,10 @@ postconditions:               # constrain FORWARD
   - character: wren.carries("held the door")
   - pursuit(val_wren_justification).state = pursued   # the book starts here
 
-status: bound
+status: approaching        # v0.17 — rendering does not require binding (§5)
 ---
 
-**PILLAR-1 check at bound position (ch03.s02):**
+**PILLAR-1 check (v0.17: this pillar is `approaching`, not `bound`):**
 
 | Precondition | Status | Paid by |
 |---|---|---|

@@ -1,6 +1,6 @@
 # Narrative Architecture System (NAS)
 
-**Working draft — v0.16 (August 2026)**
+**Working draft — v0.17 (August 2026)**
 *Methodology for structured fiction development. This document is also the spec for the writing layer of the surrounding software; project-level features (kanban, panels, dashboards, session UX) wrap NAS but are out of scope here — see `SOFTWARE.md` for the architecture seed of the tool itself.*
 
 Restructured from v0.2 (archived at `Archive/v0.2_NAS.md`) in v0.3; v0.4 adds the Evidence Loop, the canon-drift model, rules derived from the Field Atlas, and written proposals for every open question.
@@ -21,6 +21,8 @@ And as of v0.14 the system has been run: one scene rendered from the seed (`Chap
 **Changed in v0.10:** Facets — the unit of presentation (§3.4): observers never touch entities, only facets; facet collision as scene generator; intimacy as facet-granting; the single-facet lint (FACET-1, blandness diagnostic #2); claim NAS-C11.
 **Changed in v0.11:** the World-Agent and void dynamics (§7.7) — the world is the apex Agent (its physical laws are its invariants; a miracle is a priced `intentional_break`); *horror vacui* — voids are attractors that recruit candidate fillers (the power vacuum, generalized); Maslow as valence ladders — filled voids spawn successors; the sagging middle as a valence-succession gap (NAS-C12); WORLD-1.
 **Changed in v0.12:** canon dynamics — triangulated from the oldest running canon systems (scripture, law; §17 gains the canon-&-interpretation lineage): statement modality *is / must / saw* (§7.8 — untyped statements get retyped by their readers; promotion/demotion as priced operations; MODAL-1); the authored query (§7.5 — views record their provenance, GRAPH-4; contradiction triage: fact-conflict / query-divergence / modality-retype, NAS-C13); publication as canon closure (§11.1 — frozen partitions, obligations flow frozen→open, forward-only fixes, PUB-1).
+**Changed in v0.17 — the interlock test's queue, applied.** Four items, every one located by an instrument rather than by reading. **Theme rebuilt** (§8.6b): a contested *question* plus the *positions* agents hold on it, derived from their valences and methods, argued wherever those positions foreclose each other — Truby's four-corner opposition expressed in machinery NAS already had, since cross-agent foreclosure *is* the argument. Only the question stays authored; CONTRAST-1's *unchallenged theme* becomes countable (fewer than two positions among load-bearing agents) instead of a judgement call. **PILLAR-1 amended on evidence**: it gates *binding*, never *rendering* — two projects rendered their pillar scene with every precondition unpaid, and two-for-two is data, not an exception. Prose may be drafted against an `approaching` pillar, provisional and regressible; `approaching → bound` is the gated step. Late binding applied to the pillar's own contract, using a `status` value that had sat unused since v0.3. **`VoiceProfile` retired** — once voice moved onto facets in v0.14 the standalone object was a second home for one thing; `voice` survives as a facet field. Same dedup as Stake, same instrument. **The info-op/move seam closed without a merge** (§3.1): it is an *isomorphism across §3.5's epistemic rows* — an info op is a fact about what the reader was told; a move on a reader valence is declared intent. Merging them would have collapsed the knowable into the unknowable.
+
 **Changed in v0.16:** two ratifications, both driven by evidence rather than argument. **`want` / `expect`** (§7.6, VAL-5) — selections from a valence's `candidates`, whose *difference is dread*; demanded three times independently across three scenes and two projects before being admitted, because with `candidates` alone the primary tension primitive was unstateable. Reader-side they live only inside a declared **`intended_reader_trajectory`** (§3.5, READER-3), never asserted as fact: the reader is the one variable the system cannot solve, so NAS models authorial *intent* and audits it against execution — the third instance of declare-then-check-the-fold after CONTRACT-1 and PILLAR-1. `feel` now derives from `emotional_temp` (a same-day GRAPH-2 duplication, caught by the interlock test). And **Stake becomes derived** (§7.2, STAKE-1): a stake is a valence whose binding is threatened in the active span, and "escalate a stake" had been a second vocabulary for `alter/escalate` since v0.14 — the roster promised this in v0.3 and thirteen versions of chapter contracts went on authoring it anyway.
 
 **Changed in v0.15:** **modifiers** (§8.6) — the layer deferred twice in v0.14, ratified once a real use case forced it. A modifier is a *relation*, not a node: derived at resolution, recorded on the attempt, never authored. Two stages (selection, resolution), four classes living on existing objects (ambient / internal / epistemic / external), and the stack is the agent's `member_of` chain to the root, so failure is attributable to a *level*. Invariants gate, modifiers shift (MOD-3). NAS records that a modifier applied and what it bore on, **never how much** — magnitude belongs to the medium, and specifying arithmetic here would make one game system pretend to be general (MOD-2). This also **repairs a break v0.14 created**: OBS-2 was amended to take the field as input while the mechanism was deferred — an undeclared contract between a `gate | invariant` rule and a layer that did not exist.
@@ -281,6 +283,19 @@ A scene performs operations on observers' records. For the reader (kept from v0.
 
 Derived experiential states: **mystery** = the reader knows a fact is collapsed but can't see the value; **suspense** = the reader sees a cloud ahead (they know something is coming); **surprise** = collapse with no prior cloud.
 
+**Info ops and moves: an isomorphism, not a duplication — resolved v0.17.** Ledgers 0008 and 0011 flagged this as the largest open seam in the system, on the strength of a mapping that is genuinely exact — `foreshadow` ↔ `open/imposed`, `reveal` ↔ `close/bound`, `mislead` ↔ `alter/redirect`, `subvert` ↔ `close/foreclosed`, and **`reframe` ↔ `alter/reframe`**, the same word arriving independently in two vocabularies twelve versions apart. On the Stake precedent that reads like two names for one operation.
+
+**It isn't, and §3.5's three-way split is what says so.** They sit in different rows:
+
+| | Row | Status |
+|---|---|---|
+| an **info op** | what the reader has been **told** | *fact* — knowable, derivable from the stream, recorded in the scene interface |
+| a **move on a reader valence** | what the author **intends** it to accomplish | *declared intent* — auditable against execution, never asserted as fact |
+
+`reveal: fact_tal_lucidity` is a fact about the text: the reader now holds this. *Intending it to bind their curiosity and open a worse one* is a claim about a person, and NAS does not make claims about people (§3.5). **One operation, performed at the fact level, whose intended experiential consequence is declared separately and checked against it** — which is exactly the gap READER-3 audits, and the reason both scene audits found real misses rather than tautologies.
+
+So the seam closes without a merge, and the isomorphism stays what it always was: evidence that both vocabularies were describing one shape, at two epistemic altitudes. Merging them would have collapsed the knowable into the unknowable and destroyed the only thing the reader layer is good for.
+
 Two exposition rules borrowed across the seam (register: READER-1/2, §14.2): **an info-dump is a producer-shaped payload** — worldbuilding delivered in bible-shape instead of what the reader needs *now*; and **reveals evolve additively** — expand and recontextualize rather than contradict; contradiction is a breaking change, which is why *subvert* is priced as rare and costly. The reader also *reads tolerantly* by design — skipping what they don't yet understand is how mystery works, not a failure.
 
 ### 3.2 Irony as a computed gap
@@ -302,7 +317,7 @@ Nothing exists in a vacuum: **identity is differential** — a property is only 
 |---|---|---|
 | Unobservable trait | Declared property with no contrast event in any scene (no foil, no temptation resisted, no before/after) | new |
 | Invisible world feature | World property with no gradient or exception — if everyone has magic, magic is air, perceivable only by absence | new |
-| Unchallenged theme | Thesis with no antithesis on the page — preaching | founds v0.2's `challenged` status |
+| Unchallenged theme | **A theme with fewer than two positions held by load-bearing agents** (§8.6b, sharpened v0.17) — preaching, now a countable condition rather than a judgement call | founds v0.2's `challenged` status |
 | *(theme curve)* | Not a signature — the **theme presence curve is derived** from the events above: a theme is present in a scene iff a contrast event touches it. Replaces the authored 0–3 score dropped in v0.14 (§15 #11) | replaces #11 |
 | Flatline pacing | Runs of same-temperature/same-weight beats — perception adapts; the signal is the derivative, not the level (§9.2) | new — rests on §9.2, unratified |
 | Delta-less scene | A scene that differentiates nothing | founds the existing flag: such a scene narratively *does not exist* |
@@ -496,6 +511,17 @@ status: floating | approaching | bound | rendered
 - **Delta budgets → computable pacing.** Between consecutive pillars, story state must travel from N's postconditions to N+1's preconditions. The chapters in the gap divide that distance. The system can report: *"two chapters remain before pillar_02 and trust still needs to fall 1.1 — this will feel rushed."*
 - **Middle-out authoring.** Top-down (roadmap → chapters) and middle-out (pillars → surrounding tissue) coexist as first-class modes. NAS is not waterfall; it is interpolation between keyframes.
 - **Deleting a pillar is the nuclear retcon** — maximal entanglement cone. Moving one within its cloud is cheap until it binds.
+
+**PILLAR-1 gates *binding*, not *rendering* — amended v0.17, on evidence.** Two projects have now rendered their pillar scene with every backward precondition unpaid, citing `PILLAR-1-EX1` and `PILLAR-1-EX2` (ledgers 0006, 0010). Two for two is not an exception; §14.6 holds that patterns in what a writer keeps overriding are evidence about the rules or about the book, and the honest reading here is about the rule: **writers write the scene they can see.** In both projects the pillar existed before anything else did, and the implicit order — pay the preconditions, then render — lost to the working order both times.
+
+The fix needs no new object, because `status: floating | approaching | bound | rendered` has been in the schema since v0.3 and was doing nothing. Split the two operations:
+
+- **Rendering against an `approaching` pillar is legal.** The prose is written, the scene interface is real, and the pillar's `bound_to` stays `null`. The scene carries `provisional: true` and regresses under §9.4 like any other stale node if the preconditions land differently than assumed.
+- **Binding is the gated operation.** `approaching → bound` requires the preconditions to hold — which is what PILLAR-1 always meant and never said.
+
+This is late binding (§2.2) applied to the pillar's own contract: the writer defers the commitment, not the work. And it converts a rule that was being overridden into one that can be obeyed — the outcome §14.6's exception corpus exists to produce.
+
+*Standing on n=2, one author, two projects.* Recorded as such: if a third project renders in the paid order, this amendment is the thing to re-examine.
 
 **Doctrine-agnostic:** NAS does not prescribe *which* moments. Three-act structure, Save the Cat, Story Circle — any doctrine can be expressed as a pillar set. Mechanism, not dogma.
 
@@ -866,7 +892,7 @@ The object roster and status:
 | Setup / Payoff | carried | unchanged mechanics, now graph-linked |
 | KnowledgeScope | **new** | replaces ReaderKnowledge (§3) |
 | WorldNode | **new** | replaces BibleEntry (§7) |
-| Theme | carried | ⚠ thin (ledger 0011) — the curve is derived from contrast events; only the authored thesis remains, with one structural payer. Rebuild candidate |
+| Theme | **rebuilt v0.17** | a contested question + the positions agents hold on it, derived from their valences and methods; argued where those positions foreclose each other. See §8.6b |
 | Stake | **DERIVED v0.16** | no longer an authored object — see §7.2. A stake is a valence whose binding is threatened in the active span; "raise the stakes" is `alter/escalate`, and it had been two vocabularies for one operation since v0.14 (ledger 0011) |
 | Pillar | **new** | §5 |
 | Container / Chapter | proposed | §4.2 |
@@ -913,9 +939,11 @@ Character psychology **derives from world nodes** via causal edges — the train
 
 **Character generalizes to Agent — ratified v0.14.** Methods, invariants, valences and derived arcs are available at *every composition level* (§7.6): a faction has decision heuristics ("under threat: institutional capture"), invariants, and an arc (an institution's corruption ladder is the fold over its moves, §8.5). The two observable families exist at every level too — an institution has external state (holdings, laws) and internal state (doctrine, morale). Persons are simply Agents at the individual level. The Practice (§7.6) takes the block above without modification: it carries a valence — *the thing it was founded to prevent, which nobody alive has seen* — its method under challenge is *recite the founding*, and its arc is the fold over two centuries of `alter/redirect` moves (§8.5), each made by a real practitioner, none of them deliberate. *(Reference corpus: an organization chronicle in the bible turns out, on inspection, to be a character profile of an institution — core wound, decision heuristics, a five-step arc. It was written that way instinctively, years before this section existed.)*
 
-**Voice as object — ratified v0.14**, amended. `VoiceProfile` — lexicon tendencies, rhythm, prohibitions ("never uses contractions", "metaphors drawn from sailing"). Lintable at **Textured and Final only** (§9.1; voice is a colouring concern). Enters the register at `hypothesis` strength.
+**Voice — ratified v0.14, deduplicated v0.17.** Lexicon tendencies, rhythm, prohibitions ("never uses contractions", "metaphors drawn from sailing"). Lintable at **Textured and Final only** (§9.1; voice is a colouring concern), at `hypothesis` strength.
 
-*Amendment — voice attaches to facets, not to characters.* Wren speaks one way to the Practice and another to Tal, and that is not inconsistency, it is what a facet *is* (§3.4). A character-level `VoiceProfile` is the default; each facet may override it. Treating voice as a character constant makes the most characteristic thing about dialogue — that people talk differently to different people — read as a lint violation.
+*Voice attaches to facets, not to characters* (v0.14). Wren speaks one way to the Practice and another to Tal, and that is not inconsistency, it is what a facet *is* (§3.4). Treating voice as a character constant makes the most characteristic thing about dialogue — that people talk differently to different people — read as a lint violation.
+
+*And that amendment left `VoiceProfile` with nothing to do (v0.17).* The interlock test found it the register's only **stack** — zero enforcement, nothing reading it, one decorative use. But the honest diagnosis is narrower than "cut it": once voice moved onto facets, the standalone object and the facet's `voice` block were **two homes for one thing**, and the object was the redundant one. So `VoiceProfile` is retired as a top-level type; **`voice` survives as a facet field**, which is where every actual use in both projects already put it. A dedup, not a deletion — the same operation as Stake, found by the same instrument.
 
 **Facets — ratified v0.14.** An Agent additionally declares its **facets** (§3.4) — the presentations it exposes per audience, with authenticity attributes. FACET-1 flags single-facet majors. Facets are authored on the Agent; what any observer holds of it is derived.
 
@@ -1002,6 +1030,40 @@ move:
 **Arc is derived — a defect this layer repairs.** §8.1 declares arc as *"start state → transformation vector → end state, with milestones."* That is an authored state snapshot, and §4.1 and SCENE-3 forbid exactly that: no state is ever stored; every current-state view is a fold over the delta stream. Nobody caught it because `arc` reads like description rather than state. **An agent's arc is the fold over its moves** (register: VAL-3). The violation disappears, arc becomes queryable at any telling position for free, the milestones feeding the Roadmap (§6) stop being hand-maintained, and *"her arc doesn't land"* becomes a computable statement about a move sequence.
 
 **Modifiers fill the gap between `intent` and `outcome` — see §8.6**, ratified v0.15 after being deferred twice on purpose.
+
+### 8.6b Theme — a contested question, and who holds which position
+
+**Rebuilt v0.17.** The interlock test (ledger 0011) found Theme **thin**: after the authored score was dropped in v0.14, the presence curve derived from contrast events and the lint read those events directly, leaving an authored thesis statement whose only structural payer was roadmap claims. It survived, barely — and it was the one place NAS was **genuinely outclassed by prior art**, because Truby's moral-argument machinery does real work that a thesis string cannot.
+
+The rebuild imports that work into machinery NAS already has:
+
+> **A theme is a contested question. Each load-bearing agent holds a *position* on it, derived from their valences, methods and invariants. The theme is *argued* wherever those positions foreclose each other.**
+
+```yaml
+theme:
+  id: theme_use
+  question: "Is a person a resource?"      # authored — the one authored part
+  positions:                                # DERIVED from agents, never authored
+    - {agent: char_marek, stance: "people are resources you spend",
+       from: [method(when_a_runner_balks), val_marek_standing]}
+    - {agent: char_kes,   stance: "a person spent is a person destroyed",
+       from: [val_kes_out, val_kes_proof]}
+    - {agent: char_oyo,   stance: "a debt is a claim on a person; never incur one",
+       from: [val_oyo_ledger, invariant(never_lets_a_debt_close)]}
+  contested_in: [scenes where positions foreclose]   # derived from §7.6's graph
+```
+
+**Why this beats a thesis string, and why it is not an import.** Truby's four-corner opposition puts characters at different points on one moral question so the story becomes an argument rather than a statement. NAS gets the same structure for free, because **the foreclosure graph is already the argument**: cross-agent foreclosure was ratified in v0.14 as the structural definition of conflict, and a theme is simply that graph read at the level of *what each agent's wants imply about the question.*
+
+Three things fall out, none of them new machinery:
+
+- **Positions are derived, so a theme cannot drift from its cast.** Change Marek's method and his stance recomputes. A hand-written thesis survives every edit — which is exactly why it means nothing.
+- **CONTRAST-1's *unchallenged theme* signature sharpens.** It stops meaning *"no antithesis on the page"* — vague, unjudgeable — and becomes **a theme with fewer than two positions held by load-bearing agents.** Preaching is now a countable condition.
+- **A generative query arrives free:** *which agents have no position on this theme?* An agent whose valences imply nothing about the book's central question is not necessarily wrong — but it is worth knowing, and nothing previously could ask.
+
+*In pro-league:* `theme_use` has three positions that foreclose in a chain — Marek's spending forecloses Kes's exit, Kes's answer forecloses Oyo's clean win — so the question is argued, by the plot, without a line of thematic dialogue. *In the door:* `theme_obedience` runs Wren (*obey and don't ask*), Oris (*it was never a thing you asked*) and Tal (*ask*), which is why the interrogation scene is the thematic scene without announcing itself.
+
+**What stays authored:** the question. A machine cannot know which contested question a book is about, and pretending otherwise would be the same error as modelling the reader (§3.5). One authored line; everything under it computed.
 
 ### 8.6 Modifiers — what stands between intent and outcome
 
@@ -1253,7 +1315,7 @@ The **Rests on** column is new in v0.13 and exists to stop this table lying. A r
 | SCENE-3 | Scenes emit deltas; no authored state snapshots exist | structural | invariant | — |
 | CONTRACT-1 | Fold of a chapter's scene deltas satisfies its declared delta before close | gate | invariant | — |
 | CONTRACT-2 | Every roadmap item claimed ≥1 chapter; every chapter claims ≥1 item | lint | default | — |
-| PILLAR-1 | A bound pillar's preconditions hold at its position | gate | invariant | — |
+| PILLAR-1 | A bound pillar's preconditions hold at its position. **Gates binding, not rendering** — prose may be drafted against an `approaching` pillar, marked provisional and regressible; binding is the operation that requires the debt paid | gate | invariant | — |
 | GRAPH-1 | Causal edges respect layer direction | lint | invariant | — |
 | GRAPH-2 | Documents/views are generated, never hand-copied from graph facts | structural | invariant | — |
 | GRAPH-3 | Load-bearing psychology is causally anchored: every wound, vow, and arc-driver cites the event node(s) it derives from | lint | default | — |
@@ -1425,4 +1487,4 @@ What is believed original, until the ledger says otherwise: the inversion of nar
 
 ---
 
-*v0.16 — working draft. Iterate by editing this file. Nothing here is sacred except §0's problem statement, the §0.1 seed, and the §2 Triad — challenge everything else. The rest earns its place through the ledger, or leaves.*
+*v0.17 — working draft. Iterate by editing this file. Nothing here is sacred except §0's problem statement, the §0.1 seed, and the §2 Triad — challenge everything else. The rest earns its place through the ledger, or leaves.*

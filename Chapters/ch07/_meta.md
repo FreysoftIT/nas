@@ -1,6 +1,8 @@
 ---
 id: ch07
-narrative_function: "Bind pillar_01. The reader learns who shot him; Marek learns why."
+narrative_function: "Render pillar_01. The reader learns who shot him; Marek learns why."
+# v0.17: "bind" was the wrong verb — PILLAR-1 gates binding, not rendering (§5).
+#   pillar_01 stays `approaching` until its six preconditions are paid.
 claims: [roadmap.arc_marek.m3, roadmap.theme_use.challenge]
 contains_pillars: [pillar_01]
 
