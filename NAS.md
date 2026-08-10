@@ -20,6 +20,10 @@ Restructured from v0.2 (archived at `Archive/v0.2_NAS.md`) in v0.3; v0.4 adds th
 **Changed in v0.11:** the World-Agent and void dynamics (§7.7) — the world is the apex Agent (its physical laws are its invariants; a miracle is a priced `intentional_break`); *horror vacui* — voids are attractors that recruit candidate fillers (the power vacuum, generalized); Maslow as valence ladders — filled voids spawn successors; the sagging middle as a valence-succession gap (NAS-C12); WORLD-1.
 **Changed in v0.12:** canon dynamics — triangulated from the oldest running canon systems (scripture, law; §17 gains the canon-&-interpretation lineage): statement modality *is / must / saw* (§7.8 — untyped statements get retyped by their readers; promotion/demotion as priced operations; MODAL-1); the authored query (§7.5 — views record their provenance, GRAPH-4; contradiction triage: fact-conflict / query-divergence / modality-retype, NAS-C13); publication as canon closure (§11.1 — frozen partitions, obligations flow frozen→open, forward-only fixes, PUB-1).
 **Changed in v0.14 (ratification pass, in progress — this line accumulates):**
+— §15 **#3, #4, #8 ratified together (the pipeline), amended:** the Board→Draft gate **stops enumerating** its checks and runs every `gate`-tier register rule (the prose list was GRAPH-2 again), and it is stated as **per-scene, never per-work** — the work-level reading is §2.5's supremacy wall and contradicts §1.1's feedback organism. The beat's `emotional_temp.valence` is **renamed `tone`**: it collided with the valence primitive ratified hours earlier, in a schema three sections away, and nothing in the document caught it. The animatic is declared subject to GRAPH-4 and GRAPH-9. Multi-POV per beat ratified unamended.
+— §15 **#1, #2 ratified, amended:** forms are writing surfaces, not GRAPH-9 views. **Containers are the composition ladder at the discourse layer** — `member_of` carries them, GRAPH-8 derives depth, `kind` is attribution only; the emergence lints transfer unchanged and catch missing act structure.
+— §15 **#19 ratified, amended in four places:** PATTERN-1 gains a **third verdict** — the two-verdict version scored an undeclared dependency (*breaks*) as a healthy joint, exactly backwards; *weakens* is the only healthy case, and *breaks* routes to §8.3. The reverse/wholeness test is **adapted** rather than imported, since "works standalone" is false for serialized narrative — the narrative form is *does this scene contain its own event*, the table-setting diagnostic. Altitude correction: reads the purpose graph, never prose. Signature made concrete (zero inbound structural references), and the enforcement trap named.
+— §15 **#5 ratified, amended in four places, and #13 closed with it:** `story_time` becomes an **interval**, the fold becomes **per-entity** (global chronology is a partial order; bilocation is now detectable), anchors may be **clouds**, and reordering re-runs a named suite (TIME-1/2/3). #13 — open since v0.3, the only row that never had a proposal — falls out as a consequence: **one time axis, intervals at every scale**. Era representation was an artifact of treating time as points.
 — §15 **#20 ratified, amended** (§3.4 + §8.1 + §8.2): **facets are authored, observer records are derived** (FACET-2) — the fifth authored-state violation of the pass, already required by SCENE-3. No fourth `authenticity` value: the unwitting facet is the gap between an agent's self-record and others' facets, and the machinery for it already exists. Narrative-as-facet-selection aligned against GRAPH-9.
 — §15 **#10 ratified, amended:** the rereader's scope is not full canon but **the finished text** — a facet-selection over canon, since nothing the author never wrote is available on a reread. Rereader irony is late-record vs early-record *for the same observer*, not canon vs record.
 — §15 **#17 ratified, amended:** Principle III's mechanics, unratified since v0.6. The contrast lint family becomes **one rule with five signatures** (CONTRAST-1) rather than five near-identical register rows, and **contrast events are now concrete** — attempt, move, facet event, delta, foil — because Round 1's machinery supplies detection that did not exist when the family was written. The four emptiness diagnostics named as a set: GRAPH-3 (origin), CONTRAST-1 (perceivability), FACET-1 (presentation), VAL-4 (cost).
@@ -381,11 +385,17 @@ constraints: {pov: wren, span: "one night, the house"}
 
 ### 4.2 Ergonomics and containers
 
-⚠ OPEN with proposals:
+**✅ RATIFIED v0.14** (§15 #1, #2), amended.
 
-**PROPOSAL (unratified) — ergonomics:** the either/or dissolves. YAML frontmatter blocks in files remain the **single source of truth** (portable-text stance; the file format is the wire). The software renders each block as a form — but the form is a *view* of the block, driven by the same schema that validates it (one schema → validation + form + docs, never hand-duplicated). Author in whichever surface you like; the file is what's real.
+**Ergonomics — ratified.** The either/or dissolves. YAML frontmatter blocks in files remain the **single source of truth** (portable-text stance; the file format is the wire). The software renders each block as a form — but the form is a *view* of the block, driven by the same schema that validates it (one schema → validation + form + docs, never hand-duplicated). Author in whichever surface you like; the file is what's real.
 
-**PROPOSAL (unratified) — containers:** one generic, optional, recursive `Container` object between Novel and Chapter, with `kind: act | part | sequence | custom` and the same contract mechanics as a chapter (function, claims, declared delta). Zero or more levels per project, activated by the scope manifest (§14.5) — a novella uses none; an epic uses two. No fixed taxonomy imposed.
+*One clarification (v0.14):* an editing form is **not** a view in the GRAPH-9 sense. Views are read-only projections; a form is a writing surface bound to the block it edits. The distinction matters at exactly one point — a form edits *its own* block and nothing else. A surface that edits a derived value is writing to a projection, and the fix is always to edit the source and re-derive.
+
+**Containers — ratified, amended.** One generic, optional, recursive `Container` object between Novel and Chapter, with `kind: act | part | sequence | custom` and the same contract mechanics as a chapter (function, claims, declared delta). Zero or more levels per project, activated by the scope manifest (§14.5) — a novella uses none; an epic uses two. No fixed taxonomy imposed.
+
+*Amended v0.14 — containers are a composition ladder, and it already exists.* §7.6 ratified `member_of` as the structural namespace, and GRAPH-8 derives compositional level from depth in it. A container holding chapters holding scenes is that structure, at the discourse layer rather than the world layer: **`member_of` carries it, depth is derived, and the manifest names the bands** exactly as it does for individual/institution/civilization. So `kind` is *attribution* — act, part, sequence, custom — carrying no mechanics, the same treatment `kind` gets on valence (§7.6) and `level` gets on collectives.
+
+What this buys beyond tidiness: the emergence lints transfer. GRAPH-6 fires on dense bonding at one level with no level above it — *twelve chapters, no act structure declared, and the reader has been in one undifferentiated block for 200 pages*. GRAPH-7 fires on a container with no members. Neither was written for discourse structure and both apply unchanged, which is the interlock test passing on a part that was not designed to pay for anything.
 
 ---
 
@@ -426,7 +436,27 @@ status: floating | approaching | bound | rendered
 
 ### 5.1 Doctrine is earned by interlock, never applied by conformance
 
-**PROPOSAL (unratified).** Story doctrines fail exactly the way design patterns fail in software: applied as stencils by *conformance* ("the midpoint goes here") rather than earned by *load* ("these parts brace each other"). NAS never checks conformance to a template. It checks **interlock**: does each declared structural element *pay for* the others — do dependencies actually run through it; does removing it meet resistance? **An element whose removal breaks nothing was applied, not earned** (register: PATTERN-1). Doctrines remain available as *lenses* — pillar-set vocabularies for writers who think in them — but the satisfies-condition is structural, not doctrinal. *(The same test the Field Atlas's Interlock applies to its own model set: correctly derived parts don't just coexist; each pays for the others, and a wrong change meets resistance early.)*
+**✅ RATIFIED v0.14** (§15 #19), amended in four places. Story doctrines fail exactly the way design patterns fail in software: applied as stencils by *conformance* ("the midpoint goes here") rather than earned by *load* ("these parts brace each other"). NAS never checks conformance to a template. It checks **interlock**: does each declared structural element *pay for* the others? Doctrines remain available as *lenses* — pillar-set vocabularies for writers who think in them — but the satisfies-condition is structural, not doctrinal.
+
+**Three verdicts, not two (amended v0.14).** The first draft had *meets resistance* / *doesn't*, which collapses two opposite diagnoses into one and scores an undeclared dependency as a healthy joint. Remove the element and watch:
+
+| Others… | Diagnosis | What to do |
+|---|---|---|
+| **break** | **coupling** — an undeclared contract, discovered by demolition | a bug. Route to §8.3's independent-change test and *name the dependency* — promote it to a fact, a setup edge, or a delta |
+| **weaken** | **interlock** — the element was paying for others | removal may still be right; price the lost payments first |
+| **nothing notices** | **stack** — it was applied, not earned | cut freely, and ask how it got in |
+
+Only the middle verdict is health. *(This is the Field Atlas's Interlock test, imported whole; the `breaks` case is what §8.3 was independently written to catch, and neither section referenced the other until now.)*
+
+**The reverse test, adapted — and where the import strains.** Interlock also runs backwards: remove the *others* and watch the part. Something that merely weakens was interlocked; something that stops working was never a part, it was a fragment.
+
+**Stated literally that is false for narrative.** A scene in chapter 20 genuinely cannot stand without chapters 1–19; that is serialization, not a defect, and the software form of this test would flag every book ever written. The narrative form of the same question is: **does this scene contain its own event?** A scene existing only to prepare a later one, in which nothing happens, is a fragment — the failure everyone already calls *table-setting*. Wholeness in fiction is having your own event, not being readable in isolation. The strain is written down rather than quietly smoothed over, because the entire basis for trusting an import from the Field Atlas is that both sides derived it independently; a borrowed rule that had to be bent is evidence about the borrowing.
+
+**Altitude: this lens reads the purpose graph, never prose.** Behind a recognized boundary, silence is the contract working. Re-rendering a scene's prose with zero downstream effect is **SCENE-1 doing its job**, not a stack smell — without this correction PATTERN-1 fires on every well-encapsulated scene in the book, which is to say on all the good ones. The lens applies to declared structural elements: pillars, setups, themes, arcs, chapter contracts, roadmap items.
+
+**The signature is concrete (amended v0.14).** "Removal meets resistance" sounds unfalsifiable, but the machinery ratified since v0.14 makes it computable: resistance is **inbound structural references** — setups→payoffs, pillar preconditions→chapters, roadmap claims→chapters, valences→moves, facets→audiences. So PATTERN-1 fires on *a declared structural element with zero inbound references*, and it leaves pure judgment the same way CONTRAST-1 did, for the same reason.
+
+⚠ **The enforcement trap, named.** A rule that enforces interlock blocks the very evidence that would prove its own fusion wrong: elements violating it never survive to be observed, so it accrues confirmation forever by construction. §14 is explicit that a rule which can no longer be proven wrong has stopped being useful. PATTERN-1's exception corpus (§14.6) is therefore the thing to audit — a rule with no overrides in a year is not vindicated, it is unfalsified.
 
 ---
 
@@ -875,18 +905,22 @@ move:
 
 ---
 
-## 9. The Pipeline ⚠ OPEN — proposals drafted, direction locked
+## 9. The Pipeline — ✅ ratified v0.14 (§15 #3, #4, #8)
 
 v0.2 had four per-scene phases (Rough → Detailed → Shaded → Inked). Under the design/render thesis they misallocate: prose enters at Detailed, so design got *one* phase and rendering got three — inverted priorities. Film gives pre-production as much machinery as production.
 
-### 9.1 PROPOSAL (unratified) — the phase ladder
+### 9.1 The phase ladder — ✅ ratified v0.14
 
 **Design side, per scene:**
 
 1. **Interface** — frontmatter complete: function, deltas, info ops, setups/payoffs declared. No prose.
 2. **Board** — beats laid (§9.2): the scene's experiential shape, still no prose.
 
-**Gate:** the consistency suite (reachability §2.3, world-graph check, setup/payoff check, invariant check, open-question block §7.4) runs at the **Board → Draft boundary** — you cannot start coloring until the sketch validates.
+**Gate: every `gate`-tier rule in the register (§14.2) runs at the Board → Draft boundary** — you cannot start colouring a scene until its sketch validates.
+
+*Amended v0.14, twice.* First, this gate previously enumerated its checks in prose — reachability, world-graph, setup/payoff, invariants, open questions — which was a hand-maintained copy of a list that lives in §14.2, and therefore GRAPH-2, the same defect as `arc` and `level`. It now names the tier and stops listing; every future ratification wires itself in without an edit here.
+
+Second, and more important: **the gate is per-scene. It is never per-work.** Read at work level — *finish designing the book, then start writing it* — this is precisely Wall 1 from §2.5, design dictating past its border, and it contradicts §1.1's feedback organism outright (*declare a little, render a little, harvest what emerged, re-declare*). The ladder has always said "per scene" in its heading and the gate sentence did not repeat it, which is exactly how a document ends up recommending the failure mode it was written to prevent. One scene at a time, forever.
 
 **Render side, per scene:**
 
@@ -902,7 +936,7 @@ v0.2 had four per-scene phases (Rough → Detailed → Shaded → Inked). Under 
 - **Test reads** — beta readers as test screenings; every feedback item lands on a beat or scene id, not on vibes, and enters the ledger (§14.4).
 - **Grade** — line-editing passes with structure locked.
 
-### 9.2 PROPOSAL (unratified) — the Beat
+### 9.2 The Beat — ✅ ratified v0.14 (with #8, multi-POV)
 
 The storyboard panel, smaller than a scene, addressable as `ch04.s02.b3`. Lives as an ordered list in the scene interface:
 
@@ -912,9 +946,11 @@ beats:
     function: "Tal stops screaming and says her name"
     reader_ops: [reveal: fact_tal_lucidity]
     pov: wren                  # beats may switch POV; scene-level POV becomes a derived summary
-    emotional_temp: {valence: dread, intensity: 0.9}
+    emotional_temp: {tone: dread, intensity: 0.9}   # `tone`, not `valence` — see below
     pacing_weight: slow        # fast | medium | slow — drives animatic rendering length
 ```
+
+*Renamed v0.14.* This field read `valence: dread` until §7.6 ratified **valence** as the open-bond primitive — an unsatisfied condition plus a disposition toward satisfaction. Two incompatible senses of a load-bearing word, one of them introduced in the same pass. The beat field moved rather than the primitive, because the primitive is now referenced across six sections and five register rules. Worth recording as a hazard of ratifying quickly: **a vocabulary decision made in one section silently invalidates schemas in another**, and nothing in the document catches it — the collision was found by reading, which is the method this whole system exists to replace.
 
 One beat, and it carries the scene's whole reversal: the rule assumes the changed are gone, and `fact_tal_lucidity` was declared in §7.1 as `tensions_with` the rule for exactly this. The friction was in the graph before the beat existed.
 
@@ -922,9 +958,11 @@ This resolves v0.2's "subscene granularity" question (yes — beats are the pane
 
 **Pacing is perceived differentially (§3.3):** a slow beat reads slow only next to fast ones, and monotone intensity flattens — sensory adaptation. The animatic and pacing views therefore surface the *derivative* of the beat sequence, not its level: runs of same-weight, same-temperature beats trigger the flatline lint even when the level is "exciting."
 
-### 9.3 PROPOSAL (unratified) — the Animatic
+### 9.3 The Animatic — ✅ ratified v0.14
 
-A **generated view**, not an authored document: the beat cards rendered in telling order (the Cut), each beat expanded to a length proportional to its pacing weight — *read your novel in 40 minutes before writing a sentence of it*. Pacing and structure problems become visible while they cost nothing. The authored artifact above it is the **treatment** (part of the Novel contract); the animatic is always derived, always current, and deliberately lossy — the squint test as a build target. Fidelity loss per abstraction hop is the *point*: the animatic answers "does the shape read?", never "is the prose good?".
+A **generated view**, not an authored document — and therefore subject to the view rules ratified in §7.5 (amended v0.14): it **records its query** per GRAPH-4 (selection: beats; scope: reader; anchor: full text; audience: reader) and it is **read-only** per GRAPH-9. It already behaved this way; saying so makes it an instance of the general rule rather than a thing that happens to agree with it.
+
+The beat cards rendered in telling order (the Cut), each beat expanded to a length proportional to its pacing weight — *read your novel in 40 minutes before writing a sentence of it*. Pacing and structure problems become visible while they cost nothing. The authored artifact above it is the **treatment** (part of the Novel contract); the animatic is always derived, always current, and deliberately lossy — the squint test as a build target. Fidelity loss per abstraction hop is the *point*: the animatic answers "does the shape read?", never "is the prose good?".
 
 ### 9.4 Regression
 
@@ -942,11 +980,33 @@ Three distinct orderings that Word collapses into one:
 
 **The two-fold rule (locked v0.4):** the two state families fold over *different* orders — **world/character state folds over story chronology; the reader's record folds over telling order.** A flashback mutates the reader's record *now* while touching character state *then*: its deltas apply at two different points in two different streams. Under this rule that is not a special case — it is just how the fold works.
 
-**PROPOSAL (unratified) — the Cut:** telling order is a first-class, editable sequence object (film's edit). Scenes carry a `story_time` anchor (chronology) and receive their telling position *from the Cut* — never self-declared (§8.3: content does not place itself). The edit room is literally the editor of the Cut; reordering re-folds the reader stream and reports every broken transition and every info op now out of order (a reveal preceding its foreshadow, a payoff preceding its setup *in reader time*).
+**The Cut — ratified v0.14**, amended in four places. Telling order is a first-class, editable sequence object (film's edit). Scenes carry a `story_time` **interval** (chronology) and receive their telling position *from the Cut* — never self-declared (§8.3: content does not place itself). The edit room is literally the editor of the Cut.
+
+**Time is an interval, not a point (amended v0.14).** Scenes have duration — §4's chapter contract already carried `span: "one night, the house"` — and OBS-2 needs it: reachability is computed against elapsed events *and elapsed time* between a character's exit and next entry, which is uncomputable if scenes are instants.
+
+**The fold is per-entity, not global (amended v0.14).** Two POV characters, same hour, different places: scenes overlap in story time constantly, and that is ordinary craft rather than an edge case. So **story chronology is a partial order, not a sequence** — which leaves the two-fold rule ambiguous exactly where scenes overlap, since a fold requires an ordering.
+
+Deltas already resolve it. They attach to *entities*, so **each entity's timeline is totally ordered even when the global one is not**, and the fold is always well-defined without global chronology ever being a sequence. One check falls out free: an entity appearing in two overlapping intervals is **bilocation** — a real continuity bug, previously undetectable, now impossible to write without the model objecting (register: TIME-2).
+
+**Anchors may be clouds (amended v0.14).** Real corpora write *~3000 BCE*, *founding*, *two centuries on*; the seed's own pillar reads `cloud: "late act 1"`. Imprecision is the normal case, and §2 already owns the object for it: **a time anchor is a fact like any other — a bounded cloud until a scene collapses it.** "The third night" is collapsed; "late act 1" is not. The writer is never forced to date what the story has not dated.
+
+**Reordering re-runs a named suite (amended v0.14).** "Reports every broken transition" is right but unimplementable as stated. Editing the Cut re-folds the reader stream and re-runs exactly: **SETUP-1** (a payoff now preceding its setup in reader time), **PILLAR-1** (preconditions no longer holding at position), **READER-2** (a reveal that now contradicts rather than expands), and the info-op ordering check (a reveal preceding its own foreshadow).
 
 **In the seed.** The image is not chapter one, and it never was — `pillar_01.position.cloud` reads *late act 1*, because the preconditions derived in §5 have to be paid first. But nothing stops the Cut from opening on it and folding the training back as flashback: the reader's record would then hold *she held the door* before it holds *she was taught to*, which inverts the entire experience of the same graph. Same chronology, same nodes, same deltas — a different book, edited rather than rewritten. That is what making telling order a first-class object buys, and it is unavailable to anyone whose scenes know where they are.
 
-⚠ Remaining: representation of eras vs. scene-time; how trajectory nodes (§7.1) key into chronology.
+### 10.1 One time axis — intervals at every scale
+
+**✅ RATIFIED v0.14** (§15 #13), closing the document's oldest open question — fully open since v0.3, the only §15 row that never had a proposal at all.
+
+It closes as a consequence of the two amendments above rather than as a mechanism of its own:
+
+> **One time axis. Intervals at every scale.** An era is a long interval. A scene is a short one. A `trajectory` entry (§7.1) is a value valid over an interval. Same object, different magnitude.
+
+The fuzzy anchors that made eras feel like a separate representational problem — *founding*, *~3000 BCE*, *two centuries on* — are simply clouds with wide bounds, and clouds are §2's machinery unchanged. A `trajectory` on `fact_threshold_rule` is therefore not a special structure: it is the fact's value, keyed to intervals, collapsing where scenes observe it and staying cloudy where none has.
+
+**Era representation was an artifact of treating time as points.** Once a scene occupies an interval, nothing distinguishes an era from a scene except how much of the axis it covers — and the writer's vocabulary for the bands (age, era, dynasty, epoch) attaches to spans the same way the manifest's composition bands attach to derived depths (GRAPH-8). Naming is a project parameter; the structure is one axis.
+
+*(Note for the ledger: this row sat open through eleven version bumps and was closed by an amendment made for an unrelated reason — OBS-2 needing elapsed time. That is the interlock working, and it is worth counting as evidence for NAS-C1: the question was never hard, it was badly represented.)*
 
 ---
 
@@ -994,7 +1054,7 @@ Each object is a markdown file with YAML frontmatter — portable, diffable, edi
   /Archive/
 ```
 
-⚠ OPEN — layout is provisional pending ratification of §4.2 and §10. Generated views (profiles, timelines, animatic, "reader state at ch. N") are *outputs*, not files in the source tree.
+**Settled v0.14** — §4.2 and §10 both ratified, so the layout is no longer provisional. `/Cut.md` is real, containers appear as nested directories under `/Chapters/` when the manifest activates them, and `/Graph/` holds the world root created per WORLD-2. Generated views (profiles, timelines, animatic, "reader state at ch. N") are *outputs*, never files in the source tree — GRAPH-9 makes that structural rather than a convention.
 
 ### What the software checks vs. what the writer judges
 
@@ -1047,7 +1107,10 @@ The **Rests on** column is new in v0.13 and exists to stop this table lying. A r
 | OBS-2 | Entry state must be reachable from last exit within methods/invariants + elapsed events **and the scene's declared field** (amended v0.14); off-baseline behaviour inside a changed field is displacement, not inconsistency | gate | invariant | — |
 | OBS-3 | A retcon's cone must be walked to empty before status `propagated` | gate | invariant | — |
 | SCENE-1 | Downstream depends only on a scene's interface, never its prose | lint | invariant | — |
-| SCENE-2 | Prose never references its own telling-order position | lint | default | §10 (the Cut) |
+| SCENE-2 | Prose never references its own telling-order position | lint | default | — |
+| TIME-1 | Story time is an interval at every scale — scene, era, trajectory entry. Anchors may be clouds until a scene collapses them; nothing must be dated before the story dates it | structural | invariant | — |
+| TIME-2 | The chronological fold is per-entity: global chronology is a partial order, each entity's slice is total. An entity occupying two overlapping intervals is bilocation | structural | invariant | — |
+| TIME-3 | Editing the Cut re-folds the reader stream and re-runs SETUP-1, PILLAR-1, READER-2 and info-op ordering against the new telling order | gate | invariant | — |
 | SCENE-3 | Scenes emit deltas; no authored state snapshots exist | structural | invariant | — |
 | CONTRACT-1 | Fold of a chapter's scene deltas satisfies its declared delta before close | gate | invariant | — |
 | CONTRACT-2 | Every roadmap item claimed ≥1 chapter; every chapter claims ≥1 item | lint | default | — |
@@ -1065,12 +1128,12 @@ The **Rests on** column is new in v0.13 and exists to stop this table lying. A r
 | GRAPH-6 | Dense bonding among level-N nodes with no level-N+1 node above them is flagged as a possible unnamed emergent | lint | default | — |
 | GRAPH-7 | A collective node with no members is flagged as a free-floating emergent | lint | default | — |
 | GRAPH-8 | Compositional level is derived from `member_of` depth, never declared per node; the manifest names the bands | structural | invariant | — |
-| CONTRAST-1 | A declared thing with no contrast event does not register. Five signatures (§3.3): unobservable trait, invisible world feature, unchallenged theme, flatline pacing, delta-less scene. A contrast event is an attempt, move, facet event, delta or declared foil touching the property in the fold | lint | default | §9.2 (flatline signature only) |
+| CONTRAST-1 | A declared thing with no contrast event does not register. Five signatures (§3.3): unobservable trait, invisible world feature, unchallenged theme, flatline pacing, delta-less scene. A contrast event is an attempt, move, facet event, delta or declared foil touching the property in the fold | lint | default | — |
 | READER-1 | Exposition shaped for the reader's current need, never bible-shaped | judgment | default | — |
 | READER-2 | Reveals evolve additively; contradiction requires a declared subvert op | lint | default | — |
 | SETUP-1 | Every setup has a payoff window or explicit `abandoned`; orphans flagged | lint | invariant | — |
 | DRIFT-1 | Draft/graph divergence is logged or propagated at scene close, never deferred — a gate in every mode | gate | default | §1.1 (`mode`) |
-| PATTERN-1 | Every structural element bears load: dependencies run through it, removal meets resistance; load-free doctrine elements are decoration | lint | default | §5.1 |
+| PATTERN-1 | Every declared structural element bears load. Removal yields one of three verdicts — **breaks** (coupling: an undeclared contract, route to §8.3), **weakens** (interlock: the healthy case), **nothing notices** (stack: decoration, cut). Signature: zero inbound structural references. Reads the purpose graph, never prose — prose silence is SCENE-1 working | lint | default | — |
 | FACET-1 | A major agent presents more than one facet across audiences or time; single-facet majors are flagged flat | lint | default | — |
 | FACET-2 | Facets are authored; observer records are derived — a fold over facet events (`granted`/`discovered`/`faked`) plus direct observation. `authenticity` is canonical and never appears in a record | structural | invariant | — |
 | ~~WORLD-1~~ | **RETIRED v0.14 — subsumed, not repealed.** Its three clauses are each enforced elsewhere: world-as-Agent by #16's Agent generalization, deltas-only by SCENE-3, no-ambient-change by VAL-1. Nothing was left for it to check independently, and PATTERN-1 does not exempt the register from its own test. ID never reused (§14.1) | — | retired | → VAL-1, SCENE-3 |
@@ -1082,7 +1145,7 @@ The **Rests on** column is new in v0.13 and exists to stop this table lying. A r
 | MODAL-4 | A statement at `institutions` layer or above, carrying modality `must` and deriving from no world node, is surfaced at milestone review: a law people made, presenting as a law of nature | judgment | default | — |
 | PUB-1 | A retcon cone crossing a publication boundary never auto-propagates; published canon is contradicted only by declared errata — fixes are forward, additive, recontextualizing | gate | invariant | §11.1 |
 
-**Five of thirty-seven active rules rest on unratified proposals, one of them at `invariant`** (SCENE-2 §10, DRIFT-1 §1.1, PATTERN-1 §5.1, PUB-1 §11.1, CONTRAST-1 §9.2 — one signature only). That is the register's honest state, and it is now visible rather than implied. The numerator drops as §15 is worked through; the denominator grows, because ratifying keeps surfacing checks that were implied and never written — and occasionally shrinks, when a rule turns out to have been enforcing nothing.
+**Two of forty active rules rest on unratified proposals, one of them at `invariant`** (DRIFT-1 §1.1 `mode`, PUB-1 §11.1). That is the register's honest state, and it is now visible rather than implied. The numerator drops as §15 is worked through; the denominator grows, because ratifying keeps surfacing checks that were implied and never written — and occasionally shrinks, when a rule turns out to have been enforcing nothing.
 
 ### 14.3 Claims under test
 
@@ -1152,25 +1215,25 @@ Milestone reports (chapter merge, draft complete, work finished): aggregate the 
 
 | # | Question | State |
 |---|---|---|
-| 1 | Meta-code ergonomics | **PROPOSAL** in §4.2 — YAML is truth, forms are views |
-| 2 | Container set | **PROPOSAL** in §4.2 — generic optional recursive Container |
-| 3 | Beat model / animatic | **PROPOSAL** in §9.2–9.3 — beats as panels; animatic generated |
-| 4 | Render phase ladder | **PROPOSAL** in §9.1 — Interface/Board ∥ Draft/Textured/Final |
-| 5 | Time model | Two-fold rule **locked**; the Cut **PROPOSAL** in §10; era representation ⚠ open |
+| 1 | Meta-code ergonomics | ✅ **RATIFIED v0.14**, clarified. YAML is truth, forms are schema-driven surfaces over it. Clarification: an editing **form is not a view** in GRAPH-9's sense — views are read-only projections, a form is a writing surface bound to its own block. A surface that edits a derived value is writing to a projection |
+| 2 | Container set | ✅ **RATIFIED v0.14**, amended. Generic optional recursive Container, `kind: act \| part \| sequence \| custom`. **Amendment: containers are the composition ladder at the discourse layer** — `member_of` carries them, GRAPH-8 derives their depth, the manifest names the bands, and `kind` becomes attribution with no mechanics, exactly as on valence and collectives. The emergence lints transfer unchanged: GRAPH-6 catches twelve chapters with no act structure above them, GRAPH-7 catches an empty container. Neither was written for discourse structure |
+| 3 | Beat model / animatic | ✅ **RATIFIED v0.14**, amended. Beats as panels, animatic generated. `emotional_temp.valence` **renamed to `tone`** — it collided with the valence primitive ratified in the same pass, in a schema three sections away. Animatic declared subject to GRAPH-4 and GRAPH-9 as a view, rather than incidentally agreeing with them |
+| 4 | Render phase ladder | ✅ **RATIFIED v0.14**, amended twice. The Board→Draft gate **stops enumerating checks** and runs every `gate`-tier rule in §14.2 — the prose list was a hand-kept copy of the register, i.e. GRAPH-2. And the gate is **per-scene, never per-work**: the work-level reading is §2.5's supremacy wall and contradicts §1.1's feedback organism, so the document was one ambiguous sentence away from recommending the failure it exists to prevent |
+| 5 | Time model | ✅ **RATIFIED v0.14**, amended in four places. Two-fold rule was already locked (v0.4); the Cut now ratified. **`story_time` is an interval**, not a point — OBS-2's elapsed-time term was uncomputable without it. **The fold is per-entity**: global chronology is a partial order, each entity's slice is total, so overlapping scenes stop being ambiguous and bilocation becomes detectable (TIME-2). **Anchors may be clouds** — §2's machinery, so nothing must be dated before the story dates it. **Reordering re-runs a named suite** — SETUP-1, PILLAR-1, READER-2, info-op ordering (TIME-3) |
 | 6 | Edge vocabulary | ✅ **RATIFIED v0.14**, amended. Two frozen namespaces (§7.1): *causal* — `derives_from`, `constrains`, `tensions_with`, walked by retcon cones; *structural* — `member_of` alone, followed for scope and fold, never for staleness. Neither grows without ledger evidence. Amendment resolves the ambiguity that admitted `member_of` in v0.5 on a one-line defence (register: GRAPH-5) |
 | 7 | Trivial retcon fast lane | **PROPOSAL** in §2.4 — cone always computed, auto-propagate when trivial |
-| 8 | Multi-POV | **PROPOSAL** in §9.2 — POV per beat |
+| 8 | Multi-POV | ✅ **RATIFIED v0.14**, unamended. POV attaches per beat; scene-level POV is a derived summary; single-POV scenes are the degenerate one-POV case |
 | 9 | Voice as object | **PROPOSAL** in §8.1 — VoiceProfile, hypothesis tier |
 | 10 | Reader-state on reread | ✅ **RATIFIED v0.14**, amended. Rereader = a generated scope, free given the machinery. **But not "full canon"** — a rereader holds the *finished text*, which is a facet-selection over canon; everything the author knows and never wrote is not available on a reread, and that gap is the difference between a reader and an author. The scope is the union of every record the narrative ever granted the reader, projected at position — a GRAPH-4 query with a statable form. And rereader irony is **late-record vs early-record for the same observer**, not canon vs record: the rereader is not a better-informed outsider, they are the same reader, later |
 | 11 | Theme weight | ⚠ **UNHOMED** — sketch only: per-scene presence (0–3), folded to a per-chapter curve; flatline lint; hypothesis tier. The only row in this table with no body section anywhere in the document, so there is nothing to ratify. Draft it into §3.3 (it belongs with the contrast lint family) or drop it — but it cannot be voted on as it stands |
 | 12 | Decree budget | **PROPOSAL** in §2.2 — free at low layers, flagged at high; manifest parameter |
-| 13 | Era vs. scene-time representation; trajectory nodes × chronology | ⚠ fully open (§10) |
+| 13 | Era vs. scene-time representation; trajectory nodes × chronology | ✅ **RATIFIED v0.14** in §10.1 — **one time axis, intervals at every scale**. An era is a long interval, a scene a short one, a trajectory entry a value valid over an interval; fuzzy era anchors are clouds with wide bounds. Open since v0.3 and the only row that never had a proposal — closed as a *consequence* of the interval amendment made for OBS-2, not by a mechanism of its own. Era representation was an artifact of treating time as points |
 | 14 | Composition levels + emergence lints | ✅ **RATIFIED v0.14**, amended. `member_of` settled earlier under #6. **Level is derived** from `member_of` depth, never declared — the third GRAPH-2 violation found in this pass; the manifest names the bands (GRAPH-8). **`emergent_properties` dropped** — a collective node is an Agent, so its properties are properties; emergence is a claim about where a property must live, not a container, and nothing can verify it semantically. Both lints kept and registered (GRAPH-6, GRAPH-7) — a missing level is findable, which is where the value always was |
 | 15 | Valence as unified open-bond object | ✅ **RATIFIED v0.14**, amended twice. (a) *Neutral primitive:* a valence is an unsatisfied condition plus a disposition toward satisfaction; `kind` (wound/desire/objective/directive/need/vacancy/niche) is attribution carrying no mechanics. The prior desire/core-wound framing smuggled humanist psychology into a structural primitive and broke on the first machine agent. (b) *Action layer added* — §8.5 pursuit / attempt / move, because a valence is a state and wanting is not doing. Boundary set with §7.4: valence is pressure-bearing incompleteness only; unwritten detail stays an open question. (c) *No polarity:* there is no "away from" — every aversion restates as a pull toward something else, so `fear` is a `kind`, not a sign. Multiple coexisting pulls **are** tension, computed via `forecloses` and the existing `close/foreclosed` move. Register VAL-1/2/3; NAS-C12 restated as bid-less spans; **two hand-authored fields corrected to derived** — §8.1 `arc` (fold over moves) and `internal_contradiction` (the foreclosing valence pair). Modifiers (`attempt.modifiers`) reserved and deferred pending #16 |
 | 16 | Agent generalization + field term in behaviour checks | ✅ **RATIFIED v0.14**, amended. Methods, invariants, valences and derived arcs exist at every composition level; persons are Agents at the individual level. Field ratified as a **property of the scene**, not a relation to an act — which is why it does not pre-decide the deferred modifier layer (§8.5). **A collective node holds two roles: agent** (acts, through attributable member moves) **and field** (conditions, never acts) — downward causation stated without opening a gap for uncaused change, preserving VAL-1. OBS-2 amended to take the field as input, separating inconsistency from field displacement |
 | 17 | Contrast principle (perceivability) | ✅ **RATIFIED v0.14**, amended. Principle III ratified in v0.7; its mechanics had run unratified since v0.6. The lint family registers as **one rule with five signatures** (CONTRAST-1) using §14.1's `signature` field, not five near-identical rows. **Contrast events defined concretely** against Round 1's machinery — attempt, move, facet event, delta, foil — so the check leaves pure judgment and NAS-C8 gains something to measure. The four emptiness diagnostics (GRAPH-3 origin / CONTRAST-1 perceivability / FACET-1 presentation / VAL-4 cost) named as a set so a later pass does not merge them. Flatline signature rests on §9.2 until #3 clears |
 | 18 | The Two Writers — mode parameter + soft-mode harvesting | Identity **author-declared** (v0.9): NAS is for hard writers first; asymmetry locked (soft fails recoverably, hard fails terminally). Mechanics **PROPOSAL** in §1.1 — mode re-tiers the register; harvest = the system in reverse; feedback-organism rule |
-| 19 | Doctrine by interlock | **PROPOSAL** in §5.1 — PATTERN-1; conformance checks banned; doctrines as lenses only |
+| 19 | Doctrine by interlock | ✅ **RATIFIED v0.14**, amended in four places. **Three verdicts, not two** — *breaks* (coupling, an undeclared contract routed to §8.3), *weakens* (interlock, the healthy case), *silence* (stack). The two-verdict version scored an undeclared dependency as a healthy joint, exactly backwards. **Reverse test adapted**: the software form ("works standalone") is false for serialized narrative, so the question becomes *does this scene contain its own event* — the table-setting diagnostic — with the strain written down rather than smoothed. **Altitude correction**: reads the purpose graph, never prose; SCENE-1's silence is the contract working. **Signature concrete**: zero inbound structural references. Enforcement trap named — audit the exception corpus, since a rule with no overrides is unfalsified, not vindicated |
 | 20 | Facets — the unit of presentation | ✅ **RATIFIED v0.14** across §3.4, §8.1 and §8.2, amended. **Facets are authored, observer records are derived** (FACET-2) — the fifth authored-state violation found this pass; SCENE-3 already required it, and `authenticity` is canonical so it cannot live in a record. **No fourth `authenticity` value** — the unwitting facet is the gap between an agent's self-record and others' facets, already computable via §3.2, and two ways to say one thing is what GRAPH-2 forbids. Narrative-as-facet-selection aligned against GRAPH-9: selection describes authoring, not querying. Collision-as-generator, intimacy-as-granting, facet rotation, the info-dump re-diagnosis, FACET-1 and the epistemic guard all ratified unchanged |
 | 21 | The World as phantom agent + void dynamics | ✅ **RATIFIED v0.14**, amended. **The apex exists by construction** — the world node is a manifest-created root of the `member_of` DAG, since GRAPH-8's derived levels do not guarantee a single top; physical law therefore has a guaranteed home (WORLD-2). Vocabulary updated to valences throughout. **Amended again, same session: the world is a *phantom agent*** — treated as an agent by the agents inside it, but taking no actions. It holds properties, invariants, valences, facets and field; no methods, no moves, no pursuits, no arc of its own (WORLD-3). "The world is a character" was metaphor and §0 forbids metaphor-only concepts; the attestation reframing compiles it, and world-as-agent becomes an observer record that can be wrong. The apex holds only the field role because there is no coherent will to delegate. Horror vacui restated — **the void does not pull; agents are drawn**. Gods and fate are emergent or ordinary agents, never the world. `candidates` are **authored or suggested, never computed** — the query is the mechanical part; successor-opening stays a prompt, not a gate (a bound objective may simply halt). Physical-law status carries §7.3's layer-and-modality caveat. **WORLD-1 retired as subsumed** — PATTERN-1 applied to the register itself. Forward constraint recorded for the deferred modifier layer: the world is where modifiers bottom out |
 | 22 | Statement modality | ✅ **RATIFIED v0.14**, amended in four places. Set **frozen at three** — a prophecy is `saw` with a forward anchor unless it binds, and *which* is the story; a fourth modality would let the writer dodge the question. (a) **Break price scales with altitude** (MODAL-3): world = miracle, institution = schism, agent = arc. `must` had been conflating physical law with agent invariants, so Wren's arc read as a miracle needing an exception ID. (b) **Modality is two-place** — canonical on the statement, **read** per observer record; the gap is computable irony, and it is general rather than artifact-only, since world-as-agent (§7.7) is the clearest case. (c) **In-world retyping split from authorial** — the first names an agent and emits a move, the second is a decree or retcon walking a cone. (d) **MODAL-1 split** into structural (field required) and MODAL-2 (gate: changes are priced). Plus MODAL-4 at judgment tier: high-layer `must` with no world derivation — made law presenting as natural law |
