@@ -1,6 +1,6 @@
 # Narrative Architecture System (NAS)
 
-**Working draft — v0.15 (August 2026)**
+**Working draft — v0.16 (August 2026)**
 *Methodology for structured fiction development. This document is also the spec for the writing layer of the surrounding software; project-level features (kanban, panels, dashboards, session UX) wrap NAS but are out of scope here — see `SOFTWARE.md` for the architecture seed of the tool itself.*
 
 Restructured from v0.2 (archived at `Archive/v0.2_NAS.md`) in v0.3; v0.4 adds the Evidence Loop, the canon-drift model, rules derived from the Field Atlas, and written proposals for every open question.
@@ -21,6 +21,8 @@ And as of v0.14 the system has been run: one scene rendered from the seed (`Chap
 **Changed in v0.10:** Facets — the unit of presentation (§3.4): observers never touch entities, only facets; facet collision as scene generator; intimacy as facet-granting; the single-facet lint (FACET-1, blandness diagnostic #2); claim NAS-C11.
 **Changed in v0.11:** the World-Agent and void dynamics (§7.7) — the world is the apex Agent (its physical laws are its invariants; a miracle is a priced `intentional_break`); *horror vacui* — voids are attractors that recruit candidate fillers (the power vacuum, generalized); Maslow as valence ladders — filled voids spawn successors; the sagging middle as a valence-succession gap (NAS-C12); WORLD-1.
 **Changed in v0.12:** canon dynamics — triangulated from the oldest running canon systems (scripture, law; §17 gains the canon-&-interpretation lineage): statement modality *is / must / saw* (§7.8 — untyped statements get retyped by their readers; promotion/demotion as priced operations; MODAL-1); the authored query (§7.5 — views record their provenance, GRAPH-4; contradiction triage: fact-conflict / query-divergence / modality-retype, NAS-C13); publication as canon closure (§11.1 — frozen partitions, obligations flow frozen→open, forward-only fixes, PUB-1).
+**Changed in v0.16:** two ratifications, both driven by evidence rather than argument. **`want` / `expect`** (§7.6, VAL-5) — selections from a valence's `candidates`, whose *difference is dread*; demanded three times independently across three scenes and two projects before being admitted, because with `candidates` alone the primary tension primitive was unstateable. Reader-side they live only inside a declared **`intended_reader_trajectory`** (§3.5, READER-3), never asserted as fact: the reader is the one variable the system cannot solve, so NAS models authorial *intent* and audits it against execution — the third instance of declare-then-check-the-fold after CONTRACT-1 and PILLAR-1. `feel` now derives from `emotional_temp` (a same-day GRAPH-2 duplication, caught by the interlock test). And **Stake becomes derived** (§7.2, STAKE-1): a stake is a valence whose binding is threatened in the active span, and "escalate a stake" had been a second vocabulary for `alter/escalate` since v0.14 — the roster promised this in v0.3 and thirteen versions of chapter contracts went on authoring it anyway.
+
 **Changed in v0.15:** **modifiers** (§8.6) — the layer deferred twice in v0.14, ratified once a real use case forced it. A modifier is a *relation*, not a node: derived at resolution, recorded on the attempt, never authored. Two stages (selection, resolution), four classes living on existing objects (ambient / internal / epistemic / external), and the stack is the agent's `member_of` chain to the root, so failure is attributable to a *level*. Invariants gate, modifiers shift (MOD-3). NAS records that a modifier applied and what it bore on, **never how much** — magnitude belongs to the medium, and specifying arithmetic here would make one game system pretend to be general (MOD-2). This also **repairs a break v0.14 created**: OBS-2 was amended to take the field as input while the mechanism was deferred — an undeclared contract between a `gate | invariant` rule and a layer that did not exist.
 
 **Changed in v0.14 (ratification pass — the proposal era closed):**
@@ -376,6 +378,42 @@ The epistemic guard, which is where this subsection came from: **an observer's r
 
 ---
 
+### 3.5 The intended reader trajectory
+
+**✅ RATIFIED v0.16.** The reader is the one variable the system cannot solve. Every reader arrives with their own baggage, reading skill, bias, attention and mood; no model knows what they feel, and a system that claims to is wrong in a way that eventually costs the author a real decision. So NAS never models a reader. It splits the problem three ways and operates on the middle row only:
+
+| | Knowable? | Owner |
+|---|---|---|
+| What the reader has been **told** | **yes** — derivable from the info-op stream | the system |
+| What the author **intends** them to want, expect, feel, care about | **declarable**, and checkable against execution | the author |
+| What the reader **actually** feels | **no** | beta readers alone (§9.1 test reads, NAS-C8) |
+
+This is the difference between a craft tool and a better-organised filing cabinet. A cabinet tracks what is *true*; the middle row is the only place *intent* is representable at all, and intent is what a writer actually works on.
+
+Structurally it is a shape NAS already runs twice — **declare, then check the fold against the declaration.** CONTRACT-1 does it for chapter deltas, PILLAR-1 for preconditions. This is the third instance, which is the strongest argument that it belongs (register: READER-3).
+
+```yaml
+intended_reader_trajectory:      # declared in the scene interface, BEFORE prose
+  entering: {open: [reader_valence_ids]}
+  per_beat:
+    - beat: b3
+      want: "Oyo to be acting from something like decency"
+      expect: "Oyo to want something"        # want ≠ expect → dread (§7.6)
+      care: 0.8                              # = valence pressure
+      # feel: derived from the beat's `emotional_temp` unless declared (see below)
+  exiting: {bound: [...], open: [...], foreclosed: [...], reframed: [...]}
+```
+
+**The author's four words map onto machinery that already existed** — which is why this is a connection rather than a layer: **care** is valence `pressure`, **feel** is the beat's `emotional_temp`, **want** and **expect** are §7.6's selections from `candidates`.
+
+*`feel` is derived by default (amended v0.16, per the coupling found in ledger 0011).* A per-beat `feel` and the beat's own `emotional_temp` were two authored copies of one value — GRAPH-2, committed by this document's own author on the day the layer was drafted. `feel` now **derives from `emotional_temp`** and is authored only where the two deliberately diverge: a beat played light that is intended to land as dread. Divergence is the interesting case, so it is the one that costs a keystroke.
+
+**What the audit can find, demonstrated twice.** In the door's s03 it caught a beat whose `expect` the prose contradicted. In pro-league's ch07 it caught something better — a beat whose `expect` was **unpayable**, because the reader had never been given the canon it rests on. That miss was not a line to rewrite; it was **a missing scene at an earlier Cut position.** The audit stops being a proofreading pass and becomes an obligation generator, arriving from the reader's side exactly as pillar preconditions arrive from the structure's.
+
+**What it can never find:** whether any of it works on a person. That is the third row, it is out of scope by construction, and the only instrument that touches it is a reader who is not the author.
+
+---
+
 ## 4. The Contract Stack ("meta-code")
 
 One pattern, applied fractally: **declare intent in structured form → implement one level down → reconcile.**
@@ -397,7 +435,9 @@ contains_pillars: [pillar_01]
 declared_delta:
   reader_ops: [reveal: fact_rule_source, foreshadow: fact_tal_condition]
   relationships: [{edge: wren->tal, trust: -0.6}]
-  stakes: [{id: stake_tal_survival, escalate: 2}]
+  moves: [{on: val_tal_survival, type: alter, kind: escalate, by: char_wren}]
+  # ^ v0.16: this line used to read `stakes: [{id: …, escalate: 2}]`. Same
+  #   operation, second vocabulary, removed — stakes are derived (§7.2).
   world: [collapse: fact_tal_condition]
 constraints: {pov: wren, span: "one night, the house"}
 ```
@@ -554,7 +594,15 @@ Neither namespace grows without ledger evidence (§14.4). IDs and kinds are neve
 
 1. **Generative worldbuilding.** Unfilled consequence slots interrogate the world: *a rule this old was written by someone — who, and what had they just watched happen?* The map doesn't just store the world; it asks the next question. The seed's whole world came out of two such questions and no invention at all.
 2. **Semantic retcons** (§2.4) — justified-by chains, not just mentions.
-3. **Derivable stakes.** A character's power hangs off world nodes; threaten the node, threaten the character. Plot pressure can be read off the graph — worldbuilding and plotting stop being separate activities.
+3. **Stakes are derived, not authored (ratified v0.16).** A character's power hangs off world nodes; threaten the node, threaten the character. Plot pressure is read off the graph, so worldbuilding and plotting stop being separate activities — and v0.16 finishes the job the roster started in v0.3 by removing the authored object entirely:
+
+   > **A stake is a valence whose binding is threatened within the active span.** Threatened means: its `pressure` is rising, its `candidates` are shrinking, or a `forecloses` edge pointed at it has become live.
+
+   *Why it had to go.* The §8 roster has said "now derivable from world nodes" **since v0.3**, while chapter contracts went on authoring `stakes: [{id, escalate: 2}]` — and after §8.5 shipped, "escalate a stake" and `alter/escalate` on a valence became **two names for one operation**. That is GRAPH-2 with a twelve-version head start, and it was invisible because both halves were individually correct.
+
+   The proof is in this document's own worked example: ch07's chapter contract declared its pressure changes as **moves**, reconciled clean on the first attempt (the first contract in either project to do so), and carried `stakes_active` alongside as a vestigial string list that nothing read. One vocabulary did the work; the other rode along.
+
+   *What survives:* "the stakes are low here" becomes a query — *which threatened valences are live in this span, and at what pressure?* — answerable without anyone maintaining a list. "Raise the stakes" stops being advice and becomes an operation with a name (register: STAKE-1).
 4. **Contradiction impossibility.** A birth year is one node; age is a computed projection; two documents can no longer disagree *by construction*.
 
 ### 7.3 Layers and dependency direction
@@ -658,10 +706,26 @@ valence:
   kind: wound                    # attribution only — no mechanics hang off this
   pressure: 0.8                  # §7.7 — voids are weighted
   candidates: [...]              # §7.7 — who could move on this; authored, not computed
+  want: candidate_id             # the preferred filler        ┐ ratified v0.16
+  expect: candidate_id           # the predicted filler        ┘ the gap is dread
   successor: valence_id | null   # §7.7 — what opens if this one binds
   forecloses: [valence_ids]      # binding this one closes those — tension, computed
   bound_by: [move_id]            # populated only by a close/bound move (§8.5)
 ```
+
+**`want` and `expect` — ratified v0.16.** Both are *selections from `candidates`*, not new vocabulary, and the whole value is in their difference:
+
+| | Reads as |
+|---|---|
+| `want == expect` | hope, or confidence — the agent believes the thing they prefer is coming |
+| `want ≠ expect` | **dread** |
+| `expect` absent from `candidates` | the setup for surprise — the agent has no prediction the world will honour |
+
+**The gap is the primary tension primitive, and NAS could not state it until now.** With `candidates` alone, *"she wants him to have a reason and expects he doesn't"* and *"she wants and expects a reason"* are the same list — so the tension vanished from the model while staying obvious on the page, which is the signature of a missing field rather than a missing feature.
+
+Demanded three times independently before ratification: by the door's s02 (the reader wants the door opened and expects it held — *that gap is the scene*), by s03 (whose only audit failure was an `expect` the prose contradicted), and by pro-league's ch07 (four of five beats declare a gap, and the one that fails does so because its `expect` has no prior scene to rest on).
+
+**Provenance rule — one field, two sources.** For an agent, `want`/`expect` are **authored canon**: the agent prefers this, predicts that. For the **reader**, they are never canon and never claimed — the reader is unmodellable, and a system asserting what a reader expects is lying about the one variable it cannot see. Reader-side, the pair exists **only inside a declared `intended_reader_trajectory`** (§3.5), where it is authorial intent, checkable against execution and against nothing else.
 
 A stable configuration (all valences bound) is a world at rest; stories start where valence is unbound. But an unbound valence is still only a *state* — §8.5 is where anything happens to it.
 
@@ -803,7 +867,7 @@ The object roster and status:
 | KnowledgeScope | **new** | replaces ReaderKnowledge (§3) |
 | WorldNode | **new** | replaces BibleEntry (§7) |
 | Theme | carried | ⚠ thin (ledger 0011) — the curve is derived from contrast events; only the authored thesis remains, with one structural payer. Rebuild candidate |
-| Stake | carried | ⚠ **duplication found** (ledger 0011): "derivable from world nodes" has stood here since v0.3 while contracts authored escalations, and post-v0.14 "escalate a stake" and `alter/escalate` on a valence are two names for one operation. Dedup queued — candidate: Stake becomes a derived view |
+| Stake | **DERIVED v0.16** | no longer an authored object — see §7.2. A stake is a valence whose binding is threatened in the active span; "raise the stakes" is `alter/escalate`, and it had been two vocabularies for one operation since v0.14 (ledger 0011) |
 | Pillar | **new** | §5 |
 | Container / Chapter | proposed | §4.2 |
 | The Cut | proposed | first-class telling order (§10) |
@@ -865,7 +929,7 @@ Directed edge between characters (A's view of B ≠ B's view of A): trust, power
 
 The scene is the atomic build unit — and it splits, borrowing the deepest coding concept in the system:
 
-- **Interface (frontmatter):** narrative function, characters present, POV, **active field** (location + institutions/social contexts in force, §7.6 — ratified v0.14), entry/exit deltas, information ops performed (per observer), setups planted, payoffs resolved, **attempts made and moves emitted** (§8.5), themes touched, stakes active, pillar binding, render phase, beats (§9.2).
+- **Interface (frontmatter):** narrative function, characters present, POV, **active field** (location + institutions/social contexts in force, §7.6 — ratified v0.14), entry/exit deltas, information ops performed (per observer), setups planted, payoffs resolved, **attempts made and moves emitted** (§8.5), **the intended reader trajectory** (§3.5), themes touched, pillar binding, render phase, beats (§9.2). *(Stakes are not listed: they are derived — §7.2, v0.16.)*
 - **Implementation (body):** the prose, at whatever render phase it has reached.
 
 **Downstream scenes depend only on the interface.** Consequences: prose can be re-rendered freely without dirtying anything; the edit room (§9.3) can reorder scenes and compute exactly which interface transitions broke; retcon cones stop at interfaces that still hold. Changing an interface is the expensive operation; changing prose is cheap. This inverts how writers usually feel about their work — and it should.
@@ -1203,6 +1267,9 @@ The **Rests on** column is new in v0.13 and exists to stop this table lying. A r
 | MOD-1 | Modifiers are derived at resolution and recorded on the attempt, never authored. The stack is the agent's `member_of` chain to the root; every applied modifier names its source object | structural | invariant | — |
 | MOD-2 | NAS records that a modifier applied and what it bore on, never how much. Magnitude belongs to the medium — a system that specifies arithmetic here has stopped being medium-neutral | structural | invariant | — |
 | MOD-3 | Invariants gate; modifiers shift. An attempt violating an invariant is refused or priced by MODAL-3, never resolved as a heavily-modified success | gate | invariant | — |
+| READER-3 | A scene's `intended_reader_trajectory` is checked against its beats before the render phase advances. The check compares two authored artifacts and never claims what a reader feels | gate | default | — |
+| VAL-5 | `want` and `expect` are selections from a valence's `candidates`. Agent-side they are authored canon; reader-side they exist only inside a declared trajectory (§3.5) and are never asserted as fact | structural | invariant | — |
+| STAKE-1 | Stakes are derived, never authored: a stake is a valence whose binding is threatened in the active span. "Raise the stakes" is `alter/escalate` and has no second vocabulary | structural | invariant | — |
 | GRAPH-6 | Dense bonding among level-N nodes with no level-N+1 node above them is flagged as a possible unnamed emergent | lint | default | — |
 | GRAPH-7 | A collective node with no members is flagged as a free-floating emergent | lint | default | — |
 | GRAPH-8 | Compositional level is derived from `member_of` depth, never declared per node; the manifest names the bands | structural | invariant | — |
@@ -1358,4 +1425,4 @@ What is believed original, until the ledger says otherwise: the inversion of nar
 
 ---
 
-*v0.15 — working draft. Iterate by editing this file. Nothing here is sacred except §0's problem statement, the §0.1 seed, and the §2 Triad — challenge everything else. The rest earns its place through the ledger, or leaves.*
+*v0.16 — working draft. Iterate by editing this file. Nothing here is sacred except §0's problem statement, the §0.1 seed, and the §2 Triad — challenge everything else. The rest earns its place through the ledger, or leaves.*
