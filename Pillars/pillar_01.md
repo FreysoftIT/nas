@@ -16,8 +16,8 @@ preconditions:                  # radiate BACKWARD — derived, not outlined
   - relationship(marek->kes).trust >= 0.7             # ✅ PAID — ch02.s01 (cut pos 2)
   - relationship(kes->marek).trust <= -0.4            # ✅ PAID — ch03.s01 (early; see ch06/_meta.md)
   - relationship(marek->oyo).kind == adversarial      # ✅ PAID — ch04.s01 (cut pos 4)
-  - reader.confidence(fact_league_terms) >= strongly_implied
-  - pursuit(val_kes_out).state == pursued             # she must have been trying to get out
+  - reader.confidence(fact_league_terms) >= strongly_implied   # ✅ PAID — ch01.s01 (cut pos 1)
+  - pursuit(val_kes_out).state == pursued             # ✅ PAID — ch05.s01 (cut pos 5)
 
 postconditions:                 # constrain FORWARD
   - agent: char_marek, carries: "was shot by the one he made"
@@ -32,22 +32,34 @@ status: approaching        # v0.17 — rendered at ch07.s01; binding still gated
                            # on the six preconditions above (§5, PILLAR-1)
 ---
 
-## Status of the debt — updated after ch02 and ch06
+## Status of the debt — **CLEAR**
 
-**Four of six paid, two outstanding.**
+**Six of six paid.** Seven scenes, ~7,700 words, and the pillar is eligible to bind.
 
 | Precondition | Status | Paid by |
 |---|---|---|
-| `val_marek_standing.bound_by != []` | ✅ | ch03.s01 — the ascent |
+| `reader.confidence(fact_league_terms) >= strongly_implied` | ✅ | ch01.s01 — the underpass (as street rumour) |
 | `relationship(marek->kes).trust >= 0.7` | ✅ | ch02.s01 — the lockup |
+| `val_marek_standing.bound_by != []` | ✅ | ch03.s01 — the ascent |
 | `relationship(kes->marek).trust <= -0.4` | ✅ | **ch03.s01 — paid early**, see below |
 | `relationship(marek->oyo).kind == adversarial` | ✅ | ch04.s01 — the debt |
-| `reader.confidence(fact_league_terms) >= strongly_implied` | ⬜ | cut pos 1, unwritten — ch03.s01 delivers the terms, so this is now *reinforcement* rather than first delivery |
-| `pursuit(val_kes_out).state == pursued` | ⬜ | cut pos 5, unwritten |
+| `pursuit(val_kes_out).state == pursued` | ✅ | ch05.s01 — the buyout question |
 
-The pillar stays `approaching`. Per v0.17 it gates **binding**, not rendering —
-`ch07.s01` is written and provisional, and `bound_to` stays `null` until this
-table is clear.
+**PILLAR-1 now passes at position 8**, and `ch07.s01` is no longer provisional —
+the six obligations it was rendered ahead of are discharged. Binding is a
+deliberate act (§2.2's late binding applied to the pillar's own contract) and is
+**left for the author**: the check clears, the collapse is still a decision.
+
+*One number to settle first:* ch07.s01 is the only scene still carrying
+`provisional: true`. Removing it and setting `bound_to: ch07.s01` closes the
+loop; leaving it open keeps act two free to move the pillar's position, which is
+the whole reason `cloud` exists.
+
+**What this cost to plan: nothing.** Not one of the seven scenes was outlined.
+Six were written because this table named a debt; ch04.s01 was written because
+this table *and* ch07's reader audit named the same missing scene from opposite
+directions and agreed on it. The Cut's seven filled positions are the shape that
+fell out — **an act, derived.**
 
 **⚠ One was paid early, and the Cut said otherwise.** Position 6 was labelled
 *"pays `kes->marek <= -0.4`"*; ch03.s01 had already taken the edge to exactly

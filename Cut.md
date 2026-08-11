@@ -3,11 +3,11 @@ id: cut_main
 # Telling order — §10. Scenes never declare their own position (SCENE-2);
 # they receive it here. Editing this file re-runs TIME-3's suite.
 order:
-  - {position: 1,  scene: null, note: "unwritten — pays reader.confidence(fact_league_terms)"}
+  - {position: 1,  scene: ch01.s01, story_time: {start: "~2 months before ch07, 01:40"}, note: "the underpass — opens the book; pays pillar_01 precondition 5 (league terms, as street rumour)"}
   - {position: 2,  scene: ch02.s01, story_time: {start: "~4 years before ch07, evening"}, note: "the lockup — pays pillar_01 precondition 2 (marek->kes >= 0.7); plants setup_he_never_asked; both edges move APART"}
   - {position: 3,  scene: ch03.s01, story_time: {start: "22 days before ch07, ~16:00", end: "~17:10"}, note: "the ascent — binds val_marek_standing; forecloses val_kes_out; plants setup_one_more"}
   - {position: 4,  scene: ch04.s01, story_time: {start: "11 days before ch07, ~14:00", end: "~14:20"}, note: "pays pillar_01 precondition 4 (marek->oyo adversarial) AND ch07.s01 b3's unpayable expect"}
-  - {position: 5,  scene: null, note: "unwritten — pays pursuit(val_kes_out).state == pursued"}
+  - {position: 5,  scene: ch05.s01, story_time: {start: "8 days before ch07, ~22:00"}, note: "the buyout question — pays pillar_01 precondition 6 (val_kes_out pursued), through a third party, with Kes absent"}
   - {position: 6,  scene: ch06.s01, story_time: {start: "5 days before ch07, ~19:00"}, note: "the asking — pays NO precondition; kes->marek was already <= -0.4 at ch03 (see ch06/_meta.md). Resolves setup_he_never_asked (subverted); removes marek from val_kes_out candidates"}
   - {position: 7,  scene: null, note: "unwritten — the job. Offstage in the telling."}
   - {position: 8,  scene: ch07.s01, story_time: {start: "night, 03:12", end: "night, 03:31"}}
