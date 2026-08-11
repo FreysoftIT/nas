@@ -730,6 +730,16 @@ Concretely: a character who believes a lie holds `read_modality: is` where canon
 
 *Provenance, and it matters.* This was found by **Alter-G** (ledger 0016), whose invariant 6 makes the firewall architectural — the component voicing a character is physically unable to read the truth file. Their constraint was defensive: *read-modality records must stay truth-side.* Checking it against NAS showed the design already agreed and the **rule was missing** — a guarantee this document was making by accident. The first rule in the register contributed from outside it.
 
+**A declared no-cross line, and the first constraint this document accepts from outside (recorded v0.20).** Alter-G's M1 requirements dossier states the same constraint *forward*, as a test on NAS's future rather than a check on its present:
+
+> **Any evolution of NAS that moves `read_modality` — or any equivalent per-observer belief record — from graph-side into observer-held files is a no-cross line.** It breaks invariant 6: the gap between a canonical claim and what a character believes becomes readable by the component that is supposed to be firewall-isolated. The deception leaks into the exact file the character-voice cannot see.
+
+Their dossier verifies no collision at v0.20 — per-observer readings live in the node's `scopes` list (§7.8), never in an observer's own file — and this section is where that verification will fail first if the design ever drifts.
+
+Recording it here rather than only in their repo is the point. **A dependent's constraint that lives only in the dependent's documentation is not a constraint on the upstream; it is a hope.** NAS is free to move — §14.6 exists so that overrides become evidence — but it should never move *unknowingly* across a line an implementer has stated in advance and paid attention to. This is the smallest possible version of that: one paragraph, in the section the drift would have to pass through.
+
+**And the reciprocal deserves saying.** GRAPH-10 came from Alter-G, and Alter-G's own dossier classifies GRAPH-10 as *advisory* on their side — because invariant 6 already makes it architecturally true for them. **The rule they contributed is the one rule they do not need to import.** That is what a healthy seam looks like: the constraint travelled from the implementation that could enforce it structurally to the spec that was only assuming it, and the spec is now the party that needs the rule written down.
+
 ---
 
 What the authored query buys:
