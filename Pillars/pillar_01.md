@@ -12,7 +12,7 @@ position:
 order: {after: [pillar_00_the_ascent], before: []}
 
 preconditions:                  # radiate BACKWARD — derived, not outlined
-  - valence(val_marek_standing).bound_by != []        # he must actually have made it
+  - valence(val_marek_standing).bound_by != []        # ✅ PAID — ch03.s01 (cut pos 3)
   - relationship(marek->kes).trust >= 0.7             # the mentorship must be real
   - relationship(kes->marek).trust <= -0.4            # and already broken on her side
   - relationship(marek->oyo).kind == adversarial      # ✅ PAID — ch04.s01 (cut pos 4)
@@ -31,6 +31,30 @@ postconditions:                 # constrain FORWARD
 status: approaching        # v0.17 — rendered at ch07.s01; binding still gated
                            # on the six preconditions above (§5, PILLAR-1)
 ---
+
+## Status of the debt — updated v0.18
+
+**Two of six paid, four outstanding.** Both payments were made by scenes written
+*because this list existed*, not by scenes that happened to satisfy it:
+
+| Precondition | Status | Paid by |
+|---|---|---|
+| `val_marek_standing.bound_by != []` | ✅ | ch03.s01 — the ascent |
+| `relationship(marek->oyo).kind == adversarial` | ✅ | ch04.s01 — the debt |
+| `relationship(marek->kes).trust >= 0.7` | ⬜ | cut pos 2, unwritten |
+| `relationship(kes->marek).trust <= -0.4` | ⬜ | cut pos 6, unwritten |
+| `reader.confidence(fact_league_terms) >= strongly_implied` | ⬜ | cut pos 1, unwritten — though ch03.s01 delivers the terms themselves, so this is now a *reinforcement* obligation rather than a first delivery |
+| `pursuit(val_kes_out).state == pursued` | ⬜ | cut pos 5, unwritten |
+
+The pillar stays `approaching`. Per v0.17's amendment it gates **binding**, not
+rendering — `ch07.s01` is written and provisional, and `bound_to` stays `null`
+until this table is clear.
+
+*Worth noting what the two payments cost to find: nothing.* Neither scene was
+outlined. ch03.s01 was written because this list named a binding nobody had
+performed; ch04.s01 because it named an adversarial edge **and** ch07's reader
+audit independently named a missing scene at an earlier Cut position. The
+obligations arrived from two different directions and agreed on the work.
 
 ## Note on the precondition set
 
