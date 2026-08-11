@@ -49,7 +49,7 @@ The ledger is not decoration. On the day the system was stress-tested it found s
 ## What's in this repo
 
 ```
-NAS.md                  the spec — 34k words, 51 rules, 13 claims
+NAS.md                  the spec — 34k words, 52 rules, 13 claims
 SOFTWARE.md             architecture seed for the compiler/IDE (v0.2, pre-design)
 profiles/interactive.md how NAS applies to branching / AI-rendered fiction
 ledger/                 15 entries — the evidence loop, and the honest record

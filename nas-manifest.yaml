@@ -1,6 +1,6 @@
 # Scope manifest — NAS §14.5
 project: pro-league
-nas_edition: v0.17                # verified against NAS.md header at write time.
+nas_edition: v0.20                # verified against NAS.md header at write time.
                                   # Stood at v0.15 through v0.16 and v0.17 — a two-version
                                   # lag in the file whose only job is pinning the version.
                                   # Caught by an external reader, not by us. See the
@@ -103,3 +103,102 @@ rules_excluded:
 # A pinned edition that nobody re-verifies is a hand-maintained projection, and
 # GRAPH-2 says what happens to those.
 # ─────────────────────────────────────────────────────────────────────────────
+
+# ─────────────────────────────────────────────────────────────────────────────
+# ID NAMESPACES — which require a defining artifact (added v0.20, ledger 0020)
+#
+# Machine-readable on purpose. The integrity check is a set-difference and must
+# stay a deterministic script with no model in the loop: collect every id
+# matching `<ns>_*` across the corpus, subtract the ids that resolve to a
+# defining artifact, and report the remainder. This block is the declaration
+# that check reads; without it, "dangling reference" and "id-in-place" are
+# indistinguishable, which is how 49 of 64 ids sat unresolved (ledger 0019).
+#
+# THE TEST — not a taste call, and not a list to be extended by habit:
+#   requires_node = true  ⟺  members carry state that some fold READS.
+#   requires_node = false ⟺  the id is a label consumed only by the artifact
+#                            that names it, and no fold ever dereferences it.
+# A namespace does not earn a node because it feels important. It earns one when
+# something downstream would have to guess in its absence. Everything else is a
+# string, and NAS is not a filing cabinet.
+# ─────────────────────────────────────────────────────────────────────────────
+
+id_namespaces:
+
+  - ns: world
+    requires_node: true
+    home: Graph/world/
+    holds: [invariants, field_role]
+    why: "WORLD-2 — exactly one, created by the manifest; the root of the member_of DAG"
+
+  - ns: faction
+    requires_node: true
+    home: Graph/world/
+    holds: [valences, member_of, level]
+    why: "a collective agent; carries valences that forecloses-edges read"
+
+  - ns: char
+    requires_node: true
+    home: Graph/characters/
+    holds: [valences, facets, methods, member_of, voice]
+    exempt_when: "non-load-bearing walk-on (PATTERN-1) — carries no state any fold reads"
+    exempt_now: [char_booker, char_delacroix, char_marek_dead]
+    why: "agents are the motive layer; §8.5 folds their moves into arc"
+
+  - ns: fact
+    requires_node: true
+    home: Graph/facts.md, or Graph/world/<id>.md once it earns prose
+    promote_when: "competing read-modalities, a trajectory, or consequence slots"
+    holds: [content, modality, edges]
+    excludes: [canonised_in, scopes, confidence]   # folds over info_ops — never copied
+    cloud_variant: "an uncollapsed fact declares `question` + `candidates`, never `content`"
+    why: >
+      MODAL-1 requires every statement to carry canonical modality, and OBS-1
+      requires a canonisation record. Neither has anywhere to live without a
+      node. 18 facts, 1 node was the state that let fact_burn_rate be canon by
+      decree for 10 references.
+
+  - ns: val
+    requires_node: true
+    home: inline within the owning agent node
+    holds: [lack, kind, pressure, candidates, forecloses, bound_by]
+    why: >
+      A valence has no existence apart from its agent — it is not a free node and
+      must not become one. `requires_node: true` here means "must be defined",
+      not "must be a file". The distinction matters: a separate file would need a
+      hand-maintained owner edge, which is GRAPH-2.
+
+  - ns: setup
+    requires_node: true
+    home: Graph/setups.md
+    holds: [obligation, window, discharge, load_bearing]
+    excludes: [plant_site, payoff_site, status]
+    why: >
+      SETUP-1 checks for a payoff window; with no artifact there was nowhere to
+      write one. `excludes` is load-bearing: plant and payoff sites are declared
+      by scenes and folded, never copied here.
+
+  - ns: theme
+    requires_node: true
+    home: Graph/
+    holds: [question]
+    why: "§8.6b — the contested question is authored; the positions on it are derived from valences"
+    status_now: defined         # theme_use defined in Graph/themes.md v0.20
+
+  - ns: loc
+    requires_node: false
+    why: >
+      A label on `active_field`. Nothing dereferences it: no fold reads location
+      state, and the field's effect on a scene is carried by §8.6 modifiers,
+      which name their source explicitly. Promote a single location to a node the
+      moment it emits modifiers or holds facts of its own — the test decides, per
+      location, not the namespace.
+
+  - ns: rv
+    requires_node: false
+    why: >
+      Reader values are declared inline inside a scene's
+      `intended_reader_trajectory` and folded by the reader stream (§3.5, §10).
+      Giving them nodes would assert a persistent reader-state object, and §3.5
+      is explicit that the reader is the one variable the system cannot solve.
+      The inline declaration is the design, not a shortcut.

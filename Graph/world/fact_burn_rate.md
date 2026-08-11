@@ -5,7 +5,14 @@ layer: economics                 # NOT physics — the degradation is physics;
                                   # the RATE is priced by people (§7.3)
 content: "League-grade work consumes a runner in four to six years"
 status: canon
-canonised_in: decree(2026-08-10, "load-bearing before any scene observes it")
+canonised_in: observation(ch03.s01.b2)   # ⬅ REPAIRED v0.20 (ledger 0020, OBS-1).
+# Was: decree(2026-08-10, "load-bearing before any scene observes it") — an
+# explicit, self-aware OBS-1 breach, typed into the field designed to hold the
+# observation record, and unread for the life of the project because OBS-1 is
+# tiered `structural` and structural is the tier nobody checks. The observation
+# was in ch03's prose all along ("the cadence people can't hold" / "she'd held
+# that line for six years"); only the info_op was missing. Canon by assertion,
+# for 10 references, with the confession sitting in the file.
 modality: is                     # a fact — but see the read modalities below
 edges:
   derives_from: [world_root]     # chrome degrades — the physical floor
@@ -17,11 +24,21 @@ trajectory:
 consequence_slots:
   - "who shortened it, and what did they get for it?"
   - "what happens to the ones who last longer than the rate says?"
+# scopes: MATERIALIZED PROJECTION, not source (GRAPH-4/GRAPH-9). The values below
+# are a fold over every info_op naming this fact, ordered by the Cut. They are
+# hand-maintained today because no engine exists to recompute them — which is
+# GRAPH-2, and is recorded as such rather than pretended otherwise.
+# query: info_ops[fact == fact_burn_rate] ⨝ Cut.order → per-observer latest read
 scopes:
   - {observer: faction_the_league, read_modality: is,   confidence: confirmed}
   - {observer: char_marek,         read_modality: is,   confidence: confirmed}
   - {observer: char_kes,           read_modality: must, confidence: confirmed}
-  - {observer: reader,             read_modality: null, confidence: hinted}
+  - {observer: reader,             read_modality: is,   confidence: confirmed}
+  # ⬆ reader row corrected v0.20: was {null, hinted}, which was true only while
+  # the fact had no info_op anywhere. The ch03.s01.b2 reveal makes the reader a
+  # holder. The row was stale in the direction that hides the staleness — it
+  # described a reader who had been told nothing, in a project where the fact
+  # was load-bearing in three scenes.
 ---
 
 ## The retype that traps her
