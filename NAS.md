@@ -1,6 +1,6 @@
 # Narrative Architecture System (NAS)
 
-**Working draft — v0.18 (August 2026)**
+**Working draft — v0.19 (August 2026)**
 *Methodology for structured fiction development. This document is also the spec for the writing layer of the surrounding software; project-level features (kanban, panels, dashboards, session UX) wrap NAS but are out of scope here — see `SOFTWARE.md` for the architecture seed of the tool itself.*
 
 Restructured from v0.2 (archived at `Archive/v0.2_NAS.md`) in v0.3; v0.4 adds the Evidence Loop, the canon-drift model, rules derived from the Field Atlas, and written proposals for every open question.
@@ -21,6 +21,8 @@ And as of v0.14 the system has been run: one scene rendered from the seed (`Chap
 **Changed in v0.10:** Facets — the unit of presentation (§3.4): observers never touch entities, only facets; facet collision as scene generator; intimacy as facet-granting; the single-facet lint (FACET-1, blandness diagnostic #2); claim NAS-C11.
 **Changed in v0.11:** the World-Agent and void dynamics (§7.7) — the world is the apex Agent (its physical laws are its invariants; a miracle is a priced `intentional_break`); *horror vacui* — voids are attractors that recruit candidate fillers (the power vacuum, generalized); Maslow as valence ladders — filled voids spawn successors; the sagging middle as a valence-succession gap (NAS-C12); WORLD-1.
 **Changed in v0.12:** canon dynamics — triangulated from the oldest running canon systems (scripture, law; §17 gains the canon-&-interpretation lineage): statement modality *is / must / saw* (§7.8 — untyped statements get retyped by their readers; promotion/demotion as priced operations; MODAL-1); the authored query (§7.5 — views record their provenance, GRAPH-4; contradiction triage: fact-conflict / query-divergence / modality-retype, NAS-C13); publication as canon closure (§11.1 — frozen partitions, obligations flow frozen→open, forward-only fixes, PUB-1).
+**Changed in v0.19 — the render ladder, run for the first time.** Every scene in both projects had sat at `Draft`; five of §9.1's six phases had never been used, and the pillar status `rendered` had sat in the schema since v0.3 **with no entry condition, because nothing had ever entered it**. Taking one scene `Draft → Textured → Final` produced three rules. **RENDER-1** (§9.1): everything NAS reconciles, it reconciles as *state* — so two scenes can render the same event, emit consistent deltas, pass every gate, and contradict each other on the page. They did: two rendered accounts of one doorway disagreed on the room, on his line and on hers, and underneath that, **the setup one was declared to plant was not in its prose at all** while the line the other was declared to reveal existed nowhere in the corpus except inside a character's memory of it. SETUP-1 reported ✅ on both, correctly, because it was asked about a list. **PILLAR-3** (§5) defines the fourth status — bound scene at `Final` *and* postconditions re-checked against the final text, since binding validates a text still in motion. **REG-1** (§14.1) is the one that indicts the register: a green report currently conflates *complied*, *checked a hollow declaration*, and **never ran at all**. The voice lint is gated to Textured/Final; nothing had reached either; a field declared on a character in the first graph sat unverified for the entire life of the corpus, reporting nothing, indistinguishable from clean. Rules now carry `last_exercised`, and **dormant is reported separately from passing** (ledger 0018).
+
 **Changed in v0.18.** Two additions, from opposite sources. **GRAPH-10** — the first rule contributed from *outside* the project. **GRAPH-10** (§7.5): a materialized projection inherits the union of the scopes it selected from and may only be written where every reader already holds that scope. GRAPH-9 governed *direction* — reads never write — and nothing governed *placement*, so a conforming implementation could compute an observer record and store it in a file a narrow-scoped reader can open, handing a character every observer's reading of a fact including canon's. The deception ends up in the liar's hands. Found by **Alter-G**, whose invariant 6 makes that firewall architectural; checking their defensive constraint against NAS showed the design already agreed and the rule was simply missing — a guarantee this document was making by accident (ledger 0016). And **PILLAR-2** (§5) — the first rule minted by *performing a state transition*: binding the first pillar in either project revealed that PILLAR-1 checks preconditions and **nothing had ever checked postconditions**, a gap invisible while a pillar stays unbound because its forward constraints are inert until then. Three of six declared postconditions turned out never to have been emitted by the scene meant to deliver them (ledger 0017).
 
 **Changed in v0.17 — the interlock test's queue, applied.** Four items, every one located by an instrument rather than by reading. **Theme rebuilt** (§8.6b): a contested *question* plus the *positions* agents hold on it, derived from their valences and methods, argued wherever those positions foreclose each other — Truby's four-corner opposition expressed in machinery NAS already had, since cross-agent foreclosure *is* the argument. Only the question stays authored; CONTRAST-1's *unchallenged theme* becomes countable (fewer than two positions among load-bearing agents) instead of a judgement call. **PILLAR-1 amended on evidence**: it gates *binding*, never *rendering* — two projects rendered their pillar scene with every precondition unpaid, and two-for-two is data, not an exception. Prose may be drafted against an `approaching` pillar, provisional and regressible; `approaching → bound` is the gated step. Late binding applied to the pillar's own contract, using a `status` value that had sat unused since v0.3. **`VoiceProfile` retired** — once voice moved onto facets in v0.14 the standalone object was a second home for one thing; `voice` survives as a facet field. Same dedup as Stake, same instrument. **The info-op/move seam closed without a merge** (§3.1): it is an *isomorphism across §3.5's epistemic rows* — an info op is a fact about what the reader was told; a move on a reader valence is declared intent. Merging them would have collapsed the knowable into the unknowable.
@@ -545,6 +547,30 @@ The fix needs no new object, because `status: floating | approaching | bound | r
 This is late binding (§2.2) applied to the pillar's own contract: the writer defers the commitment, not the work. And it converts a rule that was being overridden into one that can be obeyed — the outcome §14.6's exception corpus exists to produce.
 
 *Standing on n=2, one author, two projects.* Recorded as such: if a third project renders in the paid order, this amendment is the thing to re-examine.
+
+**The fourth status finally has a definition — PILLAR-3, added v0.19.** `rendered`
+sat in that schema from v0.3 alongside the other three, was cited twice in
+amendments as an available value, and **was never given an entry condition**,
+because nothing had ever entered it. Performing the transition was what forced
+the definition, and the definition that survived is not the obvious one:
+
+> **PILLAR-3** — a pillar is `rendered` when its bound scene reaches
+> `render_phase: Final` **and its postconditions reconcile against the final
+> text.** PILLAR-2's reconciliation at binding is a claim about a text that is
+> still moving; `rendered` is that claim re-checked against a text that has
+> stopped.
+
+The second clause is the whole rule. Without it `rendered` is a synonym for
+"bound, and the scene is done" — a status that stores a fact already derivable
+from two other fields, which is GRAPH-2 and would have been retired on sight.
+With it, `rendered` is the only place the two ladders meet: pillar lifecycle and
+render phase are independent state machines that share one scene, and nothing
+before this checked them against each other.
+
+It earns its place immediately. Taking the first bound scene from Draft to Final
+rewrote the beat that two of its six postconditions depend on. Neither broke —
+both got *stronger*, and neither was authored to (ledger 0018). But nothing was
+watching, and "it happened to improve" is not a property a system may rely on.
 
 **Doctrine-agnostic:** NAS does not prescribe *which* moments. Three-act structure, Save the Cat, Story Circle — any doctrine can be expressed as a pillar set. Mechanism, not dogma.
 
@@ -1164,6 +1190,39 @@ Second, and more important: **the gate is per-scene. It is never per-work.** Rea
 
 (Mapping from v0.2: Rough ≈ Interface+Board, Detailed ≈ Draft, Shaded ≈ Textured, Inked ≈ Final.)
 
+**Deltas do not carry prose — RENDER-1, added v0.19.** Everything this document
+reconciles, it reconciles as *state*: CONTRACT-1 folds deltas, PILLAR-1 and
+PILLAR-2 check pre- and postconditions, SETUP-1 queries the `setups_planted:`
+and `payoffs_resolved:` lists. All of it operates on declarations. **None of it
+can see the text.**
+
+So two scenes can render the same event, emit perfectly consistent deltas, pass
+every gate green, and contradict each other on the page. The first time this
+document had two rendered accounts of one moment, they disagreed on the room, on
+his line, and on hers — and the setup one of them was declared to plant was not
+in its prose at all, while the line the other was declared to reveal existed
+nowhere in the corpus except inside a character's memory of it. **Both ends of a
+foreshadow→reveal pair were declarations with no text behind them**, and SETUP-1
+reported ✅ on both, correctly, because it was asked about a list (ledger 0018).
+
+> **RENDER-1** — where two scenes render the same event, the later render is
+> constrained by the earlier's **prose**, not merely by its deltas; and a `setup`
+> or `payoff` is discharged by text, not by appearing in a list. Both checks run
+> at **Textured**, because that is the first phase whose job is the words.
+
+Two consequences worth stating plainly. First, this is the **only** rule in the
+register whose subject is the rendered artifact rather than the graph — which is
+the honest shape of the gap, not a flaw in the rule. Second, it is why the phase
+ladder cannot be collapsed: a defect that lives in prose is only findable in a
+phase that reads prose, and every scene sitting at Draft is a scene where this
+class of defect is *undetectable by construction*.
+
+**Textured and Final are distinct states, and the distinction is subtractive.**
+Tested by running them separately on the same scene: Textured added material, and
+the read-aloud pass then removed a word Textured had itself over-used. The second
+phase is a check *on the output of the first*, so folding them into one pass
+removes the check rather than saving a step.
+
 **Work-level passes (post-production, not per-scene states):**
 
 - **Assembly / edit room** — reorder, cut, merge scenes *at the interface level* by editing the Cut (§10); the system reports broken transitions and re-folds both state streams.
@@ -1339,6 +1398,49 @@ applies_when: "any project using the Cut"     # feeds the scope manifest
 **Tiers:** `structural` — impossible by construction (age is computed; snapshots don't exist); `gate` — blocks a phase transition or merge; `lint` — flags, writer dismissable with a citation; `judgment` — review prompt only.
 **Status:** `invariant` — enforced at face value; `default` — enforced, expected to have exceptions; `hypothesis` — surfaced, not enforced. Rules are revised *by ledger evidence*, which is the whole loop.
 
+**A rule that has never fired is not a rule that is passing — REG-1, added v0.19.**
+The register carries no record of whether a rule has ever *run*, and a green
+report is currently produced by three different situations that a reader cannot
+tell apart:
+
+1. the rule ran and the work complied;
+2. the rule ran against a **declaration** rather than the artifact, and the
+   declaration was empty or false (ledger 0017's `exit_deltas`, ledger 0018's
+   `setups_planted`);
+3. the rule **never ran at all**, because its trigger condition was never
+   reached.
+
+The third is the quietest and had gone entirely unmeasured. §8.1 gates the voice
+lint to render phases `Textured` and `Final`; no scene in either project had ever
+left `Draft`; therefore a field declared on a character in the very first graph
+sat unverified for the whole life of the corpus, reported nothing, and was
+indistinguishable from a field that had been checked and found clean. The rule
+was correct, implemented, and **dormant** (ledger 0018).
+
+> **REG-1** — each rule carries `last_exercised`: the id of the most recent
+> artifact that actually triggered it. A rule with no exercising artifact is
+> **`dormant`**, and dormant is reported separately from passing. Coverage is a
+> property of the register, not of any one check.
+
+Two things follow. **A dormancy report is the cheapest audit this system has** —
+it needs no new analysis, only the honesty to distinguish silence from success,
+and it names its own blind spots for free. And it generalises what this ledger
+keeps finding by hand: every entry from 0016 on was some version of *unexercised
+machinery hides defects*. Four discovery channels are now on record — applying a
+ratification, running an instrument, an external reader, and **performing a
+transition nothing had performed** — and only the last has a rule making it
+systematic. REG-1 is that rule.
+
+*This one indicts the register itself, so state the exposure plainly:* **50 active
+rules, and exactly one is confirmed dormant — because it is the only one anybody
+has checked.** The status of the other 49 is unknown. REG-1 exists to make that
+number knowable, not to imply it is small.
+
+*And the first thing it caught was a miscount.* The rule count carried in working
+notes was 52; the register holds 51 rows, one of them the retired `WORLD-1`. A
+hand-tracked tally of a derived quantity, wrong, and load-bearing in three files
+— GRAPH-2's exact signature, sitting inside the register that GRAPH-2 lives in.
+
 ### 14.2 Starter register
 
 The **Rests on** column is new in v0.13 and exists to stop this table lying. A rule may be listed at `invariant` while the model it was derived from is still an unratified proposal in §15 — which is legitimate as a working default, but §15's claim that "none is silently locked" was false without it. Where a § is named, ratifying or rejecting that proposal changes or removes the rule.
@@ -1374,10 +1476,13 @@ The **Rests on** column is new in v0.13 and exists to stop this table lying. A r
 | PATTERN-1 | Every declared structural element bears load. Removal yields one of three verdicts — **breaks** (coupling: an undeclared contract, route to §8.3), **weakens** (interlock: the healthy case), **nothing notices** (stack: decoration, cut). Signature: zero inbound structural references. Reads the purpose graph, never prose — prose silence is SCENE-1 working | lint | default | — |
 | PILLAR-1 | A bound pillar's preconditions hold at its position. **Gates binding, not rendering** — prose may be drafted against an `approaching` pillar, marked provisional and regressible; binding is the operation that requires the debt paid | gate | invariant | — |
 | PILLAR-2 | A bound pillar's postconditions are satisfied by the deltas its bound scene emits. Binding reconciles forward as well as backward — a postcondition with no emitting delta is undelivered, not implied | gate | invariant | — |
+| PILLAR-3 | A pillar is `rendered` when its bound scene reaches `render_phase: Final` **and** its postconditions reconcile against the final text. Binding checks a text still in motion; `rendered` re-checks one that has stopped | gate | invariant | — |
 | PUB-1 | A retcon cone crossing a publication boundary never auto-propagates; published canon is contradicted only by declared errata — fixes are forward, additive, recontextualizing. The frozen set is what published scenes *observed* (`canonised_in`), not everything they touched | gate | invariant | — |
 | READER-1 | Exposition shaped for the reader's current need, never bible-shaped | judgment | default | — |
 | READER-2 | Reveals evolve additively; contradiction requires a declared subvert op | lint | default | — |
 | READER-3 | A scene's `intended_reader_trajectory` is checked against its beats before the render phase advances. The check compares two authored artifacts and never claims what a reader feels | gate | default | — |
+| REG-1 | Each rule records `last_exercised`. A rule no artifact has ever triggered is **dormant**, reported separately from passing — silence is not compliance, and coverage is a property of the register | lint | invariant | — |
+| RENDER-1 | Where two scenes render the same event, the later is constrained by the earlier's **prose**, not only its deltas; a setup or payoff is discharged by text, not by a list entry. Runs at Textured | gate | invariant | — |
 | SCENE-1 | Downstream depends only on a scene's interface, never its prose | lint | invariant | — |
 | SCENE-2 | Prose never references its own telling-order position | lint | default | — |
 | SCENE-3 | Scenes emit deltas; no authored state snapshots exist | structural | invariant | — |
@@ -1565,4 +1670,4 @@ What is believed original, until the ledger says otherwise: the inversion of nar
 
 ---
 
-*v0.18 — working draft. Iterate by editing this file. Nothing here is sacred except §0's problem statement, the §0.1 seed, and the §2 Triad — challenge everything else. The rest earns its place through the ledger, or leaves.*
+*v0.19 — working draft. Iterate by editing this file. Nothing here is sacred except §0's problem statement, the §0.1 seed, and the §2 Triad — challenge everything else. The rest earns its place through the ledger, or leaves.*

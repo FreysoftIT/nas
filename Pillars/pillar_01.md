@@ -29,8 +29,12 @@ postconditions:                 # constrain FORWARD
                                                        # who makes him not the last
   - world: fact_who_shot_him = collapsed              # for the reader only — see scopes
 
-status: bound              # ✅ v0.18 — floating → approaching → bound. First pillar
-                           # in either project to traverse the full lifecycle.
+status: rendered           # ✅ v0.19 — floating → approaching → bound → rendered.
+                           # Entry condition (PILLAR-3, minted here): the bound
+                           # scene is at render_phase: Final AND its postconditions
+                           # reconcile against the FINAL text, not the Draft text.
+                           # ch07.s01 reached Final in v0.19. First and only object
+                           # in either project to complete a lifecycle.
 ---
 
 ## Status of the debt — **CLEAR**
@@ -101,6 +105,42 @@ Benign in the direction that matters: **paid early, not missed.**
 written because this list named a debt — and ch04.s01 because the list and
 ch07's reader audit named the same missing scene from opposite directions and
 agreed on it.
+
+## `rendered` — what the fourth status turned out to mean
+
+The status existed in the schema from v0.4 and **was never defined.** Nothing
+specified its entry condition, and nothing had ever entered it. Performing the
+transition required deciding what it means, and the honest answer came from the
+collision it exposed:
+
+> **A pillar is `rendered` when its bound scene reaches `render_phase: Final`
+> *and* its postconditions reconcile against the final text.** — PILLAR-3
+
+The second clause is not decoration. Binding (v0.18) reconciled the six
+postconditions against `ch07.s01` **at Draft**. Taking that scene to Final
+rewrote its middle: the b4 reveal stopped being Marek quoting Kes and became
+Marek discovering he never heard her. Two postconditions ride on that beat. A
+`bound` reconciliation is a claim about a text that is still moving; `rendered`
+is the same claim re-checked against a text that has stopped.
+
+Re-run against the Final text:
+
+| Postcondition | Draft | Final |
+|---|---|---|
+| `val_oyo_ledger` foreclosed | ✅ | ✅ unchanged |
+| `val_oyo_standing` foreclosed | ✅ | ✅ unchanged |
+| `fact_who_shot_him` collapsed | ✅ | ✅ unchanged |
+| marek carries "was shot by the one he made" | ✅ (added at binding) | ✅ **strengthened** — the b2 half-second now carries *good, she's here* underneath the recognition |
+| oyo carries "chose to keep him alive, and knows what it cost" | ✅ (added at binding) | ✅ **strengthened** — Marek's ch04 misread is now *repeated verbatim and then corrected on the page*, so the reader watches the ownership reading fail |
+| `val_oyo_win` preserved-but-contaminated | ✅ (added at binding) | ✅ unchanged |
+
+**No postcondition broke. Two got stronger, and neither was authored to.** They
+improved because the scene finally had six other scenes to reach back into — and
+the pillar is the object that caused those six to exist. The precondition table
+built the act; the act textured the pillar's own scene.
+
+`bound → rendered` is therefore not a formality either. It is the point at which
+the pillar stops constraining a plan and starts describing a finished thing.
 
 ## Note on the precondition set
 
