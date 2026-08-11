@@ -8,7 +8,8 @@ given_material: "the sentence. No prose."
 
 position:
   cloud: "act 2 midpoint — the bound valence and its consequence in one image"
-  bound_to: null              # rendered at ch07.s01, not yet bound (§5, v0.17)
+  bound_to: ch07.s01          # ✅ BOUND v0.18 — all six preconditions paid.
+                              # The collapse (§2.2): position is no longer soft.
 order: {after: [pillar_00_the_ascent], before: []}
 
 preconditions:                  # radiate BACKWARD — derived, not outlined
@@ -28,8 +29,8 @@ postconditions:                 # constrain FORWARD
                                                        # who makes him not the last
   - world: fact_who_shot_him = collapsed              # for the reader only — see scopes
 
-status: approaching        # v0.17 — rendered at ch07.s01; binding still gated
-                           # on the six preconditions above (§5, PILLAR-1)
+status: bound              # ✅ v0.18 — floating → approaching → bound. First pillar
+                           # in either project to traverse the full lifecycle.
 ---
 
 ## Status of the debt — **CLEAR**
@@ -45,21 +46,45 @@ status: approaching        # v0.17 — rendered at ch07.s01; binding still gated
 | `relationship(marek->oyo).kind == adversarial` | ✅ | ch04.s01 — the debt |
 | `pursuit(val_kes_out).state == pursued` | ✅ | ch05.s01 — the buyout question |
 
-**PILLAR-1 now passes at position 8**, and `ch07.s01` is no longer provisional —
-the six obligations it was rendered ahead of are discharged. Binding is a
-deliberate act (§2.2's late binding applied to the pillar's own contract) and is
-**left for the author**: the check clears, the collapse is still a decision.
+**PILLAR-1 passes at position 8. Bound v0.18** — `bound_to: ch07.s01`, and that
+scene's `provisional` flag is removed. First pillar in either project to traverse
+the whole lifecycle: **floating → approaching → bound.**
 
-*One number to settle first:* ch07.s01 is the only scene still carrying
-`provisional: true`. Removing it and setting `bound_to: ch07.s01` closes the
-loop; leaving it open keeps act two free to move the pillar's position, which is
-the whole reason `cloud` exists.
+Binding is a collapse (§2.2), not a formality: the position was soft and is now
+fixed, and act two inherits it. The `cloud` is spent.
 
 **What this cost to plan: nothing.** Not one of the seven scenes was outlined.
 Six were written because this table named a debt; ch04.s01 was written because
 this table *and* ch07's reader audit named the same missing scene from opposite
 directions and agreed on it. The Cut's seven filled positions are the shape that
 fell out — **an act, derived.**
+
+## Postcondition reconciliation — the check nothing was performing
+
+Binding forces a question no rule asks: **did the bound scene actually deliver
+what this pillar declared forward?** PILLAR-1 checks preconditions only.
+CONTRACT-1 does exactly this reconciliation for chapters; the pillar had no
+equivalent, so six forward constraints sat unverified.
+
+Run by hand at binding time:
+
+| Postcondition | Delivered by ch07.s01 | |
+|---|---|---|
+| `val_oyo_ledger` foreclosed | `moves` — close/foreclosed, b3 | ✅ |
+| `val_oyo_standing` foreclosed | `moves` — close/foreclosed, b3 | ✅ |
+| `fact_who_shot_him` collapsed | `info_ops` reveal b2 + exit delta | ✅ |
+| marek carries "was shot by the one he made" | **was missing** — added to `exit_deltas` v0.18 | ⚠→✅ |
+| oyo carries "chose to keep him alive, and knows what it cost" | **was missing** — added v0.18 | ⚠→✅ |
+| `val_oyo_win` preserved-but-contaminated | **was missing** — added v0.18 | ⚠→✅ |
+
+**Three of six were declared and never delivered**, and nothing noticed for as
+long as the pillar stayed unbound. They are now in the scene's `exit_deltas`,
+which is also the field that turned out to be missing from all seven scenes
+(ledger 0017).
+
+The rule that should have caught it is **PILLAR-2**, minted from this — and worth
+noting that it took *binding* to expose it. Leaving the pillar `approaching`
+would have preserved optionality and found nothing.
 
 **⚠ One was paid early, and the Cut said otherwise.** Position 6 was labelled
 *"pays `kes->marek <= -0.4`"*; ch03.s01 had already taken the edge to exactly
