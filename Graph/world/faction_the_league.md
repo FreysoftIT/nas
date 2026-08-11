@@ -1,8 +1,15 @@
 ---
 id: faction_the_league
 family: character                # collective nodes are agents (§8.1) — but see roles below
-level: institution               # DERIVED from member_of depth (GRAPH-8)
-members: [char_marek, char_kes, char_oyo, ...]
+member_of: [world_root]          # ⬅ ADDED v0.19 (ledger 0019). Was MISSING, which
+                                 # made the `level:` below underivable — it claimed
+                                 # a depth with no edge to derive it from (GRAPH-8).
+level: institution               # DERIVED from member_of depth (GRAPH-8) — now
+                                 # actually derivable: world_root(0) → this(1).
+# members: REMOVED v0.19 — it was a hand-maintained inverse index of the
+# `member_of` carried by char_marek / char_kes / char_oyo, which is GRAPH-2
+# (a hand-copy of a derived view). It also carried a literal `...`, so it was
+# both duplicated AND incomplete. Query the inverse; do not store it.
 
 valences:
   - id: val_league_supply

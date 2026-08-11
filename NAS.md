@@ -1431,15 +1431,29 @@ ratification, running an instrument, an external reader, and **performing a
 transition nothing had performed** — and only the last has a rule making it
 systematic. REG-1 is that rule.
 
-*This one indicts the register itself, so state the exposure plainly:* **50 active
-rules, and exactly one is confirmed dormant — because it is the only one anybody
-has checked.** The status of the other 49 is unknown. REG-1 exists to make that
-number knowable, not to imply it is small.
+**Run once, and it is no longer a hypothetical (ledger 0019).** Against 51 active
+rules and the whole corpus: **28 exercised, 18 dormant, 3 violated, 2 excluded.**
+Six of the eighteen had a live subject sitting in the corpus the entire time —
+including two enforced by a `#` comment in the file asserting that the rule is
+being obeyed, which is a note to the author, not enforcement.
 
-*And the first thing it caught was a miscount.* The rule count carried in working
-notes was 52; the register holds 51 rows, one of them the retired `WORLD-1`. A
-hand-tracked tally of a derived quantity, wrong, and load-bearing in three files
-— GRAPH-2's exact signature, sitting inside the register that GRAPH-2 lives in.
+*And the first thing REG-1 caught was a miscount of the register itself.* Working
+notes said 52. The entry that minted REG-1 "corrected" it to 50 and was also
+wrong. It is **51**, counted two independent ways. A hand-tracked tally of a
+derived quantity, wrong three times in two days, load-bearing in three files —
+GRAPH-2's exact signature, occurring inside the register where GRAPH-2 lives, in
+the act of writing the rule against it.
+
+**The tier is the real exposure.** `structural` means *impossible by
+construction*, and **20 of 51 rules carry it while no construction exists.** The
+corpus is hand-maintained markdown; those twenty are enforced by discipline, and
+a tier that says *impossible* is exactly the tier nobody thinks to check. Three
+are failing right now — GRAPH-8 (`level:` typed by hand, deriving from a
+`member_of` edge the node does not have), GRAPH-2 (a hand-maintained inverse
+index, plus the count above), and OBS-1 (`observation_record` appears in **zero**
+files; eighteen facts are referenced). And SCENE-3, also structural, was breached
+corpus-wide for the life of the project and found only in v0.18. **A tier
+asserting that violations are impossible produced four of them.**
 
 ### 14.2 Starter register
 
@@ -1599,7 +1613,9 @@ Milestone reports (chapter merge, draft complete, work finished): aggregate the 
 | 23 | The authored query — view provenance | ✅ **RATIFIED v0.14**, amended in four places. Query carries four dimensions — selection, scope, time anchor, audience (GRAPH-4). **Query-divergence must name which dimension diverged** — §0's opening bug is a time-anchor divergence sitting on a fact-conflict, and only one of those is fixable by proofreading. **Modality-retype defined sharply** against two-place modality: the view's stated query does not match the modality it presents. **Reconstruction on import is authored or assisted, never automatic** — classification is the mechanical part; NAS-C13's protocol amended to say so. New boundary: **queries read, scenes write** (GRAPH-9) — a projection never collapses a fact. Authorship laundering ratified unchanged |
 | 24 | Publication as canon closure | ✅ **RATIFIED v0.14**, amended. Shipped partitions freeze; obligations flow frozen→open; forward-only fixes (PUB-1). **What freezes is bounded**: the set is what published scenes *observed* — their collapses and the Cut order — drawn by `canonised_in`, not by reachability. Read greedily, "the shipped partition" would freeze half the graph on publishing chapter one. And the **interpretation layer is now expressible**: fan canon is §7.8's retyping performed at scale by observers with no write access — a `saw` promoted to `is` by people who are not the author, unauthorised and irreversible. The only counter-move is the one §7.8 already prices, in the next book |
 
-**All 24 rows are closed as of v0.14** — 23 ratified, 1 dropped. Every ratification carried at least one amendment; none went through as written, which is the strongest thing that can be said for having run them one at a time instead of as a batch.
+| 25 | **`structural` asserts a guarantee the substrate cannot make** — OPENED v0.19 by the dormancy pass (ledger 0019) | ⬜ **OPEN — needs the author's decision.** §14.1 defines `structural` as *impossible by construction*. **20 of 51 rules carry it, and there is no construction** — the corpus is hand-maintained markdown, so those twenty are enforced by discipline, sometimes by a `#` comment in the file asserting compliance. Four have been violated: GRAPH-8, GRAPH-2, OBS-1 (live), and SCENE-3 (corpus-wide, undetected for the project's life). A tier that says violations are impossible is the tier nobody checks. **Two available moves.** (a) *Retier* the twenty to `gate`/`lint` until an engine exists — honest, and makes them checkable today, but it is a 20-rule change and it demotes rules that will be structural the moment SOFTWARE.md ships. (b) *Keep the tier and add `enforced_by`* — `engine` vs `discipline` — so the register states which guarantees are real now and which are promises, and REG-1's report can separate them. **(b) is the recommendation**: it is additive, it loses no design intent, and it converts the problem from a mislabel into a measurement. Not applied — 20 rules is the author's call |
+
+**All 24 original rows are closed as of v0.14** — 23 ratified, 1 dropped. Every ratification carried at least one amendment; none went through as written, which is the strongest thing that can be said for having run them one at a time instead of as a batch. **Row 25 is the first new question opened since the proposal era closed**, and it was produced by an instrument rather than by argument — which is the intended way for this table to grow.
 
 The *Rests on* column added in v0.13 exposed eight rules being enforced while their founding proposal was still undecided, four at `invariant`. That count is now zero. The column stays, because the condition recurs the moment a new proposal derives a rule — and the lesson of v0.13 was that it had been true and invisible for five versions.
 
