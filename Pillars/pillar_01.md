@@ -13,8 +13,8 @@ order: {after: [pillar_00_the_ascent], before: []}
 
 preconditions:                  # radiate BACKWARD — derived, not outlined
   - valence(val_marek_standing).bound_by != []        # ✅ PAID — ch03.s01 (cut pos 3)
-  - relationship(marek->kes).trust >= 0.7             # the mentorship must be real
-  - relationship(kes->marek).trust <= -0.4            # and already broken on her side
+  - relationship(marek->kes).trust >= 0.7             # ✅ PAID — ch02.s01 (cut pos 2)
+  - relationship(kes->marek).trust <= -0.4            # ✅ PAID — ch03.s01 (early; see ch06/_meta.md)
   - relationship(marek->oyo).kind == adversarial      # ✅ PAID — ch04.s01 (cut pos 4)
   - reader.confidence(fact_league_terms) >= strongly_implied
   - pursuit(val_kes_out).state == pursued             # she must have been trying to get out
@@ -32,29 +32,38 @@ status: approaching        # v0.17 — rendered at ch07.s01; binding still gated
                            # on the six preconditions above (§5, PILLAR-1)
 ---
 
-## Status of the debt — updated v0.18
+## Status of the debt — updated after ch02 and ch06
 
-**Two of six paid, four outstanding.** Both payments were made by scenes written
-*because this list existed*, not by scenes that happened to satisfy it:
+**Four of six paid, two outstanding.**
 
 | Precondition | Status | Paid by |
 |---|---|---|
 | `val_marek_standing.bound_by != []` | ✅ | ch03.s01 — the ascent |
+| `relationship(marek->kes).trust >= 0.7` | ✅ | ch02.s01 — the lockup |
+| `relationship(kes->marek).trust <= -0.4` | ✅ | **ch03.s01 — paid early**, see below |
 | `relationship(marek->oyo).kind == adversarial` | ✅ | ch04.s01 — the debt |
-| `relationship(marek->kes).trust >= 0.7` | ⬜ | cut pos 2, unwritten |
-| `relationship(kes->marek).trust <= -0.4` | ⬜ | cut pos 6, unwritten |
-| `reader.confidence(fact_league_terms) >= strongly_implied` | ⬜ | cut pos 1, unwritten — though ch03.s01 delivers the terms themselves, so this is now a *reinforcement* obligation rather than a first delivery |
+| `reader.confidence(fact_league_terms) >= strongly_implied` | ⬜ | cut pos 1, unwritten — ch03.s01 delivers the terms, so this is now *reinforcement* rather than first delivery |
 | `pursuit(val_kes_out).state == pursued` | ⬜ | cut pos 5, unwritten |
 
-The pillar stays `approaching`. Per v0.17's amendment it gates **binding**, not
-rendering — `ch07.s01` is written and provisional, and `bound_to` stays `null`
-until this table is clear.
+The pillar stays `approaching`. Per v0.17 it gates **binding**, not rendering —
+`ch07.s01` is written and provisional, and `bound_to` stays `null` until this
+table is clear.
 
-*Worth noting what the two payments cost to find: nothing.* Neither scene was
-outlined. ch03.s01 was written because this list named a binding nobody had
-performed; ch04.s01 because it named an adversarial edge **and** ch07's reader
-audit independently named a missing scene at an earlier Cut position. The
-obligations arrived from two different directions and agreed on the work.
+**⚠ One was paid early, and the Cut said otherwise.** Position 6 was labelled
+*"pays `kes->marek <= -0.4`"*; ch03.s01 had already taken the edge to exactly
+−0.4 (ch02 exit +0.3 → four years' drift → +0.1 → ch03's −0.5 delta). The Cut's
+note was written when positions were labelled by *intent*, and nothing re-checked
+it when the scene landed. Recorded in `Chapters/ch06/_meta.md` rather than quietly
+corrected: it is a hand-typed annotation describing a value the fold already
+computes, which is GRAPH-2's exact target. **Precondition status should be derived,
+not typed here** — queued; it wants a tool, not an edit.
+
+Benign in the direction that matters: **paid early, not missed.**
+
+*What the four payments cost to find: nothing.* No scene was outlined. Each was
+written because this list named a debt — and ch04.s01 because the list and
+ch07's reader audit named the same missing scene from opposite directions and
+agreed on it.
 
 ## Note on the precondition set
 
