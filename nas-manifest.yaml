@@ -1,6 +1,6 @@
 # Scope manifest — NAS §14.5
 project: pro-league
-nas_edition: v0.21                # verified against NAS.md header at write time.
+nas_edition: v0.22                # verified against NAS.md header at write time.
                                   # Stood at v0.15 through v0.16 and v0.17 — a two-version
                                   # lag in the file whose only job is pinning the version.
                                   # Caught by an external reader, not by us. See the
