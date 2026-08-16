@@ -1,6 +1,6 @@
 # Scope manifest — NAS §14.5
 project: pro-league
-nas_edition: v0.20                # verified against NAS.md header at write time.
+nas_edition: v0.21                # verified against NAS.md header at write time.
                                   # Stood at v0.15 through v0.16 and v0.17 — a two-version
                                   # lag in the file whose only job is pinning the version.
                                   # Caught by an external reader, not by us. See the
@@ -121,24 +121,55 @@ rules_excluded:
 # A namespace does not earn a node because it feels important. It earns one when
 # something downstream would have to guess in its absence. Everything else is a
 # string, and NAS is not a filing cabinet.
+#
+# ── TWO RECIPES, added v0.21 (ledger 0021) ───────────────────────────────────
+# A set difference needs both sides, and until v0.21 this block declared only
+# one. Every `requires_node: true` namespace now carries:
+#
+#   defines:    how to enumerate the ids that HAVE a defining artifact
+#   references: how to enumerate the ids that are MENTIONED anywhere
+#   dangling := references − defines
+#
+# A namespace with `defines` and no `references` is **uncheckable**: it can
+# report that its definitions are well-formed and nothing else. Uncheckable is
+# reported separately from passing and is never counted as covered. It is the
+# same third state REG-1 names for rules — ran, examined something real, and is
+# structurally incapable of finding the defect it exists to find.
+#
+# HONEST NOTE ON THIS PROJECT'S RECIPES. Every `references` recipe below is the
+# same one-line token grep, because every id in this corpus is a distinctive
+# `<ns>_` token that greps from anywhere. That uniformity is exactly why the
+# requirement went unnoticed for a version: here the second side of the set
+# difference is free. It is NOT free elsewhere. Alter-G's ids are folder names,
+# filenames and section headings; four of their six namespaces have no
+# mechanical way to enumerate references at all, and their first declaration
+# copied the token-regex style from this file and matched zero real content.
+# **Structural anchor vs token pattern is a property of the substrate, not of
+# the rule** — do not read the recipes below as the shape a recipe must take.
 # ─────────────────────────────────────────────────────────────────────────────
 
 id_namespaces:
 
   - ns: world
     requires_node: true
+    defines:    "grep -rhoE '^ *-? *id: world_[a-z0-9_]+' Graph/ Pillars/ | sed 's/.*id: //' | sort -u"
+    references: "grep -rhoE '\bworld_[a-z0-9_]+' Chapters/ Graph/ Pillars/ Cut.md | sort -u"
     home: Graph/world/
     holds: [invariants, field_role]
     why: "WORLD-2 — exactly one, created by the manifest; the root of the member_of DAG"
 
   - ns: faction
     requires_node: true
+    defines:    "grep -rhoE '^ *-? *id: faction_[a-z0-9_]+' Graph/ Pillars/ | sed 's/.*id: //' | sort -u"
+    references: "grep -rhoE '\bfaction_[a-z0-9_]+' Chapters/ Graph/ Pillars/ Cut.md | sort -u"
     home: Graph/world/
     holds: [valences, member_of, level]
     why: "a collective agent; carries valences that forecloses-edges read"
 
   - ns: char
     requires_node: true
+    defines:    "grep -rhoE '^ *-? *id: char_[a-z0-9_]+' Graph/ Pillars/ | sed 's/.*id: //' | sort -u"
+    references: "grep -rhoE '\bchar_[a-z0-9_]+' Chapters/ Graph/ Pillars/ Cut.md | sort -u"
     home: Graph/characters/
     holds: [valences, facets, methods, member_of, voice]
     exempt_when: "non-load-bearing walk-on (PATTERN-1) — carries no state any fold reads"
@@ -147,6 +178,8 @@ id_namespaces:
 
   - ns: fact
     requires_node: true
+    defines:    "grep -rhoE '^ *-? *id: fact_[a-z0-9_]+' Graph/ Pillars/ | sed 's/.*id: //' | sort -u"
+    references: "grep -rhoE '\bfact_[a-z0-9_]+' Chapters/ Graph/ Pillars/ Cut.md | sort -u"
     home: Graph/facts.md, or Graph/world/<id>.md once it earns prose
     promote_when: "competing read-modalities, a trajectory, or consequence slots"
     holds: [content, modality, edges]
@@ -160,6 +193,8 @@ id_namespaces:
 
   - ns: val
     requires_node: true
+    defines:    "grep -rhoE '^ *-? *id: val_[a-z0-9_]+' Graph/ Pillars/ | sed 's/.*id: //' | sort -u"
+    references: "grep -rhoE '\bval_[a-z0-9_]+' Chapters/ Graph/ Pillars/ Cut.md | sort -u"
     home: inline within the owning agent node
     holds: [lack, kind, pressure, candidates, forecloses, bound_by]
     why: >
@@ -170,6 +205,8 @@ id_namespaces:
 
   - ns: setup
     requires_node: true
+    defines:    "grep -rhoE '^ *-? *id: setup_[a-z0-9_]+' Graph/ Pillars/ | sed 's/.*id: //' | sort -u"
+    references: "grep -rhoE '\bsetup_[a-z0-9_]+' Chapters/ Graph/ Pillars/ Cut.md | sort -u"
     home: Graph/setups.md
     holds: [obligation, window, discharge, load_bearing]
     excludes: [plant_site, payoff_site, status]
@@ -180,6 +217,8 @@ id_namespaces:
 
   - ns: theme
     requires_node: true
+    defines:    "grep -rhoE '^ *-? *id: theme_[a-z0-9_]+' Graph/ Pillars/ | sed 's/.*id: //' | sort -u"
+    references: "grep -rhoE '\btheme_[a-z0-9_]+' Chapters/ Graph/ Pillars/ Cut.md | sort -u"
     home: Graph/
     holds: [question]
     why: "§8.6b — the contested question is authored; the positions on it are derived from valences"
@@ -187,6 +226,8 @@ id_namespaces:
 
   - ns: loc
     requires_node: false
+    defines:    null          # resolves to itself — no artifact to enumerate
+    references: null          # nothing dereferences it, so nothing can dangle
     why: >
       A label on `active_field`. Nothing dereferences it: no fold reads location
       state, and the field's effect on a scene is carried by §8.6 modifiers,
@@ -196,6 +237,8 @@ id_namespaces:
 
   - ns: rv
     requires_node: false
+    defines:    null          # resolves to itself — no artifact to enumerate
+    references: null          # nothing dereferences it, so nothing can dangle
     why: >
       Reader values are declared inline inside a scene's
       `intended_reader_trajectory` and folded by the reader stream (§3.5, §10).
