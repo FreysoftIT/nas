@@ -1,6 +1,6 @@
 # NAS v0.12 → v0.17 — what changed, for someone who read v0.12
 
-**For:** Jimmy (Alter-G / G-Heroes), who assessed NAS at v0.12 on 2026-08-09 and made three decisions on it.
+**For:** Jimmy (Alter-G — repo renamed from `hllrm/G-Heroes` to [`onlygian/Alter-G`](https://github.com/onlygian/Alter-G) on 2026-08-11), who assessed NAS at v0.12 on 2026-08-09 and made three decisions on it.
 **From:** Francesco. **Date:** 2026-08-10.
 
 You don't need to re-read the spec. This is the delta that touches your decisions, and the list of things you may have taken notes on that no longer exist.

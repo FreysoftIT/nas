@@ -148,10 +148,12 @@ one MIT asks: keep the copyright notice. If you do build something on this,
 
 ## Related work
 
-[**Alter-G**](https://github.com/hllrm/G-Heroes) is an independent tabletop-RPG
-engine by [@hllrm](https://github.com/hllrm) that adopts part of NAS at a
-declared seam. It is the only second implementation, and it is why `interop/`
-exists.
+[**Alter-G**](https://github.com/onlygian/Alter-G) is an independent narrative
+engine by [@onlygian](https://github.com/onlygian) — *the world's truth is
+written before you play it, it lies to you fairly, and the agent that voices
+characters physically cannot read the truth file.* It adopts part of NAS at a
+declared seam, under MIT as well. It is the only second implementation, and it
+is why `interop/` exists.
 
 The seam has been worth more than the adoption. `GRAPH-10` — the rule preventing
 a generated view from leaking one observer's knowledge into another's file — was

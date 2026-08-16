@@ -12,7 +12,7 @@
 >
 > §2 is corrected below to the three structural items. Nothing else is edited — the rest stands as drafted, including the parts that were already right, because a document rewritten to look like it was never wrong teaches nobody anything. Amendment marks show what moved.
 
-**Status:** ⬜ **Draft for joint sign-off — §2 amended 2026-08-11.** Not accepted; per Alter-G's response, signature comes *after* their requirements dossier lands (their M2), so this is an input to that negotiation and not a thing to be signed around. Lands in `G-Heroes/g-docs/decisions/` once both owners sign.
+**Status:** ⬜ **Draft for joint sign-off — §2 amended 2026-08-11.** Not accepted; per Alter-G's response, signature comes *after* their requirements dossier lands (their M2), so this is an input to that negotiation and not a thing to be signed around. Lands in `Alter-G/g-docs/decisions/` once both owners sign.
 **Deciders:** Jimmy G Palma (Alter-G) · Francesco (NAS) — *both signatures required; neither side ratifies alone*
 **Drafted:** 2026-08-10, Francesco, from ADR-001's `nas-core / alter-g-bespoke` table and NAS v0.17
 **Supersedes nothing.** Extends ADR-001, which stands.
