@@ -1,23 +1,51 @@
 # NAS profile — `medium: interactive`
 
-**v0.15.** For works where the reader makes decisions and an author (human or
+**v0.22.** For works where the reader makes decisions and an author (human or
 model) renders in response: text adventures, branching fiction, AI-driven
 narrative games.
 
-**This is a profile, not a fork.** Nothing here changes NAS's structure. Three
-objects change *provenance*, one manifest key becomes mandatory, and one
-existing rule fires far more often than it does in a novel. Every rule in
+<!-- This header read **v0.15** until v0.22, while the body carried material added
+     at v0.18 and cited it inline as such. A hand-maintained edition stamp, stale
+     by seven versions, in the document whose entire job is telling an adopter
+     which NAS it corresponds to. Fifth instance of the class this week —
+     nas_edition (two versions stale, caught externally), the register count
+     (wrong three times in two days), the corpus word count (never right), and
+     now this. Recorded, not tidied. GRAPH-2 is the rule; the pattern is that
+     nothing enforces it on prose headers. -->
+
+
+**This is a profile, not a fork.** Nothing here changes NAS's structure. Four
+objects change *provenance or granularity*, one manifest key becomes mandatory,
+and one existing rule fires far more often than it does in a novel. Every rule in
 §14.2 applies unmodified unless listed below.
+
+> **Terminology hazard, before anything else.** In this medium the word **canon**
+> is likely to mean the opposite of what NAS means by it, and several rules say
+> canon.
+>
+> NAS: *canon* is what is **authoritatively true** (§2 — nothing is canon until
+> observed). An interactive engine, by contrast, will usually keep a file of
+> *everything established to the player* — which **may contain falsehoods the
+> player was told**, and which those lies bind exactly as firmly as truths do.
+> That file is not NAS canon. **It is the reader record** (§3), and the engine's
+> separate truth store is what NAS's rules mean by canon.
+>
+> Alter-G names them `canon.md` and `truth.md` respectively, which is idiomatic
+> for the medium and inverted relative to this document. Map the two stores before
+> applying any rule that says canon; reading them the wrong way round silently
+> inverts the observer model, which is the one thing this profile exists to
+> protect.
 
 ---
 
-## The three flips
+## The four flips
 
 | | Novel | Interactive | Why it is not a fork |
 |---|---|---|---|
 | **The Cut** (§10) | an authored sequence | **derived per session** from the player's move history | GRAPH-4 already requires a view to record its query; here the query is *this player's history*. The Cut becomes a projection — same object, different provenance |
 | **Pillars** (§5) | bind to a *position* | bind to a **state condition** | `position.cloud` is already soft until collapsed. A trigger-pillar resolves its position to a predicate rather than a slot; `bound_to` is set at the moment the condition is met |
 | **Publication** (§11.1) | once, at the end | **every turn** | PUB-1 unchanged, fired continuously. See below — this is the profile's defining constraint |
+| **Collapse unit** (§2) | the **scene** | the **op** for the world, the **beat** for the player | Added v0.22, and it touches Principle I — see below. §10's two-fold rule already carries it: two observers, two orderings, no special case |
 
 ```yaml
 # manifest additions (§14.5)
@@ -25,11 +53,68 @@ medium: interactive
 cut: {provenance: derived}          # from session moves, not authored
 pillars: {binding: condition}       # triggers, not keyframes
 publication: {granularity: turn}    # PUB-1 fires per rendered turn
+collapse:                           # v0.22 — Principle I's granularity
+  world: unit_of_play               # an op / mission / chapter-of-play
+  reader: beat                      # per rendered turn
 mode:                               # `mixed` = per scope (§1.1)
-  world_graph: hard                 # canon may not drift
+  world_graph: hard                 # world truth may not drift (see the hazard above:
+                                    # NOT the player-facing record, which may hold lies)
   emergent_detail: soft             # the renderer invents; harvest it
 modifiers: {required: true}         # §8.6 — not optional in this medium
 ```
+
+---
+
+## Flip four — Principle I keeps its meaning by changing its unit
+
+*Added v0.22. This is the only flip that touches one of the three ratified
+principles, so it gets the argument in full rather than a table row.*
+
+Read flat, the medium appears to contradict Principle I outright:
+
+> **NAS:** nothing is canon until a scene observes it; facts are constraint clouds
+> until collapsed. **Deferred commitment is the point** — §2.2, and §0's whole
+> argument against fixing 79,000 words before writing a scene.
+>
+> **A fair interactive work:** the truth is written **before** play. If the answer
+> to a mystery can be invented at the moment the player asks, the mystery was never
+> solvable, and the work is a cheat wearing a story's clothes.
+
+Both are right, and neither yields. A profile that asked an engine to defer its
+truth would be asking it to abandon the guarantee its fairness rests on — which
+is not a NAS decision to make.
+
+**They are not in conflict, because they are talking about different units.**
+
+> **In a novel the collapse unit is the scene. In an interactive work it is the
+> unit of play for the world, and the beat for the reader.**
+
+An engine of this kind commits the truth of **one unit of play** — an op, a
+mission, a case — at the moment that unit opens, because that unit is what the
+player will interrogate. **Everything beyond it stays cloudy**: the dormant
+material that has not triggered, the threads that have not been pulled, the
+consequences that have not landed. That is not a weakening of Principle I. It is
+Principle I with a coarser grain on one axis and a *finer* one on the other, since
+the reader's record collapses per **beat** rather than per scene.
+
+Nothing in §14.2 changes. §10's two-fold rule already carries it with no special
+case: world state folds over story chronology and collapses at unit-open; the
+reader record folds over telling order and collapses per beat. Two observers, two
+orderings, one delta log — which is what the two-fold rule was for.
+
+**Why this was missed until v0.22.** The first three flips were found by asking
+*what does this medium do differently with a NAS object.* This one is only visible
+from the other direction — reading a real engine's fairness invariants and finding
+one that appears to contradict a principle. It took an implementation with a
+written-down invariant 1 to surface it, which is the same lesson as GRAPH-11's
+amendment: **a reader finds what a document says wrongly; an implementer finds
+what it failed to say at all.**
+
+*The practical test for an adopter:* if your engine pre-commits truth, name the
+unit it pre-commits, and check that everything outside that unit is still a cloud.
+If the answer is "the whole world, at commission," Principle I really has been
+abandoned and the drift is the worldbuilder's disease §0 exists to name — this
+flip is not cover for that.
 
 ---
 
