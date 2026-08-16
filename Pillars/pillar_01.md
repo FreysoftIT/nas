@@ -39,7 +39,7 @@ status: rendered           # ✅ v0.19 — floating → approaching → bound �
 
 ## Status of the debt — **CLEAR**
 
-**Six of six paid.** Seven scenes, ~7,700 words, and the pillar is eligible to bind.
+**Six of six paid.** Seven scenes, **5,840 words of prose**, and the pillar is eligible to bind. *(Was `~7,700` — a hand-carried count that included each scene's gate and lint reports as prose. Corrected 2026-08-11.)*
 
 | Precondition | Status | Paid by |
 |---|---|---|

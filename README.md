@@ -6,6 +6,36 @@ Not a story structure. Not a beat sheet. NAS doesn't tell you where your midpoin
 
 ---
 
+## ⚠ Read this before you use any of it
+
+> **This project is pre-alpha. It is not "early" — it is earlier than early.**
+>
+> There is **no software**. NAS is a specification and a worked example, both
+> hand-maintained in Markdown. Nothing here compiles, validates, or runs. Every
+> rule described as *enforced* is enforced by a person remembering to check it.
+>
+> **The spec changes underneath you.** It moved through six versions in five
+> days, and rules have been added, amended and retired on evidence — including
+> rules that had been in place for a dozen versions. If you build against it,
+> pin a commit. There is no stability guarantee, no deprecation policy, and no
+> migration path between versions.
+>
+> **The evidence base is one author and one unfinished novel.** Seven scenes.
+> The project's own standard for calling itself finished (§14.7 — *survive a
+> completed work and its post-mortem*) has **not been met**, and there is no date
+> for when it will be.
+>
+> **A dormancy audit of the rulebook found that roughly a third of its own rules
+> had never once been run**, and that 20 of 52 claim to be *"impossible by
+> construction"* in a system that has no construction. Three were violated at
+> the time of the audit. That audit is in `ledger/0019` and it is the most
+> useful document here for deciding whether to trust the rest.
+>
+> Use it to think with. Copy ideas out of it. **Do not put it under anything you
+> care about yet.**
+
+---
+
 ## The problem
 
 A writer has 79,000 words of worldbuilding: a magic system with formal laws, five thousand years of interlocked history, characters whose psychology derives from that history. It is already drifting. In one real corpus — maintained carefully, by one person, with full attention — a character is born in 1770 in one paragraph and 1763 four paragraphs later, and her stated age computes from the wrong one. That happened in *static reference material*, before a single scene of the novel existed.
@@ -40,7 +70,7 @@ Everything else is machinery serving those three — a causal world graph, event
 
 NAS attaches **falsifiable claims with measurement protocols** to craft advice, and keeps a ledger of what its own rules caught, missed, and got wrong.
 
-Thirteen claims (`NAS-C1`–`C13`), each with a protocol. Fifteen ledger entries, each naming a single `canonical_cause` — because if every post-mortem confirms every model, the ledger proves nothing.
+Thirteen claims (`NAS-C1`–`C13`), each with a protocol. Twenty ledger entries, each naming a single `canonical_cause` — because if every post-mortem confirms every model, the ledger proves nothing.
 
 The ledger is not decoration. On the day the system was stress-tested it found sixteen latent defects **in NAS itself**, including a rule that enforced nothing, a phase gate that would have recommended the exact failure the document exists to prevent, and — in the reference corpus — a "contradiction" that turned out to be a false positive, where the planned fix would have deleted a true fact.
 
@@ -49,14 +79,16 @@ The ledger is not decoration. On the day the system was stress-tested it found s
 ## What's in this repo
 
 ```
-NAS.md                  the spec — 34k words, 52 rules, 13 claims
+NAS.md                  the spec — 38k words, 52 rules, 13 claims
 SOFTWARE.md             architecture seed for the compiler/IDE (v0.2, pre-design)
 profiles/interactive.md how NAS applies to branching / AI-rendered fiction
-ledger/                 15 entries — the evidence loop, and the honest record
+nas-manifest.yaml       scope, excluded rules, id-namespace declarations
+ledger/                 20 entries — the evidence loop, and the honest record
+interop/                the seam with a second implementation, argued in public
 
 PROJECT.md              pro-league: the working novel (cyberpunk, three agents)
 Graph/ Pillars/ Cut.md  its world, its keyframes, its telling order
-Chapters/ch07/          one rendered scene + its reader audit
+Chapters/ch01–ch07/     seven scenes, 5,840 words; one at Final, six at Draft
 queries.md              the views — what the model can answer that a document can't
 
 Archive/the-door/       the teaching seed's project, retired but kept as evidence
@@ -80,9 +112,13 @@ Archive/the-door/       the teaching seed's project, retired but kept as evidenc
 
 **The language is done. The evidence is thin.**
 
-All 24 open questions are closed — 23 ratified, every one amended, none passed as written. The addressing scheme is frozen. No rule rests on an undecided proposal. Both stress tests are complete.
+All 24 original open questions are closed — 23 ratified, every one amended, none passed as written. The addressing scheme is frozen: section numbers are permanent IDs and never renumber. No rule rests on an undecided proposal.
 
-But: **three scenes, one author, one instrumented day.** The register is internally consistent and mutually braced; it has barely been *run*. The corpus audit confirms its central claim at grade C. NAS-C4 — that discarding design artifacts is cheaper than discarding prose — remains untested, because nothing has been discarded yet.
+But: **seven scenes, 5,840 words, one author, five instrumented days.** The register is internally consistent and mutually braced; it has barely been *run*. The corpus audit confirms its central claim at grade C. NAS-C4 — that discarding design artifacts is cheaper than discarding prose — remains untested, because nothing has been discarded yet.
+
+**And the system's own coverage audit is unflattering, deliberately so.** Of 52 active rules: 28 had ever been exercised, 18 had never run at all, 3 were violated, 2 formally excluded. Six of the dormant eighteen had a live subject sitting in the corpus the whole time — two of those "enforced" by a comment in the file asserting the rule was being obeyed. **20 rules carry a tier meaning *impossible by construction*, in a project whose substrate is hand-edited Markdown.** That is an open question (§15 row 25), not a solved problem.
+
+One more number, offered as calibration rather than confession: the count of rules in this register has been stated wrongly three times in two days, and the word count above was wrong until it was measured properly. Every one of those was a hand-carried copy of a value something else derives — which is the exact defect NAS exists to catch, occurring inside NAS. The ledger records each instance rather than tidying it.
 
 The standard this project holds itself to is stated in §14.7 and has not been met:
 
@@ -102,4 +138,30 @@ Full lineage in [`NAS.md` §17](NAS.md).
 
 ---
 
-*Private repo. The ledger entries are candid about the author's own corpus and the burnout that motivated the system; that candour is what makes them evidence.*
+## Licence
+
+[MIT](LICENSE). © 2026 Francesco Di Ruscio.
+
+Use it, fork it, build on it, sell what you build. The only thing asked is the
+one MIT asks: keep the copyright notice. If you do build something on this,
+**pin a commit** — see the warning at the top.
+
+## Related work
+
+[**Alter-G**](https://github.com/hllrm/G-Heroes) is an independent tabletop-RPG
+engine by [@hllrm](https://github.com/hllrm) that adopts part of NAS at a
+declared seam. It is the only second implementation, and it is why `interop/`
+exists.
+
+The seam has been worth more than the adoption. `GRAPH-10` — the rule preventing
+a generated view from leaking one observer's knowledge into another's file — was
+**found by Alter-G and was missing from NAS**, a guarantee this document was
+making by accident. Their architecture enforces it structurally, so it is the one
+rule they contributed and do not need to import. They have also caught three
+shipped defects here, and the corrections have run in both directions.
+
+---
+
+*The ledger entries are candid about the author's own corpus and the burnout that
+motivated the system, and about the system's own failures. That candour is what
+makes them evidence rather than marketing.*

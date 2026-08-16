@@ -19,7 +19,7 @@ as an available value and never given a meaning. The only honest definition
 attaches it to the scene's own ladder, so exercising it required first exercising
 **§9.1's render phases**, where the situation was worse: *five of six had never
 been used.* Every scene in both projects was born at `Draft` — interface written,
-beats written, prose written — and stayed there. Seven scenes, ~9,100 words, one
+beats written, prose written — and stayed there. Seven scenes, 5,840 words of prose (~9,100 in the original entry — corrected, see ledger 0017), one
 phase.
 
 **Two nested state machines, both unexercised, sharing one scene.** That is why

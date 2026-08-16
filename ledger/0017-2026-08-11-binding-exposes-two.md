@@ -80,6 +80,15 @@ Binding is a collapse (§2.2): the position was soft, it is now fixed, and act t
 inherits it.
 
 Seven scenes, ~9,100 words. **None outlined.** Six written because the
+<!-- CORRECTED 2026-08-11: the word count is wrong and was never right. Measured
+     precisely (frontmatter close → `## Phase note`, per scene): **5,840 words**.
+     ~9,100 counted the gate and lint reports appended to each scene as if they
+     were prose. Repeated in ledger 0018, in working notes, and in a `~7,700`
+     variant in pillar_01.md. Third hand-carried derived number to be wrong in
+     one session — see ledger 0019 (rule count) and 0020 (register miscount).
+     Left visible rather than overwritten: a ledger is a record, and a number
+     that was wrong when written is evidence, not an embarrassment to tidy. -->
+
 precondition table named a debt; one because that table and a reader audit named
 the same missing scene from opposite directions.
 
