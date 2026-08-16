@@ -1,6 +1,6 @@
 # The NAS writing tool — design entry
 
-**Branch `writing-tool`. v0.2 — stripped back.**
+**Branch `writing-tool`. v0.3 — Slice 0 gains the stamp check.**
 
 SOFTWARE.md §1 gated design on NAS.md holding still. §16.5's freeze landed in
 v0.17 and the addressing scheme is permanent, so the gate is open.
@@ -108,9 +108,85 @@ more than a clean diagram:
 
 Slices, each independently useful and shippable:
 
-**Slice 0 — parse and index.** Read the corpus: scenes, chapters, graph nodes,
-pillars, the Cut, the manifest. *Unlocks* GRAPH-11, GRAPH-7. *Acceptance:*
-reproduces today's hand-run result — 43 referenced, 0 dangling.
+**Slice 0 — parse and index, plus the stamp check.** Read the corpus: scenes,
+chapters, graph nodes, pillars, the Cut, the manifest. *Unlocks* GRAPH-11,
+GRAPH-7. *Acceptance:* reproduces today's hand-run result — 43 referenced, 0
+dangling.
+
+**And the stamp check ships here, because it is the cheapest check in the system
+and the one with the most evidence behind it.**
+
+Five defects of one class landed in a single week, every one of them a
+hand-written claim about a value some other artifact derives:
+
+| # | the claim | the truth | how long |
+|---|---|---|---|
+| 1 | `nas_edition: v0.15` in the manifest | NAS.md was at v0.17 | 2 versions; **caught externally** |
+| 2 | "52 rules" in working notes | 51, then 52 | wrong **three times in two days** |
+| 3 | "~9,100 words" in ledgers 0017/0018 | 5,840 | **never** correct |
+| 4 | `**v0.15.**` in the interactive profile | body carried v0.18 material | 7 versions |
+| 5 | "~50 rules as of v0.16" in SOFTWARE.md | drifting continuously | 4 versions (ledger 0013) |
+
+**Not one of these was in a table a checker would have looked at.** They lived in
+YAML scalars, markdown headings, and running prose — which is exactly why GRAPH-2
+never fired on them. GRAPH-2 is the right rule and nothing enforces it outside
+structured fields.
+
+*What it checks, two kinds:*
+
+- **Version stamps.** Any document claiming a NAS edition — `nas_edition:`, a
+  `**v0.NN**` header, an inline "as of v0.NN" — compared against NAS.md's own
+  header. Mismatch is a finding, not a warning: the whole job of a stamp is to be
+  right.
+- **Derived counts.** Any prose claim matching a declared derived value — rule
+  count, scene count, word count, ledger entries — compared against the computed
+  one.
+
+*The one design decision it needs.* Counts must be **declared once with their
+computation**, not pattern-matched hopefully:
+
+```yaml
+derived_values:                 # manifest, alongside id_namespaces
+  - name: active_rules
+    compute: "§14.2 rows − header − retired"
+    claim_pattern: '(\d+) (?:active )?rules'
+  - name: prose_words
+    compute: "per scene, frontmatter close → '## Phase note'"
+    claim_pattern: '~?([\d,]+) words'
+```
+
+That is **declare-then-check-the-fold for the fifth time** — after CONTRACT-1,
+PILLAR-1/2, READER-3 and GRAPH-11. §3 above says those four are one routine with
+four configurations; this makes five, and it is more evidence that the routine is
+the actual product rather than any individual check.
+
+*Acceptance, and it is unusually good.* The five instances are **fixed in HEAD but
+present in history**, so the check has a regression suite with known answers and
+known dates:
+
+| commit | file | must flag |
+|---|---|---|
+| `4a85e4a` | `nas-manifest.yaml` | stamp `v0.15` vs spec `v0.17` |
+| `9ace5d5` | `ledger/0017-*.md` | `"~9,100 words"` vs `5,840` |
+| `200a8f8` | `profiles/interactive.md` | stamp `v0.15` vs spec `v0.18` |
+
+Each triple is verified: at that commit the file carries the stated wrong value
+and the spec carries the stated right one. *(Two of the three SHAs in this table's
+first draft were wrong — one of them pointed at the commit that **fixed** the
+defect rather than one containing it. Caught by checking them out and reading
+them, which is the same discipline ledger 0020 arrived at after an unverified
+regex manufactured two false findings. Citing a commit is a claim like any other.)*
+
+A check that cannot find the five defects that motivated it does not ship. Very
+few checks get to be tested against the failures that caused them; this one does,
+and it should not waste that.
+
+*Scope discipline.* Historical documents are corrected in place with notes, never
+rewritten (§11 working agreement). So the check must **respect correction notes** —
+a stamp inside a `<!-- CORRECTED ... -->` block or a quoted historical value is
+not a live claim. Getting that wrong turns the ledger's own honesty into a
+permanent wall of false positives, which would be a fitting irony and a useless
+tool.
 
 **Slice 1 — the fold.** Order deltas, compute per-entity state at any point.
 *Unlocks* SCENE-3, CONTRACT-1, OBS-2, TIME-2. *Acceptance:* reproduces the seven
@@ -171,5 +247,5 @@ with a chapter to write.
 
 ---
 
-*v0.2. §1–§4 rest on ledger evidence; §5 is a recommendation; §6 is the question
+*v0.3. §1–§4 rest on ledger evidence; §5 is a recommendation; §6 is the question
 that determines whether any of it is the right shape.*
