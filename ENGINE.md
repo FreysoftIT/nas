@@ -1,13 +1,30 @@
-# NAS as a story engine — design entry
+# The NAS writing tool — design entry
 
-**Branch `story-engine`. v0.1 — the first design document written after the
+**Branch `writing-tool`. v0.1 — the first design document written after the
 language freeze.** SOFTWARE.md §1 said design proper starts only after NAS.md
 stops moving. §16.5's freeze landed in v0.17 and the addressing scheme is now
 permanent. This is the door opening.
 
+> **Scope — there are two products and this is only one of them.**
+>
+> **This document: the novel-writing tool.** A checker, and eventually an editor,
+> for a human writing a book against a NAS corpus of Markdown files. Lives in this
+> repo. SOFTWARE.md is its product stance.
+>
+> **Not this document: NAS as the story engine inside Alter-G.** That is a
+> different product with a different substrate, a different runtime (agents and
+> hooks, not a CLI), and a hard real-time constraint this one does not have. It is
+> designed and built **in the Alter-G repo**, on the `nas-as-engine` branch, where
+> `vendor/nas` is consumed as executable input. See
+> `g-docs/nas/nas-as-engine.md` there.
+>
+> The two share a spec and nothing else. They should not share a codebase unless
+> and until two independent implementations prove the same abstraction twice —
+> §7 below argues that case explicitly.
+
 Read SOFTWARE.md first for the product stance and the constraints already
-decided. This document answers a narrower question: **what is the engine's job,
-what shape does it take, and what gets built first.**
+decided. This document answers a narrower question: **what is the writing tool's
+job, what shape does it take, and what gets built first.**
 
 ---
 
@@ -202,9 +219,11 @@ faster.
 
 ---
 
-## 6. What this means for Alter-G
+## 6. What the Alter-G product needs that this one does not
 
-Their situation is different in one way that changes everything: **they already
+Kept here as the comparison that justifies keeping the two products apart; the
+design itself lives on Alter-G's `nas-as-engine` branch. Their situation differs
+in one way that changes everything: **they already
 have an engine.** Agents, hooks, a verifier, a ledger agent, a live playtest. They
 do not need a NAS runtime; they need the parts of one that make their existing
 loop cheaper and more exact.
