@@ -227,6 +227,7 @@ tool someone has to migrate into.
 > surface and confirms the guess in this section was too narrow: *"a generator that
 > emits obligations rather than only validating them"* is now decided, not
 > speculative. What remains open below is everything else.
+
 **The rest of the product has not been decided, and I have already assumed
 wrong once.**
 
