@@ -277,9 +277,16 @@ thing that matters: **which way dependencies point.** Characters derive from the
 world; the world never derives from characters. GRAPH-1 already says exactly this
 and has never once been run.
 
-But read as *sequence* — foundation first, then people — the same lens becomes
-§0's worldbuilder's disease, which is the failure NAS exists to prevent. The
-analogy survives only in the form good backends are actually built: **you stub the
+But read as *sequence* — foundation first, then people — the same lens drifts
+toward **supremacy** (§2.5): design flowing one way and never being fed back by
+rendering, whose terminal state is a bible with no book. Note what that is *not*:
+the failure is not building a lot of world. §1.1 is explicit that the hard method
+was always legitimate and only the accommodations were missing, and it names the
+antidote — **hard writers must be pulled toward rendering.** A generative
+worldbuilding module is not a concession to that cognitive style; it is the pull
+§1.1 asked for, six versions before anyone designed it.
+
+The analogy survives only in the form good backends are actually built: **you stub the
 endpoint and implement it when a caller needs it.** That is a constraint cloud.
 The world layer is real, it is underneath, and it is mostly stubs until a scene
 calls it.

@@ -113,8 +113,16 @@ what it failed to say at all.**
 *The practical test for an adopter:* if your engine pre-commits truth, name the
 unit it pre-commits, and check that everything outside that unit is still a cloud.
 If the answer is "the whole world, at commission," Principle I really has been
-abandoned and the drift is the worldbuilder's disease §0 exists to name — this
-flip is not cover for that.
+abandoned, and the drift is §2.5's **supremacy** wall — design that rendering
+never feeds back into. This flip is not cover for that.
+
+<!-- Reworded 2026-08-17, same day as written. The first draft called this
+     "the worldbuilder's disease §0 exists to name", which is wrong twice: §0
+     does not use the phrase, and §1.1 cites it explicitly as advice-culture
+     prejudice "which pathologizes an unsupported cognitive style". NAS's
+     author-declared identity since v0.9 is assistive technology FOR that
+     cognition. A pejorative for the users, shipped inside the spec written to
+     serve them. See ledger 0022. -->
 
 ---
 
