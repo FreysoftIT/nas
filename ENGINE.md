@@ -1,6 +1,6 @@
 # The NAS writing tool — design entry
 
-**Branch `writing-tool`. v0.4 — the worldbuilding module (§7).**
+**Branch `writing-tool`. v0.5 — the mandate rewritten on NAS-C9.**
 
 SOFTWARE.md §1 gated design on NAS.md holding still. §16.5's freeze landed in
 v0.17 and the addressing scheme is permanent, so the gate is open.
@@ -9,48 +9,136 @@ v0.17 and the addressing scheme is permanent, so the gate is open.
 > corpus of Markdown files. It is its own product, with its own substrate and its
 > own users. Nothing else appears in this document.
 
-**What is actually settled is smaller than this document could pretend.** Below,
-§1–§4 are derived from measurements in the ledger and I will defend them. §5 is a
-build order I believe in but have not tested. **§6 is the product question, and it
-is open** — I have guessed at the shape once already and guessed wrong.
+**§1 is the mandate, and everything else serves it.** It is not derived from this
+document's own measurements — it is **NAS-C9**, the founding claim, which predates
+the tool by four versions and carries its own acceptance test. §2 is the boundary
+that protects the product. §3–§4 are structure and sequencing. §5 is a
+recommendation. §6 is what stays undecided. §7 is one module, decided.
+
+*Rewritten at v0.5.* Versions 0.1–0.4 built the mandate out of a defect list,
+because a defect list was the evidence lying nearest to hand. That measured the
+register's health rather than the writer's budget, and the two are not the same
+thing — see §1.2.
 
 ---
 
-## 1. The mandate, derived rather than invented
+## 1. The mandate — NAS-C9, and nothing else
 
-Don't start from "what would a writing app do." Start from what the dormancy pass
-measured (ledger 0019). Of 52 active rules:
+The founding claim, from the register since v0.4:
 
-| | |
-|---|---:|
-| exercised | 28 |
-| **dormant** | **18** |
-| **violated** | **3** |
-| excluded | 2 |
+> **NAS-C9.** Hand-maintained coherence consumes the creative budget: burnout
+> pushes canon toward flatness because **flat is cheaper to maintain** — resolved
+> characters over wounded ones, victims over accomplices, significance over
+> personhood. **Externalizing the bookkeeping returns that budget.**
 
-And underneath it, the finding that actually specifies the work:
+Read that twice, because it is not the claim most tools in this space are built
+on. **The cost of hand-maintained coherence is not hours. It is what the writer
+can still afford to write.** A wounded character has more dependents than a
+resolved one. An accomplice has more than a victim. When the budget for holding
+dependents runs out, the story does not stop — it *simplifies*, in a direction
+nobody chose, and the writer experiences that as taste.
 
-> **20 of 52 rules carry the tier `structural` — "impossible by construction" —
-> in a project that has no construction.**
+The mechanism is §0's, and it is the only diagnosis this document needs:
 
-Those twenty are enforced by a person remembering, and several are enforced by
-*a comment in the file asserting the rule is being obeyed*. Four have been
-violated. One (SCENE-3) was breached corpus-wide for the project's entire life,
-undetected **precisely because** its tier says violations cannot happen.
+> **The writer becomes the runtime for the entire system.** Seven things held
+> simultaneously while drafting — canon vs. undecided, what the POV knows *now*,
+> what the reader knows, every character's state since last appearance, which
+> setups are aging, whether the scene obeys an 11,000-word rulebook, what an
+> earlier chapter revealed before it was reordered — every one of them, in §0's
+> phrase, *"in your head."* Coherence overhead grows superlinearly with world
+> complexity. Working memory does not.
 
-So the job is not "help someone write a novel." It is:
+So the mandate is one sentence:
 
-> **Make the structural tier true.** Move rules from `enforced_by: discipline` to
-> `enforced_by: engine`, and make the ones that cannot move say so out loud.
+> **Return the creative budget by taking state out of the writer's head.**
 
-That framing earns its place by being **measurable**: §15 row 25's proposed
-`enforced_by` field is the scoreboard and REG-1's dormancy report is the
-acceptance test. Run it before, run it after, count what moved. A feature that
-moves no rule from discipline to engine, and wakes no dormant one, is decoration.
+Not "catch errors." Errors are the *symptom* — the visible residue of a runtime
+that overflowed. A tool that finds every contradiction and leaves the writer still
+holding all seven items has treated the residue and not the condition.
 
-It also sequences the work with no argument required: **the 3 violated and the 6
-dormant-with-a-live-subject are the first nine targets**, because their subjects
-are sitting in the corpus right now and they produce verdicts on day one.
+### 1.1 The measure — the canary, which was written before this document
+
+NAS-C9 carries its own protocol, and it is a better acceptance test than anything
+invented here:
+
+> **whether the braver forks — complicity, live wounds, tempted heroes — get
+> chosen once they stop costing maintenance.**
+
+That is the bar. Not rules moved from `discipline` to `engine`, not questions
+naming agents, not hours saved. **Does the writer choose the harder character once
+the difficulty is cheap to hold?**
+
+It is a slow measure — longitudinal, per-corpus, and it cannot be read off a single
+run. That is a property of the claim, not a flaw in it, and inventing a faster
+proxy that measures the system instead of the writer is how this document went
+wrong in v0.1–v0.4.
+
+### 1.2 The proxy, and why it is only a proxy
+
+`enforced_by: discipline` has a plain-language meaning that took five versions to
+notice:
+
+> **A rule enforced by discipline is a rule the writer is holding in their head.**
+
+Which is why the dormancy pass (ledger 0019) is still the right tactical map — it
+is a census of held state. Of 52 active rules: 28 exercised, 18 dormant, 3
+violated, 2 excluded, and **20 carrying the tier `structural`, "impossible by
+construction," in a project with no construction.** Several of those twenty are
+enforced by a comment in a file asserting the rule is being obeyed, which is the
+purest possible statement of a human being the runtime.
+
+So moving a rule from `discipline` to `engine` **is** returning budget, one item at
+a time — and the count is a legitimate progress metric precisely because each
+decrement is one fewer thing held while drafting.
+
+But it measures the register's health, and the register is not the point.
+**Something can move ten rules to the engine and return no budget**, if the ten
+were things nobody was actually tracking. The proxy is worth watching and is not
+the bar.
+
+*Tactical ordering, unchanged and now differently justified:* the **3 violated and
+the 6 dormant-with-a-live-subject** are the first nine targets — not because
+coverage is intrinsically good, but because those nine have subjects in the corpus
+today, so each one is state a writer is demonstrably carrying right now.
+
+### 1.3 What the mandate rules out
+
+Sharper than the old framing, and it disqualifies things a defect-centred mandate
+would have waved through:
+
+- **A check that adds more declaration than it removes from working memory is a
+  net loss**, even if the rule is correct and the check is sound. The register has
+  no cost column; under NAS-C9 it needs one.
+- **Completeness pressure is the failure mode wearing a helpful face.** A tool
+  that asks the writer to satisfy 52 rules has re-created the runtime with extra
+  steps.
+- **Anything that requires holding the tool's model *and* the story's** fails on
+  its own terms.
+
+### 1.4 The forensic test, and it is runnable today
+
+NAS-C9's second protocol is *corpus forensics — count simplification-retcons per
+revision cycle*, and ledger 0001 already found the drift in the author's own
+bible: across v1→v2, the protagonist idealised, an agency-removing retcon, a late
+deuteragonist given structural significance but no interiority.
+
+**That drift has a structural signature, and it is countable without judging
+anything.** §2 forbids evaluating quality; it does not forbid counting who acts:
+
+| flattening | signature |
+|---|---|
+| resolved over wounded | valences `closed` in v2 that were `held` in v1 |
+| victim over accomplice | moves **performed** in v1, only **received** in v2 |
+| significance over personhood | present in the graph, zero attempts on any valence |
+
+Every row points at two artifacts and computes a difference. That is §2's rule
+satisfied exactly — never *"this character is flat"*, always *"this character
+performed six moves in v1 and none in v2."*
+
+**And the corpus exists.** The author's bible ships `Claude_v1_` and `Claude_v2_`
+versions of the same character and family documents, side by side. The founding
+claim's own forensic protocol has a matched pair to run against, and has since
+before this document was written.
 
 ## 2. The non-goal, first, because it is what protects the product
 
@@ -384,5 +472,5 @@ it wants the fold (Slice 1) to know what depends on what. It slots after those a
 before RENDER-1 — call it Slice 2b, and note that it is the first slice whose
 output is aimed at the writer rather than at the register.
 
-*v0.4. §1–§4 rest on ledger evidence; §5 is a recommendation; §6 is the question
+*v0.5. §1 is NAS-C9, the founding claim, and its canary is the bar; §6 is the question
 that determines the rest of the shape; §7 is decided.*
