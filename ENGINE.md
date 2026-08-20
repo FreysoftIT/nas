@@ -1,6 +1,6 @@
 # The NAS writing tool — design entry
 
-**Branch `writing-tool`. v0.3 — Slice 0 gains the stamp check.**
+**Branch `writing-tool`. v0.4 — the worldbuilding module (§7).**
 
 SOFTWARE.md §1 gated design on NAS.md holding still. §16.5's freeze landed in
 v0.17 and the addressing scheme is permanent, so the gate is open.
@@ -222,7 +222,12 @@ tool someone has to migrate into.
 
 ## 6. Open — and this is the part I should not guess at again
 
-**What the product actually is has not been decided, and I have already assumed
+> **Partly answered, 2026-08-17.** The author has decided one module: **worldbuilding,
+> dependency-layered and generative** — see §7. That resolves the shape of one
+> surface and confirms the guess in this section was too narrow: *"a generator that
+> emits obligations rather than only validating them"* is now decided, not
+> speculative. What remains open below is everything else.
+**The rest of the product has not been decided, and I have already assumed
 wrong once.**
 
 Everything above describes a **checker**: something that reads a corpus and
@@ -247,5 +252,129 @@ with a chapter to write.
 
 ---
 
-*v0.3. §1–§4 rest on ledger evidence; §5 is a recommendation; §6 is the question
-that determines whether any of it is the right shape.*
+---
+
+## 7. The worldbuilding module — two decisions, and what they rule out
+
+**Decided by the author, 2026-08-17: the world layer is *dependency*, not
+sequence. The module is *generative*, not structural.**
+
+Those two together are narrower than "worldbuilding tool" usually is, and the
+narrowing is the whole value.
+
+### 7.1 Dependency, not sequence
+
+The book-bible shape is a stack: world at the foundation, characters and events
+layered above. **The stack already exists** — the manifest declares it:
+
+```yaml
+layers: [physics, biology, economics, institutions, characters]
+```
+
+The lens the author reached for is backend → frontend, and it is right about the
+thing that matters: **which way dependencies point.** Characters derive from the
+world; the world never derives from characters. GRAPH-1 already says exactly this
+and has never once been run.
+
+But read as *sequence* — foundation first, then people — the same lens becomes
+§0's worldbuilder's disease, which is the failure NAS exists to prevent. The
+analogy survives only in the form good backends are actually built: **you stub the
+endpoint and implement it when a caller needs it.** That is a constraint cloud.
+The world layer is real, it is underneath, and it is mostly stubs until a scene
+calls it.
+
+Sharper still: the world is not a backend you *call*, it is the **runtime you
+execute in**. No scene invokes the world. It has no handlers — it has constraints
+that shape what any handler can do (§8.6, `behavior = f(agent, field)`). That is
+precisely why WORLD-3 permits *properties, invariants, valences, facets* and
+forbids *methods, moves, pursuits, arc*. Config and constraints, never endpoints.
+An entity that is the runtime *and* grows a handler is the one shape NAS has no
+model for.
+
+### 7.2 The generator, and it is one line
+
+Given a downward-only dependency stack, the entire generative move falls out:
+
+> **A fact at layer N with no support at layer N−1 is either a declared axiom or
+> an unanswered question. There is no third option, and today nothing tells them
+> apart.**
+
+Run it against this corpus and it fires immediately. `fact_burn_rate` sits at
+`economics` and declares `derives_from: [world_root]`. Its own comment admits the
+gap: *"NOT physics — the degradation is physics; the RATE is priced by people."*
+So the chain is `economics ← ??? ← physics`, and the missing link is a question
+the world has already implied: **who priced it, and what did they get for it?**
+
+That question is not decoration. It is a character with a valence, and it is
+already written down in the node's own `consequence_slots`.
+
+### 7.3 What already exists to harvest
+
+Almost none of this needs new machinery. The corpus is already carrying its own
+unanswered implications:
+
+| existing | what it is, read generatively |
+|---|---|
+| `consequence_slots` | open questions the author wrote and never answered |
+| `tensions_with` | two facts that cannot both be comfortable; nobody has resolved it |
+| voids (§7.7) | *horror vacui* — a void recruits candidate fillers |
+| GRAPH-6 | dense bonding at level N with no level N+1 → **a collective that should exist and does not** |
+| GRAPH-7 | a collective with no members |
+| `candidates: [char_kes, ...]` | an open set — the `...` is a question |
+| MODAL-4 | a high-layer `must` with no world derivation — *a law people made, presenting as a law of nature* |
+
+`fact_kes_year_seven` exists at all because a `tensions_with` edge pointed at
+nothing. The graph asked; nobody had answered.
+
+### 7.4 The line: name the obligation, never fill it
+
+Generative has to stop somewhere, and the corpus already contains the precedent.
+
+**`pillar_01`'s precondition table produced six scenes and authored none of
+them.** It named debts; the writer wrote. Nothing about those scenes was
+generated, and the act still fell out.
+
+The module does the same thing one layer down. For a void it may state **what the
+hole must supply** — derived from what depended on the thing that is missing — and
+it stops there. It never proposes the filler. §7.7 says a void recruits
+candidates; enumerating the *shape* a candidate must have is structural, and
+naming the candidate is authorship.
+
+That also keeps §2 intact: every output points at two artifacts — this fact, that
+missing support — and never at a judgement about quality.
+
+### 7.5 What this rules out, which is most of the category
+
+**It is not a form to fill in.** World Anvil hands you empty fields and asks for
+your world; the module hands you back **your own unanswered implications**. The
+difference is the direction the pressure runs. A field is a demand for content. An
+implied question is a debt the world has already incurred.
+
+**It is not a bible generator.** Nothing is written for you. If it ever proposes
+prose, it has become the thing §2 forbids by a side door.
+
+**It is not a completeness check.** A world with open slots is healthy — the slots
+are the story. The module counts them and never asks you to reach zero.
+
+### 7.6 Acceptance — and there is a corpus waiting for it
+
+A 290-line premise document arrived the same day this was decided: a fully
+specified cosmology, two million years deep, with **no protagonist and not one
+non-placeholder name.** It is §0's blank page in its purest form, and it is the
+exact input this module exists for.
+
+> **The test: run the generator over a pure-world premise and see whether the
+> questions it emits name an agent with a valence.**
+
+If they do, the module turns worldbuilding into story generation, which is the
+strongest claim NAS could make. If they only produce more world, the module is
+clerical and the honest thing is to say so. Either outcome is a ledger entry, and
+the corpus to run it on already exists.
+
+*Build order:* this is **not** Slice 0. It needs the parse and index (Slice 0) and
+it wants the fold (Slice 1) to know what depends on what. It slots after those and
+before RENDER-1 — call it Slice 2b, and note that it is the first slice whose
+output is aimed at the writer rather than at the register.
+
+*v0.4. §1–§4 rest on ledger evidence; §5 is a recommendation; §6 is the question
+that determines the rest of the shape; §7 is decided.*
