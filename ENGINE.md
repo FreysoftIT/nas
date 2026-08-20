@@ -130,6 +130,7 @@ anything.** §2 forbids evaluating quality; it does not forbid counting who acts
 | resolved over wounded | valences `closed` in v2 that were `held` in v1 |
 | victim over accomplice | moves **performed** in v1, only **received** in v2 |
 | significance over personhood | present in the graph, zero attempts on any valence |
+| **cost → capability** | a fact that was load-bearing tragedy in v1 appearing under *abilities* in v2 |
 
 Every row points at two artifacts and computes a difference. That is §2's rule
 satisfied exactly — never *"this character is flat"*, always *"this character
@@ -139,6 +140,22 @@ performed six moves in v1 and none in v2."*
 versions of the same character and family documents, side by side. The founding
 claim's own forensic protocol has a matched pair to run against, and has since
 before this document was written.
+
+> **Run 2026-08-17 (ledger 0024): two signatures confirmed, one refuted.** *Victim
+> over accomplice* is present and legible **from a heading rename alone** — v1's
+> *"The Corruption Period"* becomes v2's *"Growing Up and First Loss"*, and the
+> material making her the genetic template for the vampire virus leaves her life
+> narrative. *Significance over personhood* is present at document level: the
+> profile becomes `[CLASSIFIED DOCUMENT]`, "Known as" becomes "Operational Name",
+> and v2 adds a section titled **"Personal Life and Humanizing Elements."**
+> *Resolved over wounded* was **refuted** — and produced the `cost → capability`
+> row above, which the claim had not named.
+>
+> Two consequences for the build. The strongest signature is a **heading diff**,
+> which is nearly free. And §0's founding 1763/1770 bug is **still live in the
+> current document** — with six other files asserting the retired value, which
+> makes it an un-propagated revision rather than a lapse of attention: a retcon
+> whose cone was never walked (OBS-3), not a memory failure.
 
 ## 2. The non-goal, first, because it is what protects the product
 
