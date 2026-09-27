@@ -20,6 +20,7 @@ const ANCHOR = `
 export const queries = [
   {
     n: 1,
+    proposals: ['P-05', 'P-06', 'P-07', 'P-08', 'P-18'],
     name: 'Pursuit board — every agent\'s state at the pillar',
     query: '{selection: all pursuits, scope: canon, anchor: pillar_01, audience: writer}',
     // NAS §8.5 names the states (held | pursued | closed) but gives no rule for
@@ -48,6 +49,7 @@ export const queries = [
   },
   {
     n: 2,
+    proposals: ['P-08', 'P-09'],
     name: 'Foreclosure graph — conflict as structure',
     query: '{selection: forecloses edges, scope: canon, anchor: pillar_01}',
     // Altitude by owner: same owner = internal; owner at institution level
@@ -65,6 +67,7 @@ export const queries = [
   },
   {
     n: 3,
+    proposals: ['P-03', 'P-04', 'P-10'],
     name: 'Trust asymmetry — the directed-edge check',
     query: '{selection: relationship edges, scope: canon, anchor: pillar_01}',
     // Two ways to get trust at the anchor, and they are NOT the same claim:
@@ -95,6 +98,7 @@ export const queries = [
   },
   {
     n: 4,
+    proposals: ['P-05', 'P-11'],
     name: 'Facet-collision inventory — which confrontations have never been staged',
     query: '{selection: facets by audience, scope: canon, anchor: pillar_01 (inclusive), audience: writer}',
     // A collision: two audiences who receive DIFFERENT facets of one agent. It is
@@ -129,6 +133,7 @@ export const queries = [
   },
   {
     n: 5,
+    proposals: ['P-12'],
     name: 'The modifier stack — why Oyo\'s attempt resolves the way it does',
     query: '{selection: modifiers on attempt(char_oyo), scope: canon, anchor: pillar_01}',
     sql: `WITH ${ANCHOR}
@@ -140,6 +145,7 @@ export const queries = [
   },
   {
     n: 6,
+    proposals: ['P-13', 'P-14', 'P-15'],
     name: 'Live lints',
     query: '{selection: VAL-2, VAL-4, NAS-C12, CONTRAST-1 (facets), scope: canon, anchor: whole span}',
     sql: `WITH
@@ -166,6 +172,7 @@ export const queries = [
   },
   {
     n: 7,
+    proposals: ['P-05', 'P-16'],
     name: 'Reveal inventory — canonical tension the reader has never received',
     query: '{selection: mutually-foreclosing pairs, scope: canon MINUS reader record, anchor: pillar_01, audience: writer}',
     // The reader's record of an agent's interior: delivered if the agent has been
@@ -187,6 +194,7 @@ export const queries = [
   },
   {
     n: 8,
+    proposals: ['P-04', 'P-10'],
     name: 'Diagnostic (not in queries.md) — authored entry_state vs. the delta fold',
     query: '{selection: every entry_state trust snapshot, scope: canon, anchor: each snapshot\'s own scene}',
     // SCENE-3: no state is stored; every current state is a fold. entry_state is

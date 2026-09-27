@@ -514,8 +514,11 @@ constraint — the first `structural`-tier rule enforced by construction. Spike:
 - **The store, and every choice inside the spike** — all *proposed*, none
   ratified. The author's rule (2026-09-27): nothing is decided until a program
   is running to judge it against. Tracked in `PROPOSALS.md`.
-- **What "a program running" means** — the first thing the author can use,
-  not read. Not yet defined.
+- ~~**What "a program running" means**~~ — **decided by the author 2026-09-27:
+  a local web page** that watches the corpus and rebuilds the views on every
+  save, showing what moved (`spikes/queries-test/`, `npm run serve`). Chosen over
+  a CLI report (a report, not a tool) and a writing screen (builds an editor
+  before knowing whether the help is right). The writer keeps their own editor.
 
 ---
 

@@ -165,3 +165,22 @@ Evidence for most of these: ledger 0025. Code: `spikes/queries-test/`.
 ### P-20 — `pillar_01.md` postconditions wrapped in braces · `applied`
 - Five lines of invalid YAML (`- agent: x, carries: y`). Content unchanged; note
   in the file. The only frontmatter in the corpus that failed to parse.
+
+## The live page (`npm run serve`)
+
+### P-21 — A scene occupies one hour from its start · `proposed`
+- **What:** TIME-2 (bilocation) needs intervals; most scenes declare only a start.
+  Each scene is treated as `[start, start + 1h)` for the constraint.
+- **Alternative:** require `story_time.end` (NAS §10 says time is an interval),
+  and treat a missing end as a cloud that can only produce *possible* bilocation.
+- **Judge it by:** whether the TIME-2 panel ever cries wolf, or stays silent when
+  you've put someone in two places.
+
+### P-22 — "What moved" compares against the previous save · `proposed`
+- **What:** after each rebuild, changed cells are highlighted with their old
+  value, new rows are marked, removed rows are listed. Rows are matched across
+  builds by their first columns (the valence, the edge, the rule + subject…).
+- **Weakness:** saving twice clears the highlight; a row whose key column
+  changes shows as removed + added rather than changed.
+- **Alternative:** a pinned baseline ("compare against when I started today").
+- **Judge it by:** whether, after an edit, you can see at a glance what your edit did.
