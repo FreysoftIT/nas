@@ -442,6 +442,33 @@ mode (SOFTWARE.md §4); it is overridable on the same terms.
 *Propagated to SOFTWARE.md §4's tier table in the same commit (DRIFT-1 — at
 close, not later).*
 
+**Harvesting — restricted to what is mechanically extractable, decided
+2026-09-27.** NAS §1.1's soft mode has the tool *harvest* candidate deltas,
+facts, setups and emergent structures from prose. Reading meaning out of prose is
+the one job that most wants a model, and the principle forbids one. So the tool
+harvests only what a deterministic procedure can find — same input, same output,
+every time:
+
+| Harvested | How |
+|---|---|
+| **Explicit markup** | Tags the writer puts in the prose — a node reference, a setup marker. The writer has already done the reading; the tool only collects. |
+| **Known names** | Node IDs and declared aliases found in the text → *mentioned in this scene*. Also the cheapest continuity check there is: a character named in the prose but absent from `characters_present`, or the reverse. |
+| **Dates and numbers** | Literal values compared against declared ones — the birth-year check. `1770` in the prose where the node says `1763` is a finding with two artifacts. |
+| **Structure** | Headings, scene and chapter boundaries, word counts, the stamp check (§4 Slice 0). |
+
+Every harvest is a **candidate**, never a write: the writer confirms it into the
+graph or dismisses it. Nothing harvested becomes canon on the tool's say-so
+(OBS-1 — only a scene observes; GRAPH-9 — a read never writes).
+
+**What soft mode loses:** candidate *deltas* and *emergent structures* — "their
+trust fell here", "these four characters have become a faction". Those require
+understanding the prose, so they stay the writer's to declare. That is the
+principle working, not a gap: in soft mode the tool finds the names, the dates and
+the tags; the writer says what they *mean*.
+
+*NAS §1.1 is unchanged — it is methodology, and harvesting by hand remains
+exactly what it says. This restricts the tool's share of it, not the method.*
+
 This is not a new constraint so much as §2 made explicit. A finding that points at
 two artifacts is decidable; decidable things don't need a model. What it adds:
 
@@ -478,11 +505,8 @@ diff the output.
 - ~~**Why AI-less**~~ — answered: principle (§6.3).
 - ~~**"On demand" vs. SOFTWARE.md §4's tier table.**~~ — resolved by the author
   2026-09-27, see *Tiers under on-demand* below.
-- **Soft-mode harvesting under the principle.** NAS §1.1 has the tool
-  *harvest* candidate deltas, facts and setups **from prose** in soft mode.
-  Extracting structure from prose is the one job that most wants a model, and
-  §6.3 forbids one. Either harvesting is restricted to what is mechanically
-  extractable (names, dates, explicit markup), or soft mode loses it.
+- ~~**Soft-mode harvesting under the principle.**~~ — resolved by the author
+  2026-09-27, see *Harvesting* below.
 - **The PoC's first slice.** §4's build order was written for a checker. It
   survives as the engine under the modules, but which module a writer touches
   first is not yet chosen.
