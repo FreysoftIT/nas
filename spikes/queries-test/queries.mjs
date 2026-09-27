@@ -42,7 +42,8 @@ export const queries = [
         v.pressure, coalesce(t.n, 0) AS attempts,
         coalesce((SELECT string_agg(f.src, ', ' ORDER BY f.src) FROM forecloses f WHERE f.dst = v.id), '—') AS blocked_by
       FROM valence v LEFT JOIN closes c ON c.on_val = v.id LEFT JOIN tries t ON t.on_val = v.id
-      ORDER BY v.owner, v.pressure DESC`,
+      -- Collectives first, individuals after: the commentary reads the last rows as Oyo's.
+      ORDER BY (SELECT v.owner = 'world_root' OR 'world_root' = ANY(n.member_of) FROM node n WHERE n.id = v.owner) DESC, v.owner, v.pressure DESC`,
   },
   {
     n: 2,
