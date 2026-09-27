@@ -1,6 +1,6 @@
 # The NAS writing tool — design entry
 
-**Branch `writing-tool`. v0.5 — the mandate rewritten on NAS-C9.**
+**Branch `writing-tool`. v0.6 — the product shape, from the author.**
 
 SOFTWARE.md §1 gated design on NAS.md holding still. §16.5's freeze landed in
 v0.17 and the addressing scheme is permanent, so the gate is open.
@@ -13,7 +13,8 @@ v0.17 and the addressing scheme is permanent, so the gate is open.
 document's own measurements — it is **NAS-C9**, the founding claim, which predates
 the tool by four versions and carries its own acceptance test. §2 is the boundary
 that protects the product. §3–§4 are structure and sequencing. §5 is a
-recommendation. §6 is what stays undecided. §7 is one module, decided.
+recommendation. §6 is the product shape, answered by the author at v0.6, with
+what stays open listed at its end. §7 is one module, decided.
 
 *Rewritten at v0.5.* Versions 0.1–0.4 built the mandate out of a defect list,
 because a defect list was the evidence lying nearest to hand. That measured the
@@ -325,36 +326,122 @@ checker — it becomes an app you have to be inside. That also keeps the writer 
 to use any editor, which is the difference between a tool someone adopts and a
 tool someone has to migrate into.
 
-## 6. Open — and this is the part I should not guess at again
+## 6. The product shape — the author's answer
 
-> **Partly answered, 2026-08-17.** The author has decided one module: **worldbuilding,
-> dependency-layered and generative** — see §7. That resolves the shape of one
-> surface and confirms the guess in this section was too narrow: *"a generator that
-> emits obligations rather than only validating them"* is now decided, not
-> speculative. What remains open below is everything else.
+> **Answered by the author, 2026-09-27.** Until v0.6 this section was a question:
+> everything above described a *checker*, which is what the evidence supported,
+> and a checker is one thin reading of SOFTWARE.md's *compiler/IDE*. It asked for
+> *"a paragraph, from the author, describing what the writer is doing… on a
+> Tuesday morning with a chapter to write."* This is that paragraph, assembled
+> from the author's own statements — and it chooses **none** of the candidate
+> shapes listed here before. It chooses all of them, as phases.
+>
+> *2026-08-17 had already decided one module (worldbuilding, §7). That decision
+> stands and is now one part of the whole.*
 
-**The rest of the product has not been decided, and I have already assumed
-wrong once.**
+**A writer with assistance in each phase of writing.** Not a checker that runs
+after the fact, not a graph editor with prose attached: an instrument that goes
+with the writer from the first idea to the locked sentence, offering at each
+phase the help that phase needs — and only that.
 
-Everything above describes a **checker**: something that reads a corpus and
-reports where declared things disagree. That is the part the evidence supports,
-because the evidence is a list of defects a checker would have caught.
+### 6.1 Two axes, both from the author, both already in NAS
 
-It is not obviously the product. SOFTWARE.md says *compiler/IDE*. A checker is
-one plausible reading of that and a thin one. Genuinely different shapes exist —
-an authoring environment where the graph is the primary surface and prose is a
-view; a generator that emits obligations rather than only validating them; a
-revision instrument built around the retcon cone; something that starts from the
-pillar and works backward, since that is what actually produced seven scenes here
-without an outline.
+The whole writing process is two metaphors the author brought before NAS had a
+version number. The chats they came from are lost; the outcomes are not.
 
-Those are not variations on a linter. They are different products with different
-first slices, and §1–§4 would survive some of them and not others.
+**Sketch → colour — the depth of one scene.** An artist sketches, refines,
+shades, and only then colours. *Most writers start writing immediately — an
+artist going straight to colour.* This was v1.0's "Sketch Writing Process"
+(rough / detailed / shaded / inked) and is today's phase ladder (NAS §9.1):
+Interface and Board are the sketch, Draft / Textured / Final are the colour,
+and the gate between them is *don't colour before the sketch holds*.
 
-**So the next thing worth writing is not more of this document.** It is a
-paragraph, from the author, describing what the writer is doing when they are
-using this thing — not what it checks, but what it is *for* on a Tuesday morning
-with a chapter to write.
+**Keyframes → inbetweens — the length of the book.** Writers carry key scenes
+before they carry an outline, and write from one to the next by filling the
+inbetweens. This is the pillar (NAS §5): preconditions radiate backward as the
+inbetweens owed; postconditions constrain what follows; the distance between two
+pillars is measurable.
+
+The axes are orthogonal, and together they are the process:
+
+1. **Place the keyframes** — the scenes the writer already sees.
+2. **Derive the inbetweens** — the pillars' preconditions become obligations. The
+   tool names them; the writer fills them (§7.4's line, applied to plot).
+3. **Take each scene from sketch to colour**, one at a time — the gate is
+   per-scene, never per-work (NAS §9.1).
+4. **Fold back up** — scene deltas reconcile against the chapter's pseudo-code
+   (CONTRACT-1), chapters against the pillars (PILLAR-1/2).
+
+### 6.2 The modules
+
+Three ways into **one graph** — not three databases, not three products. A world
+fact can force a character's choice; that is NAS §2.1, and the modules must not
+put a wall where the model has none.
+
+| Module | What it helps with | NAS ground |
+|---|---|---|
+| **Worldbuilding** | The push and pull of forces; cause and consequence. The graph asks the next question — never answers it. | §7, §7.7; this document's §7 |
+| **Characters** | Creation, plus the **relationship graph**: who wants what, whose wants foreclose whose, which asymmetries and confrontations exist or have never been staged. | §8.1–8.2, §8.5; `queries.md` §1–4 |
+| **Writing** | The two axes above, phase by phase. | §5, §9, §10 |
+
+And the help, per phase — each row is state the writer currently carries in
+their head (§1), and each is a finding that points at two artifacts (§2):
+
+| Phase | Help offered |
+|---|---|
+| Pillar | Obligations derived from preconditions; distance left to the next pillar |
+| Chapter pseudo-code | The reconciliation table, live — which declarations are still unpaid |
+| Interface | What each character and the reader hold at entry; is the entry state reachable |
+| Board | The animatic; the flatline lint |
+| Colour (Draft → Final) | Is the setup actually in the text (RENDER-1) |
+| Edit room | What breaks when the Cut is reordered |
+
+### 6.3 As AI-less as possible
+
+**New at v0.6, stated by the author: the help is computed, not generated.** When
+the writer needs help, the software answers from something it can *query*, not
+from a model it can *prompt*.
+
+This is not a new constraint so much as §2 made explicit. A finding that points at
+two artifacts is decidable; decidable things don't need a model. What it adds:
+
+- **Every help surface is a named query.** GRAPH-4 already gives a query four
+  parts — selection, scope, time anchor, audience — and each maps to a
+  parameterised, deterministic lookup. The query text is the provenance.
+- **The menu is fixed; it does not parse English.** Free-text questions would
+  need a model to translate them. A new question is a new named query — the same
+  "grows only with evidence" discipline as the register.
+- **Declarations are what make this possible.** The query layer sees only what
+  frontmatter declares. Whatever the prose does that the interface does not
+  declare is invisible — and reading the prose to find it is exactly where a model
+  would be pulled in. DRIFT-1 (declare divergence at scene close) is therefore
+  the rule that keeps the tool AI-less, not just consistent.
+- **`judgment`-tier rules stay with the writer.** They do not become model calls.
+- **RENDER-1 is the pressure point.** It is the only rule whose subject is prose
+  (§3). Its checks must stay textual and mechanical — "is this setup's
+  declared text present" — or it becomes the side door §2 forbids.
+
+**The store for this is a derived index, never the truth** (§5 holds). A
+database earns its place as the thing the named queries run against — rebuildable from the
+files, deletable without loss. Candidate under evaluation: Postgres dialect run
+embedded (PGlite), because typed edges, the delta log, intervals and observer
+scopes map onto native features (recursive CTEs, range types, exclusion
+constraints, row-level security) — and a DDL constraint is the first thing in the
+project that would actually *enforce* a `structural`-tier rule. Not decided; the
+test is to reproduce `queries.md`'s seven hand-computed views as queries and
+diff the output.
+
+### 6.4 Still open
+
+- **What the writing surface looks like.** Manuscript with the graph beside it,
+  or graph with prose as one view. The modules are decided; the screen is not.
+- **Why AI-less** — principle (the work stays the writer's), practicality (cost,
+  offline, determinism), or positioning. The answer sets where the line sits when
+  a case is borderline.
+- **The PoC's first slice.** §4's build order was written for a checker. It
+  survives as the engine under the modules, but which module a writer touches
+  first is not yet chosen.
+- **The store** — §6.3, pending the `queries.md` test.
 
 ---
 
