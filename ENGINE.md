@@ -402,6 +402,19 @@ their head (§1), and each is a finding that points at two artifacts (§2):
 the writer needs help, the software answers from something it can *query*, not
 from a model it can *prompt*.
 
+**Why — a principle, answered by the author 2026-09-27: the work must stay the
+writer's. The point is for the writer, ultimately, to write.** Not cost, not
+offline, not positioning. So the borderline case resolves the strict way: **no
+model anywhere in the loop, local or remote, not even for detection.**
+
+The author's reference point is the spell-checker: it tells you there is an
+error; it does not write your sentence. Same here, one level up — *"there is an
+error in the birth year of this character"* is the whole genre of finding, and
+the founding example is the author's own: the 1763/1770 bug (§1.4), live across
+seven files, which a spell-checker for canon would have flagged the day it was
+introduced. **And on demand** — the writer asks; the tool answers. It does not
+interrupt the colouring.
+
 This is not a new constraint so much as §2 made explicit. A finding that points at
 two artifacts is decidable; decidable things don't need a model. What it adds:
 
@@ -435,9 +448,17 @@ diff the output.
 
 - **What the writing surface looks like.** Manuscript with the graph beside it,
   or graph with prose as one view. The modules are decided; the screen is not.
-- **Why AI-less** — principle (the work stays the writer's), practicality (cost,
-  offline, determinism), or positioning. The answer sets where the line sits when
-  a case is borderline.
+- ~~**Why AI-less**~~ — answered: principle (§6.3).
+- **"On demand" vs. SOFTWARE.md §4's tier table.** §4 runs `lint` *on save,
+  continuously* with margin flags, and `gate` as a blocking dialog at phase
+  transitions. The author's model is on-demand. Unresolved: does on-demand
+  replace continuous lint only, or gates too? (A gate the writer must request is
+  a gate the writer can skip.)
+- **Soft-mode harvesting under the principle.** NAS §1.1 has the tool
+  *harvest* candidate deltas, facts and setups **from prose** in soft mode.
+  Extracting structure from prose is the one job that most wants a model, and
+  §6.3 forbids one. Either harvesting is restricted to what is mechanically
+  extractable (names, dates, explicit markup), or soft mode loses it.
 - **The PoC's first slice.** §4's build order was written for a checker. It
   survives as the engine under the modules, but which module a writer touches
   first is not yet chosen.
