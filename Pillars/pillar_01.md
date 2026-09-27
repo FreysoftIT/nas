@@ -21,11 +21,14 @@ preconditions:                  # radiate BACKWARD — derived, not outlined
   - pursuit(val_kes_out).state == pursued             # ✅ PAID — ch05.s01 (cut pos 5)
 
 postconditions:                 # constrain FORWARD
-  - agent: char_marek, carries: "was shot by the one he made"
-  - agent: char_oyo, carries: "chose to keep him alive, and knows what it cost"
-  - valence: val_oyo_win, status: preserved-but-contaminated   # see below
-  - valence: val_oyo_ledger, status: foreclosed       # Marek now owes him
-  - valence: val_oyo_standing, status: foreclosed     # he kept alive the one man
+  # Braces added 2026-09-27 (ledger 0025): these five lines were `- agent: x,
+  # carries: y` — invalid YAML. The file had never been machine-parsed; the
+  # first loader to try failed here. Content unchanged.
+  - {agent: char_marek, carries: "was shot by the one he made"}
+  - {agent: char_oyo, carries: "chose to keep him alive, and knows what it cost"}
+  - {valence: val_oyo_win, status: preserved-but-contaminated}   # see below
+  - {valence: val_oyo_ledger, status: foreclosed}       # Marek now owes him
+  - {valence: val_oyo_standing, status: foreclosed}     # he kept alive the one man
                                                        # who makes him not the last
   - world: fact_who_shot_him = collapsed              # for the reader only — see scopes
 

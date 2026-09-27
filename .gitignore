@@ -10,3 +10,6 @@ desktop.ini
 # Generated views are outputs, never source (NAS GRAPH-9, §12)
 /out/
 /dist/
+
+# Spike dependencies
+node_modules/

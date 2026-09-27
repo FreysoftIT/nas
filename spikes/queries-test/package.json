@@ -1,0 +1,13 @@
+{
+  "name": "nas-queries-test",
+  "private": true,
+  "type": "module",
+  "description": "Spike: can queries.md's seven hand-computed views be reproduced as deterministic SQL over the pro-league corpus? (ENGINE.md §6.3)",
+  "scripts": {
+    "test": "node run.mjs"
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "^0.5.8",
+    "yaml": "^2.9.1"
+  }
+}

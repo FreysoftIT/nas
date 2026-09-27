@@ -490,13 +490,14 @@ two artifacts is decidable; decidable things don't need a model. What it adds:
 
 **The store for this is a derived index, never the truth** (§5 holds). A
 database earns its place as the thing the named queries run against — rebuildable from the
-files, deletable without loss. Candidate under evaluation: Postgres dialect run
-embedded (PGlite), because typed edges, the delta log, intervals and observer
+files, deletable without loss. **Adopted 2026-09-27 (ledger 0025): Postgres
+dialect, embedded (PGlite)** — typed edges, the delta log, intervals and observer
 scopes map onto native features (recursive CTEs, range types, exclusion
-constraints, row-level security) — and a DDL constraint is the first thing in the
-project that would actually *enforce* a `structural`-tier rule. Not decided; the
-test is to reproduce `queries.md`'s seven hand-computed views as queries and
-diff the output.
+constraints, row-level security). The test ran: `queries.md`'s seven
+hand-computed views reproduce as SQL in under 5 ms each, and the hand versions
+diverged from the corpus in fifteen places. TIME-2 now holds as an exclusion
+constraint — the first `structural`-tier rule enforced by construction. Spike:
+`spikes/queries-test/`.
 
 ### 6.4 Still open
 
@@ -510,7 +511,8 @@ diff the output.
 - **The PoC's first slice.** §4's build order was written for a checker. It
   survives as the engine under the modules, but which module a writer touches
   first is not yet chosen.
-- **The store** — §6.3, pending the `queries.md` test.
+- ~~**The store**~~ — adopted, §6.3 (ledger 0025). The five questions that
+  run surfaced for the author are listed at the foot of that entry.
 
 ---
 
