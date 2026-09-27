@@ -1,3 +1,4 @@
+-- PROPOSALS: every rule in this file is proposed, not ratified — see /PROPOSALS.md.
 -- NAS derived index — spike schema (ENGINE.md §6.3).
 -- Derived and deletable: every row is rebuilt from the Markdown corpus on each
 -- run (ENGINE.md §5 — the tool never owns storage). Nothing here is authored.

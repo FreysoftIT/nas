@@ -1,3 +1,4 @@
+// PROPOSALS: every rule in this file is proposed, not ratified — see /PROPOSALS.md.
 // Loader: Markdown + YAML frontmatter → the derived index.
 // Deterministic by construction — no model, no heuristics beyond the one
 // story-time parser, whose every miss is reported rather than guessed.

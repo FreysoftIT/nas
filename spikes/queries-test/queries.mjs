@@ -1,3 +1,4 @@
+// PROPOSALS: every rule in this file is proposed, not ratified — see /PROPOSALS.md.
 // The seven views of queries.md, as named, parameterised SQL.
 // GRAPH-4: each carries its query (selection, scope, time anchor, audience);
 // the SQL text below IS the provenance. GRAPH-9: every one is a SELECT.

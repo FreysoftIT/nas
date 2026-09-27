@@ -490,7 +490,7 @@ two artifacts is decidable; decidable things don't need a model. What it adds:
 
 **The store for this is a derived index, never the truth** (§5 holds). A
 database earns its place as the thing the named queries run against — rebuildable from the
-files, deletable without loss. **Adopted 2026-09-27 (ledger 0025): Postgres
+files, deletable without loss. **Proposed (PROPOSALS.md P-01), tested 2026-09-27 in ledger 0025: Postgres
 dialect, embedded (PGlite)** — typed edges, the delta log, intervals and observer
 scopes map onto native features (recursive CTEs, range types, exclusion
 constraints, row-level security). The test ran: `queries.md`'s seven
@@ -511,8 +511,11 @@ constraint — the first `structural`-tier rule enforced by construction. Spike:
 - **The PoC's first slice.** §4's build order was written for a checker. It
   survives as the engine under the modules, but which module a writer touches
   first is not yet chosen.
-- ~~**The store**~~ — adopted, §6.3 (ledger 0025). The five questions that
-  run surfaced for the author are listed at the foot of that entry.
+- **The store, and every choice inside the spike** — all *proposed*, none
+  ratified. The author's rule (2026-09-27): nothing is decided until a program
+  is running to judge it against. Tracked in `PROPOSALS.md`.
+- **What "a program running" means** — the first thing the author can use,
+  not read. Not yet defined.
 
 ---
 
