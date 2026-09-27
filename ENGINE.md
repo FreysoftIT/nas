@@ -415,6 +415,33 @@ seven files, which a spell-checker for canon would have flagged the day it was
 introduced. **And on demand** — the writer asks; the tool answers. It does not
 interrupt the colouring.
 
+**Tiers under on-demand — decided 2026-09-27.** SOFTWARE.md §4 ran `lint`
+continuously on save and `gate` as a blocking dialog. On-demand splits them:
+
+| Tier | Before | Now |
+|---|---|---|
+| `lint` | continuous, margin flags on save | **on demand** — the writer asks, the problems panel answers |
+| `judgment` | on demand / review mode | unchanged |
+| `gate` | blocking at phase transition | **still blocking — and always overridable** |
+| `structural` | impossible by construction | unchanged |
+
+A gate the writer had to request would be a gate the writer could forget, and
+the Board → Draft gate exists precisely for the moment the writer wants to start
+colouring. So gates still fire on their own at a phase transition — but they
+**never have the last word.** Any gate finding can be passed by citing or minting
+an exception ID (NAS §14.6: `SCENE-2-EX1: metafictional narrator`). The tool
+stops the writer once, says why, and steps aside on a stated reason.
+
+That is the principle applied to enforcement: **the tool may insist on being
+heard; it may not insist on being obeyed.** And the cost of overriding is one
+line of the writer's own reasoning — which feeds the exception corpus, where
+patterns in what a writer keeps overriding are evidence about the rules, or about
+the book. DRIFT-1 keeps its standing as the only gate that also fires in soft
+mode (SOFTWARE.md §4); it is overridable on the same terms.
+
+*Propagated to SOFTWARE.md §4's tier table in the same commit (DRIFT-1 — at
+close, not later).*
+
 This is not a new constraint so much as §2 made explicit. A finding that points at
 two artifacts is decidable; decidable things don't need a model. What it adds:
 
@@ -449,11 +476,8 @@ diff the output.
 - **What the writing surface looks like.** Manuscript with the graph beside it,
   or graph with prose as one view. The modules are decided; the screen is not.
 - ~~**Why AI-less**~~ — answered: principle (§6.3).
-- **"On demand" vs. SOFTWARE.md §4's tier table.** §4 runs `lint` *on save,
-  continuously* with margin flags, and `gate` as a blocking dialog at phase
-  transitions. The author's model is on-demand. Unresolved: does on-demand
-  replace continuous lint only, or gates too? (A gate the writer must request is
-  a gate the writer can skip.)
+- ~~**"On demand" vs. SOFTWARE.md §4's tier table.**~~ — resolved by the author
+  2026-09-27, see *Tiers under on-demand* below.
 - **Soft-mode harvesting under the principle.** NAS §1.1 has the tool
   *harvest* candidate deltas, facts and setups **from prose** in soft mode.
   Extracting structure from prose is the one job that most wants a model, and

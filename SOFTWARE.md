@@ -68,8 +68,8 @@ Rules load from the NAS register (NAS §14.2, **~50 rules as of v0.16**) filtere
 | Tier | Runs | UX |
 |---|---|---|
 | structural | never runs — impossible by construction | n/a |
-| gate | on phase transition, scene close, merge | blocking dialog with cone/diff |
-| lint | on save, continuously | margin flags, dismissable with exception ID |
+| gate | on phase transition, scene close, merge | blocking dialog with cone/diff — **always passable by citing or minting an exception ID** [ENGINE §6.3] |
+| lint | **on demand** [ENGINE §6.3; was: on save, continuously] | problems panel when asked, dismissable with exception ID |
 | judgment | on demand / review mode | review checklist, never a popup |
 
 Check results are **data, not popups**: a persistent, filterable problems panel, each finding linked to rule ID, source anchor, and the exact nodes/deltas involved.
