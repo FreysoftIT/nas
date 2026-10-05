@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "live-views",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["spikes/queries-test/serve.mjs"],
+      "port": 4321
+    }
+  ]
+}

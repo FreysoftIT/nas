@@ -82,7 +82,12 @@ not done mid-session; ledger 0025 and PROPOSALS cite the path.
 
 ## Next steps, in order
 
-1. **Open the page in a browser.** Fix whatever the layout gets wrong.
+1. ~~**Open the page in a browser.** Fix whatever the layout gets wrong.~~
+   *Done 2026-10-05:* checked in a real browser (desktop, 375 px phone width,
+   light + dark). All 8 views + TIME-2 render, no console errors, no
+   horizontal page scroll, SSE connects. Nothing needed fixing. Not yet seen:
+   the changed-cell highlight after a real save. `.claude/launch.json` added
+   (`live-views`) so the app's browser pane can start the server.
 2. **The author uses it** and starts judging proposals — begin with the four
    `open` ones via the experiments above. Record each verdict in PROPOSALS.md
    (status → `decided` or `rejected`, with date and the author's words).
