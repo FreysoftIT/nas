@@ -373,6 +373,25 @@ Smaller items from the catalogue, not yet put to the author:
   Deployment (1890-1895)"*). Not canon: *"1880-1900: Systematic Targeting
   Phase"*, *"1880: Project Initiation"* (vampirism docs, v1 Renaissance), and
   the chronicle's own *"Initial Deployment (1880-1895)"* heading.
+- **Arcane Senate, 2026-10-06 — answered: Roman-era.** Founded as the magical half
+  of the Dual Senate System. Before it the oath was kept by councils and
+  traditions with no unified government (the pre-Roman "chaotic" era). The
+  OMC chronicle's millennia-old dying senators are older than the institution
+  they sit in, not a sign of an older one.
+- **Black Death, 2026-10-06 — answered: divided.** Official policy was no aid (v1:
+  *"Minimal Intervention"*, *"Successful Isolation"*); individuals and factions
+  (Custodes cells, sympathisers) helped secretly against the rules (v2's
+  *"Limited covert aid"* describes them, not the policy). Both lines are true of
+  different agents, so it's a policy and a defection, not a contradiction.
+- **The OMC's creed, 2026-10-06 — answered: a different name**, not yet given
+  (open). *"First True Mages"* (v1 Renaissance, v1 Modern) is not canon; the
+  v2 documents' unnamed descriptions stand until the author supplies the name.
+
+**Catalogue status at session end:** every item put to the author is answered.
+Still open: the OMC creed's name; where the Northern pockets were; the third
+knower's identity (a Custodes Tribune, unnamed). Two answers create facts in no
+document: **Merlin is alive** and **Cassandra was murdered by the proto-OMC,
+known to no one**.
 - **First vampires, 2026-10-06 — answered: non-mana-core magical beings**,
   deliberately chosen because they'd be weaker and controllable
   (`summary_revision`). v1 Modern's *"non-natural-linked mages"* is the same
