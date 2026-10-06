@@ -354,8 +354,26 @@ Smaller items from the catalogue, not yet put to the author:
   non-core hosts to others. Lysandra, a mana-core hybrid on a refined strain,
   remains the one exception.
 - `Calude_v2`'s *"his mother's healing research"* (CV2);
-- were Flood survivors still alive in 1915–1920 (O2), and is the Flood a real event or a legend (K8);
-- the cure's design, three versions (V4);
+- **The Flood, 2026-10-06 — answered: a canon event**, as the OMC chronicle tells
+  it: a ritual catastrophe ~3000 BCE, a real global flood, physical evidence in
+  magical archives, real damage to the magical field. The hedges (*"like a
+  flood"*, v2 Pre-Roman; *"whether… floods… Atlantis… or other"*, v1 tragedy)
+  are not canon, and neither is reading it as a cloud. The "magic feels
+  constrained" line is still marked *"some scholars believe"* in the chronicle,
+  so that consequence stays a hypothesis inside a canon event (not asked).
+- **Flood survivors, 2026-10-06 — answered: all long dead**, in antiquity. That's
+  what let the oath drift (OMC chronicle ch. 1). The chronicle's ch. 5
+  *"Ancient creatures who had survived the original Great Flood"* (1915–1920)
+  is not canon. Those are elders, not witnesses. Ch. 5 has to be read with the
+  survivor clause struck.
+- **The cure, 2026-10-06 — answered: completion first, removal later.**
+  Raffaele achieves completion of the stones (the book's resolution); removal
+  (return to the original species) is a harder, later possibility, perhaps a
+  sequel question. Vocabulary fixed for canon text: **"cure" = completion**;
+  "removal" is its own word; "stabilization" is retired because it means
+  opposite things in two documents. Stabilization and symptom management
+  as *menu items* (v2 vampirism, Lucas doc, short vampirism) are not canon
+  for the book.
 - **Raffaele's kind, 2026-10-06 — answered: something new.** Neither a classic
   human mage nor a plain alchemist: the ancestor's exposure to Orion's
   experiments made a different kind of human magic user. Both of the Lucas
