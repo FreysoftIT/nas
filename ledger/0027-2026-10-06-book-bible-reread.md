@@ -356,6 +356,23 @@ Smaller items from the catalogue, not yet put to the author:
   *"single father raising a young daughter"* in 1875 (OMC chronicle) is
   therefore *right* on the 1763 timeline. Consequence: at her mother's murder
   she was a child who survived the blast, which is why she can't have known.
+- **1923–1957, 2026-10-06 — answered: underground, then official after WWII.**
+  1923–1945 underground (hiding, the "Shadow Stalker" vigilante years during the
+  Senate's war on vampires, keeping the evidence: `Calude_v2`,
+  `summary_revision`, v1 Modern's *"Underground War"*); official intelligence
+  agent after the war (v1 tragedy); the 1957 Sterling alliance is a later
+  formalisation, not the start. Not canon: the v2 profile's *"Modern Mission
+  (1923-Present)"*. *Consequences, not asked:* the short vampirism doc's
+  modern *"Controlled contact with human mages under medical oversight"* is
+  not canon (at most three hidden human mages exist), and the democratic
+  reform falls 1950–57 (`Calude_v2`, `summary_revision`), consistent with all
+  answers so far.
+- **Deployment, 2026-10-06 — answered: around 1890.** Accident in the early
+  1880s; several years of the OMC secretly learning to control and target the
+  vampires; field deployment from ~1890 (the OMC chronicle's own *"Systematic
+  Deployment (1890-1895)"*). Not canon: *"1880-1900: Systematic Targeting
+  Phase"*, *"1880: Project Initiation"* (vampirism docs, v1 Renaissance), and
+  the chronicle's own *"Initial Deployment (1880-1895)"* heading.
 - **First vampires, 2026-10-06 — answered: non-mana-core magical beings**,
   deliberately chosen because they'd be weaker and controllable
   (`summary_revision`). v1 Modern's *"non-natural-linked mages"* is the same
