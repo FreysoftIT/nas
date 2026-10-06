@@ -122,6 +122,25 @@ Evidence for most of these: ledger 0025. Code: `spikes/queries-test/`.
 - **Not yet in the code.** View 8 shows the two numbers; it does not yet name
   the gap or ask for its cause. Follow-on, unratified: `entry_state` values
   are *reads* (NAS §7.8 two-place modality), so the file should say whose.
+- **Correction, 2026-10-06** (author agreed, after reading `ch01/s01.md`
+  block by block): the *Reading* above is wrong in one place. Fold and
+  `entry_state` are **both the writer's ledger** — `pov:` governs the prose
+  only. Evidence: the frontmatter records what Marek cannot see (line 14,
+  Kes's `val_kes_out: held`; line 16, her trust in him); the prose shows his
+  misreading as a separate thing (line 194, *"He assumed, at the time…"*); and
+  all seven scenes are `pov: char_marek`, so POV cannot explain the
+  disagreements anyway. The author's omniscience point holds — but for
+  **trust itself**: every trust value is the character's non-omniscient
+  reading of the other, folded or authored alike. So the gap is a writer-level
+  gap, and the causes regroup as:
+  1. **her reading really changed** (offstage, or in an unwritten scene). The
+     cause may be *true* (Marek did something) or *false* (she was lied to) —
+     a lie is a cause outside her scope, still a real delta;
+  2. **her reading did not change, her behaviour did** (she is forced) — then
+     0.0 is behaviour, not trust: the authored value should be 0.3 plus an
+     `external` modifier (§8.6).
+  The follow-on above ("the file should say whose") is withdrawn — it rested on
+  the wrong reading. What the author's point *does* expose is P-23.
 - *Original entry, kept as written:*
 - **What:** three numbers shown. *folded* = earliest `entry_state` + every later
   delta; *restated* = latest `entry_state` + later deltas; *declared* = the
@@ -176,6 +195,22 @@ Evidence for most of these: ledger 0025. Code: `spikes/queries-test/`.
 - **What:** League and `world_root` rows sort first so the commentary's "the last
   three rows" still means Oyo's.
 - **Weakness:** commentary that points at row positions breaks when data moves.
+
+### P-23 — One character's model of another's state · `open`
+- **What:** nothing. No file records what *Marek* believes Kes's trust in him
+  is. The prose has a value for it — ch01.s01 line 194, *"He assumed, at the
+  time, that this was because there was nothing to say to it"* — and the gap
+  between his model and her actual trust (P-10) is what that line is built on.
+  Found 2026-10-06 reading `ch01/s01.md` with the author.
+- **Why open:** not a code placeholder — the corpus has no field for it, so no
+  view can see it. (Logged `open` because none of the four statuses fits a
+  question with no code behind it.)
+- **Candidates, untested:** KnowledgeScope (§3) already holds *facts known*;
+  this would be a *belief about another agent's state*, which may want its own
+  shape — or be a facet reading (§3.4: Marek reads the facet Kes presents).
+- **Judge it by:** a scene where the gap is load-bearing — line 194, or the
+  scene that eventually closes it — declared both ways, and which one a view can
+  actually show.
 
 ## Presentation
 
