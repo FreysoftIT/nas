@@ -302,13 +302,51 @@ near-extinct after WWII.
   no recognition of the reforms). Not canon: lifted ~1957 with international
   cooperation (v1 Modern, `Calude_v2`).
 
+## The author's prior on versions
+
+Author, 2026-10-06: *"normally the latest versions with claude 'tends' to be the
+more accurate"*. Recorded as a **prior, not a rule**. Scored against the answers
+already given:
+
+| Won by a later (v2/revision) doc | Won by a v1 doc |
+|---|---|
+| the timeline (v2 profile) · embargo still in force (`summary_revision`) · Blood Tears (`Calude_v2`, `summary_revision`) · awakening (`Calude_v2`) · exposure 1945–50 (`Calude_v2`) | Orion unwitting (v1 tragedy) · human mages only killed (v1 Modern) · papers sealed (v1 tragedy) · origin ~500 CE (v1 *and* v2 Medieval) |
+
+"Tends" holds. It's useful for ordering the options in a question, and useless
+as a resolver: the v1 docs hold canon on three of the four Orion/victim axes.
+
 ## Still open after this session
 
 Smaller items from the catalogue, not yet put to the author:
 
+- **Cassandra's death, 2026-10-06 — answered: an OMC murder, disguised as her
+  experiment failing.** She died in the lab in 1798, and the "accident" was
+  arranged. Neither document camp is right. The majority has the scene (lab,
+  explosion, Lysandra surviving) and the wrong cause; v1 Modern has the cause
+  (*"later revealed as OMC experimentation"*) and the wrong scene (illness). **A
+  hidden murder now sits under all of axis 2**: every manipulation of the
+  grieving Orion is by the people who killed his wife. Follow-ups below.
+  - **Who, 2026-10-06: the proto-OMC**, the conservative Senate faction the OMC
+    grew out of, not the family. In 1798 the OMC does not exist under that name
+    (formation 1800–1860 across the docs), so canon text should say "the
+    faction that became the OMC", never "the OMC", for 1798. Motive (from the
+    docs, which never connect it): Cassandra was human-mage integration in
+    person.
+  - **The brother, 2026-10-06: didn't know.** He sincerely believed it was her
+    own reckless experiment, and his ideology made him use it. A believer used
+    by the faction, like Orion. So v1 tragedy's *"convinced Orion that
+    Cassandra's death resulted from the dangerous combination of human
+    impulsiveness and magical power"* is sincere and **false**: a cover story
+    passed on by someone who believed it. A KnowledgeScope chain in which
+    nobody on stage holds the canon fact.
+  - **Who knows today, 2026-10-06: nobody yet.** No living character holds it.
+    It's a buried fact, author-only, a candidate late reveal. In NAS terms, a
+    fact canonised in the writer's ledger with **no observer at all**. Every
+    observer scope (Lysandra, Sterling, the tribunals, the reader) holds the
+    false "her own experiment". This fact is not in any document; it exists in
+    this ledger entry and the author's head.
 - the third person who knows the family's role (3d);
 - who the first vampires were (*"non-mana core populations"* vs *"non-natural-linked mages"*);
-- Cassandra's death: the 1798 lab accident (v2 profile) vs *"mysterious illness"* (v1 Modern);
 - `Calude_v2`'s *"his mother's healing research"* (CV2);
 - were Flood survivors still alive in 1915–1920 (O2), and is the Flood a real event or a legend (K8);
 - the cure's design, three versions (V4);
