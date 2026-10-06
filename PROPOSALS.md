@@ -141,23 +141,25 @@ Evidence for most of these: ledger 0025. Code: `spikes/queries-test/`.
      `external` modifier (§8.6).
   The follow-on above ("the file should say whose") is withdrawn — it rested on
   the wrong reading. What the author's point *does* expose is P-23.
-- **Second correction, 2026-10-06** (reading `ch02/s01.md` with the author):
-  the author's coercion example was *"forced **him**"* — **Marek** coerced,
-  not Kes. Cause 2 above was my own addition, misattributed. The author's
-  lens is different: a third party forces Marek's hand, Kes sees the act and
-  reads it as his choice — her trust **really** drops, for a cause outside her
-  scope. The lenses on a change in A's trust in B, as they now stand:
+- **Second correction, 2026-10-06** (reading `ch02/s01.md` with the author;
+  *revised the same day — the first version of this note read "forced him" as
+  a claim about Marek and split coercion in two. The author:* "nowhere we read
+  did we find coercion. what I meant another "possible" vector can be an
+  external force pushing against another agent to something he normally
+  wouldn't"*)*. Coercion is a **possible vector, not a finding** — no scene
+  shows it. The lenses on a change in A's trust in B, as they now stand:
   1. **B acted, A read it right** — a true event, read correctly;
   2. **B acted, A misread it** — a true event, wrong meaning. The worked case is
      ch02.s01's own −0.5 at b3: he describes her future as love (*"clean and
      true"*, line 167), she hears she is the product; `record(kes)` already
      models why. Author: *"now we know"* — so coercion is not the cause there;
   3. **A was lied to** — false information, from a third party;
-  4. **B was coerced** (author's lens) — a true act, forced by a third party A
-     cannot see. The canonical record then owes the coercer's attempt and an
-     `external` modifier (§8.6) on B's act;
-  5. **A was coerced** (mine, not the author's) — A's trust unchanged, A's
-     behaviour forced; then the authored value is behaviour, not trust.
+  4. **an agent was coerced** — an external force pushes an agent (A, B, or
+     anyone in the chain) into something they normally wouldn't do. Possible,
+     not observed anywhere in the corpus. Whoever it lands on, the canonical
+     record owes the coercer's attempt and an `external` modifier (§8.6) on
+     the coerced act — and if it lands on A, the authored value is A's
+     behaviour, not A's trust.
   Which lens closes the ch02→ch01 gap (−0.3 over four years, P-10) is **not
   decided**. Open hypothesis: one event in those four years also explains
   `val_kes_out`, which appears `held` in ch01 with no `open` move anywhere in
