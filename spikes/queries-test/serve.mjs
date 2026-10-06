@@ -10,6 +10,7 @@ import { dirname, join, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createEngine } from './engine.mjs';
 import { check as canonCheck } from '../canon-check/check.mjs';
+import { checkScenes } from '../canon-check/scenes.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const root = resolve(here, '../..');
@@ -100,7 +101,9 @@ await rebuild('startup');
 // The page only READS the canon and the documents; the server binds to
 // 127.0.0.1, so nothing leaves the machine.
 const localCfg = join(root, '.nas-local.json');
-const canonDir = existsSync(localCfg) ? JSON.parse(readFileSync(localCfg, 'utf8')).canonDir : null;
+const local = existsSync(localCfg) ? JSON.parse(readFileSync(localCfg, 'utf8')) : {};
+const canonDir = local.canonDir ?? null;
+const productionDir = local.productionDir ?? null;   // optional: the scenes that read the bible
 let canon = null, canonPrev = null, canonError = null, canonBuilding = false, canonDirty = false;
 // A finding is identified by where it is and what it's about; its detail text
 // (tolerance, found years) can change without it becoming a different finding.
@@ -113,6 +116,12 @@ async function rebuildCanon(trigger) {
   try {
     const t0 = performance.now();
     const r = canonCheck(canonDir);
+    if (productionDir) {
+      // Scene findings join the same list, so new/gone tracking covers them too.
+      const s = checkScenes(productionDir);
+      r.scenes = s.scenes;
+      r.findings.push(...s.findings.map((f) => ({ doc: `scene:${f.scene}`, n: 0, check: f.check, fact: f.id, detail: f.detail, text: '' })));
+    }
     r.ms = performance.now() - t0; r.trigger = trigger; r.builtAt = new Date();
     const prev = new Set((canonPrev?.findings ?? []).map(canonKey));
     const now = new Set(r.findings.map(canonKey));
@@ -140,6 +149,7 @@ if (canonDir) {
   };
   watch(canonDir, { recursive: true }, onChange('canon'));
   if (canon?.docRoot) watch(canon.docRoot, { recursive: true }, onChange('documents'));
+  if (productionDir && existsSync(productionDir)) watch(productionDir, { recursive: true }, onChange('scenes'));
 }
 
 // ── Rendering ─────────────────────────────────────────────────────────────
@@ -215,7 +225,27 @@ function contentHtml(b) {
 }
 
 // ── Canon check view ──
-const CHECK_LABEL = { date: 'date', retired: 'retired term', age: 'age', overruled: 'overruled line', 'quote-missing': 'quote missing' };
+const CHECK_LABEL = { date: 'date', retired: 'retired term', age: 'age', overruled: 'overruled line', 'quote-missing': 'quote missing',
+  unknown: 'not in the bible', 'scene-date': 'date', alive: 'not alive', candidate: 'to promote', promoted: 'promoted', unparsed: "doesn't parse" };
+
+function scenesHtml(r) {
+  if (!productionDir) return '';
+  const sf = r.findings.filter((f) => f.doc.startsWith('scene:'));
+  const open = sf.filter((f) => f.check === 'candidate').length;
+  let h = `<h3 class="sub">Scenes against the bible</h3>
+    <p class="note">A scene reads the bible and never changes it. Whatever it invents waits here until you add it to the bible yourself.
+    ${(r.scenes ?? []).length} scene(s) · ${open ? `<b>${open} to promote</b>` : 'nothing waiting to be promoted'}.</p>`;
+  for (const s of r.scenes ?? []) {
+    const fs = sf.filter((f) => f.doc === `scene:${s.id}`);
+    h += `<details class="doc-group scene-group" open><summary><b>${esc(s.id)}</b> <span class="muted">${esc(s.file)}</span> <span class="count">${fs.length}</span></summary>`;
+    h += fs.length ? `<table class="findings"><tbody>${fs.map((f) => `<tr class="${f.added ? 'added' : ''}"${f.added ? ' title="new since the last save"' : ''}>
+        <td><span class="pill k-${f.check}">${CHECK_LABEL[f.check] ?? f.check}</span></td>
+        <td><code>${esc(f.fact)}</code></td><td class="detail">${esc(f.detail)}</td></tr>`).join('')}</tbody></table>`
+      : `<p class="ok">Agrees with the bible.</p>`;
+    h += `</details>`;
+  }
+  return h + `<h3 class="sub">Documents against the bible</h3>`;
+}
 function canonHtml() {
   if (!canonDir) return '';
   if (canonError) return `<section class="view" id="canon"><header><h2><span class="num">✓</span>Canon check</h2></header>
@@ -237,6 +267,7 @@ function canonHtml() {
     <div class="filters">Show:
       ${['date', 'retired', 'age', 'overruled'].map((k) => `<label><input type="checkbox" data-hide="${k}"> ${CHECK_LABEL[k]}</label>`).join('')}
       <label><input type="checkbox" data-hide="covered"> lines already quoted</label></div>`;
+  h += scenesHtml(r);
   for (const d of r.docs) {
     const fs = r.findings.filter((f) => f.doc === d.key).sort((a, b) => a.n - b.n);
     if (!fs.length) continue;
@@ -351,6 +382,8 @@ tr.added td:first-child{box-shadow:inset 3px 0 var(--added)}
 .muted{color:var(--muted);font-size:12px}.count{font-size:11px;background:var(--line);border-radius:8px;padding:0 6px;margin-left:4px}
 .findings td{font-size:13px}.findings td.para{color:var(--muted);min-width:280px}
 .detail{font-size:12px;margin-top:2px}
+.sub{font-size:13px;margin:16px 0 4px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.k-unknown,.k-alive,.k-scene-date,.k-unparsed{color:var(--bad)}.k-candidate{color:var(--warn)}.k-promoted{color:var(--added)}
 .k-date{color:var(--bad)}.k-age{color:var(--bad)}.k-retired{color:var(--warn)}.k-overruled{color:var(--muted)}.k-quote-missing{color:var(--bad)}
 body.hide-date tr.f-date,body.hide-retired tr.f-retired,body.hide-age tr.f-age,body.hide-overruled tr.f-overruled,body.hide-covered tr.f-covered{display:none}
 @media (max-width:760px){.wrap{grid-template-columns:1fr}nav{position:static}.stat{margin-left:0}.findings td.para{min-width:0}}
@@ -366,7 +399,7 @@ function applyFilters(){
   for (const k of ['date','retired','age','overruled','covered']) document.body.classList.toggle('hide-' + k, hidden.includes(k));
   for (const cb of document.querySelectorAll('[data-hide]')) cb.checked = !hidden.includes(cb.dataset.hide);
   // Counts and empty groups follow the filters.
-  for (const g of document.querySelectorAll('.doc-group')) {
+  for (const g of document.querySelectorAll('.doc-group:not(.scene-group)')) {
     const shown = [...g.querySelectorAll('tbody tr')].filter((tr) => getComputedStyle(tr).display !== 'none').length;
     g.querySelector('.count').textContent = shown;
     g.style.display = shown ? '' : 'none';
