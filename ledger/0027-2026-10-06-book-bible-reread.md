@@ -105,6 +105,44 @@ M-g withdrawn.
   and no document-diff finds them, because each document is internally
   plausible.
 
+## Author's answers
+
+- **Canon authority (U1), 2026-10-06:** *"canon lives in my head, ask me one at a
+  time. that's the motive also for nas and the software above. to resolve all
+  this"*. No document outranks another; each axis is put to the author singly
+  and the answer recorded here.
+- **Axis 1a, transformation motive, 2026-10-06:** *"both in the sense that she
+  wanted to help the research and protect the family via it once she understood
+  what she could do"*. Reading: **research is the motive; protection is a
+  consequence of it**, arriving once she understood her own capability. So
+  neither document camp is wrong, but both flatten an ordered pair into one
+  word. The "protection" docs give the second motive without the first. Open:
+  *when* she understood (axis 1b).
+- **Axis 1b, what she knew, 2026-10-06:** **after transforming.** She volunteered
+  knowing only that the research was urgent; her capability, and protection
+  through it, came after 1910. So the OMC chronicle's *"conducted voluntarily
+  with full knowledge of the consequences"* is **wrong**, and so are the
+  protection docs that put protection *before* the act (v1 profile: *"to protect
+  her from the Origin Magus Circle's targeting"*; `Calude_v2`: *"Family
+  Protection"* listed as her motivation). `Calude_v2`, v2 vampirism and v1
+  tragedy (*"tragic ignorance"*, *"misunderstood the full context"*) have it
+  right.
+- **Axis 1c, the threat, 2026-10-06:** **the vampires.** She protected the family
+  from awakened vampires' retaliation against their creators (`Calude_v2`;
+  consistent with v1 tragedy: by 1910 the vampires were *"targeting the very
+  families and officials who had originally controlled them"*). The OMC
+  targeting the Sithernis lineage (v1 profile, v1 Modern, OMC chronicle's
+  *"identified as a potential target due to her mother's background"*) is **not
+  canon**.
+
+**Axis 1, closed.** Canon: she volunteered to help urgent research, ignorant of
+her father's role → transformed 1910 → discovered what her completed stone could
+do → then used it to protect the family from vampire retaliation. Every document
+held part of this. **None held the order**, which is a sequence of three states
+(motive, knowledge, threat), not a single value. That's the case for
+event-sourced state over snapshot fields: `motive: protection` is true of her
+*after* 1910 and false of the act itself.
+
 ## Open, for the author
 
 The five axes in Finding 1, plus three more questions:
