@@ -345,7 +345,17 @@ Smaller items from the catalogue, not yet put to the author:
     observer scope (Lysandra, Sterling, the tribunals, the reader) holds the
     false "her own experiment". This fact is not in any document; it exists in
     this ledger entry and the author's head.
-- the third person who knows the family's role (3d);
+- **The third who knows, 2026-10-06 — answered: a Custodes Tribune**, the senior
+  Custodes officer (for Rome, where the feeding programmes run). Not a Senate
+  figure: v1 tragedy's *"upper echelon Arcane Senate members"* is not canon at
+  the story's start. Unnamed, so a character slot.
+- **Lysandra's age, 2026-10-06 — answered: a slow-aging hybrid.** At 35 (1798)
+  she's still a child or adolescent; ~110–120 in the 1870s–80s is young
+  adulthood. University and the first love fall in the 1870s–80s, and the
+  first love dies in the early vampire attacks, as the docs say. Orion as a
+  *"single father raising a young daughter"* in 1875 (OMC chronicle) is
+  therefore *right* on the 1763 timeline. Consequence: at her mother's murder
+  she was a child who survived the blast, which is why she can't have known.
 - **First vampires, 2026-10-06 — answered: non-mana-core magical beings**,
   deliberately chosen because they'd be weaker and controllable
   (`summary_revision`). v1 Modern's *"non-natural-linked mages"* is the same
