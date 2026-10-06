@@ -265,3 +265,32 @@ Evidence for most of these: ledger 0025. Code: `spikes/queries-test/`.
   changes shows as removed + added rather than changed.
 - **Alternative:** a pinned baseline ("compare against when I started today").
 - **Judge it by:** whether, after an edit, you can see at a glance what your edit did.
+
+## The canon checker (`spikes/canon-check`)
+
+### P-24 — A year belongs to a term within 90 characters · `proposed`
+- **What:** a date check reads years only inside a ±90-character window around
+  a fact's `match` term, so a year is tied to the thing it dates.
+- **Weakness:** a heading that spans two events (a phase "1945–1957" naming
+  both an exposure and a reform) dates both; one such candidate in the first run.
+- **Judge it by:** the share of date candidates the author rejects as not
+  about the fact.
+
+### P-25 — Default tolerance: exact, or ±10 when the canon date is approximate · `proposed`
+- **What:** `when.approx: true` gives ±10 years unless the fact sets
+  `tolerance`; otherwise 0.
+- **Alternative:** tolerance always explicit, no default.
+
+### P-26 — A fact declares which end of a range dates it · `proposed`
+- **What:** `range: start | end`. A birth is the start of "Early Life (a–b)", a
+  death the end of "Generation 1 (a–b)". Undeclared: both ends are checked.
+- **Why:** the first run without it flagged range ends as conflicts, ten false
+  candidates out of thirty-six.
+
+### P-27 — "Post-YYYY" is a lower bound · `proposed`
+- **What:** "Post-1945" / "after 1945" passes if canon reaches past that year.
+- **Weakness:** costs recall: "Post-1920: … beginning of democratic
+  reformation" passes against a 1950s reform, though the author may read it as
+  "right after 1920".
+- **Judge it by:** whether the author wants "Post-" read as "some time after"
+  or as "immediately after".

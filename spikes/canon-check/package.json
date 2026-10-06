@@ -1,0 +1,12 @@
+{
+  "name": "nas-canon-check",
+  "private": true,
+  "type": "module",
+  "description": "Mechanical canon checker: a private NAS canon folder vs. the author's source documents (ENGINE.md §6.3). Holds no canon; writes its report into the canon folder.",
+  "scripts": {
+    "check": "node check.mjs"
+  },
+  "dependencies": {
+    "yaml": "^2.9.1"
+  }
+}
