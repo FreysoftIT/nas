@@ -172,6 +172,41 @@ it without his knowledge → he learns, is trapped in a spiral of cure and
 containment → reckless, unethical experiments (Ireland 1915–1920) → killed by
 Lysandra. The OMC chronicle — the longest document in the bible — is wrong about
 Orion on every point but the grief.
+- **Axis 3a, Orion's papers, 2026-10-06:** **partly released.** The genocide
+  evidence went public; the scientific core did not. That reconciles the camps:
+  the "made public" documents describe the evidence, the "sealed"/"died with
+  him" documents describe the science. Every document that says *"complete"* or
+  *"Orion's research notes"* was released (OMC chronicle, `Calude_v2`,
+  `summary_revision`) overstates. Open: was the core sealed or lost (axis 3b)?
+- **Axis 3b, the scientific core, 2026-10-06:** *"sealed but orion never
+  understood it. complete inference would require an actual scentist with modern
+  thecnologies and studies plus an understanding of magic (that's why "Lucas",
+  can't remember the new name) is the key to resolving it"*. Canon: **the core
+  exists, sealed, and does not contain the answer**, because its author never
+  understood the mechanism (Lucas doc: he thought the stones *"strange
+  byproducts"*). "Died with Orion" is true of the *understanding*, false of the
+  papers. Lucas is necessary, not just convenient: the answer needs modern
+  science plus magic, a combination no one before him had. A KnowledgeScope case
+  in the strict sense: a document can exist and still not hold the fact.
+- **Name, 2026-10-06:** **Raffaele** is current; Lucas is the former name (the
+  Lucas doc's *"Raffaele (formerly Lucas)"*). Every *"Lucas/Raffaele"* in the
+  other documents has the order backwards.
+- **Axis 3c, the family's role, 2026-10-06:** **hidden.** The public knows the
+  OMC did it, not that a Sithernis made the virus or that Lysandra is its
+  template (v1 tragedy). Not canon: the patricide as a public, witnessed
+  symbol of justice (OMC chronicle: *"witnessed by other family members and OMC
+  operatives… profound symbolic impact"*).
+- **Axis 3d, who knows, 2026-10-06:** **three at the story's start, more as it
+  goes.** v2 profile's *"only 3 individuals"* is right *at an anchor*; v1
+  tragedy's "upper echelon" is wrong or describes later. Two of the three are
+  Lysandra and Sterling; **the third is not yet named** (open). The circle grows
+  during the story, so this is a KnowledgeScope with a time axis. A view must
+  ask "who knows, *when*", never just "who knows".
+
+**Axis 3, closed.** Canon: the genocide evidence is public; the science is
+sealed and incomplete (Orion never understood it), and only Raffaele's
+combination of modern science and magic can finish it; the family's role is
+secret, held by three people at the start, more later.
 
 ## Open, for the author
 
