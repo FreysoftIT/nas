@@ -289,6 +289,31 @@ new one, awakened by the same mechanism.
 accident 1880s · awakening from ~1900, accelerated by WWI · transformed 1907 ·
 patricide 1923 · Blood Tears ~1945 · Unmasking 1945–50 · human mages
 near-extinct after WWII.
+- **Quarantine, 2026-10-06:** **only the Europe embargo** exists: the world's
+  magical communities isolating European magical territories for fear of
+  contagion. Not canon: a post-war seal between magical and human worlds to stop
+  human magic developing (v2 vampirism *"Quarantine Establishment"*; Lucas doc
+  and `summary_revision`'s *"Breaking the Quarantine System"* framing of
+  Raffaele). The Veil (5th century) is the only magical/human barrier.
+  Consequence: Raffaele doesn't "break a quarantine". He is a new human mage
+  inside an embargoed Europe, which is what `summary_revision`'s own *"Lucas as
+  Diplomatic Game-Changer"* already says.
+- **Embargo today, 2026-10-06:** **still in force** (`summary_revision`: 80+ years,
+  no recognition of the reforms). Not canon: lifted ~1957 with international
+  cooperation (v1 Modern, `Calude_v2`).
+
+## Still open after this session
+
+Smaller items from the catalogue, not yet put to the author:
+
+- the third person who knows the family's role (3d);
+- who the first vampires were (*"non-mana core populations"* vs *"non-natural-linked mages"*);
+- Cassandra's death: the 1798 lab accident (v2 profile) vs *"mysterious illness"* (v1 Modern);
+- `Calude_v2`'s *"his mother's healing research"* (CV2);
+- were Flood survivors still alive in 1915–1920 (O2), and is the Flood a real event or a legend (K8);
+- the cure's design, three versions (V4);
+- is Raffaele a mage or an alchemist (*"cannot draw mana from within"*, K7);
+- the Northern Block in 1500 (ME3); the two initiation rituals (R3).
 
 ## Open, for the author
 
