@@ -207,6 +207,44 @@ Orion on every point but the grief.
 sealed and incomplete (Orion never understood it), and only Raffaele's
 combination of modern science and magic can finish it; the family's role is
 secret, held by three people at the start, more later.
+- **Axis 4a, the victims, 2026-10-06:** **only killed.** Human mages cannot be
+  turned; they are prey (v1 Modern: *"Humans cannot become vampires - virus treats
+  them purely as food source"*). Consistent with the targeting logic in both
+  vampirism docs (blank genetics as the missing component, consumed). Not canon:
+  human mages *"identified and infected"* (v1 Renaissance, OMC chronicle), and
+  with it the OMC chronicle's whole awakening arc as written: vampires
+  *"regaining memories of their lives within human magical communities"*, the
+  *"genocide of human mages"* as transformation. Who the first vampires *were*
+  is now a gap: `summary_revision` says *"non-mana core populations"*, v1 Modern
+  *"non-natural-linked mages"* (undefined). Not asked yet.
+- **Axis 4b, extinction, 2026-10-06:** *"Near exction after WWII. just an handfull
+  of extremly powerful mages managed to survive and hide, like Merlin. but we are
+  talking maybe another 2 at most"*. Canon: **near-extinct after WWII**; a few
+  extremely powerful survivors in hiding. Not canon: complete extinction in WWI
+  (v2 vampirism, Lucas doc). **New fact, in no document: Merlin is alive** — a
+  ~500 CE human mage surviving to the present, so powerful human mages can live
+  ~1,500 years (the Biological Systems doc's *"Transcendent Potential"* is the
+  only support). Raffaele is the first *new* human mage in the open, not the
+  only one alive. Count confirmed: **Merlin plus at most two others**, so at most
+  three hidden survivors.
+- **Axis 4c, origin, 2026-10-06:** **conduit bloodlines, ~500 CE.** Ancient heroes
+  were conduits exposed to magic through creature partnerships; the dormant
+  genes activated after the Veil (both Medieval timelines). Not canon: humans
+  learning magic in Mesopotamia ~3500 BCE, Pharaohs and Druids as human
+  mage-users (v2 Pre-Roman: they become conduits, at most); the Technical
+  Manual's *"generations of practice"*.
+  *Readings, not asked:* (1) Raffaele's ancestor's *"genetic priming"* by
+  exposure to Orion's experiments is **the same mechanism** as the original
+  awakening, so v2 vampirism's *"spontaneous emergence"* and the Lucas doc's
+  inherited priming are compatible: spontaneous means "with no magical
+  community present", as in 500 CE. (2) Ledger 0023 finding 4 (connect the
+  Flood to human blankness) loses its target: blankness comes from the conduit
+  bloodlines, not the Flood.
+
+**Axis 4, closed.** Canon: human mages arose ~500 CE from conduit bloodlines;
+the OMC's vampires killed them and could not turn them; near-extinct after
+WWII; Merlin and at most two others survive in hiding; Raffaele is the first
+new one, awakened by the same mechanism.
 
 ## Open, for the author
 
