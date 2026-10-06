@@ -142,6 +142,36 @@ held part of this. **None held the order**, which is a sequence of three states
 (motive, knowledge, threat), not a single value. That's the case for
 event-sourced state over snapshot fields: `motive: protection` is true of her
 *after* 1910 and false of the act itself.
+- **Axis 2a, Orion's research, 2026-10-06:** **mana suppressants.** The virus was
+  an unintended byproduct (v1 tragedy, Lucas doc, `summary_revision`). Not
+  canon: *"desperate attempts to solve his daughter's genetic instability"* (v2
+  vampirism), *"accidental discovery… while working on other projects"* as a
+  vague alternative (v1 profile), and the virus as a commissioned OMC weapon
+  with Orion as *"project head"* (OMC chronicle, v1 Renaissance).
+- **Axis 2b, what he knew, 2026-10-06:** **didn't know at first** (v1 tragedy:
+  *"Unknown to Orion, his research was being monitored and exploited by the
+  OMC"*). Not canon: the OMC chronicle's recruitment-into-genocide arc (*"architect
+  of genocide"*, *"target dehumanization"*) and *"Led by Orion"* (short vampirism).
+  Open: what he became *after* he learned (axis 2c).
+- **Axis 2c, what he became, 2026-10-06:** **trapped, then reckless.** v1 tragedy's
+  *"research spiral"*: cure, containment and helping the OMC manage the crisis
+  at once, then increasingly unethical experiments in desperation (the Lucas
+  doc's human test subjects in Ireland, 1915–1920, fit here). His guilt is what
+  he did trying to undo the accident, not authorship of the genocide.
+- **Axis 2d, who pushed him, 2026-10-06:** **his brother, within the main
+  branch.** The brother is the main-branch figure who led the campaign; the main
+  branch overlaps with the OMC, unknown to Orion. (Chosen from an option that
+  stated both clauses.) So v2 vampirism's *"radicalized brother"* and v1
+  tragedy's *"conservative main branch"* are one fact at two resolutions. The
+  OMC chronicle's direct OMC-recruiter approach (1875–1885) is not canon, or is
+  the brother acting for the OMC — not asked.
+
+**Axis 2, closed.** Canon: grief → the brother (main branch, secretly OMC)
+steers him to mana suppressants → the virus is an accident → the OMC exploits
+it without his knowledge → he learns, is trapped in a spiral of cure and
+containment → reckless, unethical experiments (Ireland 1915–1920) → killed by
+Lysandra. The OMC chronicle — the longest document in the bible — is wrong about
+Orion on every point but the grief.
 
 ## Open, for the author
 
