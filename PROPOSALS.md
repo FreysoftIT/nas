@@ -99,7 +99,30 @@ Evidence for most of these: ledger 0025. Code: `spikes/queries-test/`.
   `world_root` → *institution*; else *cross-agent*.
 - **Alternative:** derive from composition depth (GRAPH-8) instead of one hop.
 
-### P-10 — Trust: snapshots vs. deltas · `open`
+### P-10 — Trust: snapshots vs. deltas · `decided`
+- **Author, 2026-10-05**, judged on view 8 (`kes→marek` at ch01.s01: declared
+  0.0, folded 0.3), verbatim: *"the 0.0 is right in the case a true trust
+  level drop happend. offstage or in another chapter that still needs to be
+  written. or the trust never dropped and another external facotr happened
+  (example: another character might have forced him)"* — and then:
+  *"considering that no character can know the full truth (omniscience) the 0
+  trust i a "possible" interpretantion by the character"*
+- **Reading:** none of the three alternatives below, as written. The **fold is
+  the writer's ledger** (canonical). An authored `entry_state` is the
+  **character's reading**, from inside their KnowledgeScope — so it may
+  legitimately differ from the fold. A mismatch is therefore neither an error
+  nor auto-fixed; it is a **gap that demands a cause**, resolved by one of:
+  1. a canonical drop, **offstage** — an unwitnessed event owns the delta
+     (same machinery as P-17);
+  2. a canonical drop in a **scene not yet written** — the gap becomes an
+     obligation in the interval, like a pillar precondition;
+  3. **no canonical drop** — the character reads it so: an epistemic cause in
+     their scope (a lie, a misreading) or an external force (§8.6) they
+     interpret as the drop.
+- **Not yet in the code.** View 8 shows the two numbers; it does not yet name
+  the gap or ask for its cause. Follow-on, unratified: `entry_state` values
+  are *reads* (NAS §7.8 two-place modality), so the file should say whose.
+- *Original entry, kept as written:*
 - **What:** three numbers shown. *folded* = earliest `entry_state` + every later
   delta; *restated* = latest `entry_state` + later deltas; *declared* = the
   pillar scene's own `entry_state`.
