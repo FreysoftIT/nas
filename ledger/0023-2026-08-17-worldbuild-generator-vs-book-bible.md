@@ -84,6 +84,16 @@ something known to work rather than a new artifact to learn.
 
 ## Finding 3 — the real gap, and it is load-bearing twice
 
+> **Correction, 2026-10-06 (ledger 0027).** False negative: the origin of human
+> mages **is** written, three times, and the accounts don't agree. The v2
+> Pre-Roman timeline has *"Ancient Mesopotamia… Birthplace of Magic: Where humans
+> first learned to tap into magic"*. Both Medieval timelines have a post-Veil
+> *"Human Mage Awakening"* (~500 CE) from conduit bloodlines. The Technical Manual
+> has *"Families that developed magical abilities through generations of
+> practice"*. So the real finding is three unreconciled origins, not a gap.
+> Finding 4 (the Flood → human-blankness link is unconnected) still stands.
+> Text below kept as written.
+
 **The origin of human mages is not written anywhere in the corpus.** Two searches
 across all 20 documents return nothing: no account of where human mages came from,
 and no passage connecting the Flood to human magical capacity.
