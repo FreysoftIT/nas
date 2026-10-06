@@ -245,6 +245,30 @@ secret, held by three people at the start, more later.
 the OMC's vampires killed them and could not turn them; near-extinct after
 WWII; Merlin and at most two others survive in hiding; Raffaele is the first
 new one, awakened by the same mechanism.
+- **Axis 5a, birth, 2026-10-06:** **1763.** The *minority* value: only the v2
+  profile carries it (*"Age: 262 years old (as of 2025)"*, *"Early Life
+  (1763-1798)"*); six documents say 1770. Ledger 0001 F1 ruled the other way
+  (*"1770 is canon across six documents; 1763 exists only inside the v2
+  profile"*) and treated *"Age: 262"* as a derived value with *"a parent that
+  does not exist"*. **Wrong: the parent exists, in the author's head; the
+  `Born: 1770` header is the stale line.** Counting documents is not finding
+  canon. A majority of hand-copied projections can all be stale together.
+  Consequence to check: ledger 0001 called the v2 profile *"internally coherent
+  on a wrong timeline"* (1763-1798 / 1798-1907 / 1907-1923 / 1923-present). If
+  1763 is right, that timeline may be the right one too.
+- **Axis 5b, the v2 profile's timeline, 2026-10-06:** **yes, all of it.** Canon:
+  born **1763**, Cassandra dies **1798**, transformed **1907**, patricide
+  **1923**. Every 1770 / 1805 / 1910 / 1920 in the other nineteen documents is
+  stale, and so are ~1775 / ~1810 / ~1815 / ~1825 / ~1915 / 1870.
+  **Ledger 0001's F1, F2 and F3 were all decided in the wrong direction.** It
+  found the one document that had been updated to the author's timeline and
+  called it the corrupted one, because the other documents outvoted it. Its
+  NAS-C9 reading (*"the revision cycle is where the corpus broke"*) is inverted
+  for these three: the v2 profile is where the corpus was *repaired*, and the
+  repair never propagated. The system lesson is the same as ledger 0001's
+  GRAPH-2 point, but in the other direction. A projection that agrees with
+  the majority is not thereby right; only the source decides. Here the source
+  is the author.
 
 ## Open, for the author
 
