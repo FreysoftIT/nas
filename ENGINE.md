@@ -407,6 +407,28 @@ writer's. The point is for the writer, ultimately, to write.** Not cost, not
 offline, not positioning. So the borderline case resolves the strict way: **no
 model anywhere in the loop, local or remote, not even for detection.**
 
+> **Amended 2026-10-07 by the author: *"a model can propose conflicts but only I
+> set canon"*.** Asked whether NAS is for writers who build canon inside it from
+> the start or also for rescuing existing bibles, the author answered *"both"*.
+> Rescuing a bible needs a reading pass that a deterministic tool can't do (ledger
+> 0027: ~30 conflicts in a 77k-word bible, found by a model's full read and settled
+> by the author one question at a time). So the line moves from *no model* to
+> **no model with authority**:
+>
+> | A model **may** | A model **may not** |
+> |---|---|
+> | read the writer's documents and **propose candidate conflicts**, each with the competing passages quoted | set, edit or confirm canon (only the author does, one answer at a time) |
+> | frame the question to put to the author | write to the graph, a canon file or a document (GRAPH-9) |
+> | | generate story content: prose, facts, resolutions (§7.4: name the obligation, never fill it) |
+>
+> The rest of §6.3 is unchanged: every **check** stays mechanical, and canon is
+> checked by named queries, never by a model. A model's proposals are
+> candidates in the same sense as a harvest: worthless until the author
+> answers, and unreliable on their own. The same read that found the ~30
+> conflicts also produced a false positive and exposed two earlier partial
+> reads (ledger 0027, findings 0 and 3). The author's answer is the only path
+> into canon.
+
 The author's reference point is the spell-checker: it tells you there is an
 error; it does not write your sentence. Same here, one level up — *"there is an
 error in the birth year of this character"* is the whole genre of finding, and
@@ -504,6 +526,9 @@ constraint — the first `structural`-tier rule enforced by construction. Spike:
 - **What the writing surface looks like.** Manuscript with the graph beside it,
   or graph with prose as one view. The modules are decided; the screen is not.
 - ~~**Why AI-less**~~ — answered: principle (§6.3).
+- ~~**Fresh canon or rescued bibles?**~~ — **both**, decided by the author
+  2026-10-07: a model may propose conflicts; only the author sets canon (§6.3,
+  amended).
 - ~~**"On demand" vs. SOFTWARE.md §4's tier table.**~~ — resolved by the author
   2026-09-27, see *Tiers under on-demand* below.
 - ~~**Soft-mode harvesting under the principle.**~~ — resolved by the author

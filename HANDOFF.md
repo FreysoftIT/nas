@@ -36,7 +36,7 @@ session: open it and check the layout.
 |---|---|
 | The product: **a writer with assistance in each phase** — worldbuilding, characters + relationship graph, writing | §6, §6.2 |
 | The writing process is two axes, both the author's: **sketch → colour** (one scene) and **keyframes → inbetweens** (the book) | §6.1 |
-| **AI-less, on principle** — "the work must stay the writer's." A spell-checker for canon, **on demand**. No model anywhere, not even local, not even for detection | §6.3 |
+| **AI-less, on principle** — "the work must stay the writer's." A spell-checker for canon, **on demand**. No model anywhere, not even local, not even for detection. *Amended 2026-10-07: a model may propose conflicts; only the author sets canon.* | §6.3 |
 | Tiers: `lint` on demand; **gates still block but are always passable** by citing/minting an exception ID | §6.3 (propagated to SOFTWARE.md §4) |
 | Harvesting from prose: **mechanical only** — tags, known names, dates/numbers, structure. Soft mode loses automatic delta/structure harvesting | §6.3 |
 | `queries.md` becomes source (commentary + `<!-- view: N -->` markers); tables render to `out/queries.md` | P-19 |
