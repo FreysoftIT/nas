@@ -13,3 +13,6 @@ desktop.ini
 
 # Spike dependencies
 node_modules/
+
+# Local machine config — may point at private canon. Never commit.
+.nas-local.json

@@ -5,14 +5,16 @@
 //
 //   npm run serve   →   http://localhost:4321
 import { createServer } from 'node:http';
-import { readFileSync, watch } from 'node:fs';
+import { readFileSync, existsSync, watch } from 'node:fs';
 import { dirname, join, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createEngine } from './engine.mjs';
+import { check as canonCheck } from '../canon-check/check.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const root = resolve(here, '../..');
-const PORT = Number(process.env.PORT ?? 4321);
+const portArg = process.argv.indexOf('--port');
+const PORT = Number(portArg > 0 ? process.argv[portArg + 1] : process.env.PORT ?? 4321);
 
 // What counts as corpus. Everything else (out/, spikes/, ledger/, .git …) is
 // ignored, so the page never rebuilds because it wrote something itself.
@@ -91,6 +93,55 @@ watch(root, { recursive: true }, (_, file) => {
 
 await rebuild('startup');
 
+// ── Canon check (optional, private) ───────────────────────────────────────
+// The canon folder is the author's and may hold unpublished plot, so its path
+// is never in this repo: it comes from `.nas-local.json` at the repo root
+// (git-ignored): { "canonDir": "C:/…/Canon" }. No file, no canon view.
+// The page only READS the canon and the documents; the server binds to
+// 127.0.0.1, so nothing leaves the machine.
+const localCfg = join(root, '.nas-local.json');
+const canonDir = existsSync(localCfg) ? JSON.parse(readFileSync(localCfg, 'utf8')).canonDir : null;
+let canon = null, canonPrev = null, canonError = null, canonBuilding = false, canonDirty = false;
+// A finding is identified by where it is and what it's about; its detail text
+// (tolerance, found years) can change without it becoming a different finding.
+const canonKey = (f) => `${f.doc}|${f.n}|${f.check}|${f.fact}`;
+
+async function rebuildCanon(trigger) {
+  if (!canonDir) return;
+  if (canonBuilding) { canonDirty = true; return; }
+  canonBuilding = true;
+  try {
+    const t0 = performance.now();
+    const r = canonCheck(canonDir);
+    r.ms = performance.now() - t0; r.trigger = trigger; r.builtAt = new Date();
+    const prev = new Set((canonPrev?.findings ?? []).map(canonKey));
+    const now = new Set(r.findings.map(canonKey));
+    r.findings.forEach((f) => { f.added = !!canonPrev && !prev.has(canonKey(f)); });
+    r.removed = canonPrev ? canonPrev.findings.filter((f) => !now.has(canonKey(f))) : [];
+    canonPrev = r; canon = r; canonError = null;
+    console.log(`${r.builtAt.toLocaleTimeString()}  canon check in ${r.ms.toFixed(0)} ms  ← ${trigger}  (${r.findings.filter((f) => f.added).length} new, ${r.removed.length} gone)`);
+  } catch (e) {
+    canonError = e.message;
+    console.error('canon check failed:', e.message);
+  } finally {
+    canonBuilding = false;
+    for (const c of clients) c.write(`data: rebuilt\n\n`);
+    if (canonDirty) { canonDirty = false; rebuildCanon(trigger); }
+  }
+}
+
+if (canonDir) {
+  await rebuildCanon('startup');
+  let ct = null;
+  const onChange = (where) => (_, file) => {
+    if (!file || /(^|[\\/])(reports|\.git)([\\/]|$)/.test(file) || /~\$/.test(file)) return;   // our own output; Word lock files
+    clearTimeout(ct);
+    ct = setTimeout(() => rebuildCanon(`${where}/${file.split(sep).join('/')}`), 300);
+  };
+  watch(canonDir, { recursive: true }, onChange('canon'));
+  if (canon?.docRoot) watch(canon.docRoot, { recursive: true }, onChange('documents'));
+}
+
 // ── Rendering ─────────────────────────────────────────────────────────────
 
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -160,11 +211,55 @@ function contentHtml(b) {
         : `<p class="ok">Holds — the database refused nothing.</p>`}</section>`;
 
   for (const v of b.views) h += viewHtml(v, proposals);
-  return h;
+  return canonHtml() + h;
+}
+
+// ── Canon check view ──
+const CHECK_LABEL = { date: 'date', retired: 'retired term', age: 'age', overruled: 'overruled line', 'quote-missing': 'quote missing' };
+function canonHtml() {
+  if (!canonDir) return '';
+  if (canonError) return `<section class="view" id="canon"><header><h2><span class="num">✓</span>Canon check</h2></header>
+    <div class="err">The canon check failed: ${esc(canonError)}<br><small>Usually a canon file that doesn't parse mid-edit. Save again when it's valid.</small></div></section>`;
+  if (!canon) return '';
+  const r = canon;
+  const n = (k, pred = () => true) => r.findings.filter((f) => f.check === k && pred(f)).length;
+  const added = r.findings.filter((f) => f.added).length;
+  let h = `<section class="view canon" id="canon"><header><h2><span class="num">✓</span>Canon check — the bible against your canon</h2>
+    <div class="meta"><code class="q">${r.docs.length} documents · ${r.docs.reduce((s, d) => s + d.paragraphs, 0)} paragraphs · ${r.quotes} overruled quotes</code>
+      <span class="stat">${r.ms.toFixed(0)} ms${added ? ` · <b class="moved">${added} new</b>` : ''}${r.removed.length ? ` · <b class="gone">${r.removed.length} gone</b>` : ''}</span></div></header>
+    <p class="note">Mechanical, no model. Every row is a <b>candidate</b> for you to judge. The documents are read, never written. Rebuilds when you save a canon file or a document.</p>
+    <table class="tally"><tbody>
+      <tr><td>Dates disagreeing with canon</td><td class="n"><b>${n('date', (f) => !f.known)}</b> new</td><td class="n">${n('date', (f) => f.known)} already quoted</td></tr>
+      <tr><td>Retired terms</td><td colspan="2">${r.termCounts.map((t) => `${esc(t.term)} <b>${t.total}</b>${t.countOnly ? ' <small>(count only)</small>' : ''}`).join(' · ')}</td></tr>
+      <tr><td>Age arithmetic</td><td class="n"><b>${n('age', (f) => !f.known)}</b> new</td><td class="n">${n('age', (f) => f.known)} already quoted</td></tr>
+      <tr><td>Overruled lines located</td><td class="n">${n('overruled')}</td><td class="n">${n('quote-missing') ? `<b class="bad">${n('quote-missing')} quotes not found</b>` : 'all quotes found'}</td></tr>
+    </tbody></table>
+    <div class="filters">Show:
+      ${['date', 'retired', 'age', 'overruled'].map((k) => `<label><input type="checkbox" data-hide="${k}"> ${CHECK_LABEL[k]}</label>`).join('')}
+      <label><input type="checkbox" data-hide="covered"> lines already quoted</label></div>`;
+  for (const d of r.docs) {
+    const fs = r.findings.filter((f) => f.doc === d.key).sort((a, b) => a.n - b.n);
+    if (!fs.length) continue;
+    h += `<details class="doc-group" open><summary><b>${esc(d.key)}</b> <span class="muted">${esc(d.file)}</span> <span class="count">${fs.length}</span></summary><table class="findings"><tbody>`;
+    for (const f of fs) {
+      const cls = ['f-' + f.check, f.known || f.check === 'overruled' ? 'f-covered' : '', f.added ? 'added' : ''].filter(Boolean).join(' ');
+      h += `<tr class="${cls}"${f.added ? ' title="new since the last save"' : ''}><td class="n">¶${f.n}</td>
+        <td><span class="pill k-${f.check}">${CHECK_LABEL[f.check] ?? f.check}</span>${f.known ? '<br><small class="muted">quoted</small>' : ''}</td>
+        <td><code>${esc(f.fact)}</code><div class="detail">${esc(f.detail)}</div></td>
+        <td class="para">${esc(f.text.length > 320 ? f.text.slice(0, 319) + '…' : f.text)}</td></tr>`;
+    }
+    h += `</tbody></table></details>`;
+  }
+  if (r.removed.length)
+    h += `<div class="removed">Gone since the last save: ${r.removed.map((f) => `<code>${esc(f.doc)} ¶${f.n} · ${esc(f.fact)}</code>`).join(' ')}</div>`;
+  return h + `</section>`;
 }
 
 function navHtml(b) {
-  return b.views.map((v) => {
+  const canonNav = canonDir
+    ? `<div class="navgroup">Bible</div><a href="#canon"><span class="num">✓</span><span class="t">Canon check</span>${canon?.findings.some((f) => f.added) || canon?.removed.length ? '<span class="dot" title="changed"></span>' : ''}</a><div class="navgroup">pro-league</div>`
+    : '';
+  return canonNav + b.views.map((v) => {
     const changes = v.changedCells + v.addedRows + v.removedRows.length;
     return `<a href="#v${v.n}"><span class="num">${v.n}</span><span class="t">${esc(v.name.split(' — ')[0])}</span>${changes ? `<span class="dot" title="${changes} moved"></span>` : ''}</a>`;
   }).join('');
@@ -246,15 +341,49 @@ tr.added td:first-child{box-shadow:inset 3px 0 var(--added)}
 .ok{color:var(--added);margin:0}.empty{color:var(--muted);margin:0}
 .structural{border-style:dashed}
 .doc{max-width:820px;margin:0 auto;padding:24px 16px}.doc h3{margin-top:28px;scroll-margin-top:16px}.doc h3:target{background:var(--changed);border-radius:4px}
-@media (max-width:760px){.wrap{grid-template-columns:1fr}nav{position:static}.stat{margin-left:0}}
+.navgroup{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:12px 8px 4px}
+.canon .note{color:var(--muted);font-size:12px;margin:0 0 10px}
+.tally{width:auto;margin-bottom:10px}.tally td{padding:4px 12px 4px 0;border:0}
+.gone{color:var(--muted);background:var(--line);padding:1px 6px;border-radius:4px}.bad{color:var(--bad)}
+.filters{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12px;color:var(--muted);margin:6px 0 12px}
+.filters label{color:var(--ink);cursor:pointer}
+.doc-group{border-top:1px solid var(--line);padding:6px 0}.doc-group summary{cursor:pointer;padding:4px 0}
+.muted{color:var(--muted);font-size:12px}.count{font-size:11px;background:var(--line);border-radius:8px;padding:0 6px;margin-left:4px}
+.findings td{font-size:13px}.findings td.para{color:var(--muted);min-width:280px}
+.detail{font-size:12px;margin-top:2px}
+.k-date{color:var(--bad)}.k-age{color:var(--bad)}.k-retired{color:var(--warn)}.k-overruled{color:var(--muted)}.k-quote-missing{color:var(--bad)}
+body.hide-date tr.f-date,body.hide-retired tr.f-retired,body.hide-age tr.f-age,body.hide-overruled tr.f-overruled,body.hide-covered tr.f-covered{display:none}
+@media (max-width:760px){.wrap{grid-template-columns:1fr}nav{position:static}.stat{margin-left:0}.findings td.para{min-width:0}}
 `;
 
 const CLIENT = `
 const conn = document.getElementById('conn');
+// Canon-check filters: a per-viewer convenience, remembered when storage works.
+const DEFAULT_HIDDEN = ['overruled', 'covered'];
+let hidden;
+try { hidden = JSON.parse(localStorage.getItem('canon-hidden')) ?? DEFAULT_HIDDEN; } catch { hidden = DEFAULT_HIDDEN; }
+function applyFilters(){
+  for (const k of ['date','retired','age','overruled','covered']) document.body.classList.toggle('hide-' + k, hidden.includes(k));
+  for (const cb of document.querySelectorAll('[data-hide]')) cb.checked = !hidden.includes(cb.dataset.hide);
+  // Counts and empty groups follow the filters.
+  for (const g of document.querySelectorAll('.doc-group')) {
+    const shown = [...g.querySelectorAll('tbody tr')].filter((tr) => getComputedStyle(tr).display !== 'none').length;
+    g.querySelector('.count').textContent = shown;
+    g.style.display = shown ? '' : 'none';
+  }
+}
+document.addEventListener('change', (e) => {
+  const k = e.target.dataset?.hide; if (!k) return;
+  hidden = e.target.checked ? hidden.filter((x) => x !== k) : [...hidden, k];
+  try { localStorage.setItem('canon-hidden', JSON.stringify(hidden)); } catch {}
+  applyFilters();
+});
+applyFilters();
 async function refresh(){
   const r = await fetch('/content'); const j = await r.json();
   document.getElementById('content').innerHTML = j.content;
   document.getElementById('navlist').innerHTML = j.nav;
+  applyFilters();
 }
 function connect(){
   const es = new EventSource('/events');

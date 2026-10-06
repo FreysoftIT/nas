@@ -6,6 +6,12 @@
       "runtimeExecutable": "node",
       "runtimeArgs": ["spikes/queries-test/serve.mjs"],
       "port": 4321
+    },
+    {
+      "name": "live-views-alt",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["spikes/queries-test/serve.mjs", "--port", "4322"],
+      "port": 4322
     }
   ]
 }
