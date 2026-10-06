@@ -353,7 +353,9 @@ Smaller items from the catalogue, not yet put to the author:
   the later cross-species spread (v2 vampirism): the virus widened from
   non-core hosts to others. Lysandra, a mana-core hybrid on a refined strain,
   remains the one exception.
-- `Calude_v2`'s *"his mother's healing research"* (CV2);
+- **CV2, 2026-10-06 — answered: a slip for "wife's".** Cassandra's research;
+  nothing new. (A point-of-view leak: the phrase is Lysandra's "her mother",
+  attached to Orion.)
 - **The Flood, 2026-10-06 — answered: a canon event**, as the OMC chronicle tells
   it: a ritual catastrophe ~3000 BCE, a real global flood, physical evidence in
   magical archives, real damage to the magical field. The hedges (*"like a
@@ -386,7 +388,28 @@ Smaller items from the catalogue, not yet put to the author:
     cannot draw mana from within"* as a limitation, and alchemy as
     *compensation*. Alchemy is where his science meets his magic, not a
     substitute for casting.
-- the Northern Block in 1500 (ME3); the two initiation rituals (R3).
+- **Lysandra's understanding of her stone, 2026-10-06 — answered: knows what,
+  not why.** She knows she is the template and what her stone does (empathy,
+  alpha recognition, the stabilizing presence), but not the philosopher's-stone
+  mechanism. She lives the answer and can't read it; Raffaele reads it. So the
+  v2 profile's *"Research Understanding: inherited knowledge of… her father's
+  corrupted methodologies"* overstates, and v1 tragedy (*"unknown… including
+  Lysandra herself"*) is right about the mechanism. Partnership shape: she is
+  the living specimen and guide, not the theorist. (Dates in the docs' versions
+  of her discovery, 1910–1920, are now 1907–1923.)
+- **The Northern Block, 2026-10-06 — answered: partly.** v2's Viking-era campaign
+  happened and mostly worked (the Arcane Senate forced most of the North under
+  the Veil via Christianization), but pockets stayed open beyond 1500. Where and
+  for how long is not specified (open). Both of v2's lines are now partly true:
+  *"Northern Block Defeat"* for most of it, *"continuing… open relations"* for
+  the pockets. The precedent stands: the Senate has forced its model on other
+  magical peoples.
+- **Initiation, 2026-10-06 — answered: ancient, then modern.** The chamber trials
+  (blue flame, the bridge) and the four-stanza poem are the original Roman
+  rite; the four-stage trance pilgrimage through Rome is its modern form,
+  adopted with the post-1957 intelligence-service recruits. The chronicle's
+  *"unchanged across millennia"* is not canon. What is unchanged is the
+  requirement that it happens in Rome, with the original artifacts.
 
 ## Open, for the author
 
