@@ -100,7 +100,7 @@ Evidence for most of these: ledger 0025. Code: `spikes/queries-test/`.
 - **Alternative:** derive from composition depth (GRAPH-8) instead of one hop.
 
 ### P-10 — Trust: snapshots vs. deltas · `decided`
-- **Author, 2026-10-05**, judged on view 8 (`kes→marek` at ch01.s01: declared
+- **Author, 2026-10-06**, judged on view 8 (`kes→marek` at ch01.s01: declared
   0.0, folded 0.3), verbatim: *"the 0.0 is right in the case a true trust
   level drop happend. offstage or in another chapter that still needs to be
   written. or the trust never dropped and another external facotr happened
