@@ -346,11 +346,28 @@ Smaller items from the catalogue, not yet put to the author:
     false "her own experiment". This fact is not in any document; it exists in
     this ledger entry and the author's head.
 - the third person who knows the family's role (3d);
-- who the first vampires were (*"non-mana core populations"* vs *"non-natural-linked mages"*);
+- **First vampires, 2026-10-06 — answered: non-mana-core magical beings**,
+  deliberately chosen because they'd be weaker and controllable
+  (`summary_revision`). v1 Modern's *"non-natural-linked mages"* is the same
+  group under an older, undefined name, so retire the term. Consistent with
+  the later cross-species spread (v2 vampirism): the virus widened from
+  non-core hosts to others. Lysandra, a mana-core hybrid on a refined strain,
+  remains the one exception.
 - `Calude_v2`'s *"his mother's healing research"* (CV2);
 - were Flood survivors still alive in 1915–1920 (O2), and is the Flood a real event or a legend (K8);
 - the cure's design, three versions (V4);
-- is Raffaele a mage or an alchemist (*"cannot draw mana from within"*, K7);
+- **Raffaele's kind, 2026-10-06 — answered: something new.** Neither a classic
+  human mage nor a plain alchemist: the ancestor's exposure to Orion's
+  experiments made a different kind of human magic user. Both of the Lucas
+  doc's framings (*"first human mage"*, *"Alchemy as Compensation"*) are
+  approximations.
+  - **What he is, 2026-10-06: a mage with a twist.** A human mage at the core:
+    he absorbs ambient mana and can learn to cast. On top of that sits the
+    stone-related inheritance from the ancestor's exposure (priming, resistance,
+    template echoes). Not canon: the Lucas doc's *"Cannot Channel Mana Directly…
+    cannot draw mana from within"* as a limitation, and alchemy as
+    *compensation*. Alchemy is where his science meets his magic, not a
+    substitute for casting.
 - the Northern Block in 1500 (ME3); the two initiation rituals (R3).
 
 ## Open, for the author
