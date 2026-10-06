@@ -269,6 +269,26 @@ new one, awakened by the same mechanism.
   GRAPH-2 point, but in the other direction. A projection that agrees with
   the majority is not thereby right; only the source decides. Here the source
   is the author.
+- **Axis 5c, public exposure, 2026-10-06:** **1945–1950**, *"The Unmasking"* with the
+  tribunals (`Calude_v2`, Custodes, vampirism docs). Not canon: release at the
+  patricide (OMC chronicle, v1 Renaissance, v1 Modern, and the first of
+  `summary_revision`'s two releases). So the OMC's collapse after 1923 was *not*
+  caused by public exposure. `Calude_v2`'s *"Lucynda going into hiding"*,
+  *"Evidence Preservation… for later revelation"* is the canon shape.
+- **Axis 5d, the awakening, 2026-10-06:** **begins ~1900, WWI accelerates it**
+  (`Calude_v2`). Both endpoints in the other docs are half-right. Checked
+  against canon: it fits axis 1c, since vampire retaliation against creators'
+  families is already a live threat after her 1907 transformation.
+- **Axis 5e, Blood Tears, 2026-10-06:** **~1945, peaceful vampires' mass suicide
+  to protect the magical children they were hiding**, found by Androxis/Sterling's
+  task force (`Calude_v2`, `summary_revision`). Not canon: the 1943 OMC
+  vampire-children version (v1 Modern), and despair from prey loss (both
+  vampirism docs).
+
+**Axis 5, closed.** Canon dates: born 1763 · Cassandra dies 1798 · Orion's
+accident 1880s · awakening from ~1900, accelerated by WWI · transformed 1907 ·
+patricide 1923 · Blood Tears ~1945 · Unmasking 1945–50 · human mages
+near-extinct after WWII.
 
 ## Open, for the author
 
