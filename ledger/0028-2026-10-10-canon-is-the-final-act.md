@@ -86,6 +86,20 @@ published and read. Options: *truth* / *settled* / *potential, no split*.
 A neutral process word: it says how a fact got there, not what it is, and it
 does not claim the weight of "truth" for things that may still change.
 
+## First evidence: settled, and maybe never canon (2026-10-10)
+
+The first fact settled because a scene needed it (a secondary character in the
+test scene's cast) came with a stated purpose: it exists for a possible later
+revelation, *"might be revealed or not… something for a reader to mull about."*
+
+So a settled fact can be **designed never to become canon**. That is the model's
+central claim (canon is not truth) showing up on its first real case, and NAS
+already has the object for it: the pending reveal, tension the reader has not
+received, counted as an asset (SOFTWARE §6 view 14). What the bible needs is a
+way to say *optional*: a reveal the author may or may not deliver, so the tool
+lists it without treating it as an obligation. Recorded on the fact as
+`reveal: optional`. Not yet a rule.
+
 ## Open
 
 - Applying the names: the bible's fact registry, the private folder name, and
