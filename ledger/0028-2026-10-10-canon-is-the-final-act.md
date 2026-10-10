@@ -103,7 +103,7 @@ lists it without treating it as an obligation. Recorded on the fact as
 ## Open
 
 - Applying the names: the bible's fact registry, the private folder name, and
-  the word across NAS.md. Not done; the Ireland scene test comes first.
+  the word across NAS.md. Not done; the scene test comes first.
 
 ```yaml
 claim_evidence:
