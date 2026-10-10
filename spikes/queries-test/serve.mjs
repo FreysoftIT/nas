@@ -120,6 +120,7 @@ async function rebuildCanon(trigger) {
       // Scene findings join the same list, so new/gone tracking covers them too.
       const s = checkScenes(productionDir);
       r.scenes = s.scenes;
+      r.threads = s.threads;
       r.findings.push(...s.findings.map((f) => ({ doc: `scene:${f.scene}`, n: 0, check: f.check, fact: f.id, detail: f.detail, text: '' })));
     }
     r.ms = performance.now() - t0; r.trigger = trigger; r.builtAt = new Date();
@@ -226,7 +227,8 @@ function contentHtml(b) {
 
 // ── Canon check view ──
 const CHECK_LABEL = { date: 'date', retired: 'retired term', age: 'age', overruled: 'overruled line', 'quote-missing': 'quote missing',
-  unknown: 'not in the bible', 'scene-date': 'date', alive: 'not alive', candidate: 'to promote', promoted: 'promoted', unparsed: "doesn't parse" };
+  unknown: 'not in the bible', 'scene-date': 'date', alive: 'not alive', candidate: 'to promote', promoted: 'promoted', unparsed: "doesn't parse",
+  'thread-here': 'thread here', 'thread-near': 'thread nearby' };
 
 function scenesHtml(r) {
   if (!productionDir) return '';
@@ -235,6 +237,11 @@ function scenesHtml(r) {
   let h = `<h3 class="sub">Scenes against the bible</h3>
     <p class="note">A scene reads the bible and never changes it. Whatever it invents waits here until you add it to the bible yourself.
     ${(r.scenes ?? []).length} scene(s) · ${open ? `<b>${open} to promote</b>` : 'nothing waiting to be promoted'}.</p>`;
+  const live = (r.threads ?? []).filter((t) => t.reveal === 'undecided' || t.reveal === 'planned');
+  if ((r.threads ?? []).length)
+    h += `<div class="threads"><b>Threads</b> <span class="muted">settled in the bible, use still yours to decide. "Undecided" is a fine answer.</span><ul>${(r.threads).map((t) =>
+      `<li><code>${esc(t.id)}</code> <span class="pill k-thread-${esc(t.reveal)}">${esc(t.reveal)}</span> <span class="muted">${esc(t.weight ?? '')}${t.revealed_in ? ` · revealed in ${esc(t.revealed_in)}` : ''}</span></li>`).join('')}</ul>
+      <span class="muted">${live.length} open: each is offered in the scenes it touches, below.</span></div>`;
   for (const s of r.scenes ?? []) {
     const fs = sf.filter((f) => f.doc === `scene:${s.id}`);
     h += `<details class="doc-group scene-group" open><summary><b>${esc(s.id)}</b> <span class="muted">${esc(s.file)}</span> <span class="count">${fs.length}</span></summary>`;
@@ -384,6 +391,8 @@ tr.added td:first-child{box-shadow:inset 3px 0 var(--added)}
 .detail{font-size:12px;margin-top:2px}
 .sub{font-size:13px;margin:16px 0 4px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
 .k-unknown,.k-alive,.k-scene-date,.k-unparsed{color:var(--bad)}.k-candidate{color:var(--warn)}.k-promoted{color:var(--added)}
+.k-thread-here,.k-thread-near,.k-thread-undecided,.k-thread-planned{color:var(--accent)}.k-thread-declined,.k-thread-revealed{color:var(--muted)}
+.threads{font-size:13px;margin:0 0 10px;padding:8px 10px;border:1px dashed var(--line);border-radius:6px}.threads ul{margin:6px 0;padding-left:18px}
 .k-date{color:var(--bad)}.k-age{color:var(--bad)}.k-retired{color:var(--warn)}.k-overruled{color:var(--muted)}.k-quote-missing{color:var(--bad)}
 body.hide-date tr.f-date,body.hide-retired tr.f-retired,body.hide-age tr.f-age,body.hide-overruled tr.f-overruled,body.hide-covered tr.f-covered{display:none}
 @media (max-width:760px){.wrap{grid-template-columns:1fr}nav{position:static}.stat{margin-left:0}.findings td.para{min-width:0}}

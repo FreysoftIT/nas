@@ -294,3 +294,25 @@ Evidence for most of these: ledger 0025. Code: `spikes/queries-test/`.
   "right after 1920".
 - **Judge it by:** whether the author wants "Post-" read as "some time after"
   or as "immediately after".
+
+### P-28 — A thread is settled potential whose use is undecided · `proposed`
+- **What:** a bible fact or node may carry `thread: {weight, reveal, revealed_in}`
+  with `reveal: undecided | planned | declined | revealed`. The tool asks;
+  *undecided* is a legitimate answer, never an error (author, 2026-10-10: *"the
+  system should flag it as in ask the writer what should it do with it… the
+  writer might still be undecided"*).
+- **Why:** a settled fact can be designed never to become canon (ledger 0028).
+  A pending reveal treated as a debt would nag about a choice the author has
+  kept open on purpose.
+- **Judge it by:** whether the list of open threads reads as useful options or
+  as homework.
+
+### P-29 — A thread is offered where it touches a scene: two links, path shown · `proposed`
+- **What:** a scene is offered an undecided or planned thread when the thread
+  is in its declarations (*here*) or within two links of them (*nearby*),
+  following the bible's causal edges and each character's `facts:` list. The
+  finding names the path and asks *use it here, keep it for later, or decline
+  it*. It never suggests how to use it (ENGINE §7.4).
+- **Alternative:** one link (fewer, surer offers) or three (more, noisier).
+- **Judge it by:** whether the offers land in scenes where the author would
+  actually consider the thread.
