@@ -71,12 +71,25 @@ Consequences, read off the answers (not yet asked):
 - **Authorial decree and the decree budget** (§2.2): in this model, settling a
   fact in the bible is the normal path, not an exception.
 
+## Names — decided 2026-10-10
+
+Asked what a settled bible fact is called now that "canon" means only what is
+published and read. Options: *truth* / *settled* / *potential, no split*.
+**Author: "Settled".**
+
+| Word | Means |
+|---|---|
+| **settled** | potential the author has decided (replaces `canon:` in the bible's fact registry) |
+| **cloud** | potential still open (unchanged) |
+| **canon** | what has been published and read, lies included |
+
+A neutral process word: it says how a fact got there, not what it is, and it
+does not claim the weight of "truth" for things that may still change.
+
 ## Open
 
-- **Names.** What the bible's settled facts are called (they are potential, not
-  canon), and whether the private canon folder and the `canon:` list are renamed.
-- **Settled vs open potential.** The bible holds facts the author has settled
-  and clouds still open. Both are potential; whether they need different names.
+- Applying the names: the bible's fact registry, the private folder name, and
+  the word across NAS.md. Not done; the Ireland scene test comes first.
 
 ```yaml
 claim_evidence:
