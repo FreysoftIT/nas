@@ -117,11 +117,18 @@ profile already covers them and they are still narrative.
 Sub-machine F almost entirely: contrast as the unit the reader receives,
 intended reader trajectory, the four emptiness diagnostics as *craft* lints, the
 animatic, the sketch-to-colour phase ladder as a render gate, RENDER-1 (the only
-rule whose subject is prose). Eleven of the thirteen claims in §14.3 measure
-readers, pacing or revision cost and have no meaning elsewhere. NAS-C9, the
-founding claim, is the exception: "hand-kept coherence eats the budget and
-flattens decisions toward the cheap-to-maintain" is a claim about any human who
-is the runtime for a large state space, and §0 says so.
+rule whose subject is prose). Six of the thirteen claims in §14.3 measure
+readers or pacing and have no meaning elsewhere (C2, C3, C7, C8, C11, C12). The
+other seven are general: unexternalized state (C1), the cost of discarding
+design artifacts (C4), two orderings (C5), silent drift (C6), the founding claim
+(C9), the asymmetry of the two modes (C10) and the three-way decomposition of
+contradictions (C13). NAS-C9, "hand-kept coherence eats the budget and flattens
+decisions toward the cheap-to-maintain", is a claim about any human who is the
+runtime for a large state space, and §0 says so.
+<!-- CORRECTED 2026-10-24, same day: the first draft said "eleven of the
+     thirteen" with C9 the only exception. A hand classification, wrong by five,
+     caught by this session's own decree audit (spikes/stamp-check/README.md,
+     third section). The stamp check's defect class, in the document about it. -->
 
 ## 7. The cheapest test
 

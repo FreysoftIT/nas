@@ -61,7 +61,10 @@ What survived, each verified by opening the file:
   document with declared rules nobody checks (REG-1 dormancy, §15 row 25), two
   live documents disagreeing on provenance (ledger 0013's class), anchors that
   look right and do not resolve (ledger 0003's citation drift).
-- The Atlas corpus is five months older than its register and has no engine.
+- The Atlas essays predate their register, which was seeded from them on
+  2026-07-03, and there is no engine. <!-- CORRECTED 2026-10-24: the first draft
+  said "five months older". No essay date was ever observed; the number was a
+  decree. Caught by this session's own decree audit. -->
   Its state is the NAS corpus at v0.17: register correct, index hand-kept,
   one document outrunning the loop.
 
@@ -79,3 +82,41 @@ lists full. Still reported, on purpose: WOOD-C1's unanchored "closing" source,
 the Seam's "three models" (now also quoted in ledger 0002, which the check cannot
 tell from a live claim: quoted historical values are the next thing to teach it),
 and `reports/`, which stays legitimately absent until a milestone.
+
+## Third run — the session itself as the corpus, 2026-10-24
+
+Not a run of `check.mjs`. The author asked whether the found-world remap of the
+machine holds for an agent: tag every fact the agent held as *unknown*,
+*assumed*, *observed* or *decreed*, and count the decrees, with a decree defined
+as a collapse with no witnessing event. The agent was this session; the record
+was its exported transcript (23 assistant text blocks, 60 tool events, 10 user
+turns), and the claims were tagged by hand into a table and counted by script.
+
+| Tag | Count | Meaning |
+|---|---|---|
+| observed | 53 | justified by a tool event in this session |
+| decreed: inference | 18 | an interpretation or mapping presented as a statement |
+| decreed: knowledge | 8 | general knowledge asserted with no artifact |
+| decreed: fact | 3 | a specific claim about the corpus with no observation behind it |
+| assumed | 3 | taken from memory files or the principal, not verified here |
+| attested | 2 | taken from a subagent's report, not read directly |
+| decreed: opinion | 1 | |
+| **total** | **88** | |
+
+**All three factual decrees were wrong or unjustified**, and two of them sat in
+files already committed: "eleven of thirteen claims are writing-only" (a hand
+classification; six is the count) in MACHINE.md §6, and "the Atlas corpus is
+five months older than its register" (no essay date was ever observed) in this
+file. The third, "§14.1 says 51 in three places", was said in chat over a grep
+output that showed four lines. All three are the stamp check's own defect class,
+a hand tally of a derived value, made by the agent that had just built the
+stamp check. A fourth decree, the GitHub double-hyphen slug, was asserted from
+memory, acted on in five Atlas files, and only verified afterwards against a
+live page (it was right). Both file claims are corrected in place with dated
+notes.
+
+What the count means: the agent's unjustified-belief rate on specific facts was
+3 in 88, and its error rate on those was 3 in 3. Interpretations were a fifth of
+everything said and are not errors, but the tag makes them visible as a class
+the reader can discount. The measure needed no judge model and no rubric: a
+witnessing event either exists in the transcript or it does not.
