@@ -453,3 +453,86 @@ index the stamp check caught in the Atlas, with a better engine underneath.
 And whatever the agent observed about a person is held under that person's
 scope (GRAPH-10), which is the privacy rule the novel has for its canon,
 applied to data the agent did not make.
+
+---
+
+## 12. What agents hit today, read from one agent system's own record
+
+*Added 2026-10-24. The author asked what problems agents face at this date that
+the machine could help with, and to check a real workflow plugin, atena-forge
+(a frontend forge for Claude Code: 22 skills, 18 agents, 11 rule files, 7
+hooks, a durable record of 21 handoffs, 12 decisions, 13 plans and a
+post-mortem ledger), for how a bare agent and a framework plugin might each use
+the machine. The plugin was read by a subagent; three load-bearing claims were
+re-checked in the files. Counts below are the subagent's unless marked.*
+
+### 12.1 Six failure classes, each already a mechanism
+
+The plugin's post-mortem ledger (29 graded entries: 24 implementation fixes, 1
+model revision, 4 unclear; checked), its handoffs and its decision records
+catalogue about forty incidents. They fall into six classes.
+
+| What the record shows | Machine |
+|---|---|
+| **A sentence about an instrument outruns the instrument.** The dominant class: hand-typed counts, a header claiming a behaviour one path lacked, an incident quoting a rule the same commit retired, a pointer carrying a partial copy of a list. The ledger's own cure: "a hand-typed summary of a machine-readable artifact is a pull, or it is omitted"; "a duplicated claim is one defect with N sites" | GRAPH-2, and the stamp check (§3, spikes/stamp-check) |
+| **Stale or false state in the durable record.** A handoff written before its pass finished, twice. A progress table marking browser checks complete that were never run, found later as a shipped broken asset (checked). A plugin-version stamp stale by five releases | DRIFT-1: hand-maintained projections with no fold behind them |
+| **The agent asserted something false.** A file declared complete at 112 lines when it was 111 and truncated. Four artifacts reported missing when all four were present. An absence claim built from a grep that matched "developer" | A collapse with no witnessing event: the decree meter (§10.2) |
+| **A rule correct but unenforced, and nothing noticed.** The ledger's one model-revision incident: a rule went unfollowed twice, cost forty minutes, left no trace, because an unenforced rule's empty column looks like an enforced rule that never had to fire. The incident asks for a name for this "blind band" (checked; no file in the plugin tracks whether a rule was exercised, checked) | REG-1 `last_exercised`, dormant reported apart from passing; §15 row 25's `enforced_by` |
+| **Attested versus verified.** The merge-gate agent accepts "tests passed" from the orchestrator as "PASS (attested)" and re-runs the greps itself "regardless of attestation" | Two-place modality: attested is `saw`, verified is `is`. The plugin keeps them apart in one agent; the machine puts the field on every held fact |
+| **Non-terminating review loops; context loss.** Eleven rounds on one release, thirteen on one feature; each fix adds surface the next round faults; the only observed cure was deleting instruments. Sessions out of context mid-task; handoffs that cannot say who wrote a line or when | ENGINE §1.3: a check that adds more to hold than it removes is a net loss; completeness pressure is the failure mode wearing a helpful face. And an event log with per-agent folds |
+
+The plugin's enforcement, counted by the subagent: 2 native git hooks, 5
+harness hooks, 10 shell greps, about 9 lint rule groups, 18 tool allowlists,
+and roughly 21,700 words of rules enforced by prose. A register with an
+`enforced_by` column is that count made permanent.
+
+Two things the machine does not fix: hooks hanging on stdin and an
+orchestrator ending its turn before subagents report are platform faults, not
+knowledge faults. And the record is explicit that adding instrument surface
+causes rounds, so the machine has to arrive by **subtraction**, replacing
+hand-kept state with derived state, never as one more register beside the
+others.
+
+### 12.2 The bare agent: a store and five habits
+
+1. **Every tool result is an event**, written with its source before anything
+   is concluded from it. Every statement the agent makes is an assertion event
+   linked to the events it rests on, or it is a decree and gets counted.
+2. **State is read from the fold, never from memory.** The plugin's own resume
+   rule, "attempts are read from the table, never from remembered state", is
+   this habit for one table.
+3. **Context is a view with a header.** What goes into the prompt is selected,
+   by filters and by similarity, and the selection is recorded (GRAPH-4). The
+   handoff is not written; it is the view the next session runs. This is the
+   vector store's first job, and it replaces twenty-one hand-written handoff
+   files with one query.
+4. **When a premise fails, walk the cone** (OBS-3). The plugin's retry loop
+   reverts the whole attempt and tries a different mechanism; the cone says
+   which steps rested on the false premise and leaves the rest standing.
+5. **Before reporting, run the decree query.** Three in eighty-eight, all
+   wrong, on the session that proposed it (§10.2).
+
+### 12.3 The plugin: hand-kept to derived
+
+Atena-forge already has the loop: an append-only ledger with graded verdicts,
+incidents as the falsification trail, supersede-in-wording decision records,
+digest-bound sentinels that are the one mechanically verified state, and
+never-overwritten record series. What it hand-maintains is what the machine
+derives.
+
+| Hand-kept today | Derived instead |
+|---|---|
+| The handoff's "Active Session" block, replaced never appended | A view over the event log keyed by branch, with its query header; the branch-mismatch warning it already has becomes the fold's normal behaviour |
+| Plan progress table against the qa-scope checklist, no parity check | One fold, two projections, and the stamp check on every count in prose |
+| Which rules are enforced and which are prose | `enforced_by` and `last_exercised` per rule: the blind band becomes a column, and the telemetry that "cannot tell them apart" can |
+| Attested in one agent's verdict | Modality on every held fact across all eighteen agents |
+| Patterns mined by reading the ledger; defect classes not propagating across worktrees, named in a field report as "the highest-value missing signal" | One shared event store; similarity clusters ledger entries and finds the N sites of a duplicated claim, the thing the trim skill does by hand over 21,700 words |
+| ADR-0012's plan to record the review verdict as a commit trailer naming the reviewed tree, "so HOLD rounds become commits" | SCENE-3, history as the event log, reached from the other side: the convergence §17 counts as evidence |
+
+### 12.4 Where the vector store earns its place
+
+Narrow and real: selection for resume, clustering for patterns, duplicate-claim
+detection for trim, and cross-worktree recall. Nowhere does a similarity result
+change a verdict, drop a sentinel or mark a rule exercised. Only events do that
+(§11.4), which is the line the plugin drew for itself when it wrote "silence is
+never approval".
