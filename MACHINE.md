@@ -364,3 +364,58 @@ The gap is real and narrower than it looks: the epistemics of a found world,
 plus a way to settle between authorities. The four states, the two folds, the
 three modalities, the cone and the register do not know whether the world is
 made or found, and carry over unchanged.
+
+---
+
+## 11. Storage
+
+*Added 2026-10-24, when the author said they would try a multidimensional
+Postgres or a NoSQL store for the data. Nothing above had considered storage.*
+
+The machine already has an opinion, in two halves.
+
+**For the writing tool it is fixed.** ENGINE §5: the tool never owns storage.
+The Markdown files stay the truth; any index is derived and deletable. A
+database under NAS is a projection rebuilt from the files, never the source.
+The Field Atlas software lens (July 2026) said the same from the other side:
+graph plus deltas is the database, views are projections, one mutation path.
+
+**For the other domains (§5, §9.3, §10) it relaxes to one invariant.** The
+event log is the truth; everything else is derived and deletable. A database
+can be primary there, provided the deltas table is what you would restore from.
+
+### 11.1 The mapping onto Postgres
+
+Two of the model's stranger parts are native features.
+
+| Machine | Postgres |
+|---|---|
+| Cloud, collapse (§2) | A range type. A time anchor that is a cloud is a `tsrange`; collapse makes it a point. "A value or a range of allowed values" is a column type, not a schema trick |
+| Two orderings, two folds (§10) | Bitemporal data. Story chronology is valid time; telling order is transaction, or disclosure, time. The two-fold rule is the standard bitemporal query, which is why it needed no special case |
+| Deltas only, state is a fold (SCENE-3) | An append-only events table with no UPDATE or DELETE grant; state is a window query: last value per entity and property up to time *t*. A fold is last-write-wins, never a sum |
+| Observer records (§3, FACET-2) | One materialized view per observer, with the query header stored beside it (GRAPH-4). Row-level security is GRAPH-10: a projection is readable only where the reader holds its scope |
+| Causal and structural edges (GRAPH-5) | An edges table with the two namespaces as an enum; the retcon cone (OBS-3) is a recursive CTE over causal edges plus `referenced_by` |
+| Layers (GRAPH-1) | A rank per layer and a check constraint on causal edges: source rank never below target rank. The architecture linter becomes a constraint |
+| Two-place modality (MODAL-1) | An enum on statements; the read modality is a column on observer-record rows. The deception query is a join |
+| Id namespaces (GRAPH-11) | `requires_node: true` is a foreign key; `false` is free text. The declaration becomes the schema |
+| Register, ledger, manifest (§14) | Three tables; the ledger append-only like the events; `last_exercised` derived from a run log, never typed (REG-1) |
+
+### 11.2 NoSQL and "multidimensional"
+
+A document store fits the node-as-file-with-frontmatter shape and loses the
+queries that make the machine worth having: the fold, the cone, the
+per-observer join. JSONB in Postgres gives the document shape for node content
+without losing them.
+
+If "multidimensional" means an analytic cube, the dimensions are already named
+in the machine: entity, observer, scope, time anchor, audience, layer,
+modality. Deltas are the fact table. The one thing to resist is treating a fold
+as an aggregate.
+
+### 11.3 Two cautions from the project's own rules
+
+- The canon is private and the repository is public (HANDOFF.md). Wherever the
+  database lives, that boundary has to hold for it too.
+- Every derived table is a projection in GRAPH-2's sense. The moment one is
+  edited by hand, it is the hand-kept inverse index the stamp check caught in
+  the Atlas, with a better engine underneath it.
