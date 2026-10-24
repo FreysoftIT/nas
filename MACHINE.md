@@ -278,3 +278,89 @@ Beyond the six ranked in §5:
 One oracle. No probabilities beyond a four-valued confidence. No magnitudes, by
 design (MOD-2). No learning inside the loop. A loop that reads only at the
 scale of finished work.
+
+---
+
+## 10. Made world, found world: the direction of the limits
+
+*Added 2026-10-24, from the author's observation that the five limits in §9.5
+are a direction limit: the machine was built in an environment where the
+writer and the reader were the primary knowledge holders.*
+
+Sharpened: the machine was built for a **made world**, and the five limits are
+what a made world lets you skip. In fiction the one who knows is also the one
+who makes. Principle I says nothing is canon until a scene observes it, and in
+a novel the observation *is* the making. So the machine never needed a theory
+of discovery: no independent reality that could contradict the oracle, no
+observation that could be wrong, no second authority with equal standing, no
+outcome that has to be computed rather than chosen, and no evidence except the
+finished work. Each limit falls out of that one fact.
+
+AI systems, and most of the fields in §5 and §9.3, live in a **found world**.
+The agent does not make facts; it discovers them through observations, and the
+observations can be wrong. The gap has two parts the machine genuinely lacks: a
+model of observation with error, and a model of more than one authority.
+Everything else survives a remap of the roles.
+
+### 10.1 The role table
+
+| In the novel | In an agent system |
+|---|---|
+| The author decrees and settles | Reality settles; the human decrees only the deontic layer: policy, constraints, assumptions |
+| A scene observes and writes deltas | A tool call observes and writes deltas |
+| The reader holds a record folded over telling order | The agent holds a record folded over context order |
+| Canon: collapsed by a witnessing scene | Observed: collapsed by a tool event with a source |
+| Settled: decided by the author without a scene | Assumed: told to the agent by the principal without observation |
+| Cloud | Unknown, and left unknown until something demands it |
+| Authorial decree, free at low layers | **Hallucination**: a collapse with no witnessing event, never free |
+| Retcon: the author reopens a fact | Retraction: an observation turns out wrong and its cone is re-walked |
+| Irony: the gap between the reader's record and canon | The gap between what the agent believes and what its observations justify |
+
+### 10.2 The decree budget is a hallucination meter
+
+The machine already counts collapses that lack an observation event, per
+layer, as a ledger metric (§2.2), because in a novel decrees are legitimate but
+worth watching. For an agent the same count with the legitimacy removed is a
+direct measure of unjustified belief: every fact the agent holds that no tool
+event and no principal statement produced. No judge model, no rubric, two
+artifacts: the claim and the transcript.
+
+Run once on the session that proposed it (spikes/stamp-check/README.md, third
+run): 88 claims, 53 observed, 3 specific facts decreed, all 3 wrong or
+unjustified, two of them already committed to files. The measure found the
+stamp check's own defect class in the agent that had just built the stamp
+check.
+
+### 10.3 Retraction is the substitute for probability
+
+§9.5's second limit blocks calibrated belief. The found-world version does not
+need to weigh sources. An observation is held as a *saw* with a source; if a
+later observation contradicts it, it is retracted and everything that rested on
+it is invalidated through the cone (OBS-3). Cheap, auditable, and it keeps
+findings decidable.
+
+What it cannot do is prefer one of two live contradictory observations. For
+that there are two moves: observe again, which is honest, or introduce weights,
+which costs decidability. Observing again is usually available to an agent and
+never available to a novelist, which is exactly why the machine never built it.
+
+### 10.4 The reader who acts
+
+In fiction the reader is passive. A reader cannot act, so queries read and
+scenes write (GRAPH-9), and the two never meet in one entity. An agent is a
+reader who acts: the same entity reasons over its record and performs the
+observations that change it. That collapses the machine's cleanest invariant
+into one actor, and a harness has to reinstate it structurally rather than by
+instruction. Alter-G did it with a grant: the component that speaks cannot read
+the truth file. The general form is a planner that holds the record and an
+executor that produces observation events, separated by construction. The
+planner/executor split that §9.4 reached from the contract stack is reached
+here from the observer model, which is the kind of convergence §17 counts as
+evidence.
+
+### 10.5 What stays
+
+The gap is real and narrower than it looks: the epistemics of a found world,
+plus a way to settle between authorities. The four states, the two folds, the
+three modalities, the cone and the register do not know whether the world is
+made or found, and carry over unchanged.
