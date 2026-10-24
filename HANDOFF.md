@@ -1,106 +1,94 @@
 # Handoff — next session starts here
 
-**Written 2026-09-28, end of session. Branch `writing-tool`, pushed, tree clean.**
-Last commit: `6f01cf6` — the live views page.
+**Written 2026-10-24. Branch `writing-tool`, pushed, tree clean.** `main` is ~57
+commits behind and was deliberately **not** merged (author: no PR).
 
-Read this, then `ENGINE.md` §6 and `PROPOSALS.md`. Everything below is in git;
-nothing lives only in chat.
+**The author said they are heading down "an extremely different route".** Ask
+what it is before resuming anything below. Nothing here is urgent; it is the
+state to return to, not a queue to run.
 
 ---
 
-## Where we are, in one paragraph
+## Read first
 
-The writing tool finally has a product shape (ENGINE.md §6, v0.6, written from
-the author's own words) and a first **running program**: a local web page that
-watches the corpus and shows the NAS views live, highlighting what moved on each
-save. Every choice made while building it is a **proposal**, not a decision —
-the author's rule is *nothing is ratified by reading; only against a running
-program.* The next move is the author's: use the page, then judge proposals.
+1. **[CONCEPTS.md](CONCEPTS.md)**: every concept the project has produced (118),
+   each tagged by status and by who handles it (you / the tool / the project).
+   The fastest way back into the whole picture.
+2. **[ledger 0028](ledger/0028-2026-10-10-canon-is-the-final-act.md)**: the
+   newest decisions, recorded but **not yet applied** to NAS.md.
+3. `PROPOSALS.md` (P-24 … P-29 are new), `ENGINE.md` §6.3 (amended 2026-10-07).
+
+## ⚠ Privacy — the rule that matters most
+
+The repo is **public**. The author's novel bible and scenes are **private** and
+live outside it, with local git only and no remote:
+
+- `Desktop\Novel\Canon`: the bible (the folder name predates "settled")
+- `Desktop\Novel\Production`: the scenes
+- `Desktop\Novel\BookBible`: the 20 source documents (read-only evidence)
+
+**Never commit plot to this repo.** Grep every diff for character names, places
+and dates before pushing. The live page finds the private folders through the
+git-ignored `.nas-local.json`. Ledger 0027 in this repo is a method-only stub;
+its full text is in the private folder. (Older commits still contain it; history
+was deliberately not rewritten.)
+
+## What happened since 2026-09-28
+
+| | Outcome | Where |
+|---|---|---|
+| Live page checked in a real browser | renders clean; diff highlight works | `spikes/queries-test` |
+| pro-league read whole | the trust "disagreements" are exactly two gaps | ledger 0026, P-10 (decided), P-23 |
+| Book bible read whole (20 docs) | ledgers 0001 and 0023 were partial reads; **majority of documents ≠ canon** | ledger 0027 + corrections in 0001, 0023 |
+| ~40 conflicts put to the author one question at a time | answers recorded verbatim, turned into a private fact registry | private folder |
+| Canon checker | mechanical, no model; reads the .docx directly | `spikes/canon-check` |
+| ENGINE §6.3 amended | **a model may propose conflicts; only the author sets canon** | ENGINE.md |
+| Bible and production as separate modules | one-way flow under test: scenes read the bible; what they invent waits for the author | `spikes/canon-check/scenes.mjs` |
+| Principle I brainstormed | **canon = what is published and read, lies included; the bible is potential** | ledger 0028 |
+| Threads | settled potential whose use is undecided, offered where it touches a scene | P-28, P-29 |
+
+## The model the author chose (ledger 0028)
+
+| Word | Means |
+|---|---|
+| **settled** | potential the author has decided (in the bible) |
+| **cloud** | potential still open |
+| **canon** | what has been published and read, **lies included** |
+
+An unpublished scene is still potential, just rendered. Canon is not truth: the
+revelation is the gap between them closing. A declared lie is fine; an
+undeclared one is a mistake.
+
+## Where the test stands
+
+Two private test scenes, declarations only, no prose:
+
+1. ✅ A scene referenced something the bible lacked → flagged → the author
+   settled it → the flag cleared.
+2. ✅ An undecided thread is offered in the scene that contains it and in a
+   scene that reaches it through the bible's links; declining it removes both.
+3. ⬜ A scene **invents** a fact → it should show "to promote". Needs one fact
+   from the author.
+4. ⬜ Optional: a scene **lies** to the reader → declared = pending reveal,
+   undeclared = mistake. Needs a lie from the author **and** a checker addition.
+
+Only after 3–4 behave as the author described: apply the names (canon →
+settled across the bible and NAS.md) and propose Principle I's rewording.
 
 ## Run it
 
 ```
-cd spikes/queries-test
-npm install          # first time only (PGlite + yaml)
-npm run serve        # → http://localhost:4321
+cd spikes/queries-test && npm install && npm run serve      # http://localhost:4321
+cd spikes/canon-check  && npm install && node check.mjs <bible-dir>
 ```
 
-Write in any editor; save; the page updates. `npm test` writes the one-shot
-output to `out/` (gitignored) instead. **Never been looked at in a real
-browser** — HTML and data were verified with curl only. First thing next
-session: open it and check the layout.
+`.claude/launch.json` also has `live-views-alt` on port 4322.
 
-## What the author decided this session (ENGINE.md §6)
+## Working rules (still binding)
 
-| Decision | Where |
-|---|---|
-| The product: **a writer with assistance in each phase** — worldbuilding, characters + relationship graph, writing | §6, §6.2 |
-| The writing process is two axes, both the author's: **sketch → colour** (one scene) and **keyframes → inbetweens** (the book) | §6.1 |
-| **AI-less, on principle** — "the work must stay the writer's." A spell-checker for canon, **on demand**. No model anywhere, not even local, not even for detection. *Amended 2026-10-07: a model may propose conflicts; only the author sets canon.* | §6.3 |
-| Tiers: `lint` on demand; **gates still block but are always passable** by citing/minting an exception ID | §6.3 (propagated to SOFTWARE.md §4) |
-| Harvesting from prose: **mechanical only** — tags, known names, dates/numbers, structure. Soft mode loses automatic delta/structure harvesting | §6.3 |
-| `queries.md` becomes source (commentary + `<!-- view: N -->` markers); tables render to `out/queries.md` | P-19 |
-| First runnable = **option 2, the local web page** (not a CLI report, not a writing screen) | §6.4 |
-
-## What is NOT decided — `PROPOSALS.md`
-
-22 entries, P-01…P-22. Status counts (count them, don't trust this line — hand
-tallies in this project have been wrong four times now): `grep -o '· \`[a-z]*\`' PROPOSALS.md | sort | uniq -c`.
-
-**The four `open` ones** are placeholders the code had to pick, and the ones the
-author most needs to judge against the running page:
-
-| ID | Question | Try on the page |
-|---|---|---|
-| **P-06** | What makes a pursuit `pursued`? (NAS §8.5 never says) | delete Kes's attempt on `val_kes_proof` in ch02 → her row flips |
-| **P-10** | `kes→marek` trust: authored snapshots or delta fold? They disagree in 4 of 5 scenes, and it moves where `pillar_01` precondition 3 is paid (ch03 vs ch06) | edit an `entry_state` value → view 8 |
-| **P-13** | VAL-4: does Kes's one-way foreclosure count as tension? | add `forecloses: [val_kes_proof]` to `val_kes_out` → flag clears |
-| **P-17** | The offstage shooting (Cut pos 7) is in no file — how to declare an unwitnessed attempt? | nothing to try yet |
-
-## Why — the evidence
-
-**Ledger 0025** (`ledger/0025-2026-09-27-queries-as-sql.md`): the seven
-hand-computed views of `queries.md`, rebuilt as SQL. All reproduce (≤ 5 ms). The
-hand versions diverged from the corpus in **15 places** — mostly because
-`queries.md` predated ch01–ch06 by a day and nothing noticed. Also found:
-`pillar_01.md` was invalid YAML (fixed, P-20); **TIME-2 is now enforced by a
-database constraint** — the first `structural`-tier rule anything enforces.
-
-## The code — `spikes/queries-test/`
-
-| File | Does |
-|---|---|
-| `schema.sql` | the derived index (Postgres dialect). Enums/CHECKs = frozen vocabularies |
-| `load.mjs` | frontmatter → rows. Tolerant: parse errors and DB rejections are reported, never fatal |
-| `queries.mjs` | the 8 views as named SQL, each tagged with its proposal IDs |
-| `engine.mjs` | one build: reset → load → views → TIME-2 check |
-| `serve.mjs` | the live page (watch → rebuild → SSE → diff highlight) |
-| `run.mjs` | one-shot output to `out/` |
-
-Still called `spikes/queries-test` — renaming it (e.g. `tool/`) was deliberately
-not done mid-session; ledger 0025 and PROPOSALS cite the path.
-
-## Next steps, in order
-
-1. ~~**Open the page in a browser.** Fix whatever the layout gets wrong.~~
-   *Done 2026-10-05:* checked in a real browser (desktop, 375 px phone width,
-   light + dark). All 8 views + TIME-2 render, no console errors, no
-   horizontal page scroll, SSE connects. Nothing needed fixing. Not yet seen:
-   the changed-cell highlight after a real save. `.claude/launch.json` added
-   (`live-views`) so the app's browser pane can start the server.
-2. **The author uses it** and starts judging proposals — begin with the four
-   `open` ones via the experiments above. Record each verdict in PROPOSALS.md
-   (status → `decided` or `rejected`, with date and the author's words).
-3. Only then: whatever the author asks for next. Candidates already on the table
-   — a module surface (worldbuilding generator, ENGINE §7; or the character /
-   relationship graph), or the loader reading what it skips today (P-02).
-
-## Working rules for this project (from memory, still binding)
-
-- **Commit + push at every round boundary**, unasked.
-- **Proposals are tested against the corpus, not ratified by argument.**
-- **Count programmatically.** Every hand tally this session was wrong at least once.
-- Historical docs are **corrected in place with dated notes**, never rewritten.
-- The tool **never owns storage** (ENGINE §5) and **never uses a model** (§6.3).
-- The NAS creation chats (pre-2026-07-07) were claude.ai and are gone — don't
-  search for them.
+- Commit + push at every round boundary, unasked.
+- Nothing is decided by reading; only against a running program (`PROPOSALS.md`).
+- Count programmatically; read a whole corpus before claiming anything about it.
+- The author's programming analogies stay in conversation; product wording stays
+  writer-facing.
+- Historical docs are corrected in place with dated notes, never rewritten.
