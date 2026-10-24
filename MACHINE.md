@@ -367,55 +367,89 @@ made or found, and carry over unchanged.
 
 ---
 
-## 11. Storage
+## 11. Storage, for the agent
 
 *Added 2026-10-24, when the author said they would try a multidimensional
-Postgres or a NoSQL store for the data. Nothing above had considered storage.*
+Postgres or a NoSQL store with vectors for the data, because a long project
+outgrows files. The first draft of this section answered for the novel; the
+author pointed out that this branch exists for the other uses, AI first.
+Rewritten the same day around the agent store.*
 
-The machine already has an opinion, in two halves.
+**One paragraph on NAS, then it is out of the way.** For the writing tool the
+opinion is fixed by ENGINE §5: the tool never owns storage, the Markdown files
+stay the truth, and any database is a derived, deletable index over them. At
+novel scale that index is small and needs no vectors. The rest of this section
+is not about the writing tool.
 
-**For the writing tool it is fixed.** ENGINE §5: the tool never owns storage.
-The Markdown files stay the truth; any index is derived and deletable. A
-database under NAS is a projection rebuilt from the files, never the source.
-The Field Atlas software lens (July 2026) said the same from the other side:
-graph plus deltas is the database, views are projections, one mutation path.
+### 11.1 Three premises that flip
 
-**For the other domains (§5, §9.3, §10) it relaxes to one invariant.** The
-event log is the truth; everything else is derived and deletable. A database
-can be primary there, provided the deltas table is what you would restore from.
+For an agent system the premises of ENGINE §5 do not hold, and the store moves
+to the center:
 
-### 11.1 The mapping onto Postgres
+1. **The data grows without bound.** An agent system produces millions of
+   events, not thousands. "The longer it goes, the more there is" is a real
+   scaling problem here, not a navigation one.
+2. **The event log is primary.** There are no files that are the truth. The
+   store owns the log, and the one invariant is that the events table is what
+   you would restore from; everything else is derived and deletable.
+3. **Retrieval is not an optimization.** The agent's record is delivered
+   through a bounded context window, so every turn the view has to be
+   *selected*. In the novel the reader receives the fold by reading in order;
+   the agent receives a slice, and choosing the slice is the query layer
+   (GRAPH-4) doing its job. Vectors are one of its selection operators, and a
+   first-class one.
 
-Two of the model's stranger parts are native features.
+### 11.2 The store
 
-| Machine | Postgres |
+| Machine | Agent store |
 |---|---|
-| Cloud, collapse (§2) | A range type. A time anchor that is a cloud is a `tsrange`; collapse makes it a point. "A value or a range of allowed values" is a column type, not a schema trick |
-| Two orderings, two folds (§10) | Bitemporal data. Story chronology is valid time; telling order is transaction, or disclosure, time. The two-fold rule is the standard bitemporal query, which is why it needed no special case |
-| Deltas only, state is a fold (SCENE-3) | An append-only events table with no UPDATE or DELETE grant; state is a window query: last value per entity and property up to time *t*. A fold is last-write-wins, never a sum |
-| Observer records (§3, FACET-2) | One materialized view per observer, with the query header stored beside it (GRAPH-4). Row-level security is GRAPH-10: a projection is readable only where the reader holds its scope |
-| Causal and structural edges (GRAPH-5) | An edges table with the two namespaces as an enum; the retcon cone (OBS-3) is a recursive CTE over causal edges plus `referenced_by` |
-| Layers (GRAPH-1) | A rank per layer and a check constraint on causal edges: source rank never below target rank. The architecture linter becomes a constraint |
-| Two-place modality (MODAL-1) | An enum on statements; the read modality is a column on observer-record rows. The deception query is a join |
-| Id namespaces (GRAPH-11) | `requires_node: true` is a foreign key; `false` is free text. The declaration becomes the schema |
-| Register, ledger, manifest (§14) | Three tables; the ledger append-only like the events; `last_exercised` derived from a run log, never typed (REG-1) |
+| Deltas (SCENE-3) | An append-only events table, no UPDATE or DELETE grant: observation (tool call, args hash, result, time), assumption (a principal's statement), assertion (what the agent said), retraction. Each with modality `is / must / saw`, a source, and an embedding |
+| Fold | A statement's current state is derived: last value, its witnessing event, retracted or not. A statement with no witnessing event is a **decree** (§10.2), computed, never typed |
+| Cone (OBS-3) | A `justified_by` edge from each statement to the events and statements it rested on. Retraction is a recursive query over it, and the result is exactly the set of steps to redo |
+| Two folds (§10) | Bitemporal: when the world was observed to be so, and when this agent learned it (context insertion). "What did the agent know when it did X" is a query, not a reconstruction |
+| Observer records (§3, FACET-2) | One view per agent, orchestrator and each subagent, over the events disclosed to it. Row-level security is GRAPH-10, and is Alter-G's truth firewall as a database policy rather than a tool grant |
+| Query header (GRAPH-4) | Every context assembly is a materialized view with its query recorded: the similarity search, the filters, the scope, the time anchor, the model it was built for. Provenance on every prompt |
+| Clouds (§2) | Range types where the value is a range; `NULL` with an open-question row where it is unknown. Collapse is an event |
+| Layers (GRAPH-1), edges (GRAPH-5) | A rank per layer with a check constraint on causal edges; the two edge namespaces as an enum |
+| Register and ledger (§14) | Rules with tiers mapped to the harness: `structural` is a grant, `gate` blocks a call, `lint` flags, `judgment` is prompt text. `last_exercised` derived from the run log (REG-1), so the dormancy report says which guardrails have ever fired. Incidents with one canonical cause |
 
-### 11.2 NoSQL and "multidimensional"
+### 11.3 The four places vectors sit
 
-A document store fits the node-as-file-with-frontmatter shape and loses the
-queries that make the machine worth having: the fold, the cone, the
-per-observer join. JSONB in Postgres gives the document shape for node content
-without losing them.
+1. **Selection into context.** Top-k by similarity, filtered by scope and
+   time, with the result stamped as a view. What arrives in the prompt carries
+   its modality and its witnessing event, so a retrieved item enters as a
+   `saw` with a source, never as a bare fact.
+2. **Long-term memory across sessions.** Finding what an earlier run observed
+   that bears on this task. The one use the file model cannot serve at all.
+3. **Dedup and merge.** Two statements of one fact at two resolutions, the
+   commonest conflict shape in the bible audit (ledger 0027), found as
+   candidates by similarity and resolved by exact compare.
+4. **Contradiction candidates.** A new assertion near an existing observation
+   that says otherwise. The pair is found approximately; the verdict on the
+   pair is exact.
 
-If "multidimensional" means an analytic cube, the dimensions are already named
-in the machine: entity, observer, scope, time anchor, audience, layer,
-modality. Deltas are the fact table. The one thing to resist is treating a fold
-as an aggregate.
+### 11.4 The one rule that survives
 
-### 11.3 Two cautions from the project's own rules
+Nothing is forbidden from the store. What is forbidden is a vector result
+changing a statement's state. Similarity selects, proposes and clusters. Only
+an event collapses, retracts or witnesses. That is ENGINE §6.3's line, "no
+model with authority", drawn through the schema: an embedding model is a model,
+and it keeps the decree meter honest, because a statement is justified by an
+event id and never by having been near something.
 
-- The canon is private and the repository is public (HANDOFF.md). Wherever the
-  database lives, that boundary has to hold for it too.
-- Every derived table is a projection in GRAPH-2's sense. The moment one is
-  edited by hand, it is the hand-kept inverse index the stamp check caught in
-  the Atlas, with a better engine underneath it.
+### 11.5 Engine
+
+Postgres with pgvector does the whole of §11.2 in one place, because the hard
+queries are the fold, the cone and the per-agent policy, and those are
+relational; range types and recursive CTEs are native. A document store with a
+vector index gives the easy half. If "multidimensional" means an analytic
+cube, the dimensions are already named by the machine: entity, observer, scope,
+time anchor, audience, layer, modality; events are the fact table; and a fold
+is last-write-wins, never a sum.
+
+Two cautions carry over from the project's own rules. Every derived table is a
+projection in GRAPH-2's sense: edited by hand once, it is the hand-kept inverse
+index the stamp check caught in the Atlas, with a better engine underneath.
+And whatever the agent observed about a person is held under that person's
+scope (GRAPH-10), which is the privacy rule the novel has for its canon,
+applied to data the agent did not make.
