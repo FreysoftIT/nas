@@ -66,3 +66,16 @@ What survived, each verified by opening the file:
   one document outrunning the loop.
 
 Nothing from the Atlas is copied here beyond ids and filenames.
+
+## Second run — after the fixes, same day
+
+The author had the four fixable findings applied in the Atlas corpus (no git
+there; the Atlas's own ledger records it as entry 0002): the Interlock added to
+the coverage table and the manifest schema, the 8 one-way edges reciprocated on
+the rules' `claims:` side, the 5 anchors corrected to the strict slug, and the
+OPERATIONS provenance line brought into agreement with the index, dated. Rerun:
+coverage complete, inverse edges symmetric, 52 of 52 anchors strict, both model
+lists full. Still reported, on purpose: WOOD-C1's unanchored "closing" source,
+the Seam's "three models" (now also quoted in ledger 0002, which the check cannot
+tell from a live claim: quoted historical values are the next thing to teach it),
+and `reports/`, which stays legitimately absent until a milestone.
