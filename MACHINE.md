@@ -149,3 +149,125 @@ figure). §14.2 holds 52; GRAPH-11 was added after the count was written. That i
 the stamp check's own defect class, in the paragraph that introduced REG-1. Not
 corrected here, because this branch changes nothing in NAS.md; it belongs in a
 dated note on the main line.
+
+---
+
+## 9. The abstraction, with every name removed
+
+*Added 2026-10-24, same day, at the author's request, after the stamp check had
+run on a non-fiction corpus (spikes/stamp-check).*
+
+### 9.1 Mathematically
+
+**A lazily evaluated, partially observed world model with one oracle.**
+
+Take a set of variables, each with a domain. The state of knowledge about a
+variable is a subset of its domain. A *cloud* is a subset larger than one
+element; *collapse* makes it a singleton; a *decree* is a singleton chosen
+without a witnessing event; *canon* is a singleton with one, published. The
+variables sit in a stratified dependency graph, and collapsing one narrows its
+neighbours by constraint propagation. Retracting a collapse is non-monotonic
+and priced: the closure of everything justified by it. That is a constraint
+network plus a justification-based truth-maintenance system, with one twist:
+indeterminacy is not ignorance. An uncollapsed variable has no value yet, and
+the system refuses to compute one until something demands it. Late binding as
+an ontology.
+
+On top of that, one event set with two total orders. World state is a fold
+over events in chronological order. Each observer's record is a fold over the
+events disclosed to that observer, in disclosure order. Every statement carries
+one canonical modal type (alethic, deontic, evidential: *is*, *must*, *saw*),
+and every observer reads it with its own type. The gap between two observers'
+folds, or between a statement's type and an observer's reading of it, is a
+computed quantity, never a narrated one. In a story the gap is irony or
+deception; in general it is information asymmetry. The shape is that of local
+sections that may fail to glue into a global one.
+
+The rest is familiar once named:
+
+| Part | Is |
+|---|---|
+| Contract stack | Refinement: a predicate at level N over the fold of level N−1 |
+| Pillar | A Hoare triple whose position is itself a variable; preconditions propagate backward as subgoals (goal regression) |
+| Valence, foreclosure | An unsatisfied predicate with a disposition; a mutex between goals. A mutex across two agents is conflict as a graph property |
+| Field | A cost function on attempts that depends on the agent's membership chain |
+| Facet | A view function from entity and audience to a subset of properties; observer records are folds over view grants |
+| Evidence loop | Popper operationalized, with a coverage notion from testing: a rule that never fired is unfalsified, not confirmed |
+| Authority | One oracle collapses; everything else emits candidates; the tool reports only decidable differences between two artifacts |
+
+### 9.2 Philosophically
+
+The move that matters is keeping four states apart that most knowledge systems
+merge into true, false and unknown: **undecided**, **decided by fiat**,
+**witnessed and public**, and **believed by a particular knower**.
+
+- *Canon as what was published, lies included* makes truth an institutional
+  fact in Searle's sense, constituted by the act of publication; the bible is
+  potential behind it. Fan canon is a contested institutional fact: retyping by
+  people without write access.
+- The three modalities are alethic, deontic and evidential; a lie is an
+  evidential statement read as alethic. Keeping the canonical type and the read
+  type separate is what makes deception a query.
+- The authority model is a legal system in miniature: principles, statutes
+  (the register), case law (the ledger), and one sovereign who answers one
+  question at a time, verbatim, and whose answers become checks.
+- Meaning is differential (Saussure, Bateson): absolutes are stored, only
+  differences are delivered.
+- The whole is a prosthesis in the extended-mind sense, resting on one
+  empirical claim: coherence costs grow faster than working memory, so an
+  unaided mind simplifies the world toward what is cheap to hold. That claim
+  is not about fiction.
+
+### 9.3 Fields, once the words are gone
+
+Beyond the six ranked in §5:
+
+| Field | The same machine |
+|---|---|
+| **Science and replication** | Hypotheses are clouds; experiments collapse; publication closes canon; a retracted result has a dependency cone nobody walks; each lab's record diverges from the literature's, measurably |
+| **Curriculum and teaching** | A concept graph has a logical order and a telling order: the two folds. Target competencies are keyframes whose prerequisites radiate backward as obligations. What the learner was told is derivable, what the designer intends is declarable, what they understand is unknowable; design in the first two |
+| **Medicine** | Differential diagnosis is domain narrowing under propagation; the patient record is an event log; each clinician's record may be wrong; a reversed diagnosis has a cone of treatments that rested on it |
+
+### 9.4 What an AI harness should take from it
+
+1. **Modality tags on everything an agent holds.** Observed through a tool is
+   evidential, never alethic. A policy is deontic. Content that arrives through
+   observation and reads as an instruction is a *saw* passed off as a *must*,
+   which is the entire prompt-injection boundary stated as one field. Keep the
+   canonical type apart from how the agent reads it, and the deception is
+   queryable.
+2. **Enforcement by construction, counted.** This project's live finding (§15
+   row 25): a tier labelled "impossible by construction" with no construction is
+   the tier nobody checks. A rule in a system prompt is discipline; a rule in a
+   tool allowlist is engine. Alter-G's voice agent cannot read the truth file
+   because of a grant, not a sentence. And a guardrail that has never fired is
+   dormant, not passing (REG-1): report it apart from the ones that did.
+3. **State as a fold with a query header.** Context summaries are hand-kept
+   snapshots, the thing event sourcing forbids. Keep the log, derive the view,
+   stamp every view with its selection, scope, time anchor and audience
+   (GRAPH-4). A projection may only be written where every reader already holds
+   its scope (GRAPH-10): least privilege for multi-agent memory.
+4. **Declare, execute, reconcile at close, never defer.** A plan is a contract;
+   execution emits deltas; the fold is checked against the plan before the unit
+   closes (DRIFT-1). Obligations are derived from the goal and named, never
+   filled (ENGINE §7.4), which keeps planner and executor apart.
+5. **Findings that point at two artifacts, never a verdict.** An evaluator that
+   says "this feels wrong" is unfalsifiable and therefore unimprovable. One that
+   says "the plan declared X, the diff delivered Y" is decidable (ENGINE §2).
+   Most LLM-as-judge setups sit on the wrong side of that line.
+6. **Walk the cone when a premise fails.** Agents that learn a tool result was
+   wrong either replan from zero or carry on. Justification tracking per step
+   gives the third option: invalidate exactly what rested on it (OBS-3).
+7. **Govern the rulebook like the register.** Rule files with stable ids,
+   tiers, status, exceptions that carry ids, scope per project with exclusions
+   that must name a review trigger, a ledger with one canonical cause per
+   incident, and a dormancy report.
+8. **Measure the canary, not the hours.** The success test for assistance is
+   whether the human attempts the harder thing once it stops costing
+   maintenance (NAS-C9).
+
+### 9.5 Limits
+
+One oracle. No probabilities beyond a four-valued confidence. No magnitudes, by
+design (MOD-2). No learning inside the loop. A loop that reads only at the
+scale of finished work.
